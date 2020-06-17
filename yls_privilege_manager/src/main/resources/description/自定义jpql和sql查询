@@ -1,0 +1,66 @@
+    /**
+     * @Author yls
+     * @Description jpql查询
+     * @Date 2020/3/26 13:51
+     * @param
+     * @return void
+     **/
+	private void getStusByJPQL() {
+		//复杂条件查询
+		QueryParams<Student> queryParams = new QueryParams<>();
+		queryParams.and(BaseFilter.gt("age",10L))
+				.or(BaseFilter.like("name","a%"),BaseFilter.like("name","te%"))
+				.or(BaseFilter.like("id","123%"))
+				.orderASC("name");
+		System.err.println("jpql查询：");
+		List<Student> students = studenService.findByQueryParams(queryParams);
+		students.forEach(student -> {
+			System.out.println(student);
+		});
+	}
+
+
+    /**
+    * @Author yls
+    * @Description 部分字段查询sql
+    * @Date 2020/3/26 13:53
+    * @return void
+    **/
+    private  void getSomeColumnBySql(){
+    	ArrayList<String> columns = new ArrayList<>();
+    	String baseSql;
+    	//部分字段查询
+    	QueryParams<Student> queryParams = new QueryParams<>();
+    	queryParams.and(BaseFilter.like("name","a%"));
+    	//组装要查询的列
+    	columns.add("name");
+    	baseSql = NativeSQL.getSqlBySomeCols(columns,"student");
+    	System.err.println(baseSql);
+    	List results = baseSQLService.getResultBySomeCols(baseSql, queryParams, null);
+    	results.forEach(value ->{
+    		Map<String,String> result = (Map<String, String>) value;
+    		result.forEach((k,v)->{
+    			System.out.println(k+":"+v);
+    		});
+    	});
+    }
+
+    /**
+    * @Author yls
+    * @Description 全字段查询sql
+    * @Date 2020/3/26 13:54
+    * @return java.util.ArrayList<java.lang.String>
+    **/
+    private void getStudentsBySql() {
+    	//全字段查询
+    	QueryParams<Student> queryParams = new QueryParams<>();
+    	queryParams.and(BaseFilter.like("name","a%"));
+    	ArrayList<String> columns = new ArrayList<>();
+    	System.err.println("sql查询：");
+    	String baseSql = NativeSQL.getSqlByAllCols("student");
+    	System.err.println(baseSql);
+    	List<Student> stus = baseSQLService.getResultByAllCols(baseSql, queryParams, null,Student.class);
+    	stus.forEach(student -> {
+    		System.out.println(student);
+    	});
+    }

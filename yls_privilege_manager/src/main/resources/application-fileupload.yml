@@ -1,0 +1,16 @@
+##文件上传的配置
+spring:
+  servlet:
+    multipart:
+      ## 是否开启文件上传
+      enabled: true
+      ## 单个文件大小
+      max-file-size: 1MB
+      ## 写入磁盘的阈值，默认为0
+      file-size-threshold: 0
+      ## 多个文件的总大小
+      max-request-size: 10MB
+      ## 上传文件的临时位置
+      location: E:\\uploaFileTemp
+      ## 文件是否延迟解析
+      resolve-lazily: false

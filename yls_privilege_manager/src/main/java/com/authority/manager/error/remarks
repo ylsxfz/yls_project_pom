@@ -1,0 +1,1 @@
+使用方法：添加 throw new BusinessException("查询出错");

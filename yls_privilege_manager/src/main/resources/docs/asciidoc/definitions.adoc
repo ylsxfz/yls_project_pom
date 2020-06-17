@@ -1,0 +1,435 @@
+
+[[_definitions]]
+== Definitions
+
+[[_httpresult]]
+=== HttpResult
+
+[options="header", cols=".^3,.^4"]
+|===
+|Name|Schema
+|**code** +
+__optional__|integer (int32)
+|**data** +
+__optional__|object
+|**msg** +
+__optional__|string
+|===
+
+
+[[_link]]
+=== Link
+
+[options="header", cols=".^3,.^4"]
+|===
+|Name|Schema
+|**href** +
+__optional__|string
+|**templated** +
+__optional__|boolean
+|===
+
+
+[[_loginbean]]
+=== LoginBean
+
+[options="header", cols=".^3,.^4"]
+|===
+|Name|Schema
+|**account** +
+__optional__|string
+|**captcha** +
+__optional__|string
+|**password** +
+__optional__|string
+|===
+
+
+[[_53d375507d198e9157717964970e1987]]
+=== Map«string,Link»
+__Type__ : < string, <<_link,Link>> > map
+
+
+[[_modelandview]]
+=== ModelAndView
+
+[options="header", cols=".^3,.^4"]
+|===
+|Name|Schema
+|**empty** +
+__optional__|boolean
+|**model** +
+__optional__|object
+|**modelMap** +
+__optional__|< string, object > map
+|**reference** +
+__optional__|boolean
+|**status** +
+__optional__|enum (100, 101, 102, 103, 200, 201, 202, 203, 204, 205, 206, 207, 208, 226, 300, 301, 302, 303, 304, 305, 307, 308, 400, 401, 402, 403, 404, 405, 406, 407, 408, 409, 410, 411, 412, 413, 414, 415, 416, 417, 418, 419, 420, 421, 422, 423, 424, 426, 428, 429, 431, 451, 500, 501, 502, 503, 504, 505, 506, 507, 508, 509, 510, 511)
+|**view** +
+__optional__|<<_view,View>>
+|**viewName** +
+__optional__|string
+|===
+
+
+[[_mypagerequest]]
+=== MyPageRequest
+
+[options="header", cols=".^3,.^4"]
+|===
+|Name|Schema
+|**pageNum** +
+__optional__|integer (int32)
+|**pageSize** +
+__optional__|integer (int32)
+|===
+
+
+[[_sysconfig]]
+=== SysConfig
+系统配置
+
+
+[options="header", cols=".^3,.^11,.^4"]
+|===
+|Name|Description|Schema
+|**createBy** +
+__optional__|创建人|string
+|**createTime** +
+__optional__|创建时间|string (date-time)
+|**delFlag** +
+__optional__|删除标记 +
+**Minimum value** : `-128` +
+**Maximum value** : `127`|integer (int32)
+|**description** +
+__optional__|描述|string
+|**id** +
+__optional__|主键id|string
+|**label** +
+__optional__|标签|string
+|**lastUpdateBy** +
+__optional__|上一次更新者|string
+|**lastUpdateTime** +
+__optional__|上一次更新时间|string (date-time)
+|**remarks** +
+__optional__|备注|string
+|**sort** +
+__optional__|排序|integer (int64)
+|**type** +
+__optional__|类型|string
+|**value** +
+__optional__|值|string
+|===
+
+
+[[_sysdept]]
+=== SysDept
+部门
+
+
+[options="header", cols=".^3,.^11,.^4"]
+|===
+|Name|Description|Schema
+|**children** +
+__optional__||< <<_sysdept,SysDept>> > array
+|**createBy** +
+__optional__|创建人|string
+|**createTime** +
+__optional__|创建时间|string (date-time)
+|**delFlag** +
+__optional__|删除标记 +
+**Minimum value** : `-128` +
+**Maximum value** : `127`|integer (int32)
+|**id** +
+__optional__|主键id|string
+|**lastUpdateBy** +
+__optional__|上一次更新者|string
+|**lastUpdateTime** +
+__optional__|上一次更新时间|string (date-time)
+|**level** +
+__optional__||integer (int32)
+|**name** +
+__optional__|名称|string
+|**orderNum** +
+__optional__|排序值|integer (int32)
+|**parentId** +
+__optional__|父级id|string
+|**parentName** +
+__optional__||string
+|===
+
+
+[[_sysdict]]
+=== SysDict
+基础模型，公共的字段属性
+
+
+[options="header", cols=".^3,.^11,.^4"]
+|===
+|Name|Description|Schema
+|**createBy** +
+__optional__|创建人|string
+|**createTime** +
+__optional__|创建时间|string (date-time)
+|**delFlag** +
+__optional__|**Minimum value** : `-128` +
+**Maximum value** : `127`|integer (int32)
+|**description** +
+__optional__||string
+|**id** +
+__optional__|主键id|string
+|**label** +
+__optional__||string
+|**lastUpdateBy** +
+__optional__|上一次更新者|string
+|**lastUpdateTime** +
+__optional__|上一次更新时间|string (date-time)
+|**remarks** +
+__optional__||string
+|**sort** +
+__optional__||integer (int64)
+|**type** +
+__optional__||string
+|**value** +
+__optional__||string
+|===
+
+
+[[_syslog]]
+=== SysLog
+基础模型，公共的字段属性
+
+
+[options="header", cols=".^3,.^11,.^4"]
+|===
+|Name|Description|Schema
+|**createBy** +
+__optional__|创建人|string
+|**createTime** +
+__optional__|创建时间|string (date-time)
+|**id** +
+__optional__|主键id|string
+|**ip** +
+__optional__||string
+|**lastUpdateBy** +
+__optional__|上一次更新者|string
+|**lastUpdateTime** +
+__optional__|上一次更新时间|string (date-time)
+|**method** +
+__optional__||string
+|**operation** +
+__optional__||string
+|**params** +
+__optional__||string
+|**time** +
+__optional__||integer (int64)
+|**userName** +
+__optional__||string
+|===
+
+
+[[_sysloginlog]]
+=== SysLoginLog
+
+[options="header", cols=".^3,.^4"]
+|===
+|Name|Schema
+|**createTime** +
+__optional__|string
+|**id** +
+__optional__|string
+|**ip** +
+__optional__|string
+|**remark** +
+__optional__|string
+|**status** +
+__optional__|string
+|**userName** +
+__optional__|string
+|===
+
+
+[[_sysmenu]]
+=== SysMenu
+基础模型，公共的字段属性
+
+
+[options="header", cols=".^3,.^11,.^4"]
+|===
+|Name|Description|Schema
+|**children** +
+__optional__||< <<_sysmenu,SysMenu>> > array
+|**createBy** +
+__optional__|创建人|string
+|**createTime** +
+__optional__|创建时间|string (date-time)
+|**delFlag** +
+__optional__|**Minimum value** : `-128` +
+**Maximum value** : `127`|integer (int32)
+|**icon** +
+__optional__||string
+|**id** +
+__optional__|主键id|string
+|**lastUpdateBy** +
+__optional__|上一次更新者|string
+|**lastUpdateTime** +
+__optional__|上一次更新时间|string (date-time)
+|**level** +
+__optional__||integer (int32)
+|**name** +
+__optional__||string
+|**orderNum** +
+__optional__||integer (int32)
+|**parentId** +
+__optional__||string
+|**parentName** +
+__optional__||string
+|**perms** +
+__optional__||string
+|**type** +
+__optional__||integer (int32)
+|**url** +
+__optional__||string
+|===
+
+
+[[_sysrole]]
+=== SysRole
+基础模型，公共的字段属性
+
+
+[options="header", cols=".^3,.^11,.^4"]
+|===
+|Name|Description|Schema
+|**createBy** +
+__optional__|创建人|string
+|**createTime** +
+__optional__|创建时间|string (date-time)
+|**delFlag** +
+__optional__|**Minimum value** : `-128` +
+**Maximum value** : `127`|integer (int32)
+|**id** +
+__optional__|主键id|string
+|**lastUpdateBy** +
+__optional__|上一次更新者|string
+|**lastUpdateTime** +
+__optional__|上一次更新时间|string (date-time)
+|**name** +
+__optional__||string
+|**remark** +
+__optional__||string
+|===
+
+
+[[_sysrolemenu]]
+=== SysRoleMenu
+基础模型，公共的字段属性
+
+
+[options="header", cols=".^3,.^11,.^4"]
+|===
+|Name|Description|Schema
+|**createBy** +
+__optional__|创建人|string
+|**createTime** +
+__optional__|创建时间|string (date-time)
+|**id** +
+__optional__|主键id|string
+|**lastUpdateBy** +
+__optional__|上一次更新者|string
+|**lastUpdateTime** +
+__optional__|上一次更新时间|string (date-time)
+|**menuId** +
+__optional__||string
+|**roleId** +
+__optional__||string
+|===
+
+
+[[_sysuser]]
+=== SysUser
+基础模型，公共的字段属性
+
+
+[options="header", cols=".^3,.^11,.^4"]
+|===
+|Name|Description|Schema
+|**avatar** +
+__optional__||string
+|**createBy** +
+__optional__|创建人|string
+|**createTime** +
+__optional__|创建时间|string (date-time)
+|**delFlag** +
+__optional__|**Minimum value** : `-128` +
+**Maximum value** : `127`|integer (int32)
+|**deptId** +
+__optional__||string
+|**deptName** +
+__optional__||string
+|**email** +
+__optional__||string
+|**id** +
+__optional__|主键id|string
+|**lastUpdateBy** +
+__optional__|上一次更新者|string
+|**lastUpdateTime** +
+__optional__|上一次更新时间|string (date-time)
+|**mobile** +
+__optional__||string
+|**name** +
+__optional__||string
+|**nickName** +
+__optional__||string
+|**password** +
+__optional__||string
+|**roleNames** +
+__optional__||string
+|**salt** +
+__optional__||string
+|**status** +
+__optional__|**Minimum value** : `-128` +
+**Maximum value** : `127`|integer (int32)
+|**userRoles** +
+__optional__||< <<_sysuserrole,SysUserRole>> > array
+|===
+
+
+[[_sysuserrole]]
+=== SysUserRole
+基础模型，公共的字段属性
+
+
+[options="header", cols=".^3,.^11,.^4"]
+|===
+|Name|Description|Schema
+|**createBy** +
+__optional__|创建人|string
+|**createTime** +
+__optional__|创建时间|string (date-time)
+|**id** +
+__optional__|主键id|string
+|**lastUpdateBy** +
+__optional__|上一次更新者|string
+|**lastUpdateTime** +
+__optional__|上一次更新时间|string (date-time)
+|**roleId** +
+__optional__||string
+|**userId** +
+__optional__||string
+|===
+
+
+[[_view]]
+=== View
+
+[options="header", cols=".^3,.^4"]
+|===
+|Name|Schema
+|**contentType** +
+__optional__|string
+|===
+
+
+

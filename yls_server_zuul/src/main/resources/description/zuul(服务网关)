@@ -1,0 +1,25 @@
+zuul(服务网关):
+    1、可以通过配置路由的方式拦截请求：
+        ##配置服务网关
+        zuul:
+          ##配置路由拦截
+          routes:
+            ribbon:
+              path: /ribbon/**
+              ##转发到消费者
+              serviceId: yls-server-consumer
+
+            fegin:
+              path: /feign/**
+              ##转发到消费者
+              serviceId: yls-server-consumer
+          ##为每个服务加前缀
+          prefix: /v1
+
+    2、如果我们的服务太多，每一个都这样配置太麻烦。Sping Cloud Zuul已经帮我们做了默认的配置，
+       默认情况下，Zuul会代理所有的注册到注册中心的微服务，并且Zuul的默认路由规则如下：
+            (1)没有配置前缀：prefix
+                http://ZUUL_HOST:ZUUL_PORT/微服务在注册中心的serviceId/**
+            (2)配置前缀
+                http://ZUUL_HOST:ZUUL_PORT/prefix的值/微服务在注册中心的serviceId/**
+       会转发serviceId对应的微服务。如果遵循默认路由规则，基本上就没有什么问题。

@@ -1,0 +1,56 @@
+###程序的端口
+server:
+  port: 8085
+spring:
+  application:
+    name: yls_server_hystrix
+
+  ##监控信息
+  boot:
+    admin:
+      client:
+        # 服务端的请求地址
+        url: http://localhost:8081
+        username: admin
+        password: 123456
+        instance:
+          service-base-url: http://localhost:8085
+
+  ##链路追踪
+  zipkin:
+    base-url: http://localhost:9411
+  sleuth:
+    sampler:
+      ##样本采集量，默认为1
+      probability: 1
+
+## 负载均衡策略配置，yls-server-producter为注册的服务
+## 该配置暂时没起作用，后面需测试
+#yls-server-producter:
+#  ribbon:
+#    FLoadBlancerRuleClassName: com.netflix.loadbalancer.RamRule
+
+  ##注册服务,微服务架构
+  cloud:
+    consul:
+      host: localhost
+      port: 8500
+      discovery:
+        service-name: ${spring.application.name}
+        instance-id: ${spring.application.name}:${server.port}
+
+##应用的健康信息
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+  endpoint:
+    health:
+      show-details: ALWAYS
+
+##开启熔断器
+feign:
+  hystrix:
+    enabled: true
+

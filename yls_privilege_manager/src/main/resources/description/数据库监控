@@ -1,0 +1,4 @@
+监控主类：com.spring.boot.filter.DruidConfiguration
+该项目配置地址：http://localhost:8443/druid/login.html
+用户名：admin
+密码：123456

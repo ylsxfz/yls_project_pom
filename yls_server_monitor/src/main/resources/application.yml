@@ -1,0 +1,33 @@
+server:
+  port: 8081
+
+spring:
+  security:
+    user:
+      name: admin
+      password: 123456
+  boot:
+    admin:
+      ui:
+        title: yls—spring-boot监控
+
+  application:
+    name: yls_server_monitor
+
+  ##注冊服務
+  cloud:
+    consul:
+      discovery:
+        service-name: ${spring.application.name}
+        instance-id: ${spring.application.name}:${server.port}
+      host: localhost
+      port: 8500
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+  endpoint:
+    health:
+      show-details: ALWAYS

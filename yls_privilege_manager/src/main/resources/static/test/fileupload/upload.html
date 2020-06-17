@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <br/>
+    <br/>
+    <h4>单个文件上传</h4>
+    <form action="/test/uploadOneFile" method="post" enctype="multipart/form-data">
+        <input type="file" name="uploadFile" value="请选择文件">
+        <p/>
+        <input type="submit" value="上传">
+    </form>
+
+    <br/>
+    <br/>
+    <br/>
+
+    <h4>多个文件上传</h4>
+    <form action="/test/uploadFiles" method="post" enctype="multipart/form-data">
+        <input type="file" name="uploadFiles" value="请选择文件" multiple>
+        <p/>
+        <input type="file" name="uploadFiles" value="请选择文件" multiple>
+        <p/>
+        <input type="file" name="uploadFiles" value="请选择文件" multiple>
+        <p/>
+        <input type="submit" value="上传">
+    </form>
+</body>
+</html>

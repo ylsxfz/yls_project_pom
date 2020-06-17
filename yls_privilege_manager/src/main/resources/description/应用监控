@@ -1,0 +1,14 @@
+应用监控的依赖包：
+    <!--应用监控-->
+    <dependency>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-actuator</artifactId>
+    </dependency>
+    <!-- 以json格式输出信息-->
+    <dependency>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-hateoas</artifactId>
+    </dependency>
+
+配置文件：application-actuator.yml
+页面访问：http://localhost:8443/moitor

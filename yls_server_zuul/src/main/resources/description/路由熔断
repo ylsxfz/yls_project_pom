@@ -1,0 +1,12 @@
+Zuul作为Netflix的组件，可以与Ribbon、Eureka、Hystrix等组件结合，实现负载均衡、熔断器等功能。
+    默认情况下Zuul和Ribbon相结合，实现了负载均衡。
+    实现了熔断器功能需要实现FallbackProvider接口。
+        实现该接口有连个方法：
+            (1) getRoute():指定熔断器功能应该用于哪些路由的服务。
+                //只针对 serviceId为"yls-server-hystrix"的服务熔断
+                @Override
+                public String getRoute() {
+                    return "yls-server-hystrix";
+                }
+                如果需要对所有的服务熔断，请返回 "*"：return "*";
+            (2) fallbackResponse():为了熔断器工作时执行的逻辑。

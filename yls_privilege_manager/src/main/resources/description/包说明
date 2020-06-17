@@ -1,0 +1,24 @@
+核心业务代码模块（yls_base_core）：
+    http：封装请求的参数和返回页面信息
+    jpql：jpql自定义复杂查询解析
+    page：分页查询的简单封装
+    repository：数据jpa封装
+    sql：sql自定义复杂查询解析
+
+公共代码模块（yls_base_common）：
+    com.yls.common.utils：工具类放在yls_base_common模块中
+
+主项目（yls_privilege_manager）：后台管理模块
+    aop：切面编程
+    config：配置(跨域配置、数据库监控配置、接口文档配置、安全配置、动态验证码配置)
+    contant：常量配置
+    error：自定义400和500的界面，以及自定义全局异常类
+    init: 项目的初始化类
+    interceptor：拦截器
+    filter：过滤器和数据池监控
+    listener：监听器
+    quartz：定时器
+    web：业务相关
+    webservice：服务接口
+    websocket：是 HTML5 开始提供的一种在单个 TCP 连接上进行全双工通讯的协议
+

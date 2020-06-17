@@ -1,0 +1,4 @@
+1、yml配置
+##日志服务器
+logging:
+  config: classpath:logback-spring.xml

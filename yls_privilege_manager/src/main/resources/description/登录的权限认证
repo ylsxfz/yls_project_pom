@@ -1,0 +1,51 @@
+验证码：采用kaptcha，开源的验证码实现库
+    依赖：<dependency>
+                   <groupId>com.github.axet</groupId>
+                   <artifactId>kaptcha</artifactId>
+                   <version>0.0.9</version>
+               </dependency>
+    配置：com.authority.manager.config.KaptchaConfig
+    页面交互：
+        控制器：com.authority.manager.web.controller.SysLoginController
+        方法：captcha
+        请求：/captcha.jpg
+        权限认证通行：com.authority.manager.config.WebSecurityConfig
+                    放行：antMatchers("/captcha.jpg**").permitAll()
+
+
+登录认证：
+    令牌（Token）：  <!--jwt(Token令牌生成方案)-->
+                      <dependency>
+                          <groupId>io.jsonwebtoken</groupId>
+                          <artifactId>jjwt</artifactId>
+                          <version>0.9.1</version>
+                      </dependency>
+
+    安全认证：Spring Security
+    依赖：<!-- 开启安全认证 -->
+               <dependency>
+                   <groupId>org.springframework.boot</groupId>
+                   <artifactId>spring-boot-starter-security</artifactId>
+               </dependency>
+    配置（config）：com.authority.manager.config.WebSecurityConfig
+    登录的相关配置：com.authority.manager.security包
+    登录的相关实体：com.authority.manager.vo.LoginBean（页面交互）
+
+
+方法权限控制：
+    单个权限设置：
+        @PreAuthorize("hasAuthority('sys:dict:delete')")
+        @PostMapping("/delete")
+        public HttpResult delete(@RequestBody List<SysLog> records){
+            sysLogService.deleteAll(records);
+            return HttpResult.ok(HttpConstants.DELETE_OK);
+        }
+
+    多个权限设置：
+        //@PreAuthorize("hasAuthority('sys:dict:add') AND hasAuthority('sys:dict:edit')")
+        //@PreAuthorize("hasAuthority('sys:dict:add') and hasAuthority('sys:dict:edit')")
+        //@PreAuthorize("hasAuthority('sys:dict:add') OR hasAuthority('sys:dict:edit')")
+        //@PreAuthorize("hasAuthority('sys:dict:add') or hasAuthority('sys:dict:edit')")
+
+    反向判断：
+        //@PreAuthorize("not hasAuthority('sys:dict:add')")

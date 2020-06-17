@@ -1,0 +1,22 @@
+1、核心代码
+    //ControllerAdvice：该注解是定义统一的异常处理，
+    //basePackages：定义扫描哪些包(basePackages = "com.authority.manager")
+    @ControllerAdvice
+    public class GlobalExceptionHandler{
+        //ExceptionHandler 用来定义函数针对的异常类型，可以传入多个需要捕获的异常。
+        @ExceptionHandler(MaxUploadSizeExceededException.class)
+        //如果返回的json数据或者其他对象，添加该注解
+        @ResponseBody
+        public ModelAndView uploadException(HttpServletRequest request,MaxUploadSizeExceededException e)throws Exception{
+           ErrorInfo errorInfo = new ErrorInfo();
+           errorInfo.setMessage(e.getMessage());
+           errorInfo.setUrl(request.getRequestURI());
+           errorInfo.setCode(ErrorInfo.SUCCESS);
+
+           ModelAndView mv = new ModelAndView();
+           mv.addObject("error","上传文件大小超过限制！");
+           mv.addObject(errorInfo);
+           mv.setViewName("error");
+           return mv;
+        }
+    }

@@ -1,0 +1,80 @@
+1、依赖包：（前提是配置了swagger2文档生成）
+    <!--生成文档-->
+    <dependency>
+         <groupId>io.github.swagger2markup</groupId>
+         <artifactId>swagger2markup</artifactId>
+         <version>1.3.1</version>
+    </dependency>
+
+
+2、利用程序生成：
+   @Test
+    public void generateAsciiDocs() throws Exception {
+        // 输出Ascii格式
+        Swagger2MarkupConfig config = new Swagger2MarkupConfigBuilder()
+                .withMarkupLanguage(MarkupLanguage.ASCIIDOC) //设置生成格式
+                .withOutputLanguage(Language.ZH) //设置语言中文还是其他语言
+                .withPathsGroupedBy(GroupBy.TAGS)
+                .withGeneratedExamples()
+                .withoutInlineSchema()
+                .build();
+
+        Swagger2MarkupConverter.from(new URL("http://localhost:8443/v2/api-docs"))
+                .withConfig(config)
+                .build()
+                .toFile(Paths.get("src/main/resources/docs/asciidoc"));
+    }
+
+    @Test
+    public void generateMarkdownDocsToFile() throws Exception {
+        // 输出Markdown到单文件
+        Swagger2MarkupConfig config = new Swagger2MarkupConfigBuilder()
+                .withMarkupLanguage(MarkupLanguage.MARKDOWN)
+                .withOutputLanguage(Language.ZH)
+                .withPathsGroupedBy(GroupBy.TAGS)
+                .withGeneratedExamples()
+                .withoutInlineSchema()
+                .build();
+
+        Swagger2MarkupConverter.from(new URL("http://localhost:8443/v2/api-docs"))
+                .withConfig(config)
+                .build()
+                .toFile(Paths.get("src/main/resources/docs/markdown"));
+    }
+
+
+3、利用maven生成：
+            <plugin>
+                <groupId>io.github.swagger2markup</groupId>
+                <artifactId>swagger2markup-maven-plugin</artifactId>
+                <version>1.3.1</version>
+                <configuration>
+                    <swaggerInput>http://localhost:8443/v2/api-docs</swaggerInput><!---swagger-api-json路径-->
+                    <outputDir>src/main/resources/docs/asciidoc</outputDir><!---生成路径-->
+                    <config>
+                        <swagger2markup.markupLanguage>ASCIIDOC</swagger2markup.markupLanguage><!--生成格式-->
+                    </config>
+                </configuration>
+            </plugin>
+
+            <plugin>
+                <groupId>org.asciidoctor</groupId>
+                <artifactId>asciidoctor-maven-plugin</artifactId>
+                <version>1.5.6</version>
+                <configuration>
+                    <!--asciidoc文件目录-->
+                    <sourceDirectory>src/main/resources/docs</sourceDirectory>
+                    <!---生成html的路径-->
+                    <outputDirectory>src/main/resources/html</outputDirectory>
+                    <backend>html</backend>
+                    <sourceHighlighter>coderay</sourceHighlighter>
+                    <attributes>
+                        <!--导航栏在左-->
+                        <toc>left</toc>
+                        <!--显示层级数-->
+                        <toclevels>3</toclevels>
+                        <!--自动打数字序号-->
+                        <sectnums>true</sectnums>
+                    </attributes>
+                </configuration>
+            </plugin>

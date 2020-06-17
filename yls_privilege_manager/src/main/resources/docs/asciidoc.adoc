@@ -1,0 +1,4894 @@
+= API测试文档
+
+
+[[_overview]]
+== 概览
+权限管理主系统测试文档
+
+
+=== 版本信息
+[%hardbreaks]
+__版本__ : v1.0
+
+
+=== 联系方式
+[%hardbreaks]
+__名字__ : 权限系统主页
+__邮箱__ : test@qq.com
+
+
+=== 许可信息
+[%hardbreaks]
+__许可证__ : Apache2.0
+__许可网址__ : http://www.apache.org/licenses/LICENSE-2.0
+__服务条款__ : null
+
+
+=== URI scheme
+[%hardbreaks]
+__域名__ : localhost:8443
+__基础路径__ : /
+
+
+=== 标签
+
+* basic-error-controller : Basic Error Controller
+* operation-handler : Operation Handler
+* web-mvc-endpoint-handler-mapping : Web Mvc Endpoint Handler Mapping
+* 字典管理接口 : Sys Dict Controller
+* 文件上传接口 : File Upload
+* 权限管理接口 : Sys Role Controller
+* 用户管理接口 : Sys User Controller
+* 登录接口 : Sys Login Controller
+* 登录日志接口 : Sys Login Log Controller
+* 系统日志接口 : Sys Log Controller
+* 系统配置接口 : Sys Config Controller
+* 菜单管理接口 : Sys Menu Controller
+* 部门接口 : Sys Dept Controller
+
+
+
+
+[[_paths]]
+== 资源
+
+[[_basic-error-controller_resource]]
+=== Basic-error-controller
+Basic Error Controller
+
+
+[[_errorusingpost]]
+==== error
+....
+POST /error
+....
+
+
+===== 参数
+
+[options="header", cols=".^2,.^3,.^9,.^4"]
+|===
+|类型|名称|说明|类型
+|**Header**|**token** +
+__可选__|令牌|string
+|===
+
+
+===== 响应
+
+[options="header", cols=".^2,.^14,.^4"]
+|===
+|HTTP代码|说明|类型
+|**200**|OK|< string, object > map
+|**201**|Created|无内容
+|**401**|Unauthorized|无内容
+|**403**|Forbidden|无内容
+|**404**|Not Found|无内容
+|===
+
+
+===== 消耗
+
+* `application/json`
+
+
+===== 生成
+
+* `*/*`
+
+
+===== HTTP请求示例
+
+====== 请求 path
+----
+/error
+----
+
+
+====== 请求 header
+[source,json]
+----
+"string"
+----
+
+
+===== HTTP响应示例
+
+====== 响应 200
+[source,json]
+----
+"object"
+----
+
+
+[[_errorusingget]]
+==== error
+....
+GET /error
+....
+
+
+===== 参数
+
+[options="header", cols=".^2,.^3,.^9,.^4"]
+|===
+|类型|名称|说明|类型
+|**Header**|**token** +
+__可选__|令牌|string
+|===
+
+
+===== 响应
+
+[options="header", cols=".^2,.^14,.^4"]
+|===
+|HTTP代码|说明|类型
+|**200**|OK|< string, object > map
+|**401**|Unauthorized|无内容
+|**403**|Forbidden|无内容
+|**404**|Not Found|无内容
+|===
+
+
+===== 生成
+
+* `*/*`
+
+
+===== HTTP请求示例
+
+====== 请求 path
+----
+/error
+----
+
+
+====== 请求 header
+[source,json]
+----
+"string"
+----
+
+
+===== HTTP响应示例
+
+====== 响应 200
+[source,json]
+----
+"object"
+----
+
+
+[[_errorusingput]]
+==== error
+....
+PUT /error
+....
+
+
+===== 参数
+
+[options="header", cols=".^2,.^3,.^9,.^4"]
+|===
+|类型|名称|说明|类型
+|**Header**|**token** +
+__可选__|令牌|string
+|===
+
+
+===== 响应
+
+[options="header", cols=".^2,.^14,.^4"]
+|===
+|HTTP代码|说明|类型
+|**200**|OK|< string, object > map
+|**201**|Created|无内容
+|**401**|Unauthorized|无内容
+|**403**|Forbidden|无内容
+|**404**|Not Found|无内容
+|===
+
+
+===== 消耗
+
+* `application/json`
+
+
+===== 生成
+
+* `*/*`
+
+
+===== HTTP请求示例
+
+====== 请求 path
+----
+/error
+----
+
+
+====== 请求 header
+[source,json]
+----
+"string"
+----
+
+
+===== HTTP响应示例
+
+====== 响应 200
+[source,json]
+----
+"object"
+----
+
+
+[[_errorusingdelete]]
+==== error
+....
+DELETE /error
+....
+
+
+===== 参数
+
+[options="header", cols=".^2,.^3,.^9,.^4"]
+|===
+|类型|名称|说明|类型
+|**Header**|**token** +
+__可选__|令牌|string
+|===
+
+
+===== 响应
+
+[options="header", cols=".^2,.^14,.^4"]
+|===
+|HTTP代码|说明|类型
+|**200**|OK|< string, object > map
+|**204**|No Content|无内容
+|**401**|Unauthorized|无内容
+|**403**|Forbidden|无内容
+|===
+
+
+===== 生成
+
+* `*/*`
+
+
+===== HTTP请求示例
+
+====== 请求 path
+----
+/error
+----
+
+
+====== 请求 header
+[source,json]
+----
+"string"
+----
+
+
+===== HTTP响应示例
+
+====== 响应 200
+[source,json]
+----
+"object"
+----
+
+
+[[_errorusingpatch]]
+==== error
+....
+PATCH /error
+....
+
+
+===== 参数
+
+[options="header", cols=".^2,.^3,.^9,.^4"]
+|===
+|类型|名称|说明|类型
+|**Header**|**token** +
+__可选__|令牌|string
+|===
+
+
+===== 响应
+
+[options="header", cols=".^2,.^14,.^4"]
+|===
+|HTTP代码|说明|类型
+|**200**|OK|< string, object > map
+|**204**|No Content|无内容
+|**401**|Unauthorized|无内容
+|**403**|Forbidden|无内容
+|===
+
+
+===== 消耗
+
+* `application/json`
+
+
+===== 生成
+
+* `*/*`
+
+
+===== HTTP请求示例
+
+====== 请求 path
+----
+/error
+----
+
+
+====== 请求 header
+[source,json]
+----
+"string"
+----
+
+
+===== HTTP响应示例
+
+====== 响应 200
+[source,json]
+----
+"object"
+----
+
+
+[[_errorusinghead]]
+==== error
+....
+HEAD /error
+....
+
+
+===== 参数
+
+[options="header", cols=".^2,.^3,.^9,.^4"]
+|===
+|类型|名称|说明|类型
+|**Header**|**token** +
+__可选__|令牌|string
+|===
+
+
+===== 响应
+
+[options="header", cols=".^2,.^14,.^4"]
+|===
+|HTTP代码|说明|类型
+|**200**|OK|< string, object > map
+|**204**|No Content|无内容
+|**401**|Unauthorized|无内容
+|**403**|Forbidden|无内容
+|===
+
+
+===== 消耗
+
+* `application/json`
+
+
+===== 生成
+
+* `*/*`
+
+
+===== HTTP请求示例
+
+====== 请求 path
+----
+/error
+----
+
+
+====== 请求 header
+[source,json]
+----
+"string"
+----
+
+
+===== HTTP响应示例
+
+====== 响应 200
+[source,json]
+----
+"object"
+----
+
+
+[[_errorusingoptions]]
+==== error
+....
+OPTIONS /error
+....
+
+
+===== 参数
+
+[options="header", cols=".^2,.^3,.^9,.^4"]
+|===
+|类型|名称|说明|类型
+|**Header**|**token** +
+__可选__|令牌|string
+|===
+
+
+===== 响应
+
+[options="header", cols=".^2,.^14,.^4"]
+|===
+|HTTP代码|说明|类型
+|**200**|OK|< string, object > map
+|**204**|No Content|无内容
+|**401**|Unauthorized|无内容
+|**403**|Forbidden|无内容
+|===
+
+
+===== 消耗
+
+* `application/json`
+
+
+===== 生成
+
+* `*/*`
+
+
+===== HTTP请求示例
+
+====== 请求 path
+----
+/error
+----
+
+
+====== 请求 header
+[source,json]
+----
+"string"
+----
+
+
+===== HTTP响应示例
+
+====== 响应 200
+[source,json]
+----
+"object"
+----
+
+
+[[_operation-handler_resource]]
+=== Operation-handler
+Operation Handler
+
+
+[[_handleusingget]]
+==== handle
+....
+GET /actuator/auditevents
+....
+
+
+===== 参数
+
+[options="header", cols=".^2,.^3,.^9,.^4"]
+|===
+|类型|名称|说明|类型
+|**Header**|**token** +
+__可选__|令牌|string
+|**Body**|**body** +
+__可选__|body|< string, string > map
+|===
+
+
+===== 响应
+
+[options="header", cols=".^2,.^14,.^4"]
+|===
+|HTTP代码|说明|类型
+|**200**|OK|object
+|**401**|Unauthorized|无内容
+|**403**|Forbidden|无内容
+|**404**|Not Found|无内容
+|===
+
+
+===== 生成
+
+* `application/json`
+* `application/vnd.spring-boot.actuator.v2+json`
+
+
+===== HTTP请求示例
+
+====== 请求 path
+----
+/actuator/auditevents
+----
+
+
+====== 请求 header
+[source,json]
+----
+"string"
+----
+
+
+====== 请求 body
+[source,json]
+----
+{ }
+----
+
+
+===== HTTP响应示例
+
+====== 响应 200
+[source,json]
+----
+"object"
+----
+
+
+[[_handleusingget_1]]
+==== handle
+....
+GET /actuator/beans
+....
+
+
+===== 参数
+
+[options="header", cols=".^2,.^3,.^9,.^4"]
+|===
+|类型|名称|说明|类型
+|**Header**|**token** +
+__可选__|令牌|string
+|**Body**|**body** +
+__可选__|body|< string, string > map
+|===
+
+
+===== 响应
+
+[options="header", cols=".^2,.^14,.^4"]
+|===
+|HTTP代码|说明|类型
+|**200**|OK|object
+|**401**|Unauthorized|无内容
+|**403**|Forbidden|无内容
+|**404**|Not Found|无内容
+|===
+
+
+===== 生成
+
+* `application/json`
+* `application/vnd.spring-boot.actuator.v2+json`
+
+
+===== HTTP请求示例
+
+====== 请求 path
+----
+/actuator/beans
+----
+
+
+====== 请求 header
+[source,json]
+----
+"string"
+----
+
+
+====== 请求 body
+[source,json]
+----
+{ }
+----
+
+
+===== HTTP响应示例
+
+====== 响应 200
+[source,json]
+----
+"object"
+----
+
+
+[[_handleusingget_2]]
+==== handle
+....
+GET /actuator/conditions
+....
+
+
+===== 参数
+
+[options="header", cols=".^2,.^3,.^9,.^4"]
+|===
+|类型|名称|说明|类型
+|**Header**|**token** +
+__可选__|令牌|string
+|**Body**|**body** +
+__可选__|body|< string, string > map
+|===
+
+
+===== 响应
+
+[options="header", cols=".^2,.^14,.^4"]
+|===
+|HTTP代码|说明|类型
+|**200**|OK|object
+|**401**|Unauthorized|无内容
+|**403**|Forbidden|无内容
+|**404**|Not Found|无内容
+|===
+
+
+===== 生成
+
+* `application/json`
+* `application/vnd.spring-boot.actuator.v2+json`
+
+
+===== HTTP请求示例
+
+====== 请求 path
+----
+/actuator/conditions
+----
+
+
+====== 请求 header
+[source,json]
+----
+"string"
+----
+
+
+====== 请求 body
+[source,json]
+----
+{ }
+----
+
+
+===== HTTP响应示例
+
+====== 响应 200
+[source,json]
+----
+"object"
+----
+
+
+[[_handleusingget_3]]
+==== handle
+....
+GET /actuator/configprops
+....
+
+
+===== 参数
+
+[options="header", cols=".^2,.^3,.^9,.^4"]
+|===
+|类型|名称|说明|类型
+|**Header**|**token** +
+__可选__|令牌|string
+|**Body**|**body** +
+__可选__|body|< string, string > map
+|===
+
+
+===== 响应
+
+[options="header", cols=".^2,.^14,.^4"]
+|===
+|HTTP代码|说明|类型
+|**200**|OK|object
+|**401**|Unauthorized|无内容
+|**403**|Forbidden|无内容
+|**404**|Not Found|无内容
+|===
+
+
+===== 生成
+
+* `application/json`
+* `application/vnd.spring-boot.actuator.v2+json`
+
+
+===== HTTP请求示例
+
+====== 请求 path
+----
+/actuator/configprops
+----
+
+
+====== 请求 header
+[source,json]
+----
+"string"
+----
+
+
+====== 请求 body
+[source,json]
+----
+{ }
+----
+
+
+===== HTTP响应示例
+
+====== 响应 200
+[source,json]
+----
+"object"
+----
+
+
+[[_handleusingget_4]]
+==== handle
+....
+GET /actuator/health
+....
+
+
+===== 参数
+
+[options="header", cols=".^2,.^3,.^9,.^4"]
+|===
+|类型|名称|说明|类型
+|**Header**|**token** +
+__可选__|令牌|string
+|**Body**|**body** +
+__可选__|body|< string, string > map
+|===
+
+
+===== 响应
+
+[options="header", cols=".^2,.^14,.^4"]
+|===
+|HTTP代码|说明|类型
+|**200**|OK|object
+|**401**|Unauthorized|无内容
+|**403**|Forbidden|无内容
+|**404**|Not Found|无内容
+|===
+
+
+===== 生成
+
+* `application/json`
+* `application/vnd.spring-boot.actuator.v2+json`
+
+
+===== HTTP请求示例
+
+====== 请求 path
+----
+/actuator/health
+----
+
+
+====== 请求 header
+[source,json]
+----
+"string"
+----
+
+
+====== 请求 body
+[source,json]
+----
+{ }
+----
+
+
+===== HTTP响应示例
+
+====== 响应 200
+[source,json]
+----
+"object"
+----
+
+
+[[_handleusingget_5]]
+==== handle
+....
+GET /actuator/heapdump
+....
+
+
+===== 参数
+
+[options="header", cols=".^2,.^3,.^9,.^4"]
+|===
+|类型|名称|说明|类型
+|**Header**|**token** +
+__可选__|令牌|string
+|**Body**|**body** +
+__可选__|body|< string, string > map
+|===
+
+
+===== 响应
+
+[options="header", cols=".^2,.^14,.^4"]
+|===
+|HTTP代码|说明|类型
+|**200**|OK|object
+|**401**|Unauthorized|无内容
+|**403**|Forbidden|无内容
+|**404**|Not Found|无内容
+|===
+
+
+===== 生成
+
+* `application/octet-stream`
+
+
+===== HTTP请求示例
+
+====== 请求 path
+----
+/actuator/heapdump
+----
+
+
+====== 请求 header
+[source,json]
+----
+"string"
+----
+
+
+====== 请求 body
+[source,json]
+----
+{ }
+----
+
+
+===== HTTP响应示例
+
+====== 响应 200
+[source,json]
+----
+"object"
+----
+
+
+[[_handleusingget_6]]
+==== handle
+....
+GET /actuator/httptrace
+....
+
+
+===== 参数
+
+[options="header", cols=".^2,.^3,.^9,.^4"]
+|===
+|类型|名称|说明|类型
+|**Header**|**token** +
+__可选__|令牌|string
+|**Body**|**body** +
+__可选__|body|< string, string > map
+|===
+
+
+===== 响应
+
+[options="header", cols=".^2,.^14,.^4"]
+|===
+|HTTP代码|说明|类型
+|**200**|OK|object
+|**401**|Unauthorized|无内容
+|**403**|Forbidden|无内容
+|**404**|Not Found|无内容
+|===
+
+
+===== 生成
+
+* `application/json`
+* `application/vnd.spring-boot.actuator.v2+json`
+
+
+===== HTTP请求示例
+
+====== 请求 path
+----
+/actuator/httptrace
+----
+
+
+====== 请求 header
+[source,json]
+----
+"string"
+----
+
+
+====== 请求 body
+[source,json]
+----
+{ }
+----
+
+
+===== HTTP响应示例
+
+====== 响应 200
+[source,json]
+----
+"object"
+----
+
+
+[[_handleusingget_7]]
+==== handle
+....
+GET /actuator/info
+....
+
+
+===== 参数
+
+[options="header", cols=".^2,.^3,.^9,.^4"]
+|===
+|类型|名称|说明|类型
+|**Header**|**token** +
+__可选__|令牌|string
+|**Body**|**body** +
+__可选__|body|< string, string > map
+|===
+
+
+===== 响应
+
+[options="header", cols=".^2,.^14,.^4"]
+|===
+|HTTP代码|说明|类型
+|**200**|OK|object
+|**401**|Unauthorized|无内容
+|**403**|Forbidden|无内容
+|**404**|Not Found|无内容
+|===
+
+
+===== 生成
+
+* `application/json`
+* `application/vnd.spring-boot.actuator.v2+json`
+
+
+===== HTTP请求示例
+
+====== 请求 path
+----
+/actuator/info
+----
+
+
+====== 请求 header
+[source,json]
+----
+"string"
+----
+
+
+====== 请求 body
+[source,json]
+----
+{ }
+----
+
+
+===== HTTP响应示例
+
+====== 响应 200
+[source,json]
+----
+"object"
+----
+
+
+[[_handleusingget_9]]
+==== handle
+....
+GET /actuator/loggers
+....
+
+
+===== 参数
+
+[options="header", cols=".^2,.^3,.^9,.^4"]
+|===
+|类型|名称|说明|类型
+|**Header**|**token** +
+__可选__|令牌|string
+|**Body**|**body** +
+__可选__|body|< string, string > map
+|===
+
+
+===== 响应
+
+[options="header", cols=".^2,.^14,.^4"]
+|===
+|HTTP代码|说明|类型
+|**200**|OK|object
+|**401**|Unauthorized|无内容
+|**403**|Forbidden|无内容
+|**404**|Not Found|无内容
+|===
+
+
+===== 生成
+
+* `application/json`
+* `application/vnd.spring-boot.actuator.v2+json`
+
+
+===== HTTP请求示例
+
+====== 请求 path
+----
+/actuator/loggers
+----
+
+
+====== 请求 header
+[source,json]
+----
+"string"
+----
+
+
+====== 请求 body
+[source,json]
+----
+{ }
+----
+
+
+===== HTTP响应示例
+
+====== 响应 200
+[source,json]
+----
+"object"
+----
+
+
+[[_handleusingpost]]
+==== handle
+....
+POST /actuator/loggers/{name}
+....
+
+
+===== 参数
+
+[options="header", cols=".^2,.^3,.^9,.^4"]
+|===
+|类型|名称|说明|类型
+|**Header**|**token** +
+__可选__|令牌|string
+|**Body**|**body** +
+__可选__|body|< string, string > map
+|===
+
+
+===== 响应
+
+[options="header", cols=".^2,.^14,.^4"]
+|===
+|HTTP代码|说明|类型
+|**200**|OK|object
+|**201**|Created|无内容
+|**401**|Unauthorized|无内容
+|**403**|Forbidden|无内容
+|**404**|Not Found|无内容
+|===
+
+
+===== 消耗
+
+* `application/json`
+* `application/vnd.spring-boot.actuator.v2+json`
+
+
+===== 生成
+
+* `*/*`
+
+
+===== HTTP请求示例
+
+====== 请求 path
+----
+/actuator/loggers/{name}
+----
+
+
+====== 请求 header
+[source,json]
+----
+"string"
+----
+
+
+====== 请求 body
+[source,json]
+----
+{ }
+----
+
+
+===== HTTP响应示例
+
+====== 响应 200
+[source,json]
+----
+"object"
+----
+
+
+[[_handleusingget_8]]
+==== handle
+....
+GET /actuator/loggers/{name}
+....
+
+
+===== 参数
+
+[options="header", cols=".^2,.^3,.^9,.^4"]
+|===
+|类型|名称|说明|类型
+|**Header**|**token** +
+__可选__|令牌|string
+|**Body**|**body** +
+__可选__|body|< string, string > map
+|===
+
+
+===== 响应
+
+[options="header", cols=".^2,.^14,.^4"]
+|===
+|HTTP代码|说明|类型
+|**200**|OK|object
+|**401**|Unauthorized|无内容
+|**403**|Forbidden|无内容
+|**404**|Not Found|无内容
+|===
+
+
+===== 生成
+
+* `application/json`
+* `application/vnd.spring-boot.actuator.v2+json`
+
+
+===== HTTP请求示例
+
+====== 请求 path
+----
+/actuator/loggers/{name}
+----
+
+
+====== 请求 header
+[source,json]
+----
+"string"
+----
+
+
+====== 请求 body
+[source,json]
+----
+{ }
+----
+
+
+===== HTTP响应示例
+
+====== 响应 200
+[source,json]
+----
+"object"
+----
+
+
+[[_handleusingget_10]]
+==== handle
+....
+GET /actuator/mappings
+....
+
+
+===== 参数
+
+[options="header", cols=".^2,.^3,.^9,.^4"]
+|===
+|类型|名称|说明|类型
+|**Header**|**token** +
+__可选__|令牌|string
+|**Body**|**body** +
+__可选__|body|< string, string > map
+|===
+
+
+===== 响应
+
+[options="header", cols=".^2,.^14,.^4"]
+|===
+|HTTP代码|说明|类型
+|**200**|OK|object
+|**401**|Unauthorized|无内容
+|**403**|Forbidden|无内容
+|**404**|Not Found|无内容
+|===
+
+
+===== 生成
+
+* `application/json`
+* `application/vnd.spring-boot.actuator.v2+json`
+
+
+===== HTTP请求示例
+
+====== 请求 path
+----
+/actuator/mappings
+----
+
+
+====== 请求 header
+[source,json]
+----
+"string"
+----
+
+
+====== 请求 body
+[source,json]
+----
+{ }
+----
+
+
+===== HTTP响应示例
+
+====== 响应 200
+[source,json]
+----
+"object"
+----
+
+
+[[_handleusingget_11]]
+==== handle
+....
+GET /actuator/scheduledtasks
+....
+
+
+===== 参数
+
+[options="header", cols=".^2,.^3,.^9,.^4"]
+|===
+|类型|名称|说明|类型
+|**Header**|**token** +
+__可选__|令牌|string
+|**Body**|**body** +
+__可选__|body|< string, string > map
+|===
+
+
+===== 响应
+
+[options="header", cols=".^2,.^14,.^4"]
+|===
+|HTTP代码|说明|类型
+|**200**|OK|object
+|**401**|Unauthorized|无内容
+|**403**|Forbidden|无内容
+|**404**|Not Found|无内容
+|===
+
+
+===== 生成
+
+* `application/json`
+* `application/vnd.spring-boot.actuator.v2+json`
+
+
+===== HTTP请求示例
+
+====== 请求 path
+----
+/actuator/scheduledtasks
+----
+
+
+====== 请求 header
+[source,json]
+----
+"string"
+----
+
+
+====== 请求 body
+[source,json]
+----
+{ }
+----
+
+
+===== HTTP响应示例
+
+====== 响应 200
+[source,json]
+----
+"object"
+----
+
+
+[[_handleusingpost_1]]
+==== handle
+....
+POST /actuator/shutdown
+....
+
+
+===== 参数
+
+[options="header", cols=".^2,.^3,.^9,.^4"]
+|===
+|类型|名称|说明|类型
+|**Header**|**token** +
+__可选__|令牌|string
+|**Body**|**body** +
+__可选__|body|< string, string > map
+|===
+
+
+===== 响应
+
+[options="header", cols=".^2,.^14,.^4"]
+|===
+|HTTP代码|说明|类型
+|**200**|OK|object
+|**201**|Created|无内容
+|**401**|Unauthorized|无内容
+|**403**|Forbidden|无内容
+|**404**|Not Found|无内容
+|===
+
+
+===== 消耗
+
+* `application/json`
+
+
+===== 生成
+
+* `application/json`
+* `application/vnd.spring-boot.actuator.v2+json`
+
+
+===== HTTP请求示例
+
+====== 请求 path
+----
+/actuator/shutdown
+----
+
+
+====== 请求 header
+[source,json]
+----
+"string"
+----
+
+
+====== 请求 body
+[source,json]
+----
+{ }
+----
+
+
+===== HTTP响应示例
+
+====== 响应 200
+[source,json]
+----
+"object"
+----
+
+
+[[_handleusingget_12]]
+==== handle
+....
+GET /actuator/threaddump
+....
+
+
+===== 参数
+
+[options="header", cols=".^2,.^3,.^9,.^4"]
+|===
+|类型|名称|说明|类型
+|**Header**|**token** +
+__可选__|令牌|string
+|**Body**|**body** +
+__可选__|body|< string, string > map
+|===
+
+
+===== 响应
+
+[options="header", cols=".^2,.^14,.^4"]
+|===
+|HTTP代码|说明|类型
+|**200**|OK|object
+|**401**|Unauthorized|无内容
+|**403**|Forbidden|无内容
+|**404**|Not Found|无内容
+|===
+
+
+===== 生成
+
+* `application/json`
+* `application/vnd.spring-boot.actuator.v2+json`
+
+
+===== HTTP请求示例
+
+====== 请求 path
+----
+/actuator/threaddump
+----
+
+
+====== 请求 header
+[source,json]
+----
+"string"
+----
+
+
+====== 请求 body
+[source,json]
+----
+{ }
+----
+
+
+===== HTTP响应示例
+
+====== 响应 200
+[source,json]
+----
+"object"
+----
+
+
+[[_web-mvc-endpoint-handler-mapping_resource]]
+=== Web-mvc-endpoint-handler-mapping
+Web Mvc Endpoint Handler Mapping
+
+
+[[_linksusingget]]
+==== links
+....
+GET /actuator
+....
+
+
+===== 参数
+
+[options="header", cols=".^2,.^3,.^9,.^4"]
+|===
+|类型|名称|说明|类型
+|**Header**|**token** +
+__可选__|令牌|string
+|===
+
+
+===== 响应
+
+[options="header", cols=".^2,.^14,.^4"]
+|===
+|HTTP代码|说明|类型
+|**200**|OK|< string, < string, <<_link,Link>> > map > map
+|**401**|Unauthorized|无内容
+|**403**|Forbidden|无内容
+|**404**|Not Found|无内容
+|===
+
+
+===== 生成
+
+* `application/json`
+* `application/vnd.spring-boot.actuator.v2+json`
+
+
+===== HTTP请求示例
+
+====== 请求 path
+----
+/actuator
+----
+
+
+====== 请求 header
+[source,json]
+----
+"string"
+----
+
+
+===== HTTP响应示例
+
+====== 响应 200
+[source,json]
+----
+"object"
+----
+
+
+[[_c2d591d014a87f67228e01312feeef91]]
+=== 字典管理接口
+Sys Dict Controller
+
+
+[[_deleteusingpost_2]]
+==== 删除字典记录
+....
+POST /sys_dict/delete
+....
+
+
+===== 说明
+删除字典记录
+
+
+===== 参数
+
+[options="header", cols=".^2,.^3,.^9,.^4"]
+|===
+|类型|名称|说明|类型
+|**Header**|**token** +
+__可选__|令牌|string
+|**Body**|**records** +
+__必填__|records|< <<_sysdict,SysDict>> > array
+|===
+
+
+===== 响应
+
+[options="header", cols=".^2,.^14,.^4"]
+|===
+|HTTP代码|说明|类型
+|**200**|OK|<<_httpresult,HttpResult>>
+|**201**|Created|无内容
+|**401**|Unauthorized|无内容
+|**403**|Forbidden|无内容
+|**404**|Not Found|无内容
+|===
+
+
+===== 消耗
+
+* `application/json`
+
+
+===== 生成
+
+* `*/*`
+
+
+===== HTTP请求示例
+
+====== 请求 path
+----
+/sys_dict/delete
+----
+
+
+====== 请求 header
+[source,json]
+----
+"string"
+----
+
+
+====== 请求 body
+[source,json]
+----
+[ {
+  "createBy" : "string",
+  "createTime" : "string",
+  "delFlag" : 0,
+  "description" : "string",
+  "id" : "string",
+  "label" : "string",
+  "lastUpdateBy" : "string",
+  "lastUpdateTime" : "string",
+  "remarks" : "string",
+  "sort" : 0,
+  "type" : "string",
+  "value" : "string"
+} ]
+----
+
+
+===== HTTP响应示例
+
+====== 响应 200
+[source,json]
+----
+{
+  "code" : 0,
+  "data" : "object",
+  "msg" : "string"
+}
+----
+
+
+[[_findpageusingpost_1]]
+==== 分页查询字典记录
+....
+POST /sys_dict/findByPage
+....
+
+
+===== 说明
+分页查询字典记录
+
+
+===== 参数
+
+[options="header", cols=".^2,.^3,.^9,.^4"]
+|===
+|类型|名称|说明|类型
+|**Header**|**token** +
+__可选__|令牌|string
+|**Body**|**myPageRequest** +
+__必填__|myPageRequest|<<_mypagerequest,MyPageRequest>>
+|===
+
+
+===== 响应
+
+[options="header", cols=".^2,.^14,.^4"]
+|===
+|HTTP代码|说明|类型
+|**200**|OK|<<_httpresult,HttpResult>>
+|**201**|Created|无内容
+|**401**|Unauthorized|无内容
+|**403**|Forbidden|无内容
+|**404**|Not Found|无内容
+|===
+
+
+===== 消耗
+
+* `application/json`
+
+
+===== 生成
+
+* `*/*`
+
+
+===== HTTP请求示例
+
+====== 请求 path
+----
+/sys_dict/findByPage
+----
+
+
+====== 请求 header
+[source,json]
+----
+"string"
+----
+
+
+====== 请求 body
+[source,json]
+----
+{
+  "pageNum" : 0,
+  "pageSize" : 0
+}
+----
+
+
+===== HTTP响应示例
+
+====== 响应 200
+[source,json]
+----
+{
+  "code" : 0,
+  "data" : "object",
+  "msg" : "string"
+}
+----
+
+
+[[_saveusingpost_2]]
+==== 保存字典管理
+....
+POST /sys_dict/save
+....
+
+
+===== 说明
+保存字典管理
+
+
+===== 参数
+
+[options="header", cols=".^2,.^3,.^9,.^4"]
+|===
+|类型|名称|说明|类型
+|**Header**|**token** +
+__可选__|令牌|string
+|**Body**|**record** +
+__必填__|record|<<_sysdict,SysDict>>
+|===
+
+
+===== 响应
+
+[options="header", cols=".^2,.^14,.^4"]
+|===
+|HTTP代码|说明|类型
+|**200**|OK|<<_httpresult,HttpResult>>
+|**201**|Created|无内容
+|**401**|Unauthorized|无内容
+|**403**|Forbidden|无内容
+|**404**|Not Found|无内容
+|===
+
+
+===== 消耗
+
+* `application/json`
+
+
+===== 生成
+
+* `*/*`
+
+
+===== HTTP请求示例
+
+====== 请求 path
+----
+/sys_dict/save
+----
+
+
+====== 请求 header
+[source,json]
+----
+"string"
+----
+
+
+====== 请求 body
+[source,json]
+----
+{
+  "createBy" : "string",
+  "createTime" : "string",
+  "delFlag" : 0,
+  "description" : "string",
+  "id" : "string",
+  "label" : "string",
+  "lastUpdateBy" : "string",
+  "lastUpdateTime" : "string",
+  "remarks" : "string",
+  "sort" : 0,
+  "type" : "string",
+  "value" : "string"
+}
+----
+
+
+===== HTTP响应示例
+
+====== 响应 200
+[source,json]
+----
+{
+  "code" : 0,
+  "data" : "object",
+  "msg" : "string"
+}
+----
+
+
+[[_95894f3bf3d2ce1a4719ee711842175a]]
+=== 文件上传接口
+File Upload
+
+
+[[_uploadsomefilesusingpost]]
+==== 单个文件上传
+....
+POST /test/uploadFiles
+....
+
+
+===== 说明
+单个文件上传
+
+
+===== 参数
+
+[options="header", cols=".^2,.^3,.^9,.^4"]
+|===
+|类型|名称|说明|类型
+|**Header**|**token** +
+__可选__|令牌|string
+|**FormData**|**uploadFiles** +
+__可选__|uploadFiles|< file > array(multi)
+|===
+
+
+===== 响应
+
+[options="header", cols=".^2,.^14,.^4"]
+|===
+|HTTP代码|说明|类型
+|**200**|OK|<<_httpresult,HttpResult>>
+|**201**|Created|无内容
+|**401**|Unauthorized|无内容
+|**403**|Forbidden|无内容
+|**404**|Not Found|无内容
+|===
+
+
+===== 消耗
+
+* `application/json`
+
+
+===== 生成
+
+* `*/*`
+
+
+===== HTTP请求示例
+
+====== 请求 path
+----
+/test/uploadFiles
+----
+
+
+====== 请求 header
+[source,json]
+----
+"string"
+----
+
+
+====== 请求 formData
+[source,json]
+----
+"file"
+----
+
+
+===== HTTP响应示例
+
+====== 响应 200
+[source,json]
+----
+{
+  "code" : 0,
+  "data" : "object",
+  "msg" : "string"
+}
+----
+
+
+[[_uploadonefileusingpost]]
+==== 单个文件上传
+....
+POST /test/uploadOneFile
+....
+
+
+===== 说明
+单个文件上传
+
+
+===== 参数
+
+[options="header", cols=".^2,.^3,.^9,.^4"]
+|===
+|类型|名称|说明|类型
+|**Header**|**token** +
+__可选__|令牌|string
+|**FormData**|**uploadFile** +
+__可选__|uploadFile|file
+|===
+
+
+===== 响应
+
+[options="header", cols=".^2,.^14,.^4"]
+|===
+|HTTP代码|说明|类型
+|**200**|OK|<<_httpresult,HttpResult>>
+|**201**|Created|无内容
+|**401**|Unauthorized|无内容
+|**403**|Forbidden|无内容
+|**404**|Not Found|无内容
+|===
+
+
+===== 消耗
+
+* `multipart/form-data`
+
+
+===== 生成
+
+* `*/*`
+
+
+===== HTTP请求示例
+
+====== 请求 path
+----
+/test/uploadOneFile
+----
+
+
+====== 请求 header
+[source,json]
+----
+"string"
+----
+
+
+====== 请求 formData
+[source,json]
+----
+"file"
+----
+
+
+===== HTTP响应示例
+
+====== 响应 200
+[source,json]
+----
+{
+  "code" : 0,
+  "data" : "object",
+  "msg" : "string"
+}
+----
+
+
+[[_0d2db55e9c7add86d2a8bd51545a2bdd]]
+=== 权限管理接口
+Sys Role Controller
+
+
+[[_deleteusingpost_6]]
+==== 删除权限
+....
+POST /sys_role/delete
+....
+
+
+===== 说明
+删除权限
+
+
+===== 参数
+
+[options="header", cols=".^2,.^3,.^9,.^4"]
+|===
+|类型|名称|说明|类型
+|**Header**|**token** +
+__可选__|令牌|string
+|**Body**|**records** +
+__必填__|records|< <<_sysrole,SysRole>> > array
+|===
+
+
+===== 响应
+
+[options="header", cols=".^2,.^14,.^4"]
+|===
+|HTTP代码|说明|类型
+|**200**|OK|<<_httpresult,HttpResult>>
+|**201**|Created|无内容
+|**401**|Unauthorized|无内容
+|**403**|Forbidden|无内容
+|**404**|Not Found|无内容
+|===
+
+
+===== 消耗
+
+* `application/json`
+
+
+===== 生成
+
+* `*/*`
+
+
+===== HTTP请求示例
+
+====== 请求 path
+----
+/sys_role/delete
+----
+
+
+====== 请求 header
+[source,json]
+----
+"string"
+----
+
+
+====== 请求 body
+[source,json]
+----
+[ {
+  "createBy" : "string",
+  "createTime" : "string",
+  "delFlag" : 0,
+  "id" : "string",
+  "lastUpdateBy" : "string",
+  "lastUpdateTime" : "string",
+  "name" : "string",
+  "remark" : "string"
+} ]
+----
+
+
+===== HTTP响应示例
+
+====== 响应 200
+[source,json]
+----
+{
+  "code" : 0,
+  "data" : "object",
+  "msg" : "string"
+}
+----
+
+
+[[_findallusingget]]
+==== 查询所有权限
+....
+GET /sys_role/findAll
+....
+
+
+===== 说明
+查询所有权限
+
+
+===== 参数
+
+[options="header", cols=".^2,.^3,.^9,.^4"]
+|===
+|类型|名称|说明|类型
+|**Header**|**token** +
+__可选__|令牌|string
+|===
+
+
+===== 响应
+
+[options="header", cols=".^2,.^14,.^4"]
+|===
+|HTTP代码|说明|类型
+|**200**|OK|<<_httpresult,HttpResult>>
+|**401**|Unauthorized|无内容
+|**403**|Forbidden|无内容
+|**404**|Not Found|无内容
+|===
+
+
+===== 生成
+
+* `*/*`
+
+
+===== HTTP请求示例
+
+====== 请求 path
+----
+/sys_role/findAll
+----
+
+
+====== 请求 header
+[source,json]
+----
+"string"
+----
+
+
+===== HTTP响应示例
+
+====== 响应 200
+[source,json]
+----
+{
+  "code" : 0,
+  "data" : "object",
+  "msg" : "string"
+}
+----
+
+
+[[_findpageusingpost_4]]
+==== 分页查询权限
+....
+POST /sys_role/findByPage
+....
+
+
+===== 说明
+分页查询权限
+
+
+===== 参数
+
+[options="header", cols=".^2,.^3,.^9,.^4"]
+|===
+|类型|名称|说明|类型
+|**Header**|**token** +
+__可选__|令牌|string
+|**Body**|**myPageRequest** +
+__必填__|myPageRequest|<<_mypagerequest,MyPageRequest>>
+|===
+
+
+===== 响应
+
+[options="header", cols=".^2,.^14,.^4"]
+|===
+|HTTP代码|说明|类型
+|**200**|OK|<<_httpresult,HttpResult>>
+|**201**|Created|无内容
+|**401**|Unauthorized|无内容
+|**403**|Forbidden|无内容
+|**404**|Not Found|无内容
+|===
+
+
+===== 消耗
+
+* `application/json`
+
+
+===== 生成
+
+* `*/*`
+
+
+===== HTTP请求示例
+
+====== 请求 path
+----
+/sys_role/findByPage
+----
+
+
+====== 请求 header
+[source,json]
+----
+"string"
+----
+
+
+====== 请求 body
+[source,json]
+----
+{
+  "pageNum" : 0,
+  "pageSize" : 0
+}
+----
+
+
+===== HTTP响应示例
+
+====== 响应 200
+[source,json]
+----
+{
+  "code" : 0,
+  "data" : "object",
+  "msg" : "string"
+}
+----
+
+
+[[_findrolemenususingget]]
+==== 根据权限id查询菜单
+....
+GET /sys_role/findRoleMenus
+....
+
+
+===== 说明
+根据权限id查询菜单
+
+
+===== 参数
+
+[options="header", cols=".^2,.^3,.^9,.^4"]
+|===
+|类型|名称|说明|类型
+|**Header**|**token** +
+__可选__|令牌|string
+|**Query**|**roleId** +
+__必填__|roleId|string
+|===
+
+
+===== 响应
+
+[options="header", cols=".^2,.^14,.^4"]
+|===
+|HTTP代码|说明|类型
+|**200**|OK|<<_httpresult,HttpResult>>
+|**401**|Unauthorized|无内容
+|**403**|Forbidden|无内容
+|**404**|Not Found|无内容
+|===
+
+
+===== 生成
+
+* `*/*`
+
+
+===== HTTP请求示例
+
+====== 请求 path
+----
+/sys_role/findRoleMenus
+----
+
+
+====== 请求 header
+[source,json]
+----
+"string"
+----
+
+
+====== 请求 query
+[source,json]
+----
+{
+  "roleId" : "string"
+}
+----
+
+
+===== HTTP响应示例
+
+====== 响应 200
+[source,json]
+----
+{
+  "code" : 0,
+  "data" : "object",
+  "msg" : "string"
+}
+----
+
+
+[[_saveusingpost_4]]
+==== 保存权限
+....
+POST /sys_role/save
+....
+
+
+===== 说明
+保存权限
+
+
+===== 参数
+
+[options="header", cols=".^2,.^3,.^9,.^4"]
+|===
+|类型|名称|说明|类型
+|**Header**|**token** +
+__可选__|令牌|string
+|**Body**|**record** +
+__必填__|record|<<_sysrole,SysRole>>
+|===
+
+
+===== 响应
+
+[options="header", cols=".^2,.^14,.^4"]
+|===
+|HTTP代码|说明|类型
+|**200**|OK|<<_httpresult,HttpResult>>
+|**201**|Created|无内容
+|**401**|Unauthorized|无内容
+|**403**|Forbidden|无内容
+|**404**|Not Found|无内容
+|===
+
+
+===== 消耗
+
+* `application/json`
+
+
+===== 生成
+
+* `*/*`
+
+
+===== HTTP请求示例
+
+====== 请求 path
+----
+/sys_role/save
+----
+
+
+====== 请求 header
+[source,json]
+----
+"string"
+----
+
+
+====== 请求 body
+[source,json]
+----
+{
+  "createBy" : "string",
+  "createTime" : "string",
+  "delFlag" : 0,
+  "id" : "string",
+  "lastUpdateBy" : "string",
+  "lastUpdateTime" : "string",
+  "name" : "string",
+  "remark" : "string"
+}
+----
+
+
+===== HTTP响应示例
+
+====== 响应 200
+[source,json]
+----
+{
+  "code" : 0,
+  "data" : "object",
+  "msg" : "string"
+}
+----
+
+
+[[_saverolemenususingpost]]
+==== 根据权限修改菜单权限
+....
+POST /sys_role/saveRoleMenus
+....
+
+
+===== 说明
+根据权限修改菜单权限
+
+
+===== 参数
+
+[options="header", cols=".^2,.^3,.^9,.^4"]
+|===
+|类型|名称|说明|类型
+|**Header**|**token** +
+__可选__|令牌|string
+|**Body**|**records** +
+__必填__|records|< <<_sysrolemenu,SysRoleMenu>> > array
+|===
+
+
+===== 响应
+
+[options="header", cols=".^2,.^14,.^4"]
+|===
+|HTTP代码|说明|类型
+|**200**|OK|<<_httpresult,HttpResult>>
+|**201**|Created|无内容
+|**401**|Unauthorized|无内容
+|**403**|Forbidden|无内容
+|**404**|Not Found|无内容
+|===
+
+
+===== 消耗
+
+* `application/json`
+
+
+===== 生成
+
+* `*/*`
+
+
+===== HTTP请求示例
+
+====== 请求 path
+----
+/sys_role/saveRoleMenus
+----
+
+
+====== 请求 header
+[source,json]
+----
+"string"
+----
+
+
+====== 请求 body
+[source,json]
+----
+[ {
+  "createBy" : "string",
+  "createTime" : "string",
+  "id" : "string",
+  "lastUpdateBy" : "string",
+  "lastUpdateTime" : "string",
+  "menuId" : "string",
+  "roleId" : "string"
+} ]
+----
+
+
+===== HTTP响应示例
+
+====== 响应 200
+[source,json]
+----
+{
+  "code" : 0,
+  "data" : "object",
+  "msg" : "string"
+}
+----
+
+
+[[_459ddcdf2261352d74a9df803f455247]]
+=== 用户管理接口
+Sys User Controller
+
+
+[[_deleteusingpost_7]]
+==== 删除用户
+....
+POST /sys_user/delete
+....
+
+
+===== 说明
+批量删除用户
+
+
+===== 参数
+
+[options="header", cols=".^2,.^3,.^9,.^4"]
+|===
+|类型|名称|说明|类型
+|**Header**|**token** +
+__可选__|令牌|string
+|**Body**|**records** +
+__必填__|records|< <<_sysuser,SysUser>> > array
+|===
+
+
+===== 响应
+
+[options="header", cols=".^2,.^14,.^4"]
+|===
+|HTTP代码|说明|类型
+|**200**|OK|<<_httpresult,HttpResult>>
+|**201**|Created|无内容
+|**401**|Unauthorized|无内容
+|**403**|Forbidden|无内容
+|**404**|Not Found|无内容
+|===
+
+
+===== 消耗
+
+* `application/json`
+
+
+===== 生成
+
+* `*/*`
+
+
+===== HTTP请求示例
+
+====== 请求 path
+----
+/sys_user/delete
+----
+
+
+====== 请求 header
+[source,json]
+----
+"string"
+----
+
+
+====== 请求 body
+[source,json]
+----
+[ {
+  "avatar" : "string",
+  "createBy" : "string",
+  "createTime" : "string",
+  "delFlag" : 0,
+  "deptId" : "string",
+  "deptName" : "string",
+  "email" : "string",
+  "id" : "string",
+  "lastUpdateBy" : "string",
+  "lastUpdateTime" : "string",
+  "mobile" : "string",
+  "name" : "string",
+  "nickName" : "string",
+  "password" : "string",
+  "roleNames" : "string",
+  "salt" : "string",
+  "status" : 0,
+  "userRoles" : [ {
+    "createBy" : "string",
+    "createTime" : "string",
+    "id" : "string",
+    "lastUpdateBy" : "string",
+    "lastUpdateTime" : "string",
+    "roleId" : "string",
+    "userId" : "string"
+  } ]
+} ]
+----
+
+
+===== HTTP响应示例
+
+====== 响应 200
+[source,json]
+----
+{
+  "code" : 0,
+  "data" : "object",
+  "msg" : "string"
+}
+----
+
+
+[[_findbyusernameusingget]]
+==== 根据姓名查询用户
+....
+GET /sys_user/findByName
+....
+
+
+===== 说明
+根据姓名查询用户
+
+
+===== 参数
+
+[options="header", cols=".^2,.^3,.^9,.^4"]
+|===
+|类型|名称|说明|类型
+|**Header**|**token** +
+__可选__|令牌|string
+|**Query**|**name** +
+__必填__|name|string
+|===
+
+
+===== 响应
+
+[options="header", cols=".^2,.^14,.^4"]
+|===
+|HTTP代码|说明|类型
+|**200**|OK|<<_httpresult,HttpResult>>
+|**401**|Unauthorized|无内容
+|**403**|Forbidden|无内容
+|**404**|Not Found|无内容
+|===
+
+
+===== 生成
+
+* `*/*`
+
+
+===== HTTP请求示例
+
+====== 请求 path
+----
+/sys_user/findByName
+----
+
+
+====== 请求 header
+[source,json]
+----
+"string"
+----
+
+
+====== 请求 query
+[source,json]
+----
+{
+  "name" : "string"
+}
+----
+
+
+===== HTTP响应示例
+
+====== 响应 200
+[source,json]
+----
+{
+  "code" : 0,
+  "data" : "object",
+  "msg" : "string"
+}
+----
+
+
+[[_findpageusingpost_5]]
+==== 分页查询用户
+....
+POST /sys_user/findByPage
+....
+
+
+===== 说明
+分页查询用户
+
+
+===== 参数
+
+[options="header", cols=".^2,.^3,.^9,.^4"]
+|===
+|类型|名称|说明|类型
+|**Header**|**token** +
+__可选__|令牌|string
+|**Body**|**myPageRequest** +
+__必填__|myPageRequest|<<_mypagerequest,MyPageRequest>>
+|===
+
+
+===== 响应
+
+[options="header", cols=".^2,.^14,.^4"]
+|===
+|HTTP代码|说明|类型
+|**200**|OK|<<_httpresult,HttpResult>>
+|**201**|Created|无内容
+|**401**|Unauthorized|无内容
+|**403**|Forbidden|无内容
+|**404**|Not Found|无内容
+|===
+
+
+===== 消耗
+
+* `application/json`
+
+
+===== 生成
+
+* `*/*`
+
+
+===== HTTP请求示例
+
+====== 请求 path
+----
+/sys_user/findByPage
+----
+
+
+====== 请求 header
+[source,json]
+----
+"string"
+----
+
+
+====== 请求 body
+[source,json]
+----
+{
+  "pageNum" : 0,
+  "pageSize" : 0
+}
+----
+
+
+===== HTTP响应示例
+
+====== 响应 200
+[source,json]
+----
+{
+  "code" : 0,
+  "data" : "object",
+  "msg" : "string"
+}
+----
+
+
+[[_findpermissionsusingget]]
+==== 根据姓名查询用户权限
+....
+GET /sys_user/findPermissions
+....
+
+
+===== 说明
+根据姓名查询用户权限
+
+
+===== 参数
+
+[options="header", cols=".^2,.^3,.^9,.^4"]
+|===
+|类型|名称|说明|类型
+|**Header**|**token** +
+__可选__|令牌|string
+|**Query**|**name** +
+__必填__|name|string
+|===
+
+
+===== 响应
+
+[options="header", cols=".^2,.^14,.^4"]
+|===
+|HTTP代码|说明|类型
+|**200**|OK|<<_httpresult,HttpResult>>
+|**401**|Unauthorized|无内容
+|**403**|Forbidden|无内容
+|**404**|Not Found|无内容
+|===
+
+
+===== 生成
+
+* `*/*`
+
+
+===== HTTP请求示例
+
+====== 请求 path
+----
+/sys_user/findPermissions
+----
+
+
+====== 请求 header
+[source,json]
+----
+"string"
+----
+
+
+====== 请求 query
+[source,json]
+----
+{
+  "name" : "string"
+}
+----
+
+
+===== HTTP响应示例
+
+====== 响应 200
+[source,json]
+----
+{
+  "code" : 0,
+  "data" : "object",
+  "msg" : "string"
+}
+----
+
+
+[[_saveusingpost_5]]
+==== 保存用户
+....
+POST /sys_user/save
+....
+
+
+===== 说明
+保存用户
+
+
+===== 参数
+
+[options="header", cols=".^2,.^3,.^9,.^4"]
+|===
+|类型|名称|说明|类型
+|**Header**|**token** +
+__可选__|令牌|string
+|**Body**|**record** +
+__必填__|record|<<_sysuser,SysUser>>
+|===
+
+
+===== 响应
+
+[options="header", cols=".^2,.^14,.^4"]
+|===
+|HTTP代码|说明|类型
+|**200**|OK|<<_httpresult,HttpResult>>
+|**201**|Created|无内容
+|**401**|Unauthorized|无内容
+|**403**|Forbidden|无内容
+|**404**|Not Found|无内容
+|===
+
+
+===== 消耗
+
+* `application/json`
+
+
+===== 生成
+
+* `*/*`
+
+
+===== HTTP请求示例
+
+====== 请求 path
+----
+/sys_user/save
+----
+
+
+====== 请求 header
+[source,json]
+----
+"string"
+----
+
+
+====== 请求 body
+[source,json]
+----
+{
+  "avatar" : "string",
+  "createBy" : "string",
+  "createTime" : "string",
+  "delFlag" : 0,
+  "deptId" : "string",
+  "deptName" : "string",
+  "email" : "string",
+  "id" : "string",
+  "lastUpdateBy" : "string",
+  "lastUpdateTime" : "string",
+  "mobile" : "string",
+  "name" : "string",
+  "nickName" : "string",
+  "password" : "string",
+  "roleNames" : "string",
+  "salt" : "string",
+  "status" : 0,
+  "userRoles" : [ {
+    "createBy" : "string",
+    "createTime" : "string",
+    "id" : "string",
+    "lastUpdateBy" : "string",
+    "lastUpdateTime" : "string",
+    "roleId" : "string",
+    "userId" : "string"
+  } ]
+}
+----
+
+
+===== HTTP响应示例
+
+====== 响应 200
+[source,json]
+----
+{
+  "code" : 0,
+  "data" : "object",
+  "msg" : "string"
+}
+----
+
+
+[[_0c1d08e524d130018a6e203826c0ddaf]]
+=== 登录接口
+Sys Login Controller
+
+
+[[_captchausingget]]
+==== 生成验证码
+....
+GET /captcha.jpg
+....
+
+
+===== 说明
+生成验证码
+
+
+===== 参数
+
+[options="header", cols=".^2,.^3,.^9,.^4"]
+|===
+|类型|名称|说明|类型
+|**Header**|**token** +
+__可选__|令牌|string
+|===
+
+
+===== 响应
+
+[options="header", cols=".^2,.^14,.^4"]
+|===
+|HTTP代码|说明|类型
+|**200**|OK|无内容
+|**401**|Unauthorized|无内容
+|**403**|Forbidden|无内容
+|**404**|Not Found|无内容
+|===
+
+
+===== 生成
+
+* `*/*`
+
+
+===== HTTP请求示例
+
+====== 请求 path
+----
+/captcha.jpg
+----
+
+
+====== 请求 header
+[source,json]
+----
+"string"
+----
+
+
+[[_loginusingpost]]
+==== 登录接口
+....
+POST /login
+....
+
+
+===== 说明
+登录接口，携带token令牌信息
+
+
+===== 参数
+
+[options="header", cols=".^2,.^3,.^9,.^4"]
+|===
+|类型|名称|说明|类型
+|**Header**|**token** +
+__可选__|令牌|string
+|**Body**|**loginBean** +
+__必填__|loginBean|<<_loginbean,LoginBean>>
+|===
+
+
+===== 响应
+
+[options="header", cols=".^2,.^14,.^4"]
+|===
+|HTTP代码|说明|类型
+|**200**|OK|<<_httpresult,HttpResult>>
+|**201**|Created|无内容
+|**401**|Unauthorized|无内容
+|**403**|Forbidden|无内容
+|**404**|Not Found|无内容
+|===
+
+
+===== 消耗
+
+* `application/json`
+
+
+===== 生成
+
+* `*/*`
+
+
+===== HTTP请求示例
+
+====== 请求 path
+----
+/login
+----
+
+
+====== 请求 header
+[source,json]
+----
+"string"
+----
+
+
+====== 请求 body
+[source,json]
+----
+{
+  "account" : "string",
+  "captcha" : "string",
+  "password" : "string"
+}
+----
+
+
+===== HTTP响应示例
+
+====== 响应 200
+[source,json]
+----
+{
+  "code" : 0,
+  "data" : "object",
+  "msg" : "string"
+}
+----
+
+
+[[_28eae16dd4a7e641846407470404babf]]
+=== 登录日志接口
+Sys Login Log Controller
+
+
+[[_deleteusingpost_4]]
+==== 删除登录日志
+....
+POST /sys_login_log/delete
+....
+
+
+===== 说明
+删除登录日志
+
+
+===== 参数
+
+[options="header", cols=".^2,.^3,.^9,.^4"]
+|===
+|类型|名称|说明|类型
+|**Header**|**token** +
+__可选__|令牌|string
+|**Body**|**records** +
+__必填__|records|< <<_sysloginlog,SysLoginLog>> > array
+|===
+
+
+===== 响应
+
+[options="header", cols=".^2,.^14,.^4"]
+|===
+|HTTP代码|说明|类型
+|**200**|OK|<<_httpresult,HttpResult>>
+|**201**|Created|无内容
+|**401**|Unauthorized|无内容
+|**403**|Forbidden|无内容
+|**404**|Not Found|无内容
+|===
+
+
+===== 消耗
+
+* `application/json`
+
+
+===== 生成
+
+* `*/*`
+
+
+===== HTTP请求示例
+
+====== 请求 path
+----
+/sys_login_log/delete
+----
+
+
+====== 请求 header
+[source,json]
+----
+"string"
+----
+
+
+====== 请求 body
+[source,json]
+----
+[ {
+  "createTime" : "string",
+  "id" : "string",
+  "ip" : "string",
+  "remark" : "string",
+  "status" : "string",
+  "userName" : "string"
+} ]
+----
+
+
+===== HTTP响应示例
+
+====== 响应 200
+[source,json]
+----
+{
+  "code" : 0,
+  "data" : "object",
+  "msg" : "string"
+}
+----
+
+
+[[_findpageusingpost_3]]
+==== 分页查询登录日志
+....
+POST /sys_login_log/findByPage
+....
+
+
+===== 说明
+分页查询登录日志
+
+
+===== 参数
+
+[options="header", cols=".^2,.^3,.^9,.^4"]
+|===
+|类型|名称|说明|类型
+|**Header**|**token** +
+__可选__|令牌|string
+|**Body**|**myPageRequest** +
+__必填__|myPageRequest|<<_mypagerequest,MyPageRequest>>
+|===
+
+
+===== 响应
+
+[options="header", cols=".^2,.^14,.^4"]
+|===
+|HTTP代码|说明|类型
+|**200**|OK|<<_httpresult,HttpResult>>
+|**201**|Created|无内容
+|**401**|Unauthorized|无内容
+|**403**|Forbidden|无内容
+|**404**|Not Found|无内容
+|===
+
+
+===== 消耗
+
+* `application/json`
+
+
+===== 生成
+
+* `*/*`
+
+
+===== HTTP请求示例
+
+====== 请求 path
+----
+/sys_login_log/findByPage
+----
+
+
+====== 请求 header
+[source,json]
+----
+"string"
+----
+
+
+====== 请求 body
+[source,json]
+----
+{
+  "pageNum" : 0,
+  "pageSize" : 0
+}
+----
+
+
+===== HTTP响应示例
+
+====== 响应 200
+[source,json]
+----
+{
+  "code" : 0,
+  "data" : "object",
+  "msg" : "string"
+}
+----
+
+
+[[_d2af8a551e9e8b43fbe446ec6b67b0b3]]
+=== 系统日志接口
+Sys Log Controller
+
+
+[[_deleteusingpost_3]]
+==== 删除日志记录
+....
+POST /sys_log/delete
+....
+
+
+===== 说明
+删除日志记录
+
+
+===== 参数
+
+[options="header", cols=".^2,.^3,.^9,.^4"]
+|===
+|类型|名称|说明|类型
+|**Header**|**token** +
+__可选__|令牌|string
+|**Body**|**records** +
+__必填__|records|< <<_syslog,SysLog>> > array
+|===
+
+
+===== 响应
+
+[options="header", cols=".^2,.^14,.^4"]
+|===
+|HTTP代码|说明|类型
+|**200**|OK|<<_httpresult,HttpResult>>
+|**201**|Created|无内容
+|**401**|Unauthorized|无内容
+|**403**|Forbidden|无内容
+|**404**|Not Found|无内容
+|===
+
+
+===== 消耗
+
+* `application/json`
+
+
+===== 生成
+
+* `*/*`
+
+
+===== HTTP请求示例
+
+====== 请求 path
+----
+/sys_log/delete
+----
+
+
+====== 请求 header
+[source,json]
+----
+"string"
+----
+
+
+====== 请求 body
+[source,json]
+----
+[ {
+  "createBy" : "string",
+  "createTime" : "string",
+  "id" : "string",
+  "ip" : "string",
+  "lastUpdateBy" : "string",
+  "lastUpdateTime" : "string",
+  "method" : "string",
+  "operation" : "string",
+  "params" : "string",
+  "time" : 0,
+  "userName" : "string"
+} ]
+----
+
+
+===== HTTP响应示例
+
+====== 响应 200
+[source,json]
+----
+{
+  "code" : 0,
+  "data" : "object",
+  "msg" : "string"
+}
+----
+
+
+[[_findpageusingpost_2]]
+==== 分页查询日志记录
+....
+POST /sys_log/findByPage
+....
+
+
+===== 说明
+分页查询日志记录
+
+
+===== 参数
+
+[options="header", cols=".^2,.^3,.^9,.^4"]
+|===
+|类型|名称|说明|类型
+|**Header**|**token** +
+__可选__|令牌|string
+|**Body**|**myPageRequest** +
+__必填__|myPageRequest|<<_mypagerequest,MyPageRequest>>
+|===
+
+
+===== 响应
+
+[options="header", cols=".^2,.^14,.^4"]
+|===
+|HTTP代码|说明|类型
+|**200**|OK|<<_httpresult,HttpResult>>
+|**201**|Created|无内容
+|**401**|Unauthorized|无内容
+|**403**|Forbidden|无内容
+|**404**|Not Found|无内容
+|===
+
+
+===== 消耗
+
+* `application/json`
+
+
+===== 生成
+
+* `*/*`
+
+
+===== HTTP请求示例
+
+====== 请求 path
+----
+/sys_log/findByPage
+----
+
+
+====== 请求 header
+[source,json]
+----
+"string"
+----
+
+
+====== 请求 body
+[source,json]
+----
+{
+  "pageNum" : 0,
+  "pageSize" : 0
+}
+----
+
+
+===== HTTP响应示例
+
+====== 响应 200
+[source,json]
+----
+{
+  "code" : 0,
+  "data" : "object",
+  "msg" : "string"
+}
+----
+
+
+[[_63784d53a9ff40d8e16ba5f80c2897ab]]
+=== 系统配置接口
+Sys Config Controller
+
+
+[[_deleteusingpost]]
+==== 删除系统配置
+....
+POST /sys_config/delete
+....
+
+
+===== 说明
+批量删除
+
+
+===== 参数
+
+[options="header", cols=".^2,.^3,.^9,.^4"]
+|===
+|类型|名称|说明|类型
+|**Header**|**token** +
+__可选__|令牌|string
+|**Path**|**records** +
+__必填__|系统配置记录集合|string
+|===
+
+
+===== 响应
+
+[options="header", cols=".^2,.^14,.^4"]
+|===
+|HTTP代码|说明|类型
+|**200**|OK|<<_httpresult,HttpResult>>
+|**201**|Created|无内容
+|**401**|Unauthorized|无内容
+|**403**|Forbidden|无内容
+|**404**|Not Found|无内容
+|===
+
+
+===== 消耗
+
+* `application/json`
+
+
+===== 生成
+
+* `*/*`
+
+
+===== HTTP请求示例
+
+====== 请求 path
+----
+/sys_config/delete
+----
+
+
+====== 请求 header
+[source,json]
+----
+"string"
+----
+
+
+===== HTTP响应示例
+
+====== 响应 200
+[source,json]
+----
+{
+  "code" : 0,
+  "data" : "object",
+  "msg" : "string"
+}
+----
+
+
+[[_findpageusingpost]]
+==== 分页查询系统配置记录
+....
+POST /sys_config/findByPage
+....
+
+
+===== 说明
+根据分页参数分页查询系统配置记录
+
+
+===== 参数
+
+[options="header", cols=".^2,.^3,.^9,.^4"]
+|===
+|类型|名称|说明|类型
+|**Header**|**token** +
+__可选__|令牌|string
+|**Body**|**myPageRequest** +
+__必填__|myPageRequest|<<_mypagerequest,MyPageRequest>>
+|===
+
+
+===== 响应
+
+[options="header", cols=".^2,.^14,.^4"]
+|===
+|HTTP代码|说明|类型
+|**200**|OK|<<_httpresult,HttpResult>>
+|**201**|Created|无内容
+|**401**|Unauthorized|无内容
+|**403**|Forbidden|无内容
+|**404**|Not Found|无内容
+|===
+
+
+===== 消耗
+
+* `application/json`
+
+
+===== 生成
+
+* `*/*`
+
+
+===== HTTP请求示例
+
+====== 请求 path
+----
+/sys_config/findByPage
+----
+
+
+====== 请求 header
+[source,json]
+----
+"string"
+----
+
+
+====== 请求 body
+[source,json]
+----
+{
+  "pageNum" : 0,
+  "pageSize" : 0
+}
+----
+
+
+===== HTTP响应示例
+
+====== 响应 200
+[source,json]
+----
+{
+  "code" : 0,
+  "data" : "object",
+  "msg" : "string"
+}
+----
+
+
+[[_saveusingpost]]
+==== 保存系统配置
+....
+POST /sys_config/save
+....
+
+
+===== 说明
+系统配置记录
+
+
+===== 参数
+
+[options="header", cols=".^2,.^3,.^9,.^4"]
+|===
+|类型|名称|说明|类型
+|**Header**|**token** +
+__可选__|令牌|string
+|**Path**|**record** +
+__必填__|系统配置记录|string
+|===
+
+
+===== 响应
+
+[options="header", cols=".^2,.^14,.^4"]
+|===
+|HTTP代码|说明|类型
+|**200**|OK|<<_httpresult,HttpResult>>
+|**201**|Created|无内容
+|**401**|Unauthorized|无内容
+|**403**|Forbidden|无内容
+|**404**|Not Found|无内容
+|===
+
+
+===== 消耗
+
+* `application/json`
+
+
+===== 生成
+
+* `*/*`
+
+
+===== HTTP请求示例
+
+====== 请求 path
+----
+/sys_config/save
+----
+
+
+====== 请求 header
+[source,json]
+----
+"string"
+----
+
+
+===== HTTP响应示例
+
+====== 响应 200
+[source,json]
+----
+{
+  "code" : 0,
+  "data" : "object",
+  "msg" : "string"
+}
+----
+
+
+[[_e94d13a39039ece70666c46db3da1f9f]]
+=== 菜单管理接口
+Sys Menu Controller
+
+
+[[_deleteusingpost_5]]
+==== 删除菜单记录
+....
+POST /sys_menu/delete
+....
+
+
+===== 说明
+删除菜单记录
+
+
+===== 参数
+
+[options="header", cols=".^2,.^3,.^9,.^4"]
+|===
+|类型|名称|说明|类型
+|**Header**|**token** +
+__可选__|令牌|string
+|**Body**|**records** +
+__必填__|records|< <<_sysmenu,SysMenu>> > array
+|===
+
+
+===== 响应
+
+[options="header", cols=".^2,.^14,.^4"]
+|===
+|HTTP代码|说明|类型
+|**200**|OK|<<_httpresult,HttpResult>>
+|**201**|Created|无内容
+|**401**|Unauthorized|无内容
+|**403**|Forbidden|无内容
+|**404**|Not Found|无内容
+|===
+
+
+===== 消耗
+
+* `application/json`
+
+
+===== 生成
+
+* `*/*`
+
+
+===== HTTP请求示例
+
+====== 请求 path
+----
+/sys_menu/delete
+----
+
+
+====== 请求 header
+[source,json]
+----
+"string"
+----
+
+
+====== 请求 body
+[source,json]
+----
+[ {
+  "children" : [ {
+    "children" : [ "..." ],
+    "createBy" : "string",
+    "createTime" : "string",
+    "delFlag" : 0,
+    "icon" : "string",
+    "id" : "string",
+    "lastUpdateBy" : "string",
+    "lastUpdateTime" : "string",
+    "level" : 0,
+    "name" : "string",
+    "orderNum" : 0,
+    "parentId" : "string",
+    "parentName" : "string",
+    "perms" : "string",
+    "type" : 0,
+    "url" : "string"
+  } ],
+  "createBy" : "string",
+  "createTime" : "string",
+  "delFlag" : 0,
+  "icon" : "string",
+  "id" : "string",
+  "lastUpdateBy" : "string",
+  "lastUpdateTime" : "string",
+  "level" : 0,
+  "name" : "string",
+  "orderNum" : 0,
+  "parentId" : "string",
+  "parentName" : "string",
+  "perms" : "string",
+  "type" : 0,
+  "url" : "string"
+} ]
+----
+
+
+===== HTTP响应示例
+
+====== 响应 200
+[source,json]
+----
+{
+  "code" : 0,
+  "data" : "object",
+  "msg" : "string"
+}
+----
+
+
+[[_deleteusingget]]
+==== 查询菜单树形数据，用于修改权限
+....
+GET /sys_menu/findMenuTree
+....
+
+
+===== 说明
+查询菜单树形数据，用于修改权限
+
+
+===== 参数
+
+[options="header", cols=".^2,.^3,.^9,.^4"]
+|===
+|类型|名称|说明|类型
+|**Header**|**token** +
+__可选__|令牌|string
+|===
+
+
+===== 响应
+
+[options="header", cols=".^2,.^14,.^4"]
+|===
+|HTTP代码|说明|类型
+|**200**|OK|<<_httpresult,HttpResult>>
+|**401**|Unauthorized|无内容
+|**403**|Forbidden|无内容
+|**404**|Not Found|无内容
+|===
+
+
+===== 生成
+
+* `*/*`
+
+
+===== HTTP请求示例
+
+====== 请求 path
+----
+/sys_menu/findMenuTree
+----
+
+
+====== 请求 header
+[source,json]
+----
+"string"
+----
+
+
+===== HTTP响应示例
+
+====== 响应 200
+[source,json]
+----
+{
+  "code" : 0,
+  "data" : "object",
+  "msg" : "string"
+}
+----
+
+
+[[_findnavtreeusingget]]
+==== 查询菜单树形数据，用于系统左侧导航
+....
+GET /sys_menu/findNavTree
+....
+
+
+===== 说明
+查询菜单树形数据，用于系统左侧导航
+
+
+===== 参数
+
+[options="header", cols=".^2,.^3,.^9,.^4"]
+|===
+|类型|名称|说明|类型
+|**Header**|**token** +
+__可选__|令牌|string
+|**Query**|**userName** +
+__必填__|userName|string
+|===
+
+
+===== 响应
+
+[options="header", cols=".^2,.^14,.^4"]
+|===
+|HTTP代码|说明|类型
+|**200**|OK|<<_httpresult,HttpResult>>
+|**401**|Unauthorized|无内容
+|**403**|Forbidden|无内容
+|**404**|Not Found|无内容
+|===
+
+
+===== 生成
+
+* `*/*`
+
+
+===== HTTP请求示例
+
+====== 请求 path
+----
+/sys_menu/findNavTree
+----
+
+
+====== 请求 header
+[source,json]
+----
+"string"
+----
+
+
+====== 请求 query
+[source,json]
+----
+{
+  "userName" : "string"
+}
+----
+
+
+===== HTTP响应示例
+
+====== 响应 200
+[source,json]
+----
+{
+  "code" : 0,
+  "data" : "object",
+  "msg" : "string"
+}
+----
+
+
+[[_saveusingpost_3]]
+==== 保存菜单记录
+....
+POST /sys_menu/save
+....
+
+
+===== 说明
+保存菜单记录
+
+
+===== 参数
+
+[options="header", cols=".^2,.^3,.^9,.^4"]
+|===
+|类型|名称|说明|类型
+|**Header**|**token** +
+__可选__|令牌|string
+|**Body**|**record** +
+__必填__|record|<<_sysmenu,SysMenu>>
+|===
+
+
+===== 响应
+
+[options="header", cols=".^2,.^14,.^4"]
+|===
+|HTTP代码|说明|类型
+|**200**|OK|<<_httpresult,HttpResult>>
+|**201**|Created|无内容
+|**401**|Unauthorized|无内容
+|**403**|Forbidden|无内容
+|**404**|Not Found|无内容
+|===
+
+
+===== 消耗
+
+* `application/json`
+
+
+===== 生成
+
+* `*/*`
+
+
+===== HTTP请求示例
+
+====== 请求 path
+----
+/sys_menu/save
+----
+
+
+====== 请求 header
+[source,json]
+----
+"string"
+----
+
+
+====== 请求 body
+[source,json]
+----
+{
+  "children" : [ {
+    "children" : [ "..." ],
+    "createBy" : "string",
+    "createTime" : "string",
+    "delFlag" : 0,
+    "icon" : "string",
+    "id" : "string",
+    "lastUpdateBy" : "string",
+    "lastUpdateTime" : "string",
+    "level" : 0,
+    "name" : "string",
+    "orderNum" : 0,
+    "parentId" : "string",
+    "parentName" : "string",
+    "perms" : "string",
+    "type" : 0,
+    "url" : "string"
+  } ],
+  "createBy" : "string",
+  "createTime" : "string",
+  "delFlag" : 0,
+  "icon" : "string",
+  "id" : "string",
+  "lastUpdateBy" : "string",
+  "lastUpdateTime" : "string",
+  "level" : 0,
+  "name" : "string",
+  "orderNum" : 0,
+  "parentId" : "string",
+  "parentName" : "string",
+  "perms" : "string",
+  "type" : 0,
+  "url" : "string"
+}
+----
+
+
+===== HTTP响应示例
+
+====== 响应 200
+[source,json]
+----
+{
+  "code" : 0,
+  "data" : "object",
+  "msg" : "string"
+}
+----
+
+
+[[_2be3383931ac385fce8af0858c5ae830]]
+=== 部门接口
+Sys Dept Controller
+
+
+[[_deleteusingpost_1]]
+==== 删除部门
+....
+POST /sys_dept/delete
+....
+
+
+===== 说明
+批量删除
+
+
+===== 参数
+
+[options="header", cols=".^2,.^3,.^9,.^4"]
+|===
+|类型|名称|说明|类型
+|**Header**|**token** +
+__可选__|令牌|string
+|**Body**|**records** +
+__必填__|records|< <<_sysdept,SysDept>> > array
+|===
+
+
+===== 响应
+
+[options="header", cols=".^2,.^14,.^4"]
+|===
+|HTTP代码|说明|类型
+|**200**|OK|<<_httpresult,HttpResult>>
+|**201**|Created|无内容
+|**401**|Unauthorized|无内容
+|**403**|Forbidden|无内容
+|**404**|Not Found|无内容
+|===
+
+
+===== 消耗
+
+* `application/json`
+
+
+===== 生成
+
+* `*/*`
+
+
+===== HTTP请求示例
+
+====== 请求 path
+----
+/sys_dept/delete
+----
+
+
+====== 请求 header
+[source,json]
+----
+"string"
+----
+
+
+====== 请求 body
+[source,json]
+----
+[ {
+  "children" : [ {
+    "children" : [ "..." ],
+    "createBy" : "string",
+    "createTime" : "string",
+    "delFlag" : 0,
+    "id" : "string",
+    "lastUpdateBy" : "string",
+    "lastUpdateTime" : "string",
+    "level" : 0,
+    "name" : "string",
+    "orderNum" : 0,
+    "parentId" : "string",
+    "parentName" : "string"
+  } ],
+  "createBy" : "string",
+  "createTime" : "string",
+  "delFlag" : 0,
+  "id" : "string",
+  "lastUpdateBy" : "string",
+  "lastUpdateTime" : "string",
+  "level" : 0,
+  "name" : "string",
+  "orderNum" : 0,
+  "parentId" : "string",
+  "parentName" : "string"
+} ]
+----
+
+
+===== HTTP响应示例
+
+====== 响应 200
+[source,json]
+----
+{
+  "code" : 0,
+  "data" : "object",
+  "msg" : "string"
+}
+----
+
+
+[[_findpageusingget]]
+==== 查询部门树形结构的数据
+....
+GET /sys_dept/findTree
+....
+
+
+===== 说明
+树形结构的数据
+
+
+===== 参数
+
+[options="header", cols=".^2,.^3,.^9,.^4"]
+|===
+|类型|名称|说明|类型
+|**Header**|**token** +
+__可选__|令牌|string
+|===
+
+
+===== 响应
+
+[options="header", cols=".^2,.^14,.^4"]
+|===
+|HTTP代码|说明|类型
+|**200**|OK|<<_httpresult,HttpResult>>
+|**401**|Unauthorized|无内容
+|**403**|Forbidden|无内容
+|**404**|Not Found|无内容
+|===
+
+
+===== 生成
+
+* `*/*`
+
+
+===== HTTP请求示例
+
+====== 请求 path
+----
+/sys_dept/findTree
+----
+
+
+====== 请求 header
+[source,json]
+----
+"string"
+----
+
+
+===== HTTP响应示例
+
+====== 响应 200
+[source,json]
+----
+{
+  "code" : 0,
+  "data" : "object",
+  "msg" : "string"
+}
+----
+
+
+[[_saveusingpost_1]]
+==== 保存部门
+....
+POST /sys_dept/save
+....
+
+
+===== 说明
+保存部门
+
+
+===== 参数
+
+[options="header", cols=".^2,.^3,.^9,.^4"]
+|===
+|类型|名称|说明|类型
+|**Header**|**token** +
+__可选__|令牌|string
+|**Body**|**record** +
+__必填__|record|<<_sysdept,SysDept>>
+|===
+
+
+===== 响应
+
+[options="header", cols=".^2,.^14,.^4"]
+|===
+|HTTP代码|说明|类型
+|**200**|OK|<<_httpresult,HttpResult>>
+|**201**|Created|无内容
+|**401**|Unauthorized|无内容
+|**403**|Forbidden|无内容
+|**404**|Not Found|无内容
+|===
+
+
+===== 消耗
+
+* `application/json`
+
+
+===== 生成
+
+* `*/*`
+
+
+===== HTTP请求示例
+
+====== 请求 path
+----
+/sys_dept/save
+----
+
+
+====== 请求 header
+[source,json]
+----
+"string"
+----
+
+
+====== 请求 body
+[source,json]
+----
+{
+  "children" : [ {
+    "children" : [ "..." ],
+    "createBy" : "string",
+    "createTime" : "string",
+    "delFlag" : 0,
+    "id" : "string",
+    "lastUpdateBy" : "string",
+    "lastUpdateTime" : "string",
+    "level" : 0,
+    "name" : "string",
+    "orderNum" : 0,
+    "parentId" : "string",
+    "parentName" : "string"
+  } ],
+  "createBy" : "string",
+  "createTime" : "string",
+  "delFlag" : 0,
+  "id" : "string",
+  "lastUpdateBy" : "string",
+  "lastUpdateTime" : "string",
+  "level" : 0,
+  "name" : "string",
+  "orderNum" : 0,
+  "parentId" : "string",
+  "parentName" : "string"
+}
+----
+
+
+===== HTTP响应示例
+
+====== 响应 200
+[source,json]
+----
+{
+  "code" : 0,
+  "data" : "object",
+  "msg" : "string"
+}
+----
+
+
+
+
+[[_definitions]]
+== 定义
+
+[[_httpresult]]
+=== HttpResult
+
+[options="header", cols=".^3,.^11,.^4"]
+|===
+|名称|说明|类型
+|**code** +
+__可选__|**样例** : `0`|integer (int32)
+|**data** +
+__可选__|**样例** : `"object"`|object
+|**msg** +
+__可选__|**样例** : `"string"`|string
+|===
+
+
+[[_link]]
+=== Link
+
+[options="header", cols=".^3,.^11,.^4"]
+|===
+|名称|说明|类型
+|**href** +
+__可选__|**样例** : `"string"`|string
+|**templated** +
+__可选__|**样例** : `true`|boolean
+|===
+
+
+[[_loginbean]]
+=== LoginBean
+
+[options="header", cols=".^3,.^11,.^4"]
+|===
+|名称|说明|类型
+|**account** +
+__可选__|**样例** : `"string"`|string
+|**captcha** +
+__可选__|**样例** : `"string"`|string
+|**password** +
+__可选__|**样例** : `"string"`|string
+|===
+
+
+[[_53d375507d198e9157717964970e1987]]
+=== Map«string,Link»
+__类型__ : < string, <<_link,Link>> > map
+
+
+[[_modelandview]]
+=== ModelAndView
+
+[options="header", cols=".^3,.^11,.^4"]
+|===
+|名称|说明|类型
+|**empty** +
+__可选__|**样例** : `true`|boolean
+|**model** +
+__可选__|**样例** : `"object"`|object
+|**modelMap** +
+__可选__|**样例** : `{
+  "string" : "object"
+}`|< string, object > map
+|**reference** +
+__可选__|**样例** : `true`|boolean
+|**status** +
+__可选__|**样例** : `"string"`|enum (100, 101, 102, 103, 200, 201, 202, 203, 204, 205, 206, 207, 208, 226, 300, 301, 302, 303, 304, 305, 307, 308, 400, 401, 402, 403, 404, 405, 406, 407, 408, 409, 410, 411, 412, 413, 414, 415, 416, 417, 418, 419, 420, 421, 422, 423, 424, 426, 428, 429, 431, 451, 500, 501, 502, 503, 504, 505, 506, 507, 508, 509, 510, 511)
+|**view** +
+__可选__|**样例** : `"<<_view>>"`|<<_view,View>>
+|**viewName** +
+__可选__|**样例** : `"string"`|string
+|===
+
+
+[[_mypagerequest]]
+=== MyPageRequest
+
+[options="header", cols=".^3,.^11,.^4"]
+|===
+|名称|说明|类型
+|**pageNum** +
+__可选__|**样例** : `0`|integer (int32)
+|**pageSize** +
+__可选__|**样例** : `0`|integer (int32)
+|===
+
+
+[[_sysconfig]]
+=== SysConfig
+系统配置
+
+
+[options="header", cols=".^3,.^11,.^4"]
+|===
+|名称|说明|类型
+|**createBy** +
+__可选__|创建人 +
+**样例** : `"string"`|string
+|**createTime** +
+__可选__|创建时间 +
+**样例** : `"string"`|string (date-time)
+|**delFlag** +
+__可选__|删除标记 +
+**最小值** : `-128` +
+**最大值** : `127` +
+**样例** : `0`|integer (int32)
+|**description** +
+__可选__|描述 +
+**样例** : `"string"`|string
+|**id** +
+__可选__|主键id +
+**样例** : `"string"`|string
+|**label** +
+__可选__|标签 +
+**样例** : `"string"`|string
+|**lastUpdateBy** +
+__可选__|上一次更新者 +
+**样例** : `"string"`|string
+|**lastUpdateTime** +
+__可选__|上一次更新时间 +
+**样例** : `"string"`|string (date-time)
+|**remarks** +
+__可选__|备注 +
+**样例** : `"string"`|string
+|**sort** +
+__可选__|排序 +
+**样例** : `0`|integer (int64)
+|**type** +
+__可选__|类型 +
+**样例** : `"string"`|string
+|**value** +
+__可选__|值 +
+**样例** : `"string"`|string
+|===
+
+
+[[_sysdept]]
+=== SysDept
+部门
+
+
+[options="header", cols=".^3,.^11,.^4"]
+|===
+|名称|说明|类型
+|**children** +
+__可选__|**样例** : `[ "<<_sysdept>>" ]`|< <<_sysdept,SysDept>> > array
+|**createBy** +
+__可选__|创建人 +
+**样例** : `"string"`|string
+|**createTime** +
+__可选__|创建时间 +
+**样例** : `"string"`|string (date-time)
+|**delFlag** +
+__可选__|删除标记 +
+**最小值** : `-128` +
+**最大值** : `127` +
+**样例** : `0`|integer (int32)
+|**id** +
+__可选__|主键id +
+**样例** : `"string"`|string
+|**lastUpdateBy** +
+__可选__|上一次更新者 +
+**样例** : `"string"`|string
+|**lastUpdateTime** +
+__可选__|上一次更新时间 +
+**样例** : `"string"`|string (date-time)
+|**level** +
+__可选__|**样例** : `0`|integer (int32)
+|**name** +
+__可选__|名称 +
+**样例** : `"string"`|string
+|**orderNum** +
+__可选__|排序值 +
+**样例** : `0`|integer (int32)
+|**parentId** +
+__可选__|父级id +
+**样例** : `"string"`|string
+|**parentName** +
+__可选__|**样例** : `"string"`|string
+|===
+
+
+[[_sysdict]]
+=== SysDict
+基础模型，公共的字段属性
+
+
+[options="header", cols=".^3,.^11,.^4"]
+|===
+|名称|说明|类型
+|**createBy** +
+__可选__|创建人 +
+**样例** : `"string"`|string
+|**createTime** +
+__可选__|创建时间 +
+**样例** : `"string"`|string (date-time)
+|**delFlag** +
+__可选__|**最小值** : `-128` +
+**最大值** : `127`**样例** : `0`|integer (int32)
+|**description** +
+__可选__|**样例** : `"string"`|string
+|**id** +
+__可选__|主键id +
+**样例** : `"string"`|string
+|**label** +
+__可选__|**样例** : `"string"`|string
+|**lastUpdateBy** +
+__可选__|上一次更新者 +
+**样例** : `"string"`|string
+|**lastUpdateTime** +
+__可选__|上一次更新时间 +
+**样例** : `"string"`|string (date-time)
+|**remarks** +
+__可选__|**样例** : `"string"`|string
+|**sort** +
+__可选__|**样例** : `0`|integer (int64)
+|**type** +
+__可选__|**样例** : `"string"`|string
+|**value** +
+__可选__|**样例** : `"string"`|string
+|===
+
+
+[[_syslog]]
+=== SysLog
+基础模型，公共的字段属性
+
+
+[options="header", cols=".^3,.^11,.^4"]
+|===
+|名称|说明|类型
+|**createBy** +
+__可选__|创建人 +
+**样例** : `"string"`|string
+|**createTime** +
+__可选__|创建时间 +
+**样例** : `"string"`|string (date-time)
+|**id** +
+__可选__|主键id +
+**样例** : `"string"`|string
+|**ip** +
+__可选__|**样例** : `"string"`|string
+|**lastUpdateBy** +
+__可选__|上一次更新者 +
+**样例** : `"string"`|string
+|**lastUpdateTime** +
+__可选__|上一次更新时间 +
+**样例** : `"string"`|string (date-time)
+|**method** +
+__可选__|**样例** : `"string"`|string
+|**operation** +
+__可选__|**样例** : `"string"`|string
+|**params** +
+__可选__|**样例** : `"string"`|string
+|**time** +
+__可选__|**样例** : `0`|integer (int64)
+|**userName** +
+__可选__|**样例** : `"string"`|string
+|===
+
+
+[[_sysloginlog]]
+=== SysLoginLog
+
+[options="header", cols=".^3,.^11,.^4"]
+|===
+|名称|说明|类型
+|**createTime** +
+__可选__|**样例** : `"string"`|string
+|**id** +
+__可选__|**样例** : `"string"`|string
+|**ip** +
+__可选__|**样例** : `"string"`|string
+|**remark** +
+__可选__|**样例** : `"string"`|string
+|**status** +
+__可选__|**样例** : `"string"`|string
+|**userName** +
+__可选__|**样例** : `"string"`|string
+|===
+
+
+[[_sysmenu]]
+=== SysMenu
+基础模型，公共的字段属性
+
+
+[options="header", cols=".^3,.^11,.^4"]
+|===
+|名称|说明|类型
+|**children** +
+__可选__|**样例** : `[ "<<_sysmenu>>" ]`|< <<_sysmenu,SysMenu>> > array
+|**createBy** +
+__可选__|创建人 +
+**样例** : `"string"`|string
+|**createTime** +
+__可选__|创建时间 +
+**样例** : `"string"`|string (date-time)
+|**delFlag** +
+__可选__|**最小值** : `-128` +
+**最大值** : `127`**样例** : `0`|integer (int32)
+|**icon** +
+__可选__|**样例** : `"string"`|string
+|**id** +
+__可选__|主键id +
+**样例** : `"string"`|string
+|**lastUpdateBy** +
+__可选__|上一次更新者 +
+**样例** : `"string"`|string
+|**lastUpdateTime** +
+__可选__|上一次更新时间 +
+**样例** : `"string"`|string (date-time)
+|**level** +
+__可选__|**样例** : `0`|integer (int32)
+|**name** +
+__可选__|**样例** : `"string"`|string
+|**orderNum** +
+__可选__|**样例** : `0`|integer (int32)
+|**parentId** +
+__可选__|**样例** : `"string"`|string
+|**parentName** +
+__可选__|**样例** : `"string"`|string
+|**perms** +
+__可选__|**样例** : `"string"`|string
+|**type** +
+__可选__|**样例** : `0`|integer (int32)
+|**url** +
+__可选__|**样例** : `"string"`|string
+|===
+
+
+[[_sysrole]]
+=== SysRole
+基础模型，公共的字段属性
+
+
+[options="header", cols=".^3,.^11,.^4"]
+|===
+|名称|说明|类型
+|**createBy** +
+__可选__|创建人 +
+**样例** : `"string"`|string
+|**createTime** +
+__可选__|创建时间 +
+**样例** : `"string"`|string (date-time)
+|**delFlag** +
+__可选__|**最小值** : `-128` +
+**最大值** : `127`**样例** : `0`|integer (int32)
+|**id** +
+__可选__|主键id +
+**样例** : `"string"`|string
+|**lastUpdateBy** +
+__可选__|上一次更新者 +
+**样例** : `"string"`|string
+|**lastUpdateTime** +
+__可选__|上一次更新时间 +
+**样例** : `"string"`|string (date-time)
+|**name** +
+__可选__|**样例** : `"string"`|string
+|**remark** +
+__可选__|**样例** : `"string"`|string
+|===
+
+
+[[_sysrolemenu]]
+=== SysRoleMenu
+基础模型，公共的字段属性
+
+
+[options="header", cols=".^3,.^11,.^4"]
+|===
+|名称|说明|类型
+|**createBy** +
+__可选__|创建人 +
+**样例** : `"string"`|string
+|**createTime** +
+__可选__|创建时间 +
+**样例** : `"string"`|string (date-time)
+|**id** +
+__可选__|主键id +
+**样例** : `"string"`|string
+|**lastUpdateBy** +
+__可选__|上一次更新者 +
+**样例** : `"string"`|string
+|**lastUpdateTime** +
+__可选__|上一次更新时间 +
+**样例** : `"string"`|string (date-time)
+|**menuId** +
+__可选__|**样例** : `"string"`|string
+|**roleId** +
+__可选__|**样例** : `"string"`|string
+|===
+
+
+[[_sysuser]]
+=== SysUser
+基础模型，公共的字段属性
+
+
+[options="header", cols=".^3,.^11,.^4"]
+|===
+|名称|说明|类型
+|**avatar** +
+__可选__|**样例** : `"string"`|string
+|**createBy** +
+__可选__|创建人 +
+**样例** : `"string"`|string
+|**createTime** +
+__可选__|创建时间 +
+**样例** : `"string"`|string (date-time)
+|**delFlag** +
+__可选__|**最小值** : `-128` +
+**最大值** : `127`**样例** : `0`|integer (int32)
+|**deptId** +
+__可选__|**样例** : `"string"`|string
+|**deptName** +
+__可选__|**样例** : `"string"`|string
+|**email** +
+__可选__|**样例** : `"string"`|string
+|**id** +
+__可选__|主键id +
+**样例** : `"string"`|string
+|**lastUpdateBy** +
+__可选__|上一次更新者 +
+**样例** : `"string"`|string
+|**lastUpdateTime** +
+__可选__|上一次更新时间 +
+**样例** : `"string"`|string (date-time)
+|**mobile** +
+__可选__|**样例** : `"string"`|string
+|**name** +
+__可选__|**样例** : `"string"`|string
+|**nickName** +
+__可选__|**样例** : `"string"`|string
+|**password** +
+__可选__|**样例** : `"string"`|string
+|**roleNames** +
+__可选__|**样例** : `"string"`|string
+|**salt** +
+__可选__|**样例** : `"string"`|string
+|**status** +
+__可选__|**最小值** : `-128` +
+**最大值** : `127`**样例** : `0`|integer (int32)
+|**userRoles** +
+__可选__|**样例** : `[ "<<_sysuserrole>>" ]`|< <<_sysuserrole,SysUserRole>> > array
+|===
+
+
+[[_sysuserrole]]
+=== SysUserRole
+基础模型，公共的字段属性
+
+
+[options="header", cols=".^3,.^11,.^4"]
+|===
+|名称|说明|类型
+|**createBy** +
+__可选__|创建人 +
+**样例** : `"string"`|string
+|**createTime** +
+__可选__|创建时间 +
+**样例** : `"string"`|string (date-time)
+|**id** +
+__可选__|主键id +
+**样例** : `"string"`|string
+|**lastUpdateBy** +
+__可选__|上一次更新者 +
+**样例** : `"string"`|string
+|**lastUpdateTime** +
+__可选__|上一次更新时间 +
+**样例** : `"string"`|string (date-time)
+|**roleId** +
+__可选__|**样例** : `"string"`|string
+|**userId** +
+__可选__|**样例** : `"string"`|string
+|===
+
+
+[[_view]]
+=== View
+
+[options="header", cols=".^3,.^11,.^4"]
+|===
+|名称|说明|类型
+|**contentType** +
+__可选__|**样例** : `"string"`|string
+|===
+
+
+
+
+

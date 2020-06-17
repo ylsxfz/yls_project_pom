@@ -1,0 +1,50 @@
+###程序的端口
+server:
+  port: 8086
+spring:
+  application:
+    name: yls_hystrix_dashboard
+
+  ##监控信息
+  boot:
+    admin:
+      client:
+        # 服务端的请求地址
+        url: http://localhost:8081
+        username: admin
+        password: 123456
+        instance:
+          service-base-url: http://localhost:8086
+
+  ##注册服务,微服务架构
+  cloud:
+    consul:
+      host: localhost
+      port: 8500
+      discovery:
+        service-name: ${spring.application.name}
+        instance-id: ${spring.application.name}:${server.port}
+
+##应用的健康信息
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+  endpoint:
+    health:
+      show-details: ALWAYS
+
+## turbine 熔断器配置
+turbine:
+  ## 指定了需要收集监控信息的服务名，多个以","进行区分
+  app-config: yls-server-hystrix
+  ## 默认为false，服务以host进行区分，若设置为true，则以host+port进行区分
+  combine-host-port: true
+  ## 指定集群名称，若为default则为默认集群，多个集群则通过此配置区分
+  cluster-name-expression: "'default'"
+  #更改turbine连接的默认uri ,默认为actuator/hystrix_dashboard.stream
+  instanceUrlSuffix: hystrix.stream
+ # aggregator:
+  #  cluster-config:
+  #app-config-list:

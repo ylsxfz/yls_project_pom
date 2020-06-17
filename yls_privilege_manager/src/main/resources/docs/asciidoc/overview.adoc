@@ -1,0 +1,50 @@
+= API测试文档
+
+
+[[_overview]]
+== Overview
+权限管理主系统测试文档
+
+
+=== Version information
+[%hardbreaks]
+__Version__ : v1.0
+
+
+=== Contact information
+[%hardbreaks]
+__Contact__ : 权限系统主页
+__Contact Email__ : test@qq.com
+
+
+=== License information
+[%hardbreaks]
+__License__ : Apache2.0
+__License URL__ : http://www.apache.org/licenses/LICENSE-2.0
+__Terms of service__ : null
+
+
+=== URI scheme
+[%hardbreaks]
+__Host__ : localhost:8443
+__BasePath__ : /
+
+
+=== Tags
+
+* basic-error-controller : Basic Error Controller
+* operation-handler : Operation Handler
+* web-mvc-endpoint-handler-mapping : Web Mvc Endpoint Handler Mapping
+* 字典管理接口 : Sys Dict Controller
+* 文件上传接口 : File Upload
+* 权限管理接口 : Sys Role Controller
+* 用户管理接口 : Sys User Controller
+* 登录接口 : Sys Login Controller
+* 登录日志接口 : Sys Login Log Controller
+* 系统日志接口 : Sys Log Controller
+* 系统配置接口 : Sys Config Controller
+* 菜单管理接口 : Sys Menu Controller
+* 部门接口 : Sys Dept Controller
+
+
+

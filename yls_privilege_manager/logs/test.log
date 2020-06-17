@@ -1,0 +1,111 @@
+16:21:47.898 [main] INFO  com.authority.manager.ManagerApplicationTests - Starting ManagerApplicationTests on yls with PID 11352 (started by yls in E:\workspace\java_idea_workspace\yls_project_pom\yls_privilege_manager)
+16:21:47.905 [main] INFO  com.authority.manager.ManagerApplicationTests - The following profiles are active: datasource,thymeleaf,actuator,fileupload
+16:21:53.699 [main] INFO  org.apache.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8443"]
+16:21:53.727 [main] INFO  org.apache.catalina.core.StandardService - Starting service [Tomcat]
+16:21:53.727 [main] INFO  org.apache.catalina.core.StandardEngine - Starting Servlet Engine: Apache Tomcat/8.5.34
+16:21:53.741 [localhost-startStop-1] INFO  org.apache.catalina.core.AprLifecycleListener - The APR based Apache Tomcat Native library which allows optimal performance in production environments was not found on the java.library.path: [C:\yls_prgram_files\java\jdk1.8.0_65\bin;C:\WINDOWS\Sun\Java\bin;C:\WINDOWS\system32;C:\WINDOWS;C:\Program Files (x86)\Graphviz2.38\bin;C:\yls_prgram_files\Anaconda3;C:\yls_prgram_files\Anaconda3\Library\mingw-w64\bin;C:\yls_prgram_files\Anaconda3\Library\usr\bin;C:\yls_prgram_files\Anaconda3\Library\bin;C:\yls_prgram_files\Anaconda3\Scripts;C:\ProgramData\Oracle\Java\javapath;C:\Program Files (x86)\Intel\Intel(R) Management Engine Components\iCLS\;C:\Program Files\Intel\Intel(R) Management Engine Components\iCLS\;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\WINDOWS\System32\OpenSSH\;C:\Program Files (x86)\Intel\Intel(R) Management Engine Components\DAL;C:\Program Files\Intel\Intel(R) Management Engine Components\DAL;C:\Program Files (x86)\Intel\Intel(R) Management Engine Components\IPT;C:\Program Files\Intel\Intel(R) Management Engine Components\IPT;C:\yls_prgram_files\java\jdk1.8.0_65\bin;C:\yls_prgram_files\java\jdk1.8.0_65\jre\bin;C:\yls_prgram_files\Git\cmd;C:\yls_prgram_files\apache-maven-3.6.1\bin;C:\yls_prgram_files\mysql-5.5.62\bin;E:\workspace\yls_hadoop_test\hadoop-2.5.1\bin;C:\yls_prgram_files\nodejs\;C:\Program Files\PuTTY\;C:\yls_prgram_files\Sencha\Cmd;C:\Users\yls\AppData\Local\Programs\Python\Python35\Scripts\;C:\Users\yls\AppData\Local\Programs\Python\Python35\;C:\Users\yls\AppData\Local\Microsoft\WindowsApps;C:\Users\yls\AppData\Roaming\npm;.]
+16:21:54.133 [localhost-startStop-1] INFO  org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+16:21:55.757 [localhost-startStop-1] INFO  com.alibaba.druid.spring.boot.autoconfigure.DruidDataSourceAutoConfigure - Init DruidDataSource
+16:21:57.029 [localhost-startStop-1] INFO  com.alibaba.druid.pool.DruidDataSource - {dataSource-1} inited
+16:21:58.664 [localhost-startStop-1] INFO  com.authority.manager.aop.AppContainerAspect - contextInitialized方法开始执行....
+16:21:58.666 [localhost-startStop-1] INFO  com.authority.manager.aop.AppContainerAspect - contextInitialized方法执行结束....[javax.servlet.ServletContextEvent[source=org.apache.catalina.core.StandardContext$NoPluggabilityServletContext@23828a66]]
+16:21:58.666 [localhost-startStop-1] INFO  com.authority.manager.aop.AppContainerAspect - contextInitialized方法返回值....null
+16:21:58.673 [localhost-startStop-1] INFO  com.authority.manager.aop.AppContainerAspect - init方法开始执行....
+16:21:58.680 [localhost-startStop-1] INFO  com.authority.manager.filter.AppFilter - =》AppFilter-------------->>>init;
+16:21:58.680 [localhost-startStop-1] INFO  com.authority.manager.aop.AppContainerAspect - init方法执行结束....[ApplicationFilterConfig[name=appFilter, filterClass=com.authority.manager.filter.AppFilter$$EnhancerBySpringCGLIB$$bfb6801c]]
+16:21:58.681 [localhost-startStop-1] INFO  com.authority.manager.aop.AppContainerAspect - init方法返回值....null
+16:21:59.007 [main] INFO  org.hibernate.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [
+	name: default
+	...]
+16:21:59.433 [main] INFO  org.hibernate.Version - HHH000412: Hibernate Core {5.2.17.Final}
+16:21:59.437 [main] INFO  org.hibernate.cfg.Environment - HHH000206: hibernate.properties not found
+16:21:59.545 [main] INFO  org.hibernate.annotations.common.Version - HCANN000001: Hibernate Commons Annotations {5.0.1.Final}
+16:21:59.823 [main] INFO  org.hibernate.dialect.Dialect - HHH000400: Using dialect: org.hibernate.dialect.MySQL5Dialect
+16:22:00.224 [main] WARN  org.hibernate.id.UUIDHexGenerator - HHH000409: Using org.hibernate.id.UUIDHexGenerator which does not generate IETF RFC 4122 compliant UUID values; consider using org.hibernate.id.UUIDGenerator instead
+16:22:06.739 [main] INFO  springfox.documentation.spring.web.PropertySourcedRequestMappingHandlerMapping - Mapped URL path [/v2/api-docs] onto method [public org.springframework.http.ResponseEntity<springfox.documentation.spring.web.json.Json> springfox.documentation.swagger2.web.Swagger2Controller.getDocumentation(java.lang.String,javax.servlet.http.HttpServletRequest)]
+16:22:07.898 [main] INFO  org.apache.cxf.wsdl.service.factory.ReflectionServiceFactoryBean - Creating Service {http://service.webservice.boot.spring.com/}InitWebServiceImplService from class com.authority.manager.webservice.serice.InitWebService
+16:22:08.387 [main] INFO  org.apache.cxf.endpoint.ServerImpl - Setting the server's publish address to be /YLSInitWebService
+16:22:08.731 [main] INFO  org.quartz.impl.StdSchedulerFactory - Using default implementation for ThreadExecutor
+16:22:08.752 [main] INFO  org.quartz.core.SchedulerSignalerImpl - Initialized Scheduler Signaller of type: class org.quartz.core.SchedulerSignalerImpl
+16:22:08.752 [main] INFO  org.quartz.core.QuartzScheduler - Quartz Scheduler v.2.2.3 created.
+16:22:08.753 [main] INFO  org.quartz.simpl.RAMJobStore - RAMJobStore initialized.
+16:22:08.754 [main] INFO  org.quartz.core.QuartzScheduler - Scheduler meta-data: Quartz Scheduler (v2.2.3) 'scheduler' with instanceId 'NON_CLUSTERED'
+  Scheduler class: 'org.quartz.core.QuartzScheduler' - running locally.
+  NOT STARTED.
+  Currently in standby mode.
+  Number of jobs executed: 0
+  Using thread pool 'org.quartz.simpl.SimpleThreadPool' - with 10 threads.
+  Using job-store 'org.quartz.simpl.RAMJobStore' - which does not support persistence. and is not clustered.
+
+16:22:08.755 [main] INFO  org.quartz.impl.StdSchedulerFactory - Quartz scheduler 'scheduler' initialized from an externally provided properties instance.
+16:22:08.755 [main] INFO  org.quartz.impl.StdSchedulerFactory - Quartz scheduler version: 2.2.3
+16:22:08.757 [main] INFO  org.quartz.core.QuartzScheduler - JobFactory set to: org.springframework.scheduling.quartz.AdaptableJobFactory@345d4ecb
+16:22:09.314 [main] WARN  org.thymeleaf.templatemode.TemplateMode - [THYMELEAF][main] Template Mode 'HTML5' is deprecated. Using Template Mode 'HTML' instead.
+16:22:11.119 [main] INFO  springfox.documentation.spring.web.plugins.DocumentationPluginsBootstrapper - Context refreshed
+16:22:11.160 [main] INFO  springfox.documentation.spring.web.plugins.DocumentationPluginsBootstrapper - Found 1 custom documentation plugin(s)
+16:22:11.208 [main] INFO  springfox.documentation.spring.web.scanners.ApiListingReferenceScanner - Scanning for api listing references
+16:22:11.394 [main] WARN  springfox.documentation.spring.web.readers.parameter.ParameterDataTypeReader - Trying to infer dataType org.springframework.web.multipart.MultipartFile[]
+16:22:11.401 [main] INFO  springfox.documentation.spring.web.readers.operation.CachingOperationNameGenerator - Generating unique operation named: handleUsingGET_1
+16:22:11.404 [main] INFO  springfox.documentation.spring.web.readers.operation.CachingOperationNameGenerator - Generating unique operation named: handleUsingGET_2
+16:22:11.406 [main] INFO  springfox.documentation.spring.web.readers.operation.CachingOperationNameGenerator - Generating unique operation named: handleUsingGET_3
+16:22:11.408 [main] INFO  springfox.documentation.spring.web.readers.operation.CachingOperationNameGenerator - Generating unique operation named: handleUsingGET_4
+16:22:11.411 [main] INFO  springfox.documentation.spring.web.readers.operation.CachingOperationNameGenerator - Generating unique operation named: handleUsingGET_5
+16:22:11.413 [main] INFO  springfox.documentation.spring.web.readers.operation.CachingOperationNameGenerator - Generating unique operation named: handleUsingGET_6
+16:22:11.415 [main] INFO  springfox.documentation.spring.web.readers.operation.CachingOperationNameGenerator - Generating unique operation named: handleUsingGET_7
+16:22:11.417 [main] INFO  springfox.documentation.spring.web.readers.operation.CachingOperationNameGenerator - Generating unique operation named: handleUsingGET_8
+16:22:11.421 [main] INFO  springfox.documentation.spring.web.readers.operation.CachingOperationNameGenerator - Generating unique operation named: handleUsingGET_9
+16:22:11.424 [main] INFO  springfox.documentation.spring.web.readers.operation.CachingOperationNameGenerator - Generating unique operation named: handleUsingGET_10
+16:22:11.429 [main] INFO  springfox.documentation.spring.web.readers.operation.CachingOperationNameGenerator - Generating unique operation named: handleUsingGET_11
+16:22:11.435 [main] INFO  springfox.documentation.spring.web.readers.operation.CachingOperationNameGenerator - Generating unique operation named: handleUsingPOST_1
+16:22:11.438 [main] INFO  springfox.documentation.spring.web.readers.operation.CachingOperationNameGenerator - Generating unique operation named: handleUsingGET_12
+16:22:11.474 [main] INFO  springfox.documentation.spring.web.readers.operation.CachingOperationNameGenerator - Generating unique operation named: deleteUsingPOST_1
+16:22:11.478 [main] INFO  springfox.documentation.spring.web.readers.operation.CachingOperationNameGenerator - Generating unique operation named: saveUsingPOST_1
+16:22:11.489 [main] INFO  springfox.documentation.spring.web.readers.operation.CachingOperationNameGenerator - Generating unique operation named: deleteUsingPOST_2
+16:22:11.491 [main] INFO  springfox.documentation.spring.web.readers.operation.CachingOperationNameGenerator - Generating unique operation named: findPageUsingPOST_1
+16:22:11.494 [main] INFO  springfox.documentation.spring.web.readers.operation.CachingOperationNameGenerator - Generating unique operation named: saveUsingPOST_2
+16:22:11.501 [main] INFO  springfox.documentation.spring.web.readers.operation.CachingOperationNameGenerator - Generating unique operation named: deleteUsingPOST_3
+16:22:11.504 [main] INFO  springfox.documentation.spring.web.readers.operation.CachingOperationNameGenerator - Generating unique operation named: findPageUsingPOST_2
+16:22:11.518 [main] INFO  springfox.documentation.spring.web.readers.operation.CachingOperationNameGenerator - Generating unique operation named: deleteUsingPOST_4
+16:22:11.521 [main] INFO  springfox.documentation.spring.web.readers.operation.CachingOperationNameGenerator - Generating unique operation named: findPageUsingPOST_3
+16:22:11.532 [main] INFO  springfox.documentation.spring.web.readers.operation.CachingOperationNameGenerator - Generating unique operation named: deleteUsingPOST_5
+16:22:11.539 [main] INFO  springfox.documentation.spring.web.readers.operation.CachingOperationNameGenerator - Generating unique operation named: saveUsingPOST_3
+16:22:11.545 [main] INFO  springfox.documentation.spring.web.readers.operation.CachingOperationNameGenerator - Generating unique operation named: deleteUsingPOST_6
+16:22:11.548 [main] INFO  springfox.documentation.spring.web.readers.operation.CachingOperationNameGenerator - Generating unique operation named: findPageUsingPOST_4
+16:22:11.553 [main] INFO  springfox.documentation.spring.web.readers.operation.CachingOperationNameGenerator - Generating unique operation named: saveUsingPOST_4
+16:22:11.569 [main] INFO  springfox.documentation.spring.web.readers.operation.CachingOperationNameGenerator - Generating unique operation named: deleteUsingPOST_7
+16:22:11.574 [main] INFO  springfox.documentation.spring.web.readers.operation.CachingOperationNameGenerator - Generating unique operation named: findPageUsingPOST_5
+16:22:11.578 [main] INFO  springfox.documentation.spring.web.readers.operation.CachingOperationNameGenerator - Generating unique operation named: saveUsingPOST_5
+16:22:11.606 [main] INFO  org.quartz.core.QuartzScheduler - Scheduler scheduler_$_NON_CLUSTERED started.
+16:22:11.636 [main] INFO  org.apache.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8443"]
+16:22:11.655 [main] INFO  org.apache.tomcat.util.net.NioSelectorPool - Using a shared selector for servlet write/read
+16:22:11.684 [main] INFO  com.authority.manager.ManagerApplicationTests - Started ManagerApplicationTests in 24.544 seconds (JVM running for 26.402)
+16:22:11.688 [main] INFO  com.authority.manager.aop.AppContainerAspect - run方法开始执行....
+16:22:11.694 [main] INFO  com.authority.manager.aop.AppContainerAspect - run方法执行结束....[org.springframework.boot.DefaultApplicationArguments@7296675e]
+16:22:11.695 [main] INFO  com.authority.manager.aop.AppContainerAspect - run方法返回值....null
+16:22:11.695 [main] INFO  com.authority.manager.aop.AppContainerAspect - run方法开始执行....
+16:22:11.700 [main] INFO  com.authority.manager.aop.AppContainerAspect - run方法执行结束....[[Ljava.lang.String;@6cd31e5f]
+16:22:11.700 [main] INFO  com.authority.manager.aop.AppContainerAspect - run方法返回值....null
+16:22:12.157 [main] INFO  io.swagger.parser.Swagger20Parser - reading from http://localhost:8443/v2/api-docs
+16:22:12.233 [http-nio-8443-exec-1] INFO  com.authority.manager.aop.AppContainerAspect - requestInitialized方法开始执行....
+16:22:12.235 [http-nio-8443-exec-1] INFO  com.authority.manager.aop.AppContainerAspect - requestInitialized方法执行结束....[javax.servlet.ServletRequestEvent[source=org.apache.catalina.core.ApplicationContextFacade@3cb404e5]]
+16:22:12.235 [http-nio-8443-exec-1] INFO  com.authority.manager.aop.AppContainerAspect - requestInitialized方法返回值....null
+16:22:12.246 [http-nio-8443-exec-1] INFO  org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/] - Initializing Spring FrameworkServlet 'dispatcherServlet'
+16:22:12.634 [http-nio-8443-exec-1] INFO  com.authority.manager.aop.AppContainerAspect - requestDestroyed方法开始执行....
+16:22:12.634 [http-nio-8443-exec-1] INFO  com.authority.manager.aop.AppContainerAspect - requestDestroyed方法执行结束....[javax.servlet.ServletRequestEvent[source=org.apache.catalina.core.ApplicationContextFacade@3cb404e5]]
+16:22:12.634 [http-nio-8443-exec-1] INFO  com.authority.manager.aop.AppContainerAspect - requestDestroyed方法返回值....null
+16:22:12.940 [main] INFO  io.github.swagger2markup.markup.builder.internal.markdown.MarkdownBuilder - Markup document written to: src\main\resources\docs\markdown.md
+16:22:13.493 [main] INFO  io.github.swagger2markup.markup.builder.internal.markdown.MarkdownBuilder - Markup document written to: src\main\resources\docs\markdown.md
+16:22:13.527 [main] INFO  io.github.swagger2markup.markup.builder.internal.markdown.MarkdownBuilder - Markup document written to: src\main\resources\docs\markdown.md
+16:22:13.529 [main] INFO  io.github.swagger2markup.markup.builder.internal.markdown.MarkdownBuilder - Markup document written to: src\main\resources\docs\markdown.md
+16:22:13.545 [Thread-5] INFO  org.quartz.core.QuartzScheduler - Scheduler scheduler_$_NON_CLUSTERED paused.
+16:22:13.547 [Thread-5] INFO  org.quartz.core.QuartzScheduler - Scheduler scheduler_$_NON_CLUSTERED shutting down.
+16:22:13.547 [Thread-5] INFO  org.quartz.core.QuartzScheduler - Scheduler scheduler_$_NON_CLUSTERED paused.
+16:22:13.548 [Thread-5] INFO  org.quartz.core.QuartzScheduler - Scheduler scheduler_$_NON_CLUSTERED shutdown complete.
+16:22:13.564 [Thread-5] INFO  com.alibaba.druid.pool.DruidDataSource - {dataSource-1} closed
+16:22:13.825 [registrationTask1] WARN  de.codecentric.boot.admin.client.registration.ApplicationRegistrator - Failed to register application as Application(name=yls_privilege_manager, managementUrl=http://localhost:8443/actuator, healthUrl=http://localhost:8443/actuator/health, serviceUrl=http://localhost:8443/) at spring-boot-admin ([http://localhost:8081/instances]): I/O error on POST request for "http://localhost:8081/instances": Connection refused: connect; nested exception is java.net.ConnectException: Connection refused: connect. Further attempts are logged on DEBUG level
+16:22:14.455 [localhost-startStop-2] INFO  com.authority.manager.aop.AppContainerAspect - destroy方法开始执行....
+16:22:14.455 [localhost-startStop-2] INFO  com.authority.manager.aop.AppContainerAspect - destroy方法执行结束....[]
+16:22:14.455 [localhost-startStop-2] INFO  com.authority.manager.aop.AppContainerAspect - destroy方法返回值....null
+16:22:14.456 [localhost-startStop-2] INFO  com.authority.manager.aop.AppContainerAspect - contextDestroyed方法开始执行....
+16:22:14.456 [localhost-startStop-2] INFO  com.authority.manager.aop.AppContainerAspect - contextDestroyed方法执行结束....[javax.servlet.ServletContextEvent[source=org.apache.catalina.core.StandardContext$NoPluggabilityServletContext@23828a66]]
+16:22:14.457 [localhost-startStop-2] INFO  com.authority.manager.aop.AppContainerAspect - contextDestroyed方法返回值....null

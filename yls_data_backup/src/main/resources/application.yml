@@ -1,0 +1,32 @@
+###程序的端口
+server:
+  port: 8082
+spring:
+  application:
+    name: yls_data_backup
+
+  ##注册服务
+  cloud:
+    consul:
+      host: localhost
+      port: 8500
+      discovery:
+        service-name: ${spring.application.name}
+        instance-id: ${spring.application.name}:${server.port}
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+  endpoint:
+    health:
+      show-details: ALWAYS
+
+data:
+  backup:
+    datasource:
+      host: localhost
+      userName: root
+      password: root
+      database: yls_privilege_management

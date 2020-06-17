@@ -1,0 +1,22 @@
+重试机制：
+1、项目的启动类开启重试机制
+    @EnableRetry
+    public class YlsApplication
+2、对应的方法注解
+    /**
+    * @Author yls
+    * @Description 测试重试机制
+    * @Date 2020/3/30 15:21
+    * @return java.util.List
+    *
+    * value：出现哪些异常的时候触发重试机制
+    * maxAttempts：最大重试次数，默认为3
+    * backoff：表示重试的延迟
+    * multiplier：表示上一次延时时间是这一次的倍数
+    **/
+    @Override
+    @Retryable(value = {BusinessException.class},maxAttempts = 5,backoff = @Backoff(delay = 5000,multiplier = 2))
+    public void testRetry() {
+    	System.out.println("[findAll] 方法重试失败！");
+    	throw new BusinessException();
+    }

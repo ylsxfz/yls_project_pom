@@ -1,0 +1,85 @@
+-- 结果输出是否压缩
+set hive.exec.compress.output=false;
+set mapred.output.compression.codec=org.apache.hadoop.io.compress.GzipCodec;
+-- 如果要用sequence file存储格式：提供3中压缩方式：NONE、RECORD（记录级别）、BLOCK（块级别）
+-- create table a_sequence_demo stored as SEQUENCEFILE;
+set mapred.output.compression.type=BLOCK;
+-- 中间数据压缩
+set hive.exec.compress.intermediate=true;
+set mapred.map.output.compression.codec=org.apache.hadoop.io.compress.GzipCodec;
+set mapred.map.output.compression.codec=org.apache.hadoop.io.compress.SnappyCodec;
+
+
+-- 文件的分割大小，决定map的数量, 前面三个参数确定合并文件块的大小，大于文件块大小128m的，按照128m来分隔，小于128m,大于100m的，按照100m来分隔，把那些小于100m的（包括小文件和分隔大文件剩下的）进行合并
+set mapred.max.split.size=256000000;
+set mapred.min.split.size.per.node=256000000;
+set mapred.min.split.size.per.rack=256000000;
+-- 当链接的两个表是一个比较小的表和一个特别大的表的时候，我们把比较小的table直接放到内存中去，
+set hive.auto.convert.join=true;
+set hive.stats.autogather=false;
+set hive.stats.reliable=false;
+-- 解决数据倾斜
+set hive.map.aggr=true;
+set hive.groupby.skewindata=true;
+set hive.strict.checks.cartesian.product=false;
+-- 动态分区
+set hive.exec.dynamic.partition=true;
+-- 这个属性默认值是strict,就是要求分区字段必须有一个是静态的分区值，随后会讲到，当前设置为nonstrict,那么可以全部动态分区.
+set hive.exec.dynamic.partition.mode=nonstrict;
+-- 可以创建的最大动态分区个数
+set hive.exec.max.dynamic.partitions=300000;
+set hive.exec.max.dynamic.partitions.pernode=10000;
+-- map任务超时时间
+set mapred.task.timeout=6000000;
+-- hive执行的向量化，忽略错误记录
+set hive.vectorized.execution.enabled=false;
+set hive.vectorized.execution.reduce.enabled=false;
+-- 并行执行
+set hive.exec.parallel=true;
+-- 显示数据库名称
+set hive.cli.print.current.db=true;
+-- 显示表头
+set hive.cli.print.header=true;
+-- hive最多创建的文件数
+set hive.exec.max.created.files = 200000;
+
+-- hive.exec.parallel可以控制一个sql中多个可并行执行的job的运行方式.
+set hive.exec.parallel = true;
+-- 参数hive.exec.parallel.thread.number就是控制对于同一个sql来说同时可以运行的job的最大值,该参数默认为8.此时最大可以同时运行8个job
+set hive.exec.parallel.thread.number = 16;
+
+-- 每个Map Task需要的虚拟CPU个数
+set mapreduce.map.cpu.vcores = 4;
+-- 每个Reduce Task需要的虚拟CPU个数
+set mapreduce.reduce.cpu.vcores = 8;
+-- 每个Map Task需要的内存量
+set mapreduce.map.memory.mb = 8192;
+-- 每个Reduce Task需要的内存量
+set mapreduce.reduce.memory.mb = 10500;
+
+--  设置Map任务JVM的堆空间大小，默认-Xmx1024m
+set mapreduce.map.java.opts = - Xmx9192m;
+-- 设置reduce任务JVM的堆空间大小，默认-Xmx1024m
+set mapreduce.reduce.java.opts = - Xmx10000m;
+
+
+-- reduce阶段优化
+-- 默认1009
+set mapred.reduce.tasks=1009;
+-- 默认1G
+set hive.exec.reducers.bytes.per.reducer = 1000000000;
+
+--- 开启对数据源进行采样的功能
+set hive.limit.optimize.enable=true;
+--- 设置最小的采样容量
+set hive.limit.row.max.size=1000;
+--- 设置最大的采样样本数
+set hive.limit.optimize.limit.file=10000;
+
+-- 设置文件的默认格式
+set hive.default.fileformat=orc;
+set hive.default.fileformat=TextFile；
+
+
+--linux界面下查看hive的历史命令
+more ~/.hivehistory
