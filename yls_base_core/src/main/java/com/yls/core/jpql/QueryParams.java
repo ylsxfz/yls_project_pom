@@ -73,7 +73,7 @@ public class QueryParams<T> implements Specification<T> {
     @Override
     public Predicate toPredicate(Root<T> root, CriteriaQuery<?> criteriaQuery, CriteriaBuilder criteriaBuilder) {
         Predicate restrictions = criteriaBuilder.and(toAndPredicate(root,criteriaBuilder));
-        if(!baseOrders.isEmpty()){
+        if(!orBaseFilters.isEmpty()){
             restrictions = criteriaBuilder.and(restrictions,toOrPredicate(root,criteriaBuilder));}
         criteriaQuery.orderBy(toOrders(root,criteriaBuilder));
         return restrictions;
