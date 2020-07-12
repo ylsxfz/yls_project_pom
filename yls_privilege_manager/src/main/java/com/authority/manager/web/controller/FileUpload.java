@@ -1,11 +1,10 @@
 package com.authority.manager.web.controller;
 
-import com.authority.manager.error.BusinessException;
+import com.authority.manager.component.error.BusinessException;
 import com.yls.common.utils.StringFormatUtils;
 import com.yls.core.http.HttpResult;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
-import org.apache.tomcat.util.http.fileupload.FileUploadException;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;

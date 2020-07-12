@@ -1,6 +1,6 @@
 package com.authority.manager.web.model;
 
-import com.authority.manager.security.utils.SecurityUtils;
+import com.authority.manager.component.security.utils.SecurityUtils;
 import com.yls.common.utils.DateUtils;
 import org.hibernate.annotations.GenericGenerator;
 import org.springframework.security.web.authentication.WebAuthenticationDetails;

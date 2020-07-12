@@ -1,7 +1,7 @@
 package com.authority.manager.config;
 
-import com.authority.manager.security.JwtAuthenticationFilter;
-import com.authority.manager.security.JwtAuthenticationProvider;
+import com.authority.manager.component.security.JwtAuthenticationFilter;
+import com.authority.manager.component.security.JwtAuthenticationProvider;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Bean;

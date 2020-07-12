@@ -1,6 +1,6 @@
 package com.authority.manager.web.controller;
 
-import com.authority.manager.security.utils.PasswordUtils;
+import com.authority.manager.component.security.utils.PasswordUtils;
 import com.authority.manager.web.model.SysUser;
 import com.authority.manager.web.service.SysUserService;
 import com.yls.core.http.HttpConstants;

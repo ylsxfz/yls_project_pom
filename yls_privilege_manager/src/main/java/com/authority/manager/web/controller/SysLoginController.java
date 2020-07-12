@@ -1,9 +1,9 @@
 package com.authority.manager.web.controller;
 
 import com.authority.manager.contant.SysContants;
-import com.authority.manager.security.JwtAuthenticatioToken;
-import com.authority.manager.security.utils.PasswordUtils;
-import com.authority.manager.security.utils.SecurityUtils;
+import com.authority.manager.component.security.JwtAuthenticatioToken;
+import com.authority.manager.component.security.utils.PasswordUtils;
+import com.authority.manager.component.security.utils.SecurityUtils;
 import com.authority.manager.vo.LoginBean;
 import com.authority.manager.web.model.SysLoginLog;
 import com.authority.manager.web.model.SysUser;
@@ -13,8 +13,6 @@ import com.google.code.kaptcha.Constants;
 import com.google.code.kaptcha.Producer;
 import com.yls.common.utils.IOUtils;
 import com.yls.core.http.HttpResult;
-import com.yls.core.jpql.BaseFilter;
-import com.yls.core.jpql.QueryParams;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
