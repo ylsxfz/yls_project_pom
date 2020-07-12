@@ -23,7 +23,7 @@ public class MyPageResult {
 	/**
 	 * 页码总数
 	 */
-	private int totalPages;
+	private long totalPages;
 	/**
 	 * 分页数据
 	 */
@@ -46,10 +46,10 @@ public class MyPageResult {
 	public void setTotalSize(long totalSize) {
 		this.totalSize = totalSize;
 	}
-	public int getTotalPages() {
+	public long getTotalPages() {
 		return totalPages;
 	}
-	public void setTotalPages(int totalPages) {
+	public void setTotalPages(long totalPages) {
 		this.totalPages = totalPages;
 	}
 	public List<?> getContent() {

@@ -49,6 +49,15 @@ public class BaseFilter implements Serializable {
         // 为Null
         isNull(" is NULL "),
 
+        //范围性查询
+        between(" >= and <= "),
+
+        //字段串小于等于
+        lessThanOrEqualTo(" str <= "),
+
+        //字段串大于等于
+        greaterThanOrEqualTo(" str >= "),
+
         // 不为Null
         isNotNull(" is not NULL ");
         Operator(String operator) {
@@ -77,6 +86,13 @@ public class BaseFilter implements Serializable {
 
     // 值
     private Object value;
+
+    // 最小值
+    private Object minValue;
+
+    // 最大值
+    private Object maxValue;
+
 
     // 是否忽略大小写
     private Boolean ignoreCase = DEFAULT_IGNORE_CASE;
@@ -119,6 +135,29 @@ public class BaseFilter implements Serializable {
         this.ignoreCase = ignoreCase;
     }
 
+
+    /**
+     * 功能描述:
+     * 〈〉
+     *
+     * @author : yls
+     * @date : 2020/6/24 12:44
+     * @param property 字段
+     * @param operator 比较符
+     * @param minValue 最小值
+     * @param maxValue 最大值
+     */
+    public BaseFilter(String property,Operator operator,Object minValue,Object maxValue){
+        this.property = property;
+        this.operator = operator;
+        this.minValue = minValue;
+        this.maxValue = maxValue;
+    }
+
+    public static BaseFilter between(String property,Object minValue,Object maxValue){
+        return new BaseFilter(property, Operator.between,minValue,maxValue);
+    }
+
     /**
      * @Author yls
      * @Description 等于
@@ -130,6 +169,39 @@ public class BaseFilter implements Serializable {
     public static BaseFilter eq(String property, Object value) {
         return new BaseFilter(property, Operator.eq, value);
     }
+
+
+
+    /**
+     * 功能描述:
+     * 〈字符串的小于等于〉
+     *
+     * @author : yls
+     * @date : 2020/6/24 13:15
+     * @param property 属性
+     * @param value 值
+     * @return : com.jw.mailserver.base.jpql.BaseFilter
+     */
+    public static BaseFilter lessThanOrEqualTo(String property,Object value){
+        return new BaseFilter(property, Operator.lessThanOrEqualTo,value);
+    }
+
+
+    /**
+     * 功能描述:
+     * 〈字符串的大于等于〉
+     *
+     * @author : yls
+     * @date : 2020/6/24 13:16
+     * @param property 属性
+     * @param value 值
+     * @return : com.jw.mailserver.base.jpql.BaseFilter
+     */
+    public static BaseFilter greaterThanOrEqualTo(String property,String value){
+        return new BaseFilter(property, Operator.greaterThanOrEqualTo,value);
+    }
+
+
 
     /**
      * @Author yls
@@ -333,12 +405,29 @@ public class BaseFilter implements Serializable {
         return ignoreCase;
     }
 
+
     /**
      * @Description 设置是否忽略大小写
      * @param ignoreCase 是否忽略大小写
      */
     public void setIgnoreCase(Boolean ignoreCase) {
         this.ignoreCase = ignoreCase;
+    }
+
+    public Object getMaxValue() {
+        return maxValue;
+    }
+
+    public Object getMinValue() {
+        return minValue;
+    }
+
+    public void setMaxValue(Object maxValue) {
+        this.maxValue = maxValue;
+    }
+
+    public void setMinValue(Object minValue) {
+        this.minValue = minValue;
     }
 
     /**

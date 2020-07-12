@@ -1,5 +1,6 @@
 package com.yls.core.jpql;
 
+
 import org.apache.commons.lang.BooleanUtils;
 import org.apache.commons.lang.StringUtils;
 import org.springframework.data.jpa.domain.Specification;
@@ -26,12 +27,52 @@ public class QueryParams<T> implements Specification<T> {
         return PROPERTY_SEPARATOR;
     }
 
+    /**
+     * 功能描述:
+     * 〈过滤空值的字段〉
+     *
+     * @author : yls
+     * @date : 2020/7/2 12:08
+     * @return : java.util.List<com.jw.mailserver.base.jpql.BaseFilter>
+     */
     public List<BaseFilter> getAndBaseFilters() {
-        return andBaseFilters;
+        List<BaseFilter> addResultFiler = new ArrayList<>();
+        andBaseFilters.forEach(baseFilter -> {
+            if (!BaseFilter.Operator.isNull.equals(baseFilter.getOperator())){
+                Object value = baseFilter.getValue();
+                if (value != null && value instanceof String){
+                    String s = value.toString().trim();
+                    if (!"".equals(s)){
+                        addResultFiler.add(baseFilter);
+                    }
+                }
+            }
+        });
+        return addResultFiler;
     }
 
+    /**
+     * 功能描述:
+     * 〈过滤空值得字段〉
+     *
+     * @author : yls
+     * @date : 2020/7/2 12:09
+     * @return : java.util.List<com.jw.mailserver.base.jpql.BaseFilter>
+     */
     public List<BaseFilter> getOrBaseFilters() {
-        return orBaseFilters;
+        List<BaseFilter>  orResultFiler = new ArrayList<>();
+        orBaseFilters.forEach(baseFilter -> {
+            if (!BaseFilter.Operator.isNull.equals(baseFilter.getOperator())){
+                Object value = baseFilter.getValue();
+                if (value != null && value instanceof String){
+                    String s = value.toString().trim();
+                    if (!"".equals(s)){
+                        orResultFiler.add(baseFilter);
+                    }
+                }
+            }
+        });
+        return orResultFiler;
     }
 
     public List<BaseOrder> getBaseOrders() {
@@ -44,14 +85,13 @@ public class QueryParams<T> implements Specification<T> {
     private List<BaseOrder> baseOrders = new ArrayList<>();
 
 
-
     /**
-     * @Author yls
-     * @Description 获取属性
-     * @Date 2020/3/22 13:46
      * @param path
      * @param propertyPath 属性路径
      * @return javax.persistence.criteria.Path<X>
+     * @Author yls
+     * @Description 获取属性
+     * @Date 2020/3/22 13:46
      **/
     private <X> Path<X> getPath(Path<?> path, String propertyPath) {
         if (path == null || StringUtils.isEmpty(propertyPath)) {
@@ -62,32 +102,33 @@ public class QueryParams<T> implements Specification<T> {
     }
 
     /**
-     * @Author yls
-     * @Description 构造最终条件
-     * @Date 2020/3/22 13:44
      * @param root
      * @param criteriaQuery
      * @param criteriaBuilder
      * @return javax.persistence.criteria.Predicate
+     * @Author yls
+     * @Description 构造最终条件
+     * @Date 2020/3/22 13:44
      **/
     @Override
     public Predicate toPredicate(Root<T> root, CriteriaQuery<?> criteriaQuery, CriteriaBuilder criteriaBuilder) {
-        Predicate restrictions = criteriaBuilder.and(toAndPredicate(root,criteriaBuilder));
-        if(!orBaseFilters.isEmpty()){
-            restrictions = criteriaBuilder.and(restrictions,toOrPredicate(root,criteriaBuilder));}
-        criteriaQuery.orderBy(toOrders(root,criteriaBuilder));
+        Predicate restrictions = criteriaBuilder.and(toAndPredicate(root, criteriaBuilder));
+        if (!orBaseFilters.isEmpty()) {
+            restrictions = criteriaBuilder.and(restrictions, toOrPredicate(root, criteriaBuilder));
+        }
+        criteriaQuery.orderBy(toOrders(root, criteriaBuilder));
         return restrictions;
     }
 
     /**
-     * @Author yls
-     * @Description  分析and条件
-     * @Date 2020/3/22 13:48
      * @param root
      * @param criteriaBuilder
      * @return javax.persistence.criteria.Predicate
+     * @Author yls
+     * @Description 分析and条件
+     * @Date 2020/3/22 13:48
      **/
-    private Predicate toAndPredicate(Root<T> root,CriteriaBuilder criteriaBuilder) {
+    private Predicate toAndPredicate(Root<T> root, CriteriaBuilder criteriaBuilder) {
         Predicate restrictions = criteriaBuilder.conjunction();
         if (root == null || CollectionUtils.isEmpty(andBaseFilters)) {
             return restrictions;
@@ -99,6 +140,8 @@ public class QueryParams<T> implements Specification<T> {
             String property = baseFilter.getProperty();
             BaseFilter.Operator operator = baseFilter.getOperator();
             Object value = baseFilter.getValue();
+            Object maxValue = baseFilter.getMaxValue();
+            Object minValue = baseFilter.getMinValue();
             Boolean ignoreCase = baseFilter.getIgnoreCase();
             Path<?> path = getPath(root, property);
             if (path == null) {
@@ -166,20 +209,29 @@ public class QueryParams<T> implements Specification<T> {
                 case isNotNull:
                     restrictions = criteriaBuilder.and(restrictions, path.isNotNull());
                     break;
+                case between:
+                    restrictions = criteriaBuilder.and(restrictions,criteriaBuilder.between((Path<String>) path,(String)minValue,(String) maxValue));
+                    break;
+                case lessThanOrEqualTo:
+                    restrictions = criteriaBuilder.and(restrictions,criteriaBuilder.lessThanOrEqualTo((Path<String>)path,(String)value));
+                    break;
+                case greaterThanOrEqualTo:
+                    restrictions = criteriaBuilder.and(restrictions,criteriaBuilder.greaterThanOrEqualTo((Path<String>)path,(String)value));
+                    break;
             }
         }
         return restrictions;
     }
 
     /**
-     * @Author yls
-     * @Description 分析or条件
-     * @Date 2020/3/22 13:49
      * @param root
      * @param criteriaBuilder
      * @return javax.persistence.criteria.Predicate
+     * @Author yls
+     * @Description 分析or条件
+     * @Date 2020/3/22 13:49
      **/
-    private Predicate toOrPredicate(Root<T> root,CriteriaBuilder criteriaBuilder) {
+    private Predicate toOrPredicate(Root<T> root, CriteriaBuilder criteriaBuilder) {
         Predicate restrictions = criteriaBuilder.disjunction();
         if (root == null || CollectionUtils.isEmpty(orBaseFilters)) {
             return restrictions;
@@ -191,6 +243,8 @@ public class QueryParams<T> implements Specification<T> {
             String property = baseFilter.getProperty();
             BaseFilter.Operator operator = baseFilter.getOperator();
             Object value = baseFilter.getValue();
+            Object maxValue = baseFilter.getMaxValue();
+            Object minValue = baseFilter.getMinValue();
             Boolean ignoreCase = baseFilter.getIgnoreCase();
             Path<?> path = getPath(root, property);
             if (path == null) {
@@ -257,18 +311,27 @@ public class QueryParams<T> implements Specification<T> {
                 case isNotNull:
                     restrictions = criteriaBuilder.or(restrictions, path.isNotNull());
                     break;
+                case between:
+                    restrictions = criteriaBuilder.or(restrictions,criteriaBuilder.between((Path<String>) path,(String) minValue,(String) maxValue));
+                    break;
+                case lessThanOrEqualTo:
+                    restrictions = criteriaBuilder.or(restrictions,criteriaBuilder.lessThanOrEqualTo((Path<String>)path,(String)value));
+                    break;
+                case greaterThanOrEqualTo:
+                    restrictions = criteriaBuilder.or(restrictions,criteriaBuilder.greaterThanOrEqualTo((Path<String>)path,(String)value));
+                    break;
             }
         }
         return restrictions;
     }
 
     /**
-     * @Author yls
-     * @Description 分析排序条件
-     * @Date 2020/3/22 13:49
      * @param root
      * @param criteriaBuilder
      * @return java.util.List<javax.persistence.criteria.Order>
+     * @Author yls
+     * @Description 分析排序条件
+     * @Date 2020/3/22 13:49
      **/
     private List<Order> toOrders(Root<T> root, CriteriaBuilder criteriaBuilder) {
         List<Order> orderList = new ArrayList<Order>();
@@ -299,90 +362,108 @@ public class QueryParams<T> implements Specification<T> {
 
     /**
      * 添加一个and条件
+     *
      * @param baseFilter 该条件
      * @return 链式调用
      */
-    public  QueryParams and(BaseFilter baseFilter){
+    public QueryParams and(BaseFilter baseFilter) {
         this.andBaseFilters.add(baseFilter);
         return this;
     }
+
     /**
      * 添加多个and条件
+     *
      * @param baseFilter 该条件
      * @return 链式调用
      */
-    public  QueryParams and(BaseFilter... baseFilter){
+    public QueryParams and(BaseFilter... baseFilter) {
         this.andBaseFilters.addAll(Arrays.asList(baseFilter));
         return this;
     }
+
     /**
      * 添加一个or条件
+     *
      * @param baseFilter 该条件
      * @return 链式调用
      */
-    public  QueryParams or(BaseFilter baseFilter){
+    public QueryParams or(BaseFilter baseFilter) {
         this.orBaseFilters.add(baseFilter);
         return this;
     }
+
     /**
      * 添加多个or条件
+     *
      * @param baseFilter 该条件
      * @return 链式调用
      */
-    public  QueryParams or(BaseFilter... baseFilter){
+    public QueryParams or(BaseFilter... baseFilter) {
         this.orBaseFilters.addAll(Arrays.asList(baseFilter));
         return this;
     }
+
     /**
      * 升序字段
+     *
      * @param property 该字段对应变量名
      * @return 链式调用
      */
-    public  QueryParams orderASC(String property){
+    public QueryParams orderASC(String property) {
         this.baseOrders.add(BaseOrder.asc(property));
         return this;
     }
+
     /**
      * 降序字段
+     *
      * @param property 该字段对应变量名
      * @return 链式调用
      */
-    public  QueryParams orderDESC(String property){
+    public QueryParams orderDESC(String property) {
         this.baseOrders.add(BaseOrder.desc(property));
         return this;
     }
 
     /**
      * 清除所有条件
+     *
      * @return 该实例
      */
-    public QueryParams clearAll(){
+    public QueryParams clearAll() {
         if (!this.andBaseFilters.isEmpty()) this.andBaseFilters.clear();
         if (!this.orBaseFilters.isEmpty()) this.orBaseFilters.clear();
         if (!this.baseOrders.isEmpty()) this.baseOrders.clear();
         return this;
     }
+
     /**
      * 清除and条件
+     *
      * @return 该实例
      */
-    public QueryParams clearAnd(){
+    public QueryParams clearAnd() {
         if (!this.andBaseFilters.isEmpty()) this.andBaseFilters.clear();
         return this;
     }
+
     /**
      * 清除or条件
+     *
      * @return 该实例
      */
-    public QueryParams clearOr(){
+    public QueryParams clearOr() {
         if (!this.orBaseFilters.isEmpty()) this.andBaseFilters.clear();
         return this;
     }
+
     /**
      * 清除order条件
+     *
      * @return 该实例
      */
-    public QueryParams clearOrder(){
+    public QueryParams clearOrder() {
         if (!this.baseOrders.isEmpty()) this.baseOrders.clear();
         return this;
     }
