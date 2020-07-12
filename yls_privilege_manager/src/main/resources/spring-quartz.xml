@@ -3,7 +3,7 @@
        xsi:schemaLocation="http://www.springframework.org/schema/beans
     http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
 
-    <bean id="taskJob" class="com.authority.manager.quartz.AppTask"/>
+    <bean id="taskJob" class="com.authority.manager.component.quartz.AppTask"/>
 
     <bean id="jobDetail"
           class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">

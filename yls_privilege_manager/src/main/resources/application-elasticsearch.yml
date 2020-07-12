@@ -1,0 +1,5 @@
+data:
+  elasticsearchmain:
+    indexprefix: maildata_
+    type: info
+    nodes: 192.168.133.104:9200
