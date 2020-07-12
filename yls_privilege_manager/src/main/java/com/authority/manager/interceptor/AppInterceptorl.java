@@ -11,7 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 /**
  * @Author yls
  * @Date 2020/4/12 12:29
- * @Description 拦截器
+ * @Description 系统拦截器
  * @Version 1.0
  **/
 public class AppInterceptorl implements HandlerInterceptor {

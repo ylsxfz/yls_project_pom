@@ -27,6 +27,14 @@ import java.util.List;
 @EnableSwagger2
 public class SwaggerConfig {
 
+    /**
+     * 功能描述:
+     * 〈swagger2 接口文档管理器〉
+     * @author : yls
+     * @date : 2020/07/12 10:48
+     * @param
+     * @return : springfox.documentation.spring.web.plugins.Docket
+     */
     @Bean
     public Docket createRestApi(){
         // 添加请求参数，我们这里把token作为请求头部参数传入后端

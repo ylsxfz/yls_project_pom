@@ -10,7 +10,7 @@ import org.springframework.stereotype.Component;
 /**
  * @Author yls
  * @Date 2020/3/30 11:50
- * @Description 定时器：注解的方式自动注入
+ * @Description 系统定时器：注解的方式自动注入
  * @Version 1.0
  **/
 @Component

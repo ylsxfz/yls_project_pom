@@ -7,8 +7,17 @@ package com.authority.manager.vo;
  **/
 public class LoginBean {
 
+	/**
+	 * 账号
+	 */
 	private String account;
+	/**
+	 * 密码
+	 */
 	private String password;
+	/**
+	 * 验证码
+	 */
 	private String captcha;
 	
 	public String getAccount() {
@@ -29,5 +38,13 @@ public class LoginBean {
 	public void setCaptcha(String captcha) {
 		this.captcha = captcha;
 	}
-	
+
+	@Override
+	public String toString() {
+		return "LoginBean{" +
+				"account='" + account + '\'' +
+				", password='" + password + '\'' +
+				", captcha='" + captcha + '\'' +
+				'}';
+	}
 }

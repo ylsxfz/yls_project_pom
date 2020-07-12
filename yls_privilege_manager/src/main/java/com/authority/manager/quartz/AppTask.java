@@ -6,7 +6,7 @@ import org.slf4j.LoggerFactory;
 /**
  * @Author yls
  * @Date 2020/3/30 11:43
- * @Description
+ * @Description 系统定时器
  * @Version 1.0
  **/
 public class AppTask {

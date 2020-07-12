@@ -17,6 +17,14 @@ import org.springframework.context.annotation.Configuration;
  **/
 @Configuration
 public class DruidConfiguration {
+    /**
+     * 功能描述:
+     * 〈设置数据库监控页面的安全信息控制，主要是用户名、密码、地址、是否可以重置数据〉
+     * @author : yls
+     * @date : 2020/7/12 10:14
+     * @param
+     * @return : org.springframework.boot.web.servlet.ServletRegistrationBean
+     */
     @Bean
     public ServletRegistrationBean druidStatViewServle(){
         //ServletRegistrationBean 提供类进行注册
@@ -36,6 +44,16 @@ public class DruidConfiguration {
         return servletRegistrationBean;
     }
 
+
+
+    /**
+     * 功能描述:
+     * 〈设置过滤的具体规则，忽略部分格式的信息〉
+     * @author : yls
+     * @date : 2020/7/12 10:13
+     * @param
+     * @return : org.springframework.boot.web.servlet.FilterRegistrationBean
+     */
     @Bean
     public FilterRegistrationBean druidStatFilter(){
         FilterRegistrationBean filterRegistrationBean

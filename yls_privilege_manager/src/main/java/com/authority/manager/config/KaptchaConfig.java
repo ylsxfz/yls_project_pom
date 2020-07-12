@@ -16,8 +16,10 @@ import java.util.Properties;
 @Configuration
 public class KaptchaConfig {
     /**
+     * 功能描述:
+     * 〈生成验证码的一些简单配置〉
      * @Author yls
-     * @Description 生成验证码的一些简单配置
+     * @Description
      * @Date 2020/4/6 9:02
      * @return com.google.code.kaptcha.impl.DefaultKaptcha
      **/

@@ -28,16 +28,37 @@ import org.springframework.security.web.authentication.logout.HttpStatusReturnin
 @EnableGlobalMethodSecurity(prePostEnabled = true)	// 开启权限注解，如：@PreAuthorize注解
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
+    /**
+     * 用户业务服务接口
+     */
     @Qualifier("userDetailsServiceImpl")
     @Autowired
     private UserDetailsService userDetailsService;
-    
+
+
+    /**
+     * 功能描述:
+     * 〈引入自定义身份验证组件〉
+     * @author : yls
+     * @date : 2020/07/12 10:51
+     * @param auth
+     * @return : void
+     */
     @Override
     public void configure(AuthenticationManagerBuilder auth) throws Exception {
         // 使用自定义身份验证组件
         auth.authenticationProvider(new JwtAuthenticationProvider(userDetailsService));
     }
 
+
+    /**
+     * 功能描述:
+     * 〈springboot的安全管理机制，结合jwt对请求的验证〉
+     * @author : yls
+     * @date : 2020/07/12 10:49
+     * @param http http安全管理机制
+     * @return : void
+     */
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         // 禁用 csrf, 由于使用的是JWT，我们这里不需要csrf

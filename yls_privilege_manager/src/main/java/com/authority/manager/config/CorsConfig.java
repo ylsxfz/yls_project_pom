@@ -14,11 +14,14 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
  **/
 @Configuration
 public class CorsConfig implements WebMvcConfigurer {
+
+
     /**
+     * 功能描述:
+     * 〈跨域的配置〉
      * @Author yls
-     * @Description  跨域的配置
      * @Date 2020/4/12 12:33
-     * @param registry
+     * @param registry cor注册管理
      * @return void
      **/
     @Override
@@ -32,10 +35,11 @@ public class CorsConfig implements WebMvcConfigurer {
     }
 
     /**
+     * 功能描述:
+     * 〈拦截器配置〉
      * @Author yls
-     * @Description 拦截器配置
      * @Date 2020/4/12 12:33
-     * @param registry
+     * @param registry 拦截器注册管理
      * @return void
      **/
     @Override
