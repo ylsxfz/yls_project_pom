@@ -32,24 +32,26 @@ public class WebBusinessLogAspect {
     private static final Logger LOGGER = LoggerFactory.getLogger(WebBusinessLogAspect.class);
 
     /**
-     * @Author yls
-     * @Description 切入点
-     * @Date 2020/3/30 17:15
+     * 功能描述:
+     * 〈设置切面的切入点，主要是设置哪些类和方法需要使用切面编程〉
+     * @author : yls
+     * @date : 2020/07/12 10:29
      * @param
-     * @return void
-     **/
+     * @return : void
+     */
     @Pointcut("execution(public * com.authority.manager.web.service.*.*(..))")
     public void serviceAspect(){
 
     }
 
     /**
-     * @Author yls
-     * @Description 前置通知
-     * @Date 2020/3/30 17:15
-     * @param joinPoint
-     * @return void
-     **/
+     * 功能描述:
+     * 〈前置通知：在方法执行之前执行该通知，通知用户该方法开始执行〉
+     * @author : yls
+     * @date : 2020/07/12 10:30
+     * @param joinPoint 切入点
+     * @return : void
+     */
     @Before(value = "serviceAspect()")
     public void before(JoinPoint joinPoint){
         String name = joinPoint.getSignature().getName();
@@ -57,12 +59,13 @@ public class WebBusinessLogAspect {
     }
 
     /**
-     * @Author yls
-     * @Description 后置通知
-     * @Date 2020/3/30 17:15
-     * @param joinPoint
-     * @return void
-     **/
+     * 功能描述:
+     * 〈后置通知：在方法执行之后执行该通知，通知用户该方法已经执行完成〉
+     * @author : yls
+     * @date : 2020/07/12 10:31
+     * @param joinPoint 切入点
+     * @return : void
+     */
     @After(value = "serviceAspect()")
     public void after(JoinPoint joinPoint){
         String name = joinPoint.getSignature().getName();
@@ -73,9 +76,8 @@ public class WebBusinessLogAspect {
 
     /**
      * @Author yls
-     * @Description 返回通知
      * @Date 2020/3/30 17:16
-     * @param joinPoint
+     * @param joinPoint 切入点
      * @param result 返回的结果
      * @return void
      **/
@@ -86,22 +88,24 @@ public class WebBusinessLogAspect {
     }
 
     /**
+     * 功能描述:
+     * 〈异常通知：在方法执行出现异常时执行该通知，通知用户该方法出现了某种异常〉
      * @Author yls
-     * @Description 异常通知
      * @Date 2020/3/30 17:17
      * @param joinPoint
      * @param e 异常
      * @return void
      **/
     @AfterThrowing(value = "serviceAspect()",throwing = "e")
-    public void afterThrowing(JoinPoint joinPoint,Exception e){
+    public void afterThrowing(JoinPoint joinPoint, Exception e){
         String name = joinPoint.getSignature().getName();
         LOGGER.info(name+"方法抛出异常，异常是："+e);
     }
 
     /**
+     * 功能描述:
+     * 〈环绕通知：可以监控方法从开始到结束的执行情况〉
      * @Author yls
-     * @Description 环绕通知
      * @Date 2020/3/30 17:17
      * @param pjq
      * @return java.lang.Object
