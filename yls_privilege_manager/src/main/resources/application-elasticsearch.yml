@@ -1,5 +1,22 @@
 data:
-  elasticsearchmain:
-    indexprefix: maildata_
-    type: info
-    nodes: 192.168.133.104:9200
+  elasticsearch:
+    parent:
+      indexprefix: parentdata_
+      type: parent
+      nodes:
+        - 192.168.133.101:9200
+        - 192.168.133.102:9200
+        - 192.168.133.103:9200
+        - 192.168.133.104:9200
+        - 192.168.133.105:9200
+        - 192.168.133.106:9200
+
+    main:
+      indexprefix: maindata_
+      type: info
+      nodes: 192.168.133.104:9200
+
+    second:
+      indexprefix: seconddata_
+      type: doc
+#      nodes: 192.168.133.105:9200
