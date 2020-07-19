@@ -9,7 +9,6 @@ import org.elasticsearch.client.RestHighLevelClient;
 import org.elasticsearch.search.fetch.subphase.FetchSourceContext;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 /**
@@ -24,9 +23,6 @@ public class EsDocExistsRequest {
 
     private final  static Logger LOGGER = LoggerFactory.getLogger(EsDocExistsRequest.class);
 
-    @Autowired
-    private EsRequestBO esRequestBO;
-
     /**
      * 功能描述:
      * 〈判断文档是否存在〉
@@ -36,11 +32,11 @@ public class EsDocExistsRequest {
      * @param docId 文档id
      * @return : boolean
      */
-    public  boolean existsDoc(String docId) {
+    public  boolean existsDoc(String docId,EsRequestBO esRequestBO) {
         RestHighLevelClient restHighClient = EsHighLevelConfig.restHighLevelClient;
         boolean exists = false;
         try {
-            exists =restHighClient.exists(createGetRequest(docId), RequestOptions.DEFAULT);
+            exists =restHighClient.exists(createGetRequest(docId,esRequestBO), RequestOptions.DEFAULT);
         }catch (Exception e){
             e.printStackTrace();
             LOGGER.error(esRequestBO.toString()+"==》" + HttpConstants.SEARCH_ERROR ,e.getMessage());
@@ -60,7 +56,7 @@ public class EsDocExistsRequest {
      * @param docId 文档id
      * @return : org.elasticsearch.action.get.GetRequest
      */
-    public  GetRequest createGetRequest(String docId){
+    public  GetRequest createGetRequest(String docId,EsRequestBO esRequestBO){
         GetRequest getRequest = new GetRequest(
                 esRequestBO.getIndex(),
                 esRequestBO.getType(),

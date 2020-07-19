@@ -18,7 +18,6 @@ import org.elasticsearch.search.fetch.subphase.highlight.HighlightBuilder;
 import org.elasticsearch.search.sort.SortOrder;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import java.io.IOException;
@@ -37,9 +36,6 @@ public class EsSearchRequest {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(EsPageRequest.class);
 
-    @Autowired
-    private EsRequestBO esRequestBO;
-
     /**
      * 功能描述:
      * 〈全文检索〉
@@ -50,11 +46,11 @@ public class EsSearchRequest {
      * @param queryBuilder 查询的类型
      * @return : void
      */
-    public EsResultBO fullTextSearch(EsPageRequest esPageRequest, QueryBuilder queryBuilder) throws IOException {
+    public EsResultBO fullTextSearch(EsPageRequest esPageRequest, QueryBuilder queryBuilder,EsRequestBO esRequestBO) throws IOException {
 
         RestHighLevelClient restHighClient = EsHighLevelConfig.restHighLevelClient;
         //获取request
-        SearchRequest searchRequest = createSearchRequest();
+        SearchRequest searchRequest = createSearchRequest(esRequestBO);
         SearchSourceBuilder sourceBuilder = getSourceBuilder(esPageRequest,queryBuilder);
 
         //绑定查询builder
@@ -77,11 +73,11 @@ public class EsSearchRequest {
      * @param queryBuilder
      * @return : com.jw.mailserver.base.es.model.EsResultBO
      */
-    public  EsResultBO previousOrNextMail(EsPageRequest esPageRequest, QueryBuilder queryBuilder) throws IOException {
+    public  EsResultBO previousOrNextMail(EsPageRequest esPageRequest, QueryBuilder queryBuilder,EsRequestBO esRequestBO) throws IOException {
 
         RestHighLevelClient restHighClient = EsHighLevelConfig.restHighLevelClient;
         //获取request
-        SearchRequest searchRequest = createSearchRequest();
+        SearchRequest searchRequest = createSearchRequest(esRequestBO);
         SearchSourceBuilder sourceBuilder = getSourceBuilder(esPageRequest,queryBuilder);
         sourceBuilder.from(esPageRequest.getOrderNumber());
         sourceBuilder.size(1);
@@ -140,7 +136,7 @@ public class EsSearchRequest {
      * @date : 2020/6/4 16:49
      * @return : org.elasticsearch.action.search.SearchRequest
      */
-    public  SearchRequest createSearchRequest(){
+    public  SearchRequest createSearchRequest(EsRequestBO esRequestBO){
         SearchRequest searchRequest = new SearchRequest(esRequestBO.getUserIndexArray());
         searchRequest.types(esRequestBO.getType());
         return searchRequest;

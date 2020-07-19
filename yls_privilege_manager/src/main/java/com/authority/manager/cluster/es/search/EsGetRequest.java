@@ -10,7 +10,6 @@ import org.elasticsearch.client.RequestOptions;
 import org.elasticsearch.client.RestHighLevelClient;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import java.util.Map;
@@ -26,10 +25,6 @@ public class EsGetRequest {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(EsGetRequest.class);
 
-
-    @Autowired
-    private EsRequestBO esRequestBO;
-
     /**
      * 功能描述:
      * 〈通过文档id获取文档〉
@@ -39,8 +34,8 @@ public class EsGetRequest {
      * @param docId 文档id
      * @return : void
      */
-    public   void  getDocById(String docId){
-        GetRequest getRequest = createGetRequest(docId);
+    public   void  getDocById(String docId,EsRequestBO esRequestBO){
+        GetRequest getRequest = createGetRequest(docId,esRequestBO);
         //获取客户端
         RestHighLevelClient restHighClient = EsHighLevelConfig.restHighLevelClient;
         try {
@@ -87,7 +82,7 @@ public class EsGetRequest {
      * @param docId 索引，type，文档id
      * @return : org.elasticsearch.action.get.GetRequest
      */
-    public  GetRequest createGetRequest(String docId){
+    public  GetRequest createGetRequest(String docId,EsRequestBO esRequestBO){
         GetRequest getRequest = new GetRequest(
                 esRequestBO.getIndex(),
                 esRequestBO.getType(),

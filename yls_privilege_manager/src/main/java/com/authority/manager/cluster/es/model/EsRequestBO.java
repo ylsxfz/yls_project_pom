@@ -26,12 +26,11 @@ import java.util.Objects;
 @ApiModel(description = "ES的索引、类型信息")
 public class EsRequestBO implements Serializable {
 
+    final static String ES = "data.elasticsearch.parent";
 
     //获取索引相关信息的请求
     @Autowired
     private EsGetIndexRequest esGetIndexRequest;
-
-    final static String ES = "data.elasticsearchmain";
 
     /**
      * 索引
@@ -108,23 +107,23 @@ public class EsRequestBO implements Serializable {
     }
 
     //添加用户的索引
-    public void addUserIndex(List<String> caseIdList) throws Exception {
+    public void addUserIndex(List<String> indexList) throws Exception {
         //判断索引是否存在
-        String[] indexArray = caseIdList.stream().map(caseId -> {
+        String[] indexArray = indexList.stream().map(caseId -> {
             return getIndexprefix()+caseId;
         }).filter(Objects::nonNull).toArray(String[]::new);
 
-        List<String> indexList = new ArrayList<>();
+        List<String> indexs = new ArrayList<>();
         for (String index:indexArray) {
             if (!StringFormatUtils.isNull(index)){
                 boolean exists = esGetIndexRequest.exists(index);
                 if (exists){
-                    indexList.add(index);
+                    indexs.add(index);
                 }
             }
         }
 
-        String[] indexArrays = indexList.stream().filter(Objects::nonNull).toArray(String[]::new);
+        String[] indexArrays = indexs.stream().filter(Objects::nonNull).toArray(String[]::new);
         this.setUserIndexArray(indexArrays);
     }
 

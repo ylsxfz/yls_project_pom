@@ -10,7 +10,6 @@ import org.elasticsearch.client.RequestOptions;
 import org.elasticsearch.client.RestHighLevelClient;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 
@@ -25,8 +24,6 @@ public class EsUpdateRequest {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(EsUpdateRequest.class);
 
-    @Autowired
-    private EsRequestBO esRequestBO;
 
     /**
      * 功能描述:
@@ -37,11 +34,11 @@ public class EsUpdateRequest {
      * @param esUpdRequestDo es请求对象
      * @return : void
      */
-    public  Boolean updateDoc(EsUpdRequestDo esUpdRequestDo) {
+    public  Boolean updateDoc(EsRequestBO esRequestBO,EsUpdRequestDo esUpdRequestDo) {
         //1、获取客户端
         RestHighLevelClient restHighClient = EsHighLevelConfig.restHighLevelClient;
         //2、创建更新请求对象
-        UpdateRequest updateRequest = getUpdateRequest(esUpdRequestDo);
+        UpdateRequest updateRequest = getUpdateRequest(esRequestBO,esUpdRequestDo);
         //3、关联更新文档
         updateRequest.doc(esUpdRequestDo.getFieldMap());
         try{
@@ -74,7 +71,7 @@ public class EsUpdateRequest {
      * @param esUpdRequestDo es请求对象
      * @return : UpdateRequest
      */
-    private  UpdateRequest getUpdateRequest(EsUpdRequestDo esUpdRequestDo){
+    private  UpdateRequest getUpdateRequest(EsRequestBO esRequestBO,EsUpdRequestDo esUpdRequestDo){
         //更新的请求
         UpdateRequest updateRequest = new UpdateRequest(
                 esRequestBO.getIndex(),

@@ -1,13 +1,11 @@
 package com.authority.manager.cluster.es.search;
 
 import com.authority.manager.cluster.es.config.EsHighLevelConfig;
-import com.authority.manager.cluster.es.model.EsRequestBO;
 import org.elasticsearch.action.admin.indices.get.GetIndexRequest;
 import org.elasticsearch.client.RequestOptions;
 import org.elasticsearch.client.RestHighLevelClient;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 /**
@@ -20,10 +18,6 @@ import org.springframework.stereotype.Component;
 public class EsGetIndexRequest {
 
     private final static Logger LOGGER = LoggerFactory.getLogger(EsGetIndexRequest.class);
-
-
-    @Autowired
-    private EsRequestBO esRequestBO;
 
 
     /**
