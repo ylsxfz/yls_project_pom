@@ -3,10 +3,8 @@ package com.authority.manager.web.controller;
 import com.authority.manager.component.error.BusinessException;
 import com.yls.common.utils.StringFormatUtils;
 import com.yls.core.http.HttpResult;
-import com.yls.core.repository.entitymanager.TestEntManage;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -28,9 +26,6 @@ import java.util.*;
 @Api(tags = "文件上传接口")
 @RequestMapping("/test")
 public class FileUpload {
-
-    @Autowired
-     private TestEntManage testEntManage;
 
     SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd/");
 
@@ -78,12 +73,6 @@ public class FileUpload {
             return HttpResult.error("上传文件失败");
         }
         return HttpResult.ok(result);
-    }
-
-
-    @PostMapping("/testEntManage")
-    public void test(){
-        testEntManage.testEnetriyManager();
     }
 
 }
