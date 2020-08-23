@@ -2,6 +2,7 @@ package com.authority.manager.component.quartz;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Configurable;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.scheduling.annotation.EnableScheduling;
 import org.springframework.scheduling.annotation.Scheduled;
@@ -14,7 +15,7 @@ import org.springframework.stereotype.Component;
  * @Version 1.0
  **/
 @Component
-@Configuration
+@Configurable
 @EnableScheduling
 public class AppTaskQuartz {
     //日志

@@ -80,6 +80,9 @@ set hive.limit.optimize.limit.file=10000;
 set hive.default.fileformat=orc;
 set hive.default.fileformat=TextFile；
 
+--设置hive的任务名称
+set mapred.job.name='';
+
 
 --linux界面下查看hive的历史命令
 more ~/.hivehistory

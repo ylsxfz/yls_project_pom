@@ -26,6 +26,7 @@ import java.util.*;
 @Api(tags = "文件上传接口")
 @RequestMapping("/test")
 public class FileUpload {
+
     SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd/");
 
     @ApiOperation(value = "单个文件上传",notes = "单个文件上传")
@@ -73,6 +74,5 @@ public class FileUpload {
         }
         return HttpResult.ok(result);
     }
-
 
 }

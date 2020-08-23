@@ -95,3 +95,15 @@ public class BaseSQLServiceImpl<T> extends NativeSQL implements BaseSQLService<T
         return query;
     }
 }
+
+//        String sql = "select '' as id,count(*) as total from sys_user";
+//        Query query = entityManager.createNativeQuery(sql);
+//        query.unwrap(NativeQueryImpl.class).setResultTransformer(Transformers.ALIAS_TO_ENTITY_MAP);
+//        List<Map<String,Object>> list = query.getResultList();
+//        System.out.println(list);
+
+//        String sql = "select '' as id,count(*) as total from sys_user";
+//        Query query = entityManager.createNativeQuery(sql);
+//        query.unwrap(NativeQuery.class).addEntity(Test.class);
+//        List<SysDict> list001 = query.getResultList();
+//        System.out.println(list001);
