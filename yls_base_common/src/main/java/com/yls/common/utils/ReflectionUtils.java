@@ -8,7 +8,7 @@ import java.lang.reflect.Method;
  * @Description 反射相关辅助方法
  * @Date 2020/4/5 9:31
  **/
-public class ReflectionUtils {
+public class  ReflectionUtils {
 
 	
 	/**
