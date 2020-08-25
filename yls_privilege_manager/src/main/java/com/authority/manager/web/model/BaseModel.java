@@ -9,6 +9,7 @@ import javax.persistence.Column;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.MappedSuperclass;
+import java.io.Serializable;
 import java.util.Date;
 
 /**
@@ -18,12 +19,12 @@ import java.util.Date;
  **/
 @ApiModel(description = "基础模型，公共的字段属性")
 @MappedSuperclass
-public class BaseModel {
+public class BaseModel implements Serializable {
 
 	@ApiModelProperty(value = "主键id")
 	@Id
 	@GenericGenerator(name = "uId", strategy = "uuid.hex")
-	@GeneratedValue(generator = "uId")
+	//@GeneratedValue(generator = "uId")
 	@Column(name = "id", length = 32)
 	private String id;
 
