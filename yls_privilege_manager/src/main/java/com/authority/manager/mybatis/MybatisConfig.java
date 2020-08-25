@@ -16,7 +16,7 @@ import javax.sql.DataSource;
  * @Version 1.0
  */
 @Configuration
-@MapperScan("com.authority.manager.web_business.dao")
+@MapperScan("com.authority.manager.functions.dao")
 public class MybatisConfig {
 
 //    @Autowired

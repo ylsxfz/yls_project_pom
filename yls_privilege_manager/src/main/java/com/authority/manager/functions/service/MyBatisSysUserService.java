@@ -1,4 +1,4 @@
-package com.authority.manager.web_business.service;
+package com.authority.manager.functions.service;
 
 import com.authority.manager.web.model.SysUser;
 

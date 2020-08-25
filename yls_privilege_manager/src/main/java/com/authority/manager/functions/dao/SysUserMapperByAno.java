@@ -1,4 +1,4 @@
-package com.authority.manager.web_business.dao;
+package com.authority.manager.functions.dao;
 
 import com.authority.manager.web.model.SysUser;
 import org.apache.ibatis.annotations.Mapper;

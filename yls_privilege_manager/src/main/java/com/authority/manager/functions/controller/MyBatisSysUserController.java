@@ -1,8 +1,7 @@
-package com.authority.manager.web_business.controller;
+package com.authority.manager.functions.controller;
 
-import com.authority.manager.web_business.service.MyBatisSysUserService;
+import com.authority.manager.functions.service.MyBatisSysUserService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
