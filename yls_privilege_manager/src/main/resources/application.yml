@@ -61,8 +61,3 @@ mybatis:
     # 是否打印 sql 语句 调试的时候可以开启
     log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
 
-## 配置显示git的提交信息
-management:
-  info:
-    git:
-      mode: full
