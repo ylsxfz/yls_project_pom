@@ -4,26 +4,27 @@ spring:
   application:
     name: yls_server_zuul
 
-  ##×¢²á·şÎñ£¬Î¢·şÎñ¼Ü¹¹
+  ##æ³¨å†ŒæœåŠ¡ï¼Œå¾®æœåŠ¡æ¶æ„
   cloud:
     consul:
-      host: localhost
-      port: 8500
       discovery:
         service-name: ${spring.application.name}
         instance-id: ${spring.application.name}:${server.port}
-##ÅäÖÃ·şÎñÍø¹Ø
+      host: localhost
+      port: 8500
+
+##é…ç½®æœåŠ¡ç½‘å…³
 zuul:
-  ##ÅäÖÃÂ·ÓÉÀ¹½Ø
+  ##é…ç½®è·¯ç”±æ‹¦æˆª
   routes:
     ribbon:
       path: /ribbon/**
-      ##×ª·¢µ½Ïû·ÑÕß
+      ##è½¬å‘åˆ°æ¶ˆè´¹è€…
       serviceId: yls-server-consumer
 
     fegin:
       path: /feign/**
-      ##×ª·¢µ½Ïû·ÑÕß
+      ##è½¬å‘åˆ°æ¶ˆè´¹è€…
       serviceId: yls-server-consumer
-  ##ÎªÃ¿¸ö·şÎñ¼ÓÇ°×º
+  ##ä¸ºæ¯ä¸ªæœåŠ¡åŠ å‰ç¼€
   prefix: /v1

@@ -37,13 +37,13 @@ spring:
 
 
   ##注冊服務
-#  cloud:
-#    consul:
-#      discovery:
-#        service-name: ${spring.application.name}
-#        instance-id: ${spring.application.name}:${server.port}
-#      host: localhost
-#      port: 8500
+  cloud:
+    consul:
+      discovery:
+        service-name: ${spring.application.name}
+        instance-id: ${spring.application.name}:${server.port}
+      host: localhost
+      port: 8500
 
 
 ##日志服务器
