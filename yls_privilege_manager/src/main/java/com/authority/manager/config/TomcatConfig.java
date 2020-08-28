@@ -36,9 +36,9 @@ public class TomcatConfig {
     private Connector createTomcatConnector(){
         Connector connector = new Connector("org.apache.coyote.http11.Http11NioProtocol");
         connector.setScheme("http");
-        connector.setPort(8443);
+        connector.setPort(8445);
         connector.setSecure(false);
-        connector.setRedirectPort(8080);
+        connector.setRedirectPort(8081);
         return connector;
     }
 }

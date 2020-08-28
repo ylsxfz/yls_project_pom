@@ -1,0 +1,24 @@
+Spring boot提供了自动化的Session共享配置。
+结合redis就可以很方便解决。
+请求到达Nginx服务器后，首先进行请求分发。
+在处理请求时，无论是存储session还是读取session，都去Session服务器而不是自身的Session。
+实际代码中还是操作的HttpSession，但是实际上HttpSession容器已经被透明替换，真正的Session此时存储在Redis服务器上。
+
+需要的依赖：
+    <!-- session -->
+    <dependency>
+         <groupId>org.springframework.session</groupId>
+         <artifactId>spring-session-data-redis</artifactId>
+    </dependency>
+
+    <!-- 添加redis依赖  -->
+    <dependency>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-data-redis</artifactId>
+    </dependency>
+    <!-- lettuce pool 缓存连接池 -->
+    <dependency>
+        <groupId>org.apache.commons</groupId>
+        <artifactId>commons-pool2</artifactId>
+    </dependency>
+
