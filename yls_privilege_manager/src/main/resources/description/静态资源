@@ -1,0 +1,7 @@
+默认位置：
+1、classpath:/META-INF/resources/
+2、classpath:/resources/
+3、classpath:/static/
+4、classpath:/public/
+5、/
+注意：上述一共5个位置，优先级：依次降低

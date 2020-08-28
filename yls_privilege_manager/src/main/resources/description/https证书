@@ -1,0 +1,4 @@
+jdk提供的证书：
+    keytool -genkey -alias tomcathttps -keyalg RSA -keysize 2048 -keystore sang.p12 -validity 365
+密码：123456
+姓名：yls

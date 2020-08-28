@@ -1,6 +1,8 @@
 package com.authority.manager.web.model;
 
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import org.hibernate.annotations.GenericGenerator;
@@ -30,10 +32,13 @@ public class BaseModel implements Serializable {
 
 	@ApiModelProperty(value = "创建人")
 	@Column(name = "create_by")
+	//该注解表示返回信息不包括该字段
+	@JsonIgnore
     private String createBy;
 
 	@ApiModelProperty(value = "创建时间")
 	@Column(name = "create_time")
+	@JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     private Date createTime;
 
 	@ApiModelProperty(value = "上一次更新者")
@@ -42,6 +47,7 @@ public class BaseModel implements Serializable {
 
 	@ApiModelProperty(value = "上一次更新时间")
 	@Column(name = "last_update_time")
+	@JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     private Date lastUpdateTime;
 
 
