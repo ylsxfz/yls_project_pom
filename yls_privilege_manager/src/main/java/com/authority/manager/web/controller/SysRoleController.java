@@ -1,16 +1,16 @@
 package com.authority.manager.web.controller;
 
 import com.authority.manager.contant.SysContants;
-
 import com.authority.manager.web.model.SysRole;
-import com.authority.manager.web.model.SysRoleMenu;
+import com.authority.manager.web.model.relation.SysRoleMenu;
 import com.authority.manager.web.service.impl.SysRoleServiceImpl;
-import com.yls.common.utils.StringFormatUtils;
 import com.yls.core.http.HttpConstants;
 import com.yls.core.http.HttpResult;
 import com.yls.core.page.MyPageRequest;
 import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiOperation;
+import io.swagger.annotations.ApiParam;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -27,15 +27,15 @@ import java.util.Optional;
  **/
 @RestController
 @RequestMapping("sys_role")
-@Api(tags = "权限管理接口")
+@Api(tags = "角色权限管理接口")
 public class SysRoleController {
 
     @Autowired
     private SysRoleServiceImpl sysRoleSerivce;
 
-    @ApiOperation(value = "保存权限",notes = "保存权限")
+    @ApiOperation(value = "保存角色")
     @PostMapping("/save")
-    public HttpResult save(@RequestBody SysRole record){
+    public HttpResult save(@ApiParam(value = "角色对象", required = true)@RequestBody SysRole record){
 
         SysRole sysRole = sysRoleSerivce.findByName(record.getName());
         if (sysRole!=null){
@@ -53,22 +53,22 @@ public class SysRoleController {
         return HttpResult.ok(HttpConstants.SAVE_OK);
     }
 
-    @ApiOperation(value = "删除权限",notes = "删除权限")
+    @ApiOperation(value = "删除权限")
     @PostMapping("/delete")
-    public HttpResult delete(@RequestBody List<SysRole> records){
+    public HttpResult delete(@ApiParam(value = "角色对象集合", required = true)@RequestBody List<SysRole> records){
         sysRoleSerivce.deleteAll(records);
         return HttpResult.ok(HttpConstants.DELETE_OK);
     }
 
-    @ApiOperation(value = "分页查询权限",notes = "分页查询权限")
+    @ApiOperation(value = "分页查询权限")
     @PostMapping("/findByPage")
-    public HttpResult findPage(@RequestBody MyPageRequest myPageRequest){
+    public HttpResult findPage(@ApiParam(value = "封装的分页请求对象", required = true)@RequestBody MyPageRequest myPageRequest){
         PageRequest pageRequest = PageRequest.of(myPageRequest.getPageNum(), myPageRequest.getPageSize());
         Page page = sysRoleSerivce.findByPage(pageRequest);
         return HttpResult.ok(page);
     }
 
-    @ApiOperation(value = "查询所有权限",notes = "查询所有权限")
+    @ApiOperation(value = "查询所有权限")
     @GetMapping(value="/findAll")
     public HttpResult findAll()  {
         try {
@@ -78,15 +78,16 @@ public class SysRoleController {
         }
     }
 
-    @ApiOperation(value = "根据权限id查询菜单",notes = "根据权限id查询菜单")
+    @ApiOperation(value = "查询菜单")
+    @ApiImplicitParam(name = "roleId",value = "角色id",dataType = "int",required = true)
     @GetMapping(value="/findRoleMenus")
-    public HttpResult findRoleMenus(@RequestParam String roleId) {
+    public HttpResult findRoleMenus(@RequestParam Integer roleId) {
         return HttpResult.ok(sysRoleSerivce.findRoleMenus(roleId));
     }
 
-    @ApiOperation(value = "根据权限修改菜单权限",notes = "根据权限修改菜单权限")
+    @ApiOperation(value = "修改菜单权限")
     @PostMapping(value = "/saveRoleMenus")
-    public HttpResult saveRoleMenus(@RequestBody List<SysRoleMenu> records){
+    public HttpResult saveRoleMenus(@ApiParam(value = "角色对象集合", required = true)@RequestBody List<SysRoleMenu> records){
         if (records!=null && !records.isEmpty()){
             SysRoleMenu sysRoleMenu = records.get(0);
             Optional optional = sysRoleSerivce.findById(sysRoleMenu.getRoleId());

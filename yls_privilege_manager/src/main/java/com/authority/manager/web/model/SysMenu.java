@@ -1,5 +1,8 @@
 package com.authority.manager.web.model;
 
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Table;
@@ -7,48 +10,57 @@ import javax.persistence.Transient;
 import java.util.List;
 
 @Entity
+@ApiModel(description = "菜单管理")
 @Table(name="sys_menu")
+@org.hibernate.annotations.Table(appliesTo = "sys_menu",comment = "菜单管理表")
 public class SysMenu extends BaseModel {
 
-	@Column(name = "parent_id")
-    private String parentId;
+	@ApiModelProperty("父级id")
+	@Column(name = "parent_id",columnDefinition = "int comment '父级id'")
+    private int parentId;
 
-	@Column(name = "name")
+	@ApiModelProperty("名称")
+	@Column(name = "name",columnDefinition = "varchar(32) comment '名称'")
     private String name;
 
-	@Column(name = "url")
+	@ApiModelProperty("url地址")
+	@Column(name = "url",columnDefinition = "varchar(64) comment 'url地址'")
     private String url;
 
-	@Column(name = "perms")
+	@ApiModelProperty("排列")
+	@Column(name = "perms",columnDefinition = "varchar(64) comment '排列'")
     private String perms;
 
-	@Column(name = "type")
+	@ApiModelProperty("类型")
+	@Column(name = "type",columnDefinition = "int comment '类型'")
     private Integer type;
 
-	@Column(name = "icon")
+	@ApiModelProperty("图标")
+	@Column(name = "icon",columnDefinition = "varchar(32) comment '图标'")
     private String icon;
 
-	@Column(name = "order_num")
+	@ApiModelProperty("排序")
+	@Column(name = "order_num",columnDefinition = "int comment '排序'")
     private Integer orderNum;
-
-	@Column(name = "del_flag")
-    private Byte delFlag;
 
     // 非数据库字段
 	@Transient
+	@ApiModelProperty("父级名称")
 	private String parentName;
     // 非数据库字段
 	@Transient
+	@ApiModelProperty("等级")
 	private Integer level;
     // 非数据库字段
 	@Transient
+	@ApiModelProperty("下级菜单")
 	private List<SysMenu> children;
 
-	public String getParentId() {
+	public int getParentId() {
 		return parentId;
 	}
 
-	public void setParentId(String parentId) {
+	public void setParentId(int parentId) {
 		this.parentId = parentId;
 	}
 
@@ -100,13 +112,6 @@ public class SysMenu extends BaseModel {
 		this.orderNum = orderNum;
 	}
 
-	public Byte getDelFlag() {
-		return delFlag;
-	}
-
-	public void setDelFlag(Byte delFlag) {
-		this.delFlag = delFlag;
-	}
 
 	public List<SysMenu> getChildren() {
 		return children;
@@ -142,7 +147,6 @@ public class SysMenu extends BaseModel {
 				", type=" + type +
 				", icon='" + icon + '\'' +
 				", orderNum=" + orderNum +
-				", delFlag=" + delFlag +
 				", parentName='" + parentName + '\'' +
 				", level=" + level +
 				", children=" + children +

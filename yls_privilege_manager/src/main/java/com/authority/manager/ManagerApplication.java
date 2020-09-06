@@ -2,19 +2,19 @@ package com.authority.manager;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-//import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 import org.springframework.boot.web.servlet.ServletComponentScan;
-import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 import org.springframework.context.annotation.ImportResource;
 import org.springframework.scheduling.annotation.EnableAsync;
 import springfox.documentation.swagger2.annotations.EnableSwagger2;
+
+//import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 
 
 /**
  * 系统程序的主函数：主入口
  */
 @SpringBootApplication
-@EnableDiscoveryClient //注册服务
+//@EnableDiscoveryClient //注册服务
 @EnableAsync
 @EnableSwagger2 //swagger2文档接口
 @ServletComponentScan //自动扫描

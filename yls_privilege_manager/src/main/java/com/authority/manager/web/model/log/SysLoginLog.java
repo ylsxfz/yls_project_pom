@@ -1,36 +1,44 @@
-package com.authority.manager.web.model;
+package com.authority.manager.web.model.log;
 
 import com.authority.manager.component.security.utils.SecurityUtils;
 import com.yls.common.utils.DateUtils;
-import org.hibernate.annotations.GenericGenerator;
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
 import org.springframework.security.web.authentication.WebAuthenticationDetails;
 
 import javax.persistence.*;
 
 @Entity
+@ApiModel(description = "系统登录日志")
 @Table(name="sys_login_log")
+@org.hibernate.annotations.Table(appliesTo = "sys_login_log",comment = "系统登录日志表")
 public class SysLoginLog{
 
+	@ApiModelProperty("主键id")
 	@Id
-	@GenericGenerator(name = "uId", strategy = "uuid.hex")
-	@GeneratedValue(generator = "uId")
-	@Column(name = "id", length = 32)
-	private String id;
+	//自动递增
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "id",columnDefinition = "int comment '唯一主键id'")
+	private int id;
 
-
-	@Column(name = "user_name")
+	@ApiModelProperty("用户名")
+	@Column(name = "user_name",columnDefinition = "varchar(32) comment '用户名'")
     private String userName;
 
-	@Column(name = "status")
+	@ApiModelProperty("状态")
+	@Column(name = "status",columnDefinition = "varchar(32) comment '状态'")
     private String status;
 
-	@Column(name = "ip")
+	@ApiModelProperty("ip地址")
+	@Column(name = "ip",columnDefinition = "varchar(32) comment 'ip地址'")
     private String ip;
 
-	@Column(name = "create_time")
+	@ApiModelProperty("登录时间")
+	@Column(name = "create_time",columnDefinition = "varchar(32) comment '登录时间'")
 	private String createTime;
 
-	@Column(name = "remark")
+	@ApiModelProperty("备注")
+	@Column(name = "remark",columnDefinition = "varchar(255) comment '备注'")
 	private String remark;
 
 	public SysLoginLog(){
@@ -74,11 +82,11 @@ public class SysLoginLog{
 		this.ip = ip;
 	}
 
-	public String getId() {
+	public int getId() {
 		return id;
 	}
 
-	public void setId(String id) {
+	public void setId(int id) {
 		this.id = id;
 	}
 
@@ -101,7 +109,8 @@ public class SysLoginLog{
 	@Override
 	public String toString() {
 		return "SysLoginLog{" +
-				"userName='" + userName + '\'' +
+				"id=" + id +
+				", userName='" + userName + '\'' +
 				", status='" + status + '\'' +
 				", ip='" + ip + '\'' +
 				", createTime='" + createTime + '\'' +

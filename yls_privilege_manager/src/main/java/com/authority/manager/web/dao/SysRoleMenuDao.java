@@ -1,6 +1,6 @@
 package com.authority.manager.web.dao;
 
-import com.authority.manager.web.model.SysRoleMenu;
+import com.authority.manager.web.model.relation.SysRoleMenu;
 import com.yls.core.repository.BaseDao;
 import org.springframework.stereotype.Repository;
 
@@ -14,5 +14,5 @@ import java.util.List;
  **/
 @Repository
 public interface SysRoleMenuDao extends BaseDao<SysRoleMenu,String> {
-    List<SysRoleMenu> findByRoleId(String roleId);
+    List<SysRoleMenu> findByRoleId(Integer roleId);
 }

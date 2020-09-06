@@ -1,6 +1,8 @@
 package com.yls.core.http;
 
 import com.yls.core.page.MyPageResult;
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
 import org.springframework.data.domain.Page;
 
 /**
@@ -8,10 +10,14 @@ import org.springframework.data.domain.Page;
  * @Description HTTP结果封装
  * @Date 2020/4/5 9:41
  **/
+@ApiModel(description = "HTTP结果封装")
 public class HttpResult {
 
+	@ApiModelProperty("状态")
 	private int code = 200;
+	@ApiModelProperty("msg信息")
 	private String msg;
+	@ApiModelProperty("返回数据")
 	private Object data;
 	
 	public static HttpResult error() {

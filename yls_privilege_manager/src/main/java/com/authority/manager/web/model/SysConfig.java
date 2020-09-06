@@ -7,38 +7,35 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Table;
 
-@ApiModel(description = "系统配置")
+@ApiModel(description = "系统设置")
 @Entity
 @Table(name="sys_config")
+@org.hibernate.annotations.Table(appliesTo = "sys_config",comment = "系统设置表")
 public class SysConfig extends BaseModel {
 
-	@ApiModelProperty(value = "值")
-	@Column(name = "value")
+	@ApiModelProperty("值")
+	@Column(name = "value",columnDefinition = "varchar(32) comment '值'")
     private String value;
 
-	@ApiModelProperty(value = "标签")
-	@Column(name = "label")
+	@ApiModelProperty("标签")
+	@Column(name = "label",columnDefinition = "varchar(32) comment '标签'")
     private String label;
 
-	@ApiModelProperty(value = "类型")
-	@Column(name = "type")
+	@ApiModelProperty("类型")
+	@Column(name = "type",columnDefinition = "varchar(32) comment '类型'")
     private String type;
 
-	@ApiModelProperty(value = "描述")
-	@Column(name = "description")
+	@ApiModelProperty("描述")
+	@Column(name = "description",columnDefinition = "varchar(255) comment '描述'")
     private String description;
 
-	@ApiModelProperty(value = "排序")
-	@Column(name = "sort")
-    private Long sort;
+	@ApiModelProperty("排序")
+	@Column(name = "sort",columnDefinition = "int comment '排序'")
+    private int sort;
 
-	@ApiModelProperty(value = "备注")
-	@Column(name = "remarks")
+	@ApiModelProperty("备注")
+	@Column(name = "remarks",columnDefinition = "varchar(255) comment '备注'")
     private String remarks;
-
-	@ApiModelProperty(value = "删除标记")
-	@Column(name = "del_flag")
-    private Byte delFlag;
 
 
 	public String getValue() {
@@ -73,11 +70,11 @@ public class SysConfig extends BaseModel {
 		this.description = description;
 	}
 
-	public Long getSort() {
+	public int getSort() {
 		return sort;
 	}
 
-	public void setSort(Long sort) {
+	public void setSort(int sort) {
 		this.sort = sort;
 	}
 
@@ -89,14 +86,6 @@ public class SysConfig extends BaseModel {
 		this.remarks = remarks;
 	}
 
-	public Byte getDelFlag() {
-		return delFlag;
-	}
-
-	public void setDelFlag(Byte delFlag) {
-		this.delFlag = delFlag;
-	}
-
 	@Override
 	public String toString() {
 		return "SysConfig{" +
@@ -106,7 +95,6 @@ public class SysConfig extends BaseModel {
 				", description='" + description + '\'' +
 				", sort=" + sort +
 				", remarks='" + remarks + '\'' +
-				", delFlag=" + delFlag +
 				'}';
 	}
 }

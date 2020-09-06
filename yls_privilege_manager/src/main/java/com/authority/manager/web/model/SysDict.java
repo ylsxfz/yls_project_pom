@@ -1,33 +1,43 @@
 package com.authority.manager.web.model;
 
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Table;
 
 @Entity
 @Table(name="sys_dict")
+@ApiModel(description = "字典管理")
+@org.hibernate.annotations.Table(appliesTo = "sys_dict",comment = "字典管理表")
 public class SysDict extends BaseModel {
 
-	@Column(name = "value")
+	@ApiModelProperty("值")
+	@Column(name = "value",columnDefinition = "varchar(32) comment '值'")
     private String value;
 
-	@Column(name = "label")
+	@ApiModelProperty("标签")
+	@Column(name = "label",columnDefinition = "varchar(32) comment '标签'")
     private String label;
 
-	@Column(name = "type")
+	@ApiModelProperty("类型")
+	@Column(name = "type",columnDefinition = "varchar(32) comment '类型'")
     private String type;
 
-	@Column(name = "description")
+	@ApiModelProperty("描述")
+	@Column(name = "description",columnDefinition = "varchar(255) comment '描述'")
     private String description;
 
-	@Column(name = "sort")
-    private Long sort;
+	@ApiModelProperty("排序")
+	@Column(name = "sort",columnDefinition = "int comment '排序'")
+    private int sort;
 
-	@Column(name = "remarks")
+	@ApiModelProperty("备注")
+	@Column(name = "remarks",columnDefinition = "varchar(255) comment '备注'")
     private String remarks;
 
-	@Column(name = "del_flag")
-    private Byte delFlag;
+
 
 	public String getValue() {
 		return value;
@@ -61,11 +71,11 @@ public class SysDict extends BaseModel {
 		this.description = description;
 	}
 
-	public Long getSort() {
+	public int getSort() {
 		return sort;
 	}
 
-	public void setSort(Long sort) {
+	public void setSort(int sort) {
 		this.sort = sort;
 	}
 
@@ -77,13 +87,6 @@ public class SysDict extends BaseModel {
 		this.remarks = remarks;
 	}
 
-	public Byte getDelFlag() {
-		return delFlag;
-	}
-
-	public void setDelFlag(Byte delFlag) {
-		this.delFlag = delFlag;
-	}
 
 	@Override
 	public String toString() {
@@ -94,7 +97,6 @@ public class SysDict extends BaseModel {
 				", description='" + description + '\'' +
 				", sort=" + sort +
 				", remarks='" + remarks + '\'' +
-				", delFlag=" + delFlag +
 				'}';
 	}
 }

@@ -1,6 +1,6 @@
 package com.authority.manager.web.service;
 
-import com.authority.manager.web.model.SysRoleMenu;
+import com.authority.manager.web.model.relation.SysRoleMenu;
 import com.yls.core.repository.BaseService;
 
 /**

@@ -1,7 +1,9 @@
 package com.yls.core.page;
 
-import java.util.HashMap;
-import java.util.Map;
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
+
+import java.util.List;
 
 /**
  * 功能描述:
@@ -9,19 +11,24 @@ import java.util.Map;
  * @author : yls
  * @date : 2020/07/19 10:59
  */
-public class MyPageRequest {
+@ApiModel(description = "分页请求封装")
+public class MyPageRequest{
 	/**
 	 * 当前页码
 	 */
+	@ApiModelProperty("当前页码")
 	private int pageNum = 1;
 	/**
 	 * 每页数量
 	 */
+	@ApiModelProperty("每页数量")
 	private int pageSize = 10;
 	/**
 	 * 查询参数
 	 */
-	private Map<String, Object> params = new HashMap<>();
+	@ApiModelProperty("查询参数")
+	private List<Params> params;
+
 	
 	public int getPageNum() {
 		return pageNum - 1;
@@ -35,10 +42,12 @@ public class MyPageRequest {
 	public void setPageSize(int pageSize) {
 		this.pageSize = pageSize;
 	}
-	public Map<String, Object> getParams() {
+
+	public List<Params> getParams() {
 		return params;
 	}
-	public void setParams(Map<String, Object> params) {
+
+	public void setParams(List<Params> params) {
 		this.params = params;
 	}
 

@@ -1,7 +1,7 @@
 package com.authority.manager.web.service;
 
 import com.authority.manager.web.model.SysUser;
-import com.authority.manager.web.model.SysUserRole;
+import com.authority.manager.web.model.relation.SysUserRole;
 import com.yls.core.repository.BaseService;
 
 import java.util.List;
@@ -19,6 +19,6 @@ public interface SysUserService extends BaseService<SysUser,String> {
 
     Set<String> findPermissions(String userName);
 
-    List<SysUserRole> findUserRoles(String userId);
+    List<SysUserRole> findUserRoles(Integer userId);
 
 }

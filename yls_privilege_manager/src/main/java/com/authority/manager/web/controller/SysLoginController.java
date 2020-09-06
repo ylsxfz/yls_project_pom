@@ -1,12 +1,12 @@
 package com.authority.manager.web.controller;
 
-import com.authority.manager.contant.SysContants;
 import com.authority.manager.component.security.JwtAuthenticatioToken;
 import com.authority.manager.component.security.utils.PasswordUtils;
 import com.authority.manager.component.security.utils.SecurityUtils;
+import com.authority.manager.contant.SysContants;
 import com.authority.manager.vo.LoginBean;
-import com.authority.manager.web.model.SysLoginLog;
 import com.authority.manager.web.model.SysUser;
+import com.authority.manager.web.model.log.SysLoginLog;
 import com.authority.manager.web.service.SysLoginLogService;
 import com.authority.manager.web.service.SysUserService;
 import com.google.code.kaptcha.Constants;
@@ -15,6 +15,7 @@ import com.yls.common.utils.IOUtils;
 import com.yls.core.http.HttpResult;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
+import io.swagger.annotations.ApiParam;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -61,7 +62,7 @@ public class SysLoginController {
      * @param request 请求
      * @return void
      **/
-    @ApiOperation(value = "生成验证码",notes = "生成验证码")
+    @ApiOperation(value = "生成验证码")
     @GetMapping("/captcha.jpg")
     public void captcha(HttpServletResponse response, HttpServletRequest request) throws Exception{
         response.setHeader("Cache-Control","no-store,no-cache");
@@ -85,9 +86,9 @@ public class SysLoginController {
      * @param request 请求
      * @return com.authority.manager.base.http.HttpResult
      **/
-    @ApiOperation(value = "登录接口",notes = "登录接口，携带token令牌信息")
+    @ApiOperation(value = "登录接口")
     @PostMapping(value = "/login")
-    public HttpResult login(@RequestBody LoginBean loginBean, HttpServletRequest request) throws IOException {
+    public HttpResult login(@ApiParam(value = "登录对象", required = true)@RequestBody LoginBean loginBean, HttpServletRequest request) throws IOException {
         String username = loginBean.getAccount();
         String password = loginBean.getPassword();
         String captcha = loginBean.getCaptcha();

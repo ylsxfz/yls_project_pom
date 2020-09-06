@@ -13,7 +13,7 @@ import java.util.List;
  * @Version 1.0
  **/
 @Repository
-public interface SysMenuDao extends BaseDao<SysMenu,String> {
+public interface SysMenuDao extends BaseDao<SysMenu,Integer> {
 
     List<SysMenu> findByTypeNot(int menuType);
 }

@@ -7,7 +7,9 @@ import com.yls.core.http.HttpConstants;
 import com.yls.core.http.HttpResult;
 import com.yls.core.page.MyPageRequest;
 import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiOperation;
+import io.swagger.annotations.ApiParam;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -29,9 +31,9 @@ public class SysUserController {
     @Autowired
     private SysUserService sysUserService;
 
-    @ApiOperation(value = "保存用户",notes = "保存用户")
+    @ApiOperation(value = "保存用户")
     @PostMapping("/save")
-    public HttpResult save(@RequestBody SysUser record){
+    public HttpResult save(@ApiParam(value = "用户对象", required = true)@RequestBody SysUser record){
         Optional optional  = sysUserService.findById(record.getId());
 
         if (record.getPassword()!=null){
@@ -59,28 +61,31 @@ public class SysUserController {
         return HttpResult.ok(HttpConstants.SAVE_OK);
     }
 
-    @ApiOperation(value = "删除用户",notes = "批量删除用户")
+    @ApiOperation(value = "删除用户")
     @PostMapping("/delete")
-    public HttpResult delete(@RequestBody List<SysUser> records){
+    public HttpResult delete(@ApiParam(value = "用户对象集合", required = true)@RequestBody List<SysUser> records){
         sysUserService.deleteAll(records);
         return HttpResult.ok(HttpConstants.DELETE_OK);
     }
 
-    @ApiOperation(value = "根据姓名查询用户",notes = "根据姓名查询用户")
+    @ApiOperation(value = "根据姓名查询用户")
+    @ApiImplicitParam(name = "name",value = "姓名",required = true)
     @GetMapping(value="/findByName")
     public HttpResult findByUserName(@RequestParam String name) {
         return HttpResult.ok(sysUserService.findByName(name));
     }
 
-    @ApiOperation(value = "根据姓名查询用户权限",notes = "根据姓名查询用户权限")
+    @ApiOperation(value = "根据姓名查询用户权限")
+    @ApiImplicitParam(name = "name",value = "姓名",required = true)
     @GetMapping(value="/findPermissions")
     public HttpResult findPermissions(String name) {
         return HttpResult.ok(sysUserService.findPermissions(name));
     }
 
-    @ApiOperation(value = "分页查询用户",notes = "分页查询用户")
+
+    @ApiOperation(value = "分页查询用户")
     @PostMapping("/findByPage")
-    public HttpResult findPage(@RequestBody MyPageRequest myPageRequest){
+    public HttpResult findPage(@ApiParam(value = "封装的分页请求对象", required = true)@RequestBody MyPageRequest myPageRequest){
         PageRequest pageRequest = PageRequest.of(myPageRequest.getPageNum(),myPageRequest.getPageSize());
         Page page = sysUserService.findByPage(pageRequest);
         return HttpResult.ok(page);

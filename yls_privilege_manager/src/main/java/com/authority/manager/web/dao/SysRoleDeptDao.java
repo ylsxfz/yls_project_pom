@@ -1,6 +1,6 @@
 package com.authority.manager.web.dao;
 
-import com.authority.manager.web.model.SysRoleDept;
+import com.authority.manager.web.model.relation.SysRoleDept;
 import com.yls.core.repository.BaseDao;
 import org.springframework.stereotype.Repository;
 

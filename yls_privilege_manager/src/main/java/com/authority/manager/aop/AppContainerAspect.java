@@ -29,12 +29,11 @@ public class AppContainerAspect {
      * @param
      * @return : void
      */
-//    @Pointcut("execution(* com.authority.manager.component.filter.*.*(..)) " +
-//            "|| execution(* com.authority.manager.base.init.*.*(..)) " +
-//            "|| execution(* com.authority.manager.component.interceptor.*.*(..))" +
-//            "|| execution(* com.authority.manager.component.listener.*.*(..))" +
-//            "|| execution(* com.authority.manager.component.quartz.*.*(..))")
-    @Pointcut("execution(* com.authority.manager.component.quartz.*.*(..))")
+    @Pointcut("execution(* com.authority.manager.component.filter.*.*(..)) " +
+            "|| execution(* com.authority.manager.base.init.*.*(..)) " +
+            "|| execution(* com.authority.manager.component.interceptor.*.*(..))" +
+            "|| execution(* com.authority.manager.component.listener.*.*(..))" +
+            "|| execution(* com.authority.manager.component.quartz.*.*(..))")
     public void appContainerAspect(){
 
     }

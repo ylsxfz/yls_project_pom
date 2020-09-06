@@ -41,12 +41,11 @@ public class SysMenuServiceImpl implements SysMenuService {
             sysMenuList = sysMenuDao.findAll();
         }
         //根据父级id查询
-        Map<String,List<SysMenu>> detGroupByParentId = new HashMap<>();
+        Map<Integer,List<SysMenu>> detGroupByParentId = new HashMap<>();
         sysMenuList.forEach(sysMenu -> {
-            String parentId = sysMenu.getParentId();
+            int parentId = sysMenu.getParentId();
             //判断根节点
-            if(parentId==null || "".equals(parentId) || "0".equals(parentId)){
-                parentId = "root";
+            if(parentId==0){
                 //根节点的等级设为0
                 sysMenu.setLevel(0);
             }
@@ -63,7 +62,7 @@ public class SysMenuServiceImpl implements SysMenuService {
 
         //组装tree
         //获取根节点数据
-        List<SysMenu> sysMenuTree = detGroupByParentId.get("root");
+        List<SysMenu> sysMenuTree = detGroupByParentId.get(0);
         findChildren(sysMenuTree,detGroupByParentId);
 
         return sysMenuTree;
@@ -77,7 +76,7 @@ public class SysMenuServiceImpl implements SysMenuService {
      * @param detGroupByParentId  菜单对应的根据父级id分组的map
      * @return void
      **/
-    private void findChildren(List<SysMenu> sysMenusTree, Map<String,List<SysMenu>> detGroupByParentId){
+    private void findChildren(List<SysMenu> sysMenusTree, Map<Integer,List<SysMenu>> detGroupByParentId){
         sysMenusTree.forEach(sysMenu -> {
             List<SysMenu> childerns= detGroupByParentId.get(sysMenu.getId());
             //判断是否有子部门

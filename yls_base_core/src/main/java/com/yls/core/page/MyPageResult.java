@@ -1,5 +1,8 @@
 package com.yls.core.page;
 
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
+
 import java.util.List;
 
 /**
@@ -7,26 +10,32 @@ import java.util.List;
  * @author Louis
  * @date Jan 12, 2019
  */
+@ApiModel(description = "分页请求结果封装")
 public class MyPageResult {
 	/**
 	 * 当前页码
 	 */
+	@ApiModelProperty("当前页码")
 	private int pageNum;
 	/**
 	 * 每页数量
 	 */
+	@ApiModelProperty("每页数量")
 	private int pageSize;
 	/**
 	 * 记录总数
 	 */
+	@ApiModelProperty("记录总数")
 	private long totalSize;
 	/**
 	 * 页码总数
 	 */
+	@ApiModelProperty("页码总数")
 	private long totalPages;
 	/**
 	 * 分页数据
 	 */
+	@ApiModelProperty("分页数据")
 	private List<?> content;
 	public int getPageNum() {
 		return pageNum;

@@ -4,6 +4,7 @@ import com.authority.manager.component.error.BusinessException;
 import com.yls.common.utils.StringFormatUtils;
 import com.yls.core.http.HttpResult;
 import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -29,7 +30,8 @@ public class FileUpload {
 
     SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd/");
 
-    @ApiOperation(value = "单个文件上传",notes = "单个文件上传")
+    @ApiOperation(value = "单个文件上传")
+    @ApiImplicitParam(name = "uploadFile",value = "上常的单个文件",required = true)
     @PostMapping("/uploadOneFile")
     public HttpResult uploadOneFile(MultipartFile uploadFile, HttpServletRequest request) {
         try{
@@ -41,12 +43,19 @@ public class FileUpload {
         }
     }
 
-    @ApiOperation(value = "单个文件上传",notes = "单个文件上传")
+    @ApiOperation(value = "多个文件上传")
+    @ApiImplicitParam(name = "uploadFiles",value = "上传的文件数组",required = true)
     @PostMapping("/uploadFiles")
     public HttpResult uploadSomeFiles(MultipartFile[] uploadFiles, HttpServletRequest request){
         return uploadFiles(Arrays.asList(uploadFiles), request);
     }
 
+    /**
+     * 上传文件的具体实现方法
+     * @param uploadFiles 文件集合
+     * @param request request请求
+     * @return
+     */
     private HttpResult uploadFiles(List<MultipartFile> uploadFiles, HttpServletRequest request) {
         //String realPath = request.getSession().getServletContext().getRealPath("/uploadFile/");
         String realPath = "E:\\uploaFileTemp\\uploadFile\\";

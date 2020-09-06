@@ -34,12 +34,12 @@ public class SysDeptServiceImpl implements SysDeptService {
         //查询所有的数据
         List<SysDept> deptList = sysDeptDao.findAll();
         //根据父级id查询
-        Map<String,List<SysDept>> detGroupByParentId = new HashMap<>();
+        Map<Integer,List<SysDept>> detGroupByParentId = new HashMap<>();
         deptList.forEach(sysDept -> {
-            String parentId = sysDept.getParentId();
+            int parentId = sysDept.getParentId();
             //判断根节点
-            if(parentId==null || "".equals(parentId) || "0".equals(parentId)){
-                parentId = "root";
+            if(parentId==-1){
+//                parentId = -1;
                 //根节点的等级设为0
                 sysDept.setLevel(0);
             }
@@ -56,7 +56,7 @@ public class SysDeptServiceImpl implements SysDeptService {
 
         //组装tree
         //获取根节点数据
-        List<SysDept> sysDeptsTree = detGroupByParentId.get("root");
+        List<SysDept> sysDeptsTree = detGroupByParentId.get(-1);
         findChildren(sysDeptsTree,detGroupByParentId);
         return sysDeptsTree;
     }
@@ -69,7 +69,7 @@ public class SysDeptServiceImpl implements SysDeptService {
      * @param detGroupByParentId  部门对应的根据父级id分组的map
      * @return void
      **/
-    private void findChildren(List<SysDept> sysDeptsTree, Map<String,List<SysDept>> detGroupByParentId){
+    private void findChildren(List<SysDept> sysDeptsTree, Map<Integer,List<SysDept>> detGroupByParentId){
         sysDeptsTree.forEach(sysDept -> {
             List<SysDept> childerns= detGroupByParentId.get(sysDept.getId());
             //判断是否有子部门

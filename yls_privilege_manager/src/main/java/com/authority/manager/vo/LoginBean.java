@@ -1,23 +1,30 @@
 package com.authority.manager.vo;
 
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
+
 /**
  * @Author yls
  * @Description 登录接口封装对象
  * @Date 2020/4/12 12:03
  **/
+@ApiModel(description = "登录对象")
 public class LoginBean {
 
 	/**
 	 * 账号
 	 */
+	@ApiModelProperty(value = "用户名")
 	private String account;
 	/**
 	 * 密码
 	 */
+	@ApiModelProperty(value = "密码")
 	private String password;
 	/**
 	 * 验证码
 	 */
+	@ApiModelProperty(value = "验证码")
 	private String captcha;
 	
 	public String getAccount() {

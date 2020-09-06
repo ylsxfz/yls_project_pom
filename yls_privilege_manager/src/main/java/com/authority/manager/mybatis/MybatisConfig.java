@@ -1,13 +1,7 @@
 package com.authority.manager.mybatis;
 
-import org.apache.ibatis.session.SqlSessionFactory;
-import org.mybatis.spring.SqlSessionFactoryBean;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import tk.mybatis.spring.annotation.MapperScan;
-
-import javax.sql.DataSource;
 
 /**
  * @Auther: yls

@@ -6,7 +6,7 @@ import com.authority.manager.web.dao.SysRoleDao;
 import com.authority.manager.web.dao.SysRoleMenuDao;
 import com.authority.manager.web.model.SysMenu;
 import com.authority.manager.web.model.SysRole;
-import com.authority.manager.web.model.SysRoleMenu;
+import com.authority.manager.web.model.relation.SysRoleMenu;
 import com.authority.manager.web.service.SysRoleSerivce;
 import com.yls.core.repository.BaseDao;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -44,7 +44,7 @@ public class SysRoleServiceImpl implements SysRoleSerivce {
     }
 
     @Override
-    public List<SysMenu> findRoleMenus(String roleId) {
+    public List<SysMenu> findRoleMenus(Integer roleId) {
         Optional<SysRole> sysRoleOptional = sysRoleDao.findById(roleId);
         if (sysRoleOptional.isPresent()){
             SysRole sysRole = sysRoleOptional.get();
@@ -53,7 +53,7 @@ public class SysRoleServiceImpl implements SysRoleSerivce {
                 return sysMenuDao.findAll();
             }else {
                 List<SysRoleMenu> sysRoleMenus = sysRoleMenuDao.findByRoleId(roleId);
-                List<String> menuids = new ArrayList<>();
+                List<Integer> menuids = new ArrayList<>();
                 sysRoleMenus.forEach(sysRoleMenu -> {
                     menuids.add(sysRoleMenu.getMenuId());
                 });
@@ -69,7 +69,7 @@ public class SysRoleServiceImpl implements SysRoleSerivce {
         //查询当前角色的所有权限
         List<SysRoleMenu> sysRoleMenus = sysRoleMenuDao.findByRoleId(records.get(0).getRoleId());
         //组装为map
-        Map<String, SysRoleMenu> roleMenusMap = new HashMap<>();
+        Map<Integer, SysRoleMenu> roleMenusMap = new HashMap<>();
         sysRoleMenus.forEach(sysRoleMenu -> {
             roleMenusMap.put(sysRoleMenu.getMenuId(),sysRoleMenu);
         });

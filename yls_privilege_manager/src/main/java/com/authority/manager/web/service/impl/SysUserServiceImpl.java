@@ -5,7 +5,7 @@ import com.authority.manager.web.dao.SysUserDao;
 import com.authority.manager.web.dao.SysUserRoleDao;
 import com.authority.manager.web.model.SysMenu;
 import com.authority.manager.web.model.SysUser;
-import com.authority.manager.web.model.SysUserRole;
+import com.authority.manager.web.model.relation.SysUserRole;
 import com.authority.manager.web.service.SysUserService;
 import com.yls.core.repository.BaseDao;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -58,7 +58,7 @@ public class SysUserServiceImpl implements SysUserService {
     }
 
     @Override
-    public List<SysUserRole> findUserRoles(String userId) {
+    public List<SysUserRole> findUserRoles(Integer userId) {
         return sysUserRoleDao.findByUserId(userId);
     }
 

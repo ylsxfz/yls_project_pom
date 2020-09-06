@@ -11,6 +11,6 @@ import org.springframework.stereotype.Repository;
  * @Version 1.0
  **/
 @Repository
-public interface SysRoleDao extends BaseDao<SysRole,String> {
+public interface SysRoleDao extends BaseDao<SysRole,Integer> {
     SysRole findByName(String name);
 }

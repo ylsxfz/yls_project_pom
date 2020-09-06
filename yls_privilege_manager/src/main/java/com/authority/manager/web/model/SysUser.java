@@ -1,55 +1,71 @@
 package com.authority.manager.web.model;
 
+import com.authority.manager.web.model.relation.SysUserRole;
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Table;
 import javax.persistence.Transient;
-import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
 @Entity
+@ApiModel(description = "用户")
 @Table(name="sys_user")
+@org.hibernate.annotations.Table(appliesTo = "sys_user",comment = "用户表")
 public class SysUser extends BaseModel {
 
-	@Column(name = "name")
+	@ApiModelProperty("名称")
+	@Column(name = "name",columnDefinition = "varchar(32) comment '名称'")
     private String name;
 
-	@Column(name = "nick_name")
+	@ApiModelProperty("昵称")
+	@Column(name = "nick_name",columnDefinition = "varchar(32) comment '昵称'")
     private String nickName;
 
-	@Column(name = "avatar")
+	@ApiModelProperty("")
+	@Column(name = "avatar",columnDefinition = "varchar(255) comment ''")
     private String avatar;
 
-	@Column(name = "password")
+	@ApiModelProperty("密码")
+	@Column(name = "password",columnDefinition = "varchar(32) comment '密码'")
     private String password;
 
-	@Column(name = "salt")
+	@ApiModelProperty("")
+	@Column(name = "salt",columnDefinition = "varchar(255) comment ''")
     private String salt;
 
-	@Column(name = "email")
+	@ApiModelProperty("邮箱")
+	@Column(name = "email",columnDefinition = "varchar(64) comment '邮箱'")
     private String email;
 
-	@Column(name = "mobile")
+	@ApiModelProperty("电话")
+	@Column(name = "mobile",columnDefinition = "varchar(32) comment '电话'")
     private String mobile;
 
-	@Column(name = "status")
+	@ApiModelProperty("状态")
+	@Column(name = "status",columnDefinition = "tinyint comment '状态'")
     private Byte status;
 
-	@Column(name = "dept_id")
-    private String deptId;
+	@ApiModelProperty("部门id")
+	@Column(name = "dept_id",columnDefinition = "int comment '部门id'")
+    private int deptId;
 
-	@Column(name = "del_flag")
-    private Byte delFlag;
-    
     // 非数据库字段
 	@Transient
+	@ApiModelProperty("部门名称")
 	private String deptName;
+
     // 非数据库字段
 	@Transient
+	@ApiModelProperty("角色名称")
 	private String roleNames;
+
     // 非数据库字段
 	@Transient
+	@ApiModelProperty("用户权限集合")
 	private List<SysUserRole> userRoles = new ArrayList<>();
 
 	public String getName() {
@@ -100,18 +116,15 @@ public class SysUser extends BaseModel {
 	public void setStatus(Byte status) {
 		this.status = status;
 	}
-	public String getDeptId() {
+
+	public int getDeptId() {
 		return deptId;
 	}
-	public void setDeptId(String deptId) {
+
+	public void setDeptId(int deptId) {
 		this.deptId = deptId;
 	}
-	public Byte getDelFlag() {
-		return delFlag;
-	}
-	public void setDelFlag(Byte delFlag) {
-		this.delFlag = delFlag;
-	}
+
 	public String getDeptName() {
 		return deptName;
 	}
@@ -143,7 +156,6 @@ public class SysUser extends BaseModel {
 				", mobile='" + mobile + '\'' +
 				", status=" + status +
 				", deptId=" + deptId +
-				", delFlag=" + delFlag +
 				", deptName='" + deptName + '\'' +
 				", roleNames='" + roleNames + '\'' +
 				", userRoles=" + userRoles +

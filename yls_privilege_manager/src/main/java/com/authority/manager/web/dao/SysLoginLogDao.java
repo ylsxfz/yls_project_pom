@@ -1,6 +1,6 @@
 package com.authority.manager.web.dao;
 
-import com.authority.manager.web.model.SysLoginLog;
+import com.authority.manager.web.model.log.SysLoginLog;
 import com.yls.core.repository.BaseDao;
 import org.springframework.stereotype.Repository;
 
