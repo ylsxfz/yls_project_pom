@@ -25,10 +25,12 @@ public class BaseModel implements Serializable {
 
 	@ApiModelProperty(value = "主键id")
 	@Id
-	@GenericGenerator(name = "uId", strategy = "uuid.hex")
+	//@GenericGenerator(name = "uId", strategy = "uuid.hex")
 	//@GeneratedValue(generator = "uId")
+	//自动递增
+	@GeneratedValue(strategy = javax.persistence.GenerationType.IDENTITY)
 	@Column(name = "id", length = 32)
-	private String id;
+	private int id;
 
 	@ApiModelProperty(value = "创建人")
 	@Column(name = "create_by")
@@ -51,11 +53,11 @@ public class BaseModel implements Serializable {
     private Date lastUpdateTime;
 
 
-	public String getId() {
+	public int getId() {
 		return id;
 	}
 
-	public void setId(String id) {
+	public void setId(int id) {
 		this.id = id;
 	}
 

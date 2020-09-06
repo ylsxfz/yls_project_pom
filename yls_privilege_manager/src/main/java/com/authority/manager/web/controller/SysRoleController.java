@@ -40,12 +40,12 @@ public class SysRoleController {
         SysRole sysRole = sysRoleSerivce.findByName(record.getName());
         if (sysRole!=null){
             //新增用户
-            if (StringFormatUtils.isNull(record.getId()) || "0".equals(record.getId())){
+            if (record.getId()==0){
                 return  HttpResult.error("角色名已存在！");
             }
 
             //如果是修改用户角色名
-            else if (!sysRole.getId().equals(record.getId())){
+            else if (sysRole.getId()!=record.getId()){
                 return  HttpResult.error("角色名已存在！");
             }
         }
