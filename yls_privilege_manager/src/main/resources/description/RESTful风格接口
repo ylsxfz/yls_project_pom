@@ -1,0 +1,50 @@
+1、springboot的相关依赖包：
+  <!-- restful风格 -->
+  <dependency>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-starter-data-rest</artifactId>
+  </dependency>
+
+2、使用方法:
+    注意：books为请求的路径（对应实体类或者自定义请求路径）,1为数据的id
+   (1)查询请求：GET ==》 http://localhost:8080/books
+      根据id查询请求：GET ==》 http://localhost:8080/books/1
+      分页查询：GET ==》 http://localhost:8080/books?page=1&size=3
+      分页查询并按照id排序：GET ==》 http://localhost:8080/books?page=1&size=3&sort=id,desc
+
+   (2)修改请求：PUT ==》 http://localhost:8080/books/1，具体修改内容放到请求体中
+
+   (3)删除请求：DELETE ==》 http://localhost:8080/books/1
+
+   (4)添加请求：POST ==》http://localhost:8080/books，具体添加的内容放到请求体中
+
+3、常用的注解:
+   (1)自定义请求路径：@RepositoryRestResource(path = "请求路径",
+                                           collectionResourceRel = "返回json中book集合中的key",
+                                           itemResourceRel = "返回json中单个book的key")
+                     public interface SysConfigDao extends BaseDao<SysConfig,Integer>{
+                        //Integer对应SysConfig的id类型，主键推荐使用int自增。
+                     }
+
+
+   (2)自定义查询的方法：@RestResource(path = "方法的路径",rel = "属性的名称")
+                      Book findByNameEquals(@Param("name")String name);
+
+
+   (3)隐藏方法： 默认情况下，凡是继承了Repository接口（或者Repository的子类）的类都会暴露可执行的基本增删改查方法。
+                a、//如果 @RepositoryRestResource(exported = false)用在类上：隐藏所有暴露出来的方法
+                    @RepositoryRestResource(exported = false)
+                    public interface booksDao extends BaseDao<Books,Integer> {
+                        //根据姓名查询
+                        Book findByName(String name);
+                    }
+
+                b、//如果 @RestResource(exported = false)用在方法上：隐藏暴露出来的方法
+                  public interface booksDao extends BaseDao<Books,Integer> {
+                        //隐藏DELETE接口
+                        @RestResource(exported = false)
+                        @Override
+                        void deleteById(Integer integer);
+                  }
+
+   注意：http://localhost:8443/books/search：可以查看该实体类暴露出来了哪些方法。
