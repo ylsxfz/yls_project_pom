@@ -11,5 +11,5 @@ import org.springframework.stereotype.Repository;
  * @Version 1.0
  **/
 @Repository
-public interface SysRoleDeptDao extends BaseDao<SysRoleDept,String> {
+public interface SysRoleDeptDao extends BaseDao<SysRoleDept,Integer> {
 }

@@ -13,7 +13,7 @@ import java.util.List;
  * @Version 1.0
  **/
 @Repository
-public interface SysDeptDao extends BaseDao<SysDept,String> {
+public interface SysDeptDao extends BaseDao<SysDept,Integer> {
 
     List<SysDeptDao> findByParentIdOrderByOrderNumAsc(String parentId);
 

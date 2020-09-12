@@ -11,6 +11,6 @@ import org.springframework.stereotype.Repository;
  * @Version 1.0
  **/
 @Repository
-public interface SysConfigDao extends BaseDao<SysConfig,String> {
+public interface SysConfigDao extends BaseDao<SysConfig,Integer> {
 
 }

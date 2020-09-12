@@ -11,5 +11,5 @@ import org.springframework.stereotype.Repository;
  * @Version 1.0
  **/
 @Repository
-public interface SysDictDao extends BaseDao<SysDict,String> {
+public interface SysDictDao extends BaseDao<SysDict,Integer> {
 }

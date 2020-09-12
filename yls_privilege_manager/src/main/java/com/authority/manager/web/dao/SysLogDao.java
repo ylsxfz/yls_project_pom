@@ -11,5 +11,5 @@ import org.springframework.stereotype.Repository;
  * @Version 1.0
  **/
 @Repository
-public interface SysLogDao extends BaseDao<SysLog,String> {
+public interface SysLogDao extends BaseDao<SysLog,Integer> {
 }

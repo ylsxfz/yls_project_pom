@@ -13,6 +13,6 @@ import java.util.List;
  * @Version 1.0
  **/
 @Repository
-public interface SysRoleMenuDao extends BaseDao<SysRoleMenu,String> {
+public interface SysRoleMenuDao extends BaseDao<SysRoleMenu,Integer> {
     List<SysRoleMenu> findByRoleId(Integer roleId);
 }
