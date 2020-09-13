@@ -49,3 +49,14 @@ spring:
           slow-sql-millis: 5000
       #合并多个DruidDataSource的监控数据
       use-global-data-source-stat: true
+
+    ##项目启动时创建数据库表的SQL脚本
+    schema: classpath:/org/springframework/batch/core/schema-mysql.sql
+
+  ## 批处理
+  batch:
+    ## 当项目启动时就会执行配置好的批处理操作
+    initialize-schema: always
+    ## 禁止Spring Batch自动执行
+    job:
+      enabled: false
