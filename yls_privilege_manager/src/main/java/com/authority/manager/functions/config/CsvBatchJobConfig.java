@@ -70,7 +70,7 @@ public class CsvBatchJobConfig {
              * 设置文件的表头，分隔符
              */
             setLineTokenizer(new DelimitedLineTokenizer(){{
-                setNames("username","address","gender");
+                setNames("username","address","gender","age","email");
                 setDelimiter(",");
             }});
             /**
@@ -104,8 +104,8 @@ public class CsvBatchJobConfig {
     JdbcBatchItemWriter jdbcBatchItemWriter(){
         JdbcBatchItemWriter writer = new JdbcBatchItemWriter();
         writer.setDataSource(dataSource);
-        writer.setSql("insert into user(username,address,gender) "+
-                "value(:username,:address,:gender)");
+        writer.setSql("insert into user(username,address,gender,age,email) "+
+                "value(:username,:address,:gender,:age,:email)");
         writer.setItemSqlParameterSourceProvider(new BeanPropertyItemSqlParameterSourceProvider());
         return writer;
     }

@@ -34,3 +34,60 @@
     @Positive：被注解的元素必须是正数
     @PositiveOrZero：被注解的元素必须是正数或者0
 
+4、实例
+
+    /**
+    * 校验的具体注解
+    */
+    @Entity
+    @Table(name = "user")
+    public class User {
+
+        @Id
+        @Column(name = "id")
+        @GeneratedValue(strategy = javax.persistence.GenerationType.IDENTITY)
+        private Integer id;
+
+        @Size(min = 2,max = 5,message = "{user.name.size}")
+        @Column(name = "username")
+        private String username;
+
+        @NotNull(message = "{user.address.notnull}")
+        @Column(name = "address")
+        private String address;
+
+        @Column(name = "gender")
+        private String gender;
+
+        @DecimalMin(value = "1",message = "{user.age.size}")
+        @DecimalMax(value = "200",message = "{user.age.size}")
+        @Column(name = "age")
+        private Integer age;
+
+        @Email(message = "{user.email.pattern}")
+        @NotNull(message = "{user.email.notnull}")
+        @Column(name = "email")
+        private String email;
+
+    }
+
+
+    /**
+     * Validated: 表示需要对该参数做检验，紧接着BindingResult参数表示在校验出错时保存的出错信息
+     * 如果BindingResult中的hasErrors方法返回true，表示有错误信息，此时遍历错误信息，将返回给前端
+     * @param user 用户
+     * @param result 校验结果
+     * @return
+     */
+    @PostMapping("/user")
+    public List<String> addUser(@Validated User user, BindingResult result){
+        List<String> errors = new ArrayList<>();
+        if(result.hasErrors()){
+            List<ObjectError> allErrors = result.getAllErrors();
+            allErrors.forEach(objectError -> {
+                System.err.println(objectError.getDefaultMessage());
+                errors.add(objectError.getDefaultMessage());
+            });
+        }
+        return errors;
+    }
