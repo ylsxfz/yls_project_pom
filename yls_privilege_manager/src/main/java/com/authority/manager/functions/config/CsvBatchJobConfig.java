@@ -6,6 +6,7 @@ import org.springframework.batch.core.Step;
 import org.springframework.batch.core.configuration.annotation.JobBuilderFactory;
 import org.springframework.batch.core.configuration.annotation.StepBuilderFactory;
 import org.springframework.batch.core.configuration.annotation.StepScope;
+import org.springframework.batch.core.launch.support.RunIdIncrementer;
 import org.springframework.batch.item.database.BeanPropertyItemSqlParameterSourceProvider;
 import org.springframework.batch.item.database.JdbcBatchItemWriter;
 import org.springframework.batch.item.file.FlatFileItemReader;
@@ -69,7 +70,7 @@ public class CsvBatchJobConfig {
              * 设置文件的表头，分隔符
              */
             setLineTokenizer(new DelimitedLineTokenizer(){{
-                setNames("id","username","address","gender");
+                setNames("username","address","gender");
                 setDelimiter(",");
             }});
             /**
@@ -103,8 +104,8 @@ public class CsvBatchJobConfig {
     JdbcBatchItemWriter jdbcBatchItemWriter(){
         JdbcBatchItemWriter writer = new JdbcBatchItemWriter();
         writer.setDataSource(dataSource);
-        writer.setSql("insert into user(id,username,address,gender) "+
-                "value(:id,:username,:address,:gender)");
+        writer.setSql("insert into user(username,address,gender) "+
+                "value(:username,:address,:gender)");
         writer.setItemSqlParameterSourceProvider(new BeanPropertyItemSqlParameterSourceProvider());
         return writer;
     }
@@ -144,6 +145,8 @@ public class CsvBatchJobConfig {
         return jobBuilderFactory
                 //，名称
                 .get("csvJob")
+                //每次运行都以新的id运行，确保这次运行了下次还会运行
+                .incrementer(new RunIdIncrementer())
                 //配置job的Step
                 .start(csvStep())
                 .build();
