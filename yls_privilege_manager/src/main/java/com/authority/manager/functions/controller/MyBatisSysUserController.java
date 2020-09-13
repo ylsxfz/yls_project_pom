@@ -14,7 +14,7 @@ import javax.servlet.http.HttpSession;
 
 @RestController
 @RequestMapping("user")
-@Api(tags = "根据mybatis测算查询用户")
+@Api(tags = "mybatis测试")
 public class MyBatisSysUserController {
 
     @Value("${server.port}")

@@ -1,6 +1,7 @@
 package com.authority.manager.functions.controller;
 
 
+import io.swagger.annotations.Api;
 import org.springframework.batch.core.Job;
 import org.springframework.batch.core.JobParametersBuilder;
 import org.springframework.batch.core.launch.JobLauncher;
@@ -17,6 +18,7 @@ import org.springframework.web.bind.annotation.RestController;
  */
 @RestController
 @RequestMapping("/batch")
+@Api(tags = "批处理测试")
 public class BatchController {
     @Autowired
     JobLauncher jobLauncher;
