@@ -2,7 +2,7 @@ package com.authority.manager.web.service.impl;
 
 import com.authority.manager.web.dao.SysLogDAO;
 import com.authority.manager.web.service.SysLogService;
-import com.yls.core.repository.BaseDao;
+import com.yls.core.repository.BaseDAO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -20,7 +20,7 @@ public class SysLogServiceImpl implements SysLogService {
     private SysLogDAO sysLogDao;
 
     @Override
-    public BaseDao getDao() {
+    public BaseDAO getDao() {
         return sysLogDao;
     }
 }

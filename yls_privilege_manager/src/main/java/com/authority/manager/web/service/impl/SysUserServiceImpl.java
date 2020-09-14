@@ -7,7 +7,7 @@ import com.authority.manager.web.model.SysMenuDO;
 import com.authority.manager.web.model.SysUserDO;
 import com.authority.manager.web.model.relation.SysUserRoleDO;
 import com.authority.manager.web.service.SysUserService;
-import com.yls.core.repository.BaseDao;
+import com.yls.core.repository.BaseDAO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -35,7 +35,7 @@ public class SysUserServiceImpl implements SysUserService {
     private SysUserRoleDAO sysUserRoleDao;
 
     @Override
-    public BaseDao getDao() {
+    public BaseDAO getDao() {
         return sysUserDao;
     }
 

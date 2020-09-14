@@ -11,6 +11,6 @@ import java.io.Serializable;
  * 导出的dao
  */
 @NoRepositoryBean
-public interface BaseDao<T,ID extends Serializable> extends JpaRepository<T, ID>, JpaSpecificationExecutor<T> {
+public interface BaseDAO<T,ID extends Serializable> extends JpaRepository<T, ID>, JpaSpecificationExecutor<T> {
 
 }

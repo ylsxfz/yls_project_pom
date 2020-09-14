@@ -1,7 +1,7 @@
 package com.authority.manager.web.dao;
 
 import com.authority.manager.web.model.relation.SysRoleDeptDO;
-import com.yls.core.repository.BaseDao;
+import com.yls.core.repository.BaseDAO;
 import org.springframework.stereotype.Repository;
 
 /**
@@ -11,5 +11,5 @@ import org.springframework.stereotype.Repository;
  * @Version 1.0
  **/
 @Repository
-public interface SysRoleDeptDAO extends BaseDao<SysRoleDeptDO,Integer> {
+public interface SysRoleDeptDAO extends BaseDAO<SysRoleDeptDO,Integer> {
 }

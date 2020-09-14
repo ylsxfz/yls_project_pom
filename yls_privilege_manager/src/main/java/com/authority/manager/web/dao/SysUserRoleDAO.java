@@ -1,7 +1,7 @@
 package com.authority.manager.web.dao;
 
 import com.authority.manager.web.model.relation.SysUserRoleDO;
-import com.yls.core.repository.BaseDao;
+import com.yls.core.repository.BaseDAO;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -13,7 +13,7 @@ import java.util.List;
  * @Version 1.0
  **/
 @Repository
-public interface SysUserRoleDAO extends BaseDao<SysUserRoleDO,Integer> {
+public interface SysUserRoleDAO extends BaseDAO<SysUserRoleDO,Integer> {
     //根据userid查询
     List<SysUserRoleDO> findByUserId(Integer userId);
 }

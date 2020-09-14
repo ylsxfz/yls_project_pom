@@ -1,7 +1,7 @@
 package com.authority.manager.web.dao;
 
 import com.authority.manager.web.model.SysRoleDO;
-import com.yls.core.repository.BaseDao;
+import com.yls.core.repository.BaseDAO;
 import org.springframework.stereotype.Repository;
 
 /**
@@ -11,6 +11,6 @@ import org.springframework.stereotype.Repository;
  * @Version 1.0
  **/
 @Repository
-public interface SysRoleDAO extends BaseDao<SysRoleDO,Integer> {
+public interface SysRoleDAO extends BaseDAO<SysRoleDO,Integer> {
     SysRoleDO findByName(String name);
 }

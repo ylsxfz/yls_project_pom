@@ -3,7 +3,7 @@ package com.authority.manager.web.service.impl;
 import com.authority.manager.web.dao.SysMenuDAO;
 import com.authority.manager.web.model.SysMenuDO;
 import com.authority.manager.web.service.SysMenuService;
-import com.yls.core.repository.BaseDao;
+import com.yls.core.repository.BaseDAO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -25,7 +25,7 @@ public class SysMenuServiceImpl implements SysMenuService {
     @Autowired
     private SysMenuDAO sysMenuDao;
     @Override
-    public BaseDao getDao() {
+    public BaseDAO getDao() {
         return sysMenuDao;
     }
 

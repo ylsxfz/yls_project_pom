@@ -8,7 +8,7 @@ import com.authority.manager.web.model.SysMenuDO;
 import com.authority.manager.web.model.SysRoleDO;
 import com.authority.manager.web.model.relation.SysRoleMenuDO;
 import com.authority.manager.web.service.SysRoleSerivce;
-import com.yls.core.repository.BaseDao;
+import com.yls.core.repository.BaseDAO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -34,7 +34,7 @@ public class SysRoleServiceImpl implements SysRoleSerivce {
     private SysRoleMenuDAO sysRoleMenuDao;
 
     @Override
-    public BaseDao getDao() {
+    public BaseDAO getDao() {
         return sysRoleDao;
     }
 

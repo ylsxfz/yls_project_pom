@@ -1,7 +1,7 @@
 package com.authority.manager.web.dao;
 
 import com.authority.manager.web.model.SysDeptDO;
-import com.yls.core.repository.BaseDao;
+import com.yls.core.repository.BaseDAO;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -13,7 +13,7 @@ import java.util.List;
  * @Version 1.0
  **/
 @Repository
-public interface SysDeptDAO extends BaseDao<SysDeptDO,Integer> {
+public interface SysDeptDAO extends BaseDAO<SysDeptDO,Integer> {
 
     List<SysDeptDAO> findByParentIdOrderByOrderNumAsc(String parentId);
 

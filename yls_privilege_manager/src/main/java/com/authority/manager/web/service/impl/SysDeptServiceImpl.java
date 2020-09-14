@@ -3,7 +3,7 @@ package com.authority.manager.web.service.impl;
 import com.authority.manager.web.dao.SysDeptDAO;
 import com.authority.manager.web.model.SysDeptDO;
 import com.authority.manager.web.service.SysDeptService;
-import com.yls.core.repository.BaseDao;
+import com.yls.core.repository.BaseDAO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -25,7 +25,7 @@ public class SysDeptServiceImpl implements SysDeptService {
     @Autowired
     private SysDeptDAO sysDeptDao;
     @Override
-    public BaseDao getDao() {
+    public BaseDAO getDao() {
         return sysDeptDao;
     }
 

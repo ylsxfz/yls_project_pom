@@ -18,7 +18,7 @@ import java.util.Optional;
  **/
 public interface BaseJpaRepository<T,ID extends Serializable>{
     @Autowired
-    BaseDao<T, ID> getDao();
+    BaseDAO<T, ID> getDao();
 
     /**********************************查询-Retrieve-start*************************************/
     /**
