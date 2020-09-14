@@ -1,11 +1,11 @@
 package com.authority.manager.web.controller;
 
 import com.authority.manager.component.security.utils.PasswordUtils;
-import com.authority.manager.web.model.SysUser;
+import com.authority.manager.web.model.SysUserDO;
 import com.authority.manager.web.service.SysUserService;
 import com.yls.core.http.HttpConstants;
-import com.yls.core.http.HttpResult;
-import com.yls.core.page.MyPageRequest;
+import com.yls.core.http.HttpResultVO;
+import com.yls.core.page.MyPageQuery;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiOperation;
@@ -33,7 +33,7 @@ public class SysUserController {
 
     @ApiOperation(value = "保存用户")
     @PostMapping("/save")
-    public HttpResult save(@ApiParam(value = "用户对象", required = true)@RequestBody SysUser record){
+    public HttpResultVO save(@ApiParam(value = "用户对象", required = true)@RequestBody SysUserDO record){
         Optional optional  = sysUserService.findById(record.getId());
 
         if (record.getPassword()!=null){
@@ -42,7 +42,7 @@ public class SysUserController {
             if (optional.isPresent()){
                 //新增用户
                 if(sysUserService.findByName(record.getName()) != null){
-                    return HttpResult.error("用户名已存在！");
+                    return HttpResultVO.error("用户名已存在！");
                 }
                 String password = PasswordUtils.encode(record.getPassword(), salt);
                 record.setSalt(salt);
@@ -58,36 +58,36 @@ public class SysUserController {
             }
         }
         sysUserService.save(record);
-        return HttpResult.ok(HttpConstants.SAVE_OK);
+        return HttpResultVO.ok(HttpConstants.SAVE_OK);
     }
 
     @ApiOperation(value = "删除用户")
     @PostMapping("/delete")
-    public HttpResult delete(@ApiParam(value = "用户对象集合", required = true)@RequestBody List<SysUser> records){
+    public HttpResultVO delete(@ApiParam(value = "用户对象集合", required = true)@RequestBody List<SysUserDO> records){
         sysUserService.deleteAll(records);
-        return HttpResult.ok(HttpConstants.DELETE_OK);
+        return HttpResultVO.ok(HttpConstants.DELETE_OK);
     }
 
     @ApiOperation(value = "根据姓名查询用户")
     @ApiImplicitParam(name = "name",value = "姓名",required = true)
     @GetMapping(value="/findByName")
-    public HttpResult findByUserName(@RequestParam String name) {
-        return HttpResult.ok(sysUserService.findByName(name));
+    public HttpResultVO findByUserName(@RequestParam String name) {
+        return HttpResultVO.ok(sysUserService.findByName(name));
     }
 
     @ApiOperation(value = "根据姓名查询用户权限")
     @ApiImplicitParam(name = "name",value = "姓名",required = true)
     @GetMapping(value="/findPermissions")
-    public HttpResult findPermissions(String name) {
-        return HttpResult.ok(sysUserService.findPermissions(name));
+    public HttpResultVO findPermissions(String name) {
+        return HttpResultVO.ok(sysUserService.findPermissions(name));
     }
 
 
     @ApiOperation(value = "分页查询用户")
     @PostMapping("/findByPage")
-    public HttpResult findPage(@ApiParam(value = "封装的分页请求对象", required = true)@RequestBody MyPageRequest myPageRequest){
-        PageRequest pageRequest = PageRequest.of(myPageRequest.getPageNum(),myPageRequest.getPageSize());
+    public HttpResultVO findPage(@ApiParam(value = "封装的分页请求对象", required = true)@RequestBody MyPageQuery myPageQuery){
+        PageRequest pageRequest = PageRequest.of(myPageQuery.getPageNum(), myPageQuery.getPageSize());
         Page page = sysUserService.findByPage(pageRequest);
-        return HttpResult.ok(page);
+        return HttpResultVO.ok(page);
     }
 }

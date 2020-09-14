@@ -1,11 +1,11 @@
 package com.authority.manager.web.service.impl;
 
-import com.authority.manager.web.dao.SysMenuDao;
-import com.authority.manager.web.dao.SysUserDao;
-import com.authority.manager.web.dao.SysUserRoleDao;
-import com.authority.manager.web.model.SysMenu;
-import com.authority.manager.web.model.SysUser;
-import com.authority.manager.web.model.relation.SysUserRole;
+import com.authority.manager.web.dao.SysMenuDAO;
+import com.authority.manager.web.dao.SysUserDAO;
+import com.authority.manager.web.dao.SysUserRoleDAO;
+import com.authority.manager.web.model.SysMenuDO;
+import com.authority.manager.web.model.SysUserDO;
+import com.authority.manager.web.model.relation.SysUserRoleDO;
 import com.authority.manager.web.service.SysUserService;
 import com.yls.core.repository.BaseDao;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,13 +26,13 @@ import java.util.Set;
 @Service
 public class SysUserServiceImpl implements SysUserService {
     @Autowired
-    private SysUserDao sysUserDao;
+    private SysUserDAO sysUserDao;
 
     @Autowired
-    private SysMenuDao sysMenuDao;
+    private SysMenuDAO sysMenuDao;
 
     @Autowired
-    private SysUserRoleDao sysUserRoleDao;
+    private SysUserRoleDAO sysUserRoleDao;
 
     @Override
     public BaseDao getDao() {
@@ -41,24 +41,24 @@ public class SysUserServiceImpl implements SysUserService {
 
 
     @Override
-    public SysUser findByName(String name) {
+    public SysUserDO findByName(String name) {
         return sysUserDao.findByName(name);
     }
 
     @Override
     public Set<String> findPermissions(String userName) {
         Set<String> perms = new HashSet<>();
-        List<SysMenu> sysMenus = sysMenuDao.findAll();
-        for(SysMenu sysMenu:sysMenus) {
-            if(sysMenu.getPerms() != null && !"".equals(sysMenu.getPerms())) {
-                perms.add(sysMenu.getPerms());
+        List<SysMenuDO> sysMenuDOS = sysMenuDao.findAll();
+        for(SysMenuDO sysMenuDO : sysMenuDOS) {
+            if(sysMenuDO.getPerms() != null && !"".equals(sysMenuDO.getPerms())) {
+                perms.add(sysMenuDO.getPerms());
             }
         }
         return perms;
     }
 
     @Override
-    public List<SysUserRole> findUserRoles(Integer userId) {
+    public List<SysUserRoleDO> findUserRoles(Integer userId) {
         return sysUserRoleDao.findByUserId(userId);
     }
 

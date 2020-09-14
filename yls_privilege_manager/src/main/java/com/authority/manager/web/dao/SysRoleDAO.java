@@ -1,10 +1,8 @@
 package com.authority.manager.web.dao;
 
-import com.authority.manager.web.model.SysMenu;
+import com.authority.manager.web.model.SysRoleDO;
 import com.yls.core.repository.BaseDao;
 import org.springframework.stereotype.Repository;
-
-import java.util.List;
 
 /**
  * @Author yls
@@ -13,7 +11,6 @@ import java.util.List;
  * @Version 1.0
  **/
 @Repository
-public interface SysMenuDao extends BaseDao<SysMenu,Integer> {
-
-    List<SysMenu> findByTypeNot(int menuType);
+public interface SysRoleDAO extends BaseDao<SysRoleDO,Integer> {
+    SysRoleDO findByName(String name);
 }

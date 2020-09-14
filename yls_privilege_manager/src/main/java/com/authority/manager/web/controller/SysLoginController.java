@@ -4,15 +4,15 @@ import com.authority.manager.component.security.JwtAuthenticatioToken;
 import com.authority.manager.component.security.utils.PasswordUtils;
 import com.authority.manager.component.security.utils.SecurityUtils;
 import com.authority.manager.contant.SysContants;
-import com.authority.manager.vo.LoginBean;
-import com.authority.manager.web.model.SysUser;
-import com.authority.manager.web.model.log.SysLoginLog;
+import com.authority.manager.vo.LoginBeanBO;
+import com.authority.manager.web.model.SysUserDO;
+import com.authority.manager.web.model.log.SysLoginLogDO;
 import com.authority.manager.web.service.SysLoginLogService;
 import com.authority.manager.web.service.SysUserService;
 import com.google.code.kaptcha.Constants;
 import com.google.code.kaptcha.Producer;
 import com.yls.common.utils.IOUtils;
-import com.yls.core.http.HttpResult;
+import com.yls.core.http.HttpResultVO;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
@@ -82,43 +82,43 @@ public class SysLoginController {
      * @Author yls
      * @Description 登录接口
      * @Date 2020/4/6 10:22
-     * @param loginBean 登录实例
+     * @param loginBeanBO 登录实例
      * @param request 请求
      * @return com.authority.manager.base.http.HttpResult
      **/
     @ApiOperation(value = "登录接口")
     @PostMapping(value = "/login")
-    public HttpResult login(@ApiParam(value = "登录对象", required = true)@RequestBody LoginBean loginBean, HttpServletRequest request) throws IOException {
-        String username = loginBean.getAccount();
-        String password = loginBean.getPassword();
-        String captcha = loginBean.getCaptcha();
+    public HttpResultVO login(@ApiParam(value = "登录对象", required = true)@RequestBody LoginBeanBO loginBeanBO, HttpServletRequest request) throws IOException {
+        String username = loginBeanBO.getAccount();
+        String password = loginBeanBO.getPassword();
+        String captcha = loginBeanBO.getCaptcha();
         System.err.println("后台生成的验证码："+captcha);
         // 从session中获取之前保存的验证码跟前台传来的验证码进行匹配
         Object kaptcha = request.getSession().getAttribute(Constants.KAPTCHA_SESSION_KEY);
         System.err.println("前台验证码："+kaptcha);
         if(kaptcha == null){
-            return HttpResult.error("验证码已失效");
+            return HttpResultVO.error("验证码已失效");
         }
         if(!captcha.equals(kaptcha)){
-            return HttpResult.error("验证码不正确");
+            return HttpResultVO.error("验证码不正确");
         }
         // 用户信息
-        SysUser user = sysUserService.findByName(username);
+        SysUserDO user = sysUserService.findByName(username);
         // 账号不存在、密码错误
         if (user == null) {
-            return HttpResult.error("账号不存在");
+            return HttpResultVO.error("账号不存在");
         }
         if (!PasswordUtils.matches(user.getSalt(), password, user.getPassword())) {
-            return HttpResult.error("密码不正确");
+            return HttpResultVO.error("密码不正确");
         }
         // 账号锁定
         if (user.getStatus() == 0) {
-            return HttpResult.error("账号已被锁定,请联系管理员");
+            return HttpResultVO.error("账号已被锁定,请联系管理员");
         }
         // 系统登录认证
         JwtAuthenticatioToken token = SecurityUtils.login(request, username, password, authenticationManager);
-        SysLoginLog sysLoginLog = new SysLoginLog(SysContants.LOGIN);
+        SysLoginLogDO sysLoginLog = new SysLoginLogDO(SysContants.LOGIN);
         sysLoginLogService.save(sysLoginLog);
-        return HttpResult.ok(token);
+        return HttpResultVO.ok(token);
     }
 }

@@ -1,11 +1,11 @@
 package com.authority.manager.web.controller;
 
 
-import com.authority.manager.web.model.log.SysLoginLog;
+import com.authority.manager.web.model.log.SysLoginLogDO;
 import com.authority.manager.web.service.SysLoginLogService;
 import com.yls.core.http.HttpConstants;
-import com.yls.core.http.HttpResult;
-import com.yls.core.page.MyPageRequest;
+import com.yls.core.http.HttpResultVO;
+import com.yls.core.page.MyPageQuery;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
@@ -34,16 +34,16 @@ public class SysLoginLogController {
 
     @ApiOperation(value = "删除登录日志")
     @PostMapping("/delete")
-    public HttpResult delete(@ApiParam(value = "登录日志集合", required = true)@RequestBody List<SysLoginLog> records){
+    public HttpResultVO delete(@ApiParam(value = "登录日志集合", required = true)@RequestBody List<SysLoginLogDO> records){
         sysLoginLogService.deleteAll(records);
-        return HttpResult.ok(HttpConstants.DELETE_OK);
+        return HttpResultVO.ok(HttpConstants.DELETE_OK);
     }
 
     @ApiOperation(value = "分页查询登录日志")
     @PostMapping("/findByPage")
-    public HttpResult findPage(@ApiParam(value = "封装的分页请求对象", required = true)@RequestBody MyPageRequest myPageRequest){
-        PageRequest pageRequest = PageRequest.of(myPageRequest.getPageNum(), myPageRequest.getPageSize());
+    public HttpResultVO findPage(@ApiParam(value = "封装的分页请求对象", required = true)@RequestBody MyPageQuery myPageQuery){
+        PageRequest pageRequest = PageRequest.of(myPageQuery.getPageNum(), myPageQuery.getPageSize());
         Page page = sysLoginLogService.findByPage(pageRequest);
-        return HttpResult.ok(page);
+        return HttpResultVO.ok(page);
     }
 }

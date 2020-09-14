@@ -1,6 +1,6 @@
 package com.authority.manager.web.service.impl;
 
-import com.authority.manager.web.dao.SysRoleMenuDao;
+import com.authority.manager.web.dao.SysRoleMenuDAO;
 import com.authority.manager.web.service.SysRoleMenuService;
 import com.yls.core.repository.BaseDao;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,7 +17,7 @@ import org.springframework.transaction.annotation.Transactional;
 @Service
 public class SysRoleMenuServiceImpl implements SysRoleMenuService {
     @Autowired
-    private SysRoleMenuDao sysRoleMenuDao;
+    private SysRoleMenuDAO sysRoleMenuDao;
 
     @Override
     public BaseDao getDao() {

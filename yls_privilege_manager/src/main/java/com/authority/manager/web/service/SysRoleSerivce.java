@@ -1,8 +1,8 @@
 package com.authority.manager.web.service;
 
-import com.authority.manager.web.model.SysMenu;
-import com.authority.manager.web.model.SysRole;
-import com.authority.manager.web.model.relation.SysRoleMenu;
+import com.authority.manager.web.model.SysMenuDO;
+import com.authority.manager.web.model.SysRoleDO;
+import com.authority.manager.web.model.relation.SysRoleMenuDO;
 import com.yls.core.repository.BaseService;
 
 import java.util.List;
@@ -13,11 +13,11 @@ import java.util.List;
  * @Description
  * @Version 1.0
  **/
-public interface SysRoleSerivce extends BaseService<SysRole,String> {
+public interface SysRoleSerivce extends BaseService<SysRoleDO,String> {
 
-    SysRole findByName(String name);
+    SysRoleDO findByName(String name);
 
-    List<SysMenu> findRoleMenus(Integer roleId);
+    List<SysMenuDO> findRoleMenus(Integer roleId);
 
-    void saveRoleMenus(List<SysRoleMenu> records);
+    void saveRoleMenus(List<SysRoleMenuDO> records);
 }

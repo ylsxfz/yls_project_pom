@@ -1,0 +1,23 @@
+1、各层命名归约：
+    （1）service/DAO层命名规范：
+        .获取单个对象的方法用get作为前缀
+        .获取多个对象的方法用list作为前缀，复数结尾，例如：listObjects
+        .获取统计值得方法用count作为前缀
+        .插入的方法用save/insert作为前缀
+        .删除的方法用remove/delete作为前缀
+        .修改的方法用update作为前缀
+
+    （2）领域模型命名归约如下：
+        .DO(Data Object:数据对象)：xxxDO,xxx为数据表名。与数据库结构一一对应，通过DAO层向上传输数据源对象。
+        .DTO(Data Transfer Object:数据传输对象)：xxxDTO,xxx为业务领域相关，Service或Manager向外传输的对象。
+        .VO(view Object:展示对象)：xxxVO,xxx一般为网页名称，通常是web向模板渲染引擎层传输的对象。
+        .BO(Business Object:业务对象)：xxxBO,由service层输出的封装业务逻辑对象。
+        .AO(Application Object:应用对象)：xxxAO，在web和service之间抽象的复用对象模型，极为贴近展示层，复用度不高。
+        .Query:数据查询对象，各层接受上层的查询请求。注意：如果超过2个参数的查询封装，禁止使用map类来传输。
+        .POJO是DO/DTO/BO/VO的统称，禁止使用xxxPOJO命名。
+
+2、基本数据类型和包装数据类型的使用标准如下：
+   （1）所有的POJO类属性必须使用包装数据类型
+   （2）RPC方法的返回值和参数必须使用包装数据类型
+   （3）所有的局部变量使用基本数据类型
+

@@ -1,6 +1,6 @@
 package com.authority.manager.web.service;
 
-import com.authority.manager.web.model.SysDict;
+import com.authority.manager.web.model.SysDictDO;
 import com.yls.core.repository.BaseService;
 
 /**
@@ -9,6 +9,6 @@ import com.yls.core.repository.BaseService;
  * @Description
  * @Version 1.0
  **/
-public interface SysDictService extends BaseService<SysDict,String> {
+public interface SysDictService extends BaseService<SysDictDO,String> {
 
 }

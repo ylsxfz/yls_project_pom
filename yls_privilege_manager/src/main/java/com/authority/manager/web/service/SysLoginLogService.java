@@ -1,6 +1,6 @@
 package com.authority.manager.web.service;
 
-import com.authority.manager.web.model.log.SysLoginLog;
+import com.authority.manager.web.model.log.SysLoginLogDO;
 import com.yls.core.repository.BaseService;
 
 /**
@@ -9,5 +9,5 @@ import com.yls.core.repository.BaseService;
  * @Description
  * @Version 1.0
  **/
-public interface SysLoginLogService extends BaseService<SysLoginLog,String> {
+public interface SysLoginLogService extends BaseService<SysLoginLogDO,String> {
 }

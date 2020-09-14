@@ -1,6 +1,6 @@
 package com.authority.manager.web.service;
 
-import com.authority.manager.web.model.relation.SysUserRole;
+import com.authority.manager.web.model.relation.SysUserRoleDO;
 import com.yls.core.repository.BaseService;
 
 /**
@@ -9,5 +9,5 @@ import com.yls.core.repository.BaseService;
  * @Description
  * @Version 1.0
  **/
-public interface SysUserRoleService extends BaseService<SysUserRole,String> {
+public interface SysUserRoleService extends BaseService<SysUserRoleDO,String> {
 }

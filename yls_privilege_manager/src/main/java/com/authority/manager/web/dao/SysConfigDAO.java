@@ -1,6 +1,6 @@
 package com.authority.manager.web.dao;
 
-import com.authority.manager.web.model.SysConfig;
+import com.authority.manager.web.model.SysConfigDO;
 import com.yls.core.repository.BaseDao;
 import org.springframework.stereotype.Repository;
 
@@ -11,6 +11,6 @@ import org.springframework.stereotype.Repository;
  * @Version 1.0
  **/
 @Repository
-public interface SysConfigDao extends BaseDao<SysConfig,Integer> {
+public interface SysConfigDAO extends BaseDao<SysConfigDO,Integer> {
 
 }

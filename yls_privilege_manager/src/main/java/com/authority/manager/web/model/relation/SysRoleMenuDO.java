@@ -10,7 +10,7 @@ import javax.persistence.*;
 @ApiModel(description = "角色和菜单的关联表")
 @Table(name = "sys_role_menu")
 @org.hibernate.annotations.Table(appliesTo = "sys_role_menu",comment = "角色和菜单的关联表")
-public class SysRoleMenu extends BaseModel {
+public class SysRoleMenuDO extends BaseModel {
 
     @ApiModelProperty("角色id")
     @Column(name = "role_id",columnDefinition = "int comment '角色id'")

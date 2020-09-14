@@ -1,6 +1,6 @@
 package com.authority.manager.web.service.impl;
 
-import com.authority.manager.web.dao.SysRoleDeptDao;
+import com.authority.manager.web.dao.SysRoleDeptDAO;
 import com.authority.manager.web.service.SysRoleDeptService;
 import com.yls.core.repository.BaseDao;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,7 +17,7 @@ import org.springframework.transaction.annotation.Transactional;
 @Service
 public class SysRoleDeptServiceImpl implements SysRoleDeptService {
     @Autowired
-    private SysRoleDeptDao sysRoleDeptDao;
+    private SysRoleDeptDAO sysRoleDeptDao;
 
     @Override
     public BaseDao getDao() {

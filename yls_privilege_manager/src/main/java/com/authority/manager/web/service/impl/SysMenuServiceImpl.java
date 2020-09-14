@@ -1,7 +1,7 @@
 package com.authority.manager.web.service.impl;
 
-import com.authority.manager.web.dao.SysMenuDao;
-import com.authority.manager.web.model.SysMenu;
+import com.authority.manager.web.dao.SysMenuDAO;
+import com.authority.manager.web.model.SysMenuDO;
 import com.authority.manager.web.service.SysMenuService;
 import com.yls.core.repository.BaseDao;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,26 +23,26 @@ import java.util.Map;
 @Service
 public class SysMenuServiceImpl implements SysMenuService {
     @Autowired
-    private SysMenuDao sysMenuDao;
+    private SysMenuDAO sysMenuDao;
     @Override
     public BaseDao getDao() {
         return sysMenuDao;
     }
 
     @Override
-    public List<SysMenu> findTree(String userName, int menuType) {
-        List<SysMenu> sysMenuList = new ArrayList<>();
+    public List<SysMenuDO> findTree(String userName, int menuType) {
+        List<SysMenuDO> sysMenuDOList = new ArrayList<>();
 
         if (menuType==1){
-            sysMenuList = sysMenuDao.findByTypeNot(2);
+            sysMenuDOList = sysMenuDao.findByTypeNot(2);
         }
 
         if (menuType==0){
-            sysMenuList = sysMenuDao.findAll();
+            sysMenuDOList = sysMenuDao.findAll();
         }
         //根据父级id查询
-        Map<Integer,List<SysMenu>> detGroupByParentId = new HashMap<>();
-        sysMenuList.forEach(sysMenu -> {
+        Map<Integer,List<SysMenuDO>> detGroupByParentId = new HashMap<>();
+        sysMenuDOList.forEach(sysMenu -> {
             int parentId = sysMenu.getParentId();
             //判断根节点
             if(parentId==0){
@@ -51,9 +51,9 @@ public class SysMenuServiceImpl implements SysMenuService {
             }
             //如果不存在改父id的分组，新建一个
             if (detGroupByParentId.get(parentId)==null){
-                List<SysMenu> sysMenus = new ArrayList<>();
-                sysMenus.add(sysMenu);
-                detGroupByParentId.put(parentId,sysMenus);
+                List<SysMenuDO> sysMenuDOS = new ArrayList<>();
+                sysMenuDOS.add(sysMenu);
+                detGroupByParentId.put(parentId, sysMenuDOS);
                 //如果已经存在，往里面添加数据即可
             }else{
                 detGroupByParentId.get(parentId).add(sysMenu);
@@ -62,23 +62,23 @@ public class SysMenuServiceImpl implements SysMenuService {
 
         //组装tree
         //获取根节点数据
-        List<SysMenu> sysMenuTree = detGroupByParentId.get(0);
-        findChildren(sysMenuTree,detGroupByParentId);
+        List<SysMenuDO> sysMenuDOTree = detGroupByParentId.get(0);
+        findChildren(sysMenuDOTree,detGroupByParentId);
 
-        return sysMenuTree;
+        return sysMenuDOTree;
     }
 
     /**
      * @Author yls
      * @Description 组装部门tree
      * @Date 2020/4/6 13:29
-     * @param sysMenusTree 菜单对应的tree
+     * @param sysMenusTreeDO 菜单对应的tree
      * @param detGroupByParentId  菜单对应的根据父级id分组的map
      * @return void
      **/
-    private void findChildren(List<SysMenu> sysMenusTree, Map<Integer,List<SysMenu>> detGroupByParentId){
-        sysMenusTree.forEach(sysMenu -> {
-            List<SysMenu> childerns= detGroupByParentId.get(sysMenu.getId());
+    private void findChildren(List<SysMenuDO> sysMenusTreeDO, Map<Integer,List<SysMenuDO>> detGroupByParentId){
+        sysMenusTreeDO.forEach(sysMenu -> {
+            List<SysMenuDO> childerns= detGroupByParentId.get(sysMenu.getId());
             //判断是否有子部门
             if(childerns!=null){
                 childerns.forEach(childern -> {

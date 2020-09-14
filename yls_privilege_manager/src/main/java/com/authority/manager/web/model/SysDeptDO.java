@@ -13,7 +13,7 @@ import java.util.List;
 @Entity
 @Table(name="sys_dept")
 @org.hibernate.annotations.Table(appliesTo = "sys_dept",comment = "部门表")
-public class SysDept extends BaseModel {
+public class SysDeptDO extends BaseModel {
 
 	@ApiModelProperty("名称")
 	@Column(name = "name",columnDefinition = "varchar(32) comment '名称'")
@@ -30,7 +30,7 @@ public class SysDept extends BaseModel {
     // 非数据库字段
 	@Transient
 	@ApiModelProperty("下级部门")
-	private List<SysDept> children;
+	private List<SysDeptDO> children;
     // 非数据库字段
 	@Transient
 	@ApiModelProperty("父级名称")
@@ -61,10 +61,10 @@ public class SysDept extends BaseModel {
 	public void setOrderNum(Integer orderNum) {
 		this.orderNum = orderNum;
 	}
-	public List<SysDept> getChildren() {
+	public List<SysDeptDO> getChildren() {
 		return children;
 	}
-	public void setChildren(List<SysDept> children) {
+	public void setChildren(List<SysDeptDO> children) {
 		this.children = children;
 	}
 	public String getParentName() {

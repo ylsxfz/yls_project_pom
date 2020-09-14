@@ -1,6 +1,6 @@
 package com.authority.manager.component.security;
 
-import com.authority.manager.web.model.SysUser;
+import com.authority.manager.web.model.SysUserDO;
 import com.authority.manager.web.service.SysUserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;
@@ -27,7 +27,7 @@ public class UserDetailsServiceImpl implements UserDetailsService {
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        SysUser user = sysUserService.findByName(username);
+        SysUserDO user = sysUserService.findByName(username);
         if (user == null) {
             throw new UsernameNotFoundException("该用户不存在");
         }

@@ -1,11 +1,11 @@
 package com.authority.manager.web.controller;
 
 
-import com.authority.manager.web.model.SysDict;
+import com.authority.manager.web.model.SysDictDO;
 import com.authority.manager.web.service.SysDictService;
 import com.yls.core.http.HttpConstants;
-import com.yls.core.http.HttpResult;
-import com.yls.core.page.MyPageRequest;
+import com.yls.core.http.HttpResultVO;
+import com.yls.core.page.MyPageQuery;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
@@ -35,24 +35,24 @@ public class SysDictController {
 
     @ApiOperation(value = "保存字典管理")
     @PostMapping("/save")
-    public HttpResult save(@ApiParam(value = "字典对象", required = true)@RequestBody SysDict record){
+    public HttpResultVO save(@ApiParam(value = "字典对象", required = true)@RequestBody SysDictDO record){
         sysDictService.save(record);
-        return HttpResult.ok(HttpConstants.SAVE_OK);
+        return HttpResultVO.ok(HttpConstants.SAVE_OK);
     }
 
 
     @ApiOperation(value = "删除字典记录")
     @PostMapping("/delete")
-    public HttpResult delete(@ApiParam(value = "字典对象集合", required = true)@RequestBody List<SysDict> records){
+    public HttpResultVO delete(@ApiParam(value = "字典对象集合", required = true)@RequestBody List<SysDictDO> records){
         sysDictService.deleteAll(records);
-        return HttpResult.ok(HttpConstants.DELETE_OK);
+        return HttpResultVO.ok(HttpConstants.DELETE_OK);
     }
 
     @ApiOperation(value = "分页查询字典记录")
     @PostMapping("/findByPage")
-    public HttpResult findPage(@ApiParam(value = "封装的分页请求对象", required = true)@RequestBody MyPageRequest myPageRequest){
-        PageRequest pageRequest = PageRequest.of(myPageRequest.getPageNum(), myPageRequest.getPageSize());
+    public HttpResultVO findPage(@ApiParam(value = "封装的分页请求对象", required = true)@RequestBody MyPageQuery myPageQuery){
+        PageRequest pageRequest = PageRequest.of(myPageQuery.getPageNum(), myPageQuery.getPageSize());
         Page page = sysDictService.findByPage(pageRequest);
-        return HttpResult.ok(page);
+        return HttpResultVO.ok(page);
     }
 }

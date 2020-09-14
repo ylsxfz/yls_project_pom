@@ -29,7 +29,7 @@
                </dependency>
     配置（config）：com.authority.manager.config.WebSecurityConfig
     登录的相关配置：com.authority.manager.security包
-    登录的相关实体：com.authority.manager.vo.LoginBean（页面交互）
+    登录的相关实体：com.authority.manager.vo.LoginBeanBO（页面交互）
 
 
 方法权限控制：

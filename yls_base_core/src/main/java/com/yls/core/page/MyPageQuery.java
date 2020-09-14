@@ -12,7 +12,7 @@ import java.util.List;
  * @date : 2020/07/19 10:59
  */
 @ApiModel(description = "分页请求封装")
-public class MyPageRequest{
+public class MyPageQuery {
 	/**
 	 * 当前页码
 	 */

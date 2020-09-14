@@ -1,6 +1,6 @@
 package com.yls.core.http;
 
-import com.yls.core.page.MyPageResult;
+import com.yls.core.page.MyPageResultVO;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import org.springframework.data.domain.Page;
@@ -11,7 +11,7 @@ import org.springframework.data.domain.Page;
  * @Date 2020/4/5 9:41
  **/
 @ApiModel(description = "HTTP结果封装")
-public class HttpResult {
+public class HttpResultVO {
 
 	@ApiModelProperty("状态")
 	private int code = 200;
@@ -20,33 +20,33 @@ public class HttpResult {
 	@ApiModelProperty("返回数据")
 	private Object data;
 	
-	public static HttpResult error() {
+	public static HttpResultVO error() {
 		return error(HttpStatus.SC_INTERNAL_SERVER_ERROR, "未知异常，请联系管理员");
 	}
 	
-	public static HttpResult error(String msg) {
+	public static HttpResultVO error(String msg) {
 		return error(HttpStatus.SC_INTERNAL_SERVER_ERROR, msg);
 	}
 	
-	public static HttpResult error(int code, String msg) {
-		HttpResult r = new HttpResult();
+	public static HttpResultVO error(int code, String msg) {
+		HttpResultVO r = new HttpResultVO();
 		r.setCode(code);
 		r.setMsg(msg);
 		return r;
 	}
 
-	public static HttpResult ok(String msg) {
-		HttpResult r = new HttpResult();
+	public static HttpResultVO ok(String msg) {
+		HttpResultVO r = new HttpResultVO();
 		r.setMsg(msg);
 		return r;
 	}
 	
-	public static  HttpResult ok(Object data) {
-		HttpResult r = new HttpResult();
+	public static HttpResultVO ok(Object data) {
+		HttpResultVO r = new HttpResultVO();
 		//判断是否为分页对象
 		if(data instanceof Page){
 			Page page = (Page) data;
-			MyPageResult pageResult = new MyPageResult();
+			MyPageResultVO pageResult = new MyPageResultVO();
 			pageResult.setContent(page.getContent());
 			pageResult.setPageNum(page.getNumber()+1);
 			pageResult.setPageSize(page.getSize());
@@ -59,8 +59,8 @@ public class HttpResult {
 		return r;
 	}
 	
-	public static HttpResult ok() {
-		return new HttpResult();
+	public static HttpResultVO ok() {
+		return new HttpResultVO();
 	}
 
 	public int getCode() {

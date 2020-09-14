@@ -11,7 +11,7 @@ import javax.persistence.Table;
 @ApiModel(description = "系统权限")
 @Table(name="sys_role")
 @org.hibernate.annotations.Table(appliesTo = "sys_role",comment = "系统权限表")
-public class SysRole extends BaseModel {
+public class SysRoleDO extends BaseModel {
 
 	@ApiModelProperty("名称")
 	@Column(name = "name",columnDefinition = "varchar(32) comment '名称'")

@@ -9,7 +9,7 @@ import io.swagger.annotations.ApiModelProperty;
  * @Date 2020/4/12 12:03
  **/
 @ApiModel(description = "登录对象")
-public class LoginBean {
+public class LoginBeanBO {
 
 	/**
 	 * 账号

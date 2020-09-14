@@ -1,6 +1,6 @@
 package com.authority.manager.web.service.impl;
 
-import com.authority.manager.web.dao.SysConfigDao;
+import com.authority.manager.web.dao.SysConfigDAO;
 import com.authority.manager.web.service.SysConfigService;
 import com.yls.core.repository.BaseDao;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,7 +17,7 @@ import org.springframework.transaction.annotation.Transactional;
 @Service
 public class SysConfigServiceImpl implements SysConfigService {
     @Autowired
-    private SysConfigDao sysConfigDao;
+    private SysConfigDAO sysConfigDao;
 
     @Override
     public BaseDao getDao() {

@@ -1,6 +1,6 @@
 package com.authority.manager.web.service;
 
-import com.authority.manager.web.model.SysMenu;
+import com.authority.manager.web.model.SysMenuDO;
 import com.yls.core.repository.BaseService;
 
 import java.util.List;
@@ -11,6 +11,6 @@ import java.util.List;
  * @Description
  * @Version 1.0
  **/
-public interface SysMenuService extends BaseService<SysMenu,String> {
-    List<SysMenu> findTree(String userName, int menuType);
+public interface SysMenuService extends BaseService<SysMenuDO,String> {
+    List<SysMenuDO> findTree(String userName, int menuType);
 }

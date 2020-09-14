@@ -12,7 +12,7 @@ import javax.persistence.*;
 @ApiModel(description = "系统登录日志")
 @Table(name="sys_login_log")
 @org.hibernate.annotations.Table(appliesTo = "sys_login_log",comment = "系统登录日志表")
-public class SysLoginLog{
+public class SysLoginLogDO {
 
 	@ApiModelProperty("主键id")
 	@Id
@@ -41,11 +41,11 @@ public class SysLoginLog{
 	@Column(name = "remark",columnDefinition = "varchar(255) comment '备注'")
 	private String remark;
 
-	public SysLoginLog(){
+	public SysLoginLogDO(){
 
 	}
 
-	public SysLoginLog(String status) {
+	public SysLoginLogDO(String status) {
 		this.status = status;
 		//用户名
 		this.userName = SecurityUtils.getUsername();

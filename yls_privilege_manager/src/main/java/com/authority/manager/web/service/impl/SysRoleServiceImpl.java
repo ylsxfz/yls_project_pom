@@ -1,12 +1,12 @@
 package com.authority.manager.web.service.impl;
 
 import com.authority.manager.contant.SysContants;
-import com.authority.manager.web.dao.SysMenuDao;
-import com.authority.manager.web.dao.SysRoleDao;
-import com.authority.manager.web.dao.SysRoleMenuDao;
-import com.authority.manager.web.model.SysMenu;
-import com.authority.manager.web.model.SysRole;
-import com.authority.manager.web.model.relation.SysRoleMenu;
+import com.authority.manager.web.dao.SysMenuDAO;
+import com.authority.manager.web.dao.SysRoleDAO;
+import com.authority.manager.web.dao.SysRoleMenuDAO;
+import com.authority.manager.web.model.SysMenuDO;
+import com.authority.manager.web.model.SysRoleDO;
+import com.authority.manager.web.model.relation.SysRoleMenuDO;
 import com.authority.manager.web.service.SysRoleSerivce;
 import com.yls.core.repository.BaseDao;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,13 +25,13 @@ import java.util.*;
 @Service
 public class SysRoleServiceImpl implements SysRoleSerivce {
     @Autowired
-    private SysRoleDao sysRoleDao;
+    private SysRoleDAO sysRoleDao;
 
     @Autowired
-    private SysMenuDao sysMenuDao;
+    private SysMenuDAO sysMenuDao;
 
     @Autowired
-    private SysRoleMenuDao sysRoleMenuDao;
+    private SysRoleMenuDAO sysRoleMenuDao;
 
     @Override
     public BaseDao getDao() {
@@ -39,22 +39,22 @@ public class SysRoleServiceImpl implements SysRoleSerivce {
     }
 
     @Override
-    public SysRole findByName(String name) {
+    public SysRoleDO findByName(String name) {
         return sysRoleDao.findByName(name);
     }
 
     @Override
-    public List<SysMenu> findRoleMenus(Integer roleId) {
-        Optional<SysRole> sysRoleOptional = sysRoleDao.findById(roleId);
+    public List<SysMenuDO> findRoleMenus(Integer roleId) {
+        Optional<SysRoleDO> sysRoleOptional = sysRoleDao.findById(roleId);
         if (sysRoleOptional.isPresent()){
-            SysRole sysRole = sysRoleOptional.get();
+            SysRoleDO sysRoleDO = sysRoleOptional.get();
             //如果是超级管理员，查询所有
-            if (SysContants.ADMIN.equals(sysRole.getName())){
+            if (SysContants.ADMIN.equals(sysRoleDO.getName())){
                 return sysMenuDao.findAll();
             }else {
-                List<SysRoleMenu> sysRoleMenus = sysRoleMenuDao.findByRoleId(roleId);
+                List<SysRoleMenuDO> sysRoleMenuDOS = sysRoleMenuDao.findByRoleId(roleId);
                 List<Integer> menuids = new ArrayList<>();
-                sysRoleMenus.forEach(sysRoleMenu -> {
+                sysRoleMenuDOS.forEach(sysRoleMenu -> {
                     menuids.add(sysRoleMenu.getMenuId());
                 });
                 return sysMenuDao.findAllById(menuids);
@@ -65,27 +65,27 @@ public class SysRoleServiceImpl implements SysRoleSerivce {
     }
 
     @Override
-    public  void saveRoleMenus(List<SysRoleMenu> records){
+    public  void saveRoleMenus(List<SysRoleMenuDO> records){
         //查询当前角色的所有权限
-        List<SysRoleMenu> sysRoleMenus = sysRoleMenuDao.findByRoleId(records.get(0).getRoleId());
+        List<SysRoleMenuDO> sysRoleMenuDOS = sysRoleMenuDao.findByRoleId(records.get(0).getRoleId());
         //组装为map
-        Map<Integer, SysRoleMenu> roleMenusMap = new HashMap<>();
-        sysRoleMenus.forEach(sysRoleMenu -> {
+        Map<Integer, SysRoleMenuDO> roleMenusMap = new HashMap<>();
+        sysRoleMenuDOS.forEach(sysRoleMenu -> {
             roleMenusMap.put(sysRoleMenu.getMenuId(),sysRoleMenu);
         });
 
-        List<SysRoleMenu> addSysRoleMenus = new ArrayList<>();
+        List<SysRoleMenuDO> addSysRoleMenuDOS = new ArrayList<>();
         records.forEach(sysRoleMenu -> {
             if (!roleMenusMap.containsKey(sysRoleMenu.getMenuId())){
-                addSysRoleMenus.add(sysRoleMenu);
+                addSysRoleMenuDOS.add(sysRoleMenu);
             }else{
                 roleMenusMap.remove(sysRoleMenu.getMenuId());
             };
         });
-        Collection<SysRoleMenu> delSysRoleMenus = roleMenusMap.values();
+        Collection<SysRoleMenuDO> delSysRoleMenuDOS = roleMenusMap.values();
         //新增权限
-        sysRoleMenuDao.saveAll(addSysRoleMenus);
+        sysRoleMenuDao.saveAll(addSysRoleMenuDOS);
         //删除权限
-        sysRoleMenuDao.deleteAll(delSysRoleMenus);
+        sysRoleMenuDao.deleteAll(delSysRoleMenuDOS);
     }
 }

@@ -7,11 +7,11 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Table;
 
-@ApiModel(description = "系统设置")
 @Entity
-@Table(name="sys_config")
-@org.hibernate.annotations.Table(appliesTo = "sys_config",comment = "系统设置表")
-public class SysConfig extends BaseModel {
+@Table(name="sys_dict")
+@ApiModel(description = "字典管理")
+@org.hibernate.annotations.Table(appliesTo = "sys_dict",comment = "字典管理表")
+public class SysDictDO extends BaseModel {
 
 	@ApiModelProperty("值")
 	@Column(name = "value",columnDefinition = "varchar(32) comment '值'")
@@ -36,6 +36,7 @@ public class SysConfig extends BaseModel {
 	@ApiModelProperty("备注")
 	@Column(name = "remarks",columnDefinition = "varchar(255) comment '备注'")
     private String remarks;
+
 
 
 	public String getValue() {
@@ -86,9 +87,10 @@ public class SysConfig extends BaseModel {
 		this.remarks = remarks;
 	}
 
+
 	@Override
 	public String toString() {
-		return "SysConfig{" +
+		return "SysDict{" +
 				"value='" + value + '\'' +
 				", label='" + label + '\'' +
 				", type='" + type + '\'' +

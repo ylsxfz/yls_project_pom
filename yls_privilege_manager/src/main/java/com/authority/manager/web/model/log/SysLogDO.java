@@ -9,7 +9,7 @@ import javax.persistence.*;
 @ApiModel(description = "系统日志")
 @Table(name="sys_log")
 @org.hibernate.annotations.Table(appliesTo = "sys_log",comment = "系统日志表")
-public class SysLog {
+public class SysLogDO {
 
 	@ApiModelProperty(value = "主键id")
 	@Id

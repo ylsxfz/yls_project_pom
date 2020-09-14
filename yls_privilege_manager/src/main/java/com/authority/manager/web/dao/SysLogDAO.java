@@ -1,6 +1,6 @@
 package com.authority.manager.web.dao;
 
-import com.authority.manager.web.model.SysDict;
+import com.authority.manager.web.model.log.SysLogDO;
 import com.yls.core.repository.BaseDao;
 import org.springframework.stereotype.Repository;
 
@@ -11,5 +11,5 @@ import org.springframework.stereotype.Repository;
  * @Version 1.0
  **/
 @Repository
-public interface SysDictDao extends BaseDao<SysDict,Integer> {
+public interface SysLogDAO extends BaseDao<SysLogDO,Integer> {
 }

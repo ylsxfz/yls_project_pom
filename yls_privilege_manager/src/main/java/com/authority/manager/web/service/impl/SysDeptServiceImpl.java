@@ -1,7 +1,7 @@
 package com.authority.manager.web.service.impl;
 
-import com.authority.manager.web.dao.SysDeptDao;
-import com.authority.manager.web.model.SysDept;
+import com.authority.manager.web.dao.SysDeptDAO;
+import com.authority.manager.web.model.SysDeptDO;
 import com.authority.manager.web.service.SysDeptService;
 import com.yls.core.repository.BaseDao;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,18 +23,18 @@ import java.util.Map;
 @Service
 public class SysDeptServiceImpl implements SysDeptService {
     @Autowired
-    private SysDeptDao sysDeptDao;
+    private SysDeptDAO sysDeptDao;
     @Override
     public BaseDao getDao() {
         return sysDeptDao;
     }
 
     @Override
-    public List<SysDept> findDeptTree() {
+    public List<SysDeptDO> findDeptTree() {
         //查询所有的数据
-        List<SysDept> deptList = sysDeptDao.findAll();
+        List<SysDeptDO> deptList = sysDeptDao.findAll();
         //根据父级id查询
-        Map<Integer,List<SysDept>> detGroupByParentId = new HashMap<>();
+        Map<Integer,List<SysDeptDO>> detGroupByParentId = new HashMap<>();
         deptList.forEach(sysDept -> {
             int parentId = sysDept.getParentId();
             //判断根节点
@@ -45,9 +45,9 @@ public class SysDeptServiceImpl implements SysDeptService {
             }
             //如果不存在改父id的分组，新建一个
             if (detGroupByParentId.get(parentId)==null){
-                List<SysDept> sysDepts = new ArrayList<>();
-                sysDepts.add(sysDept);
-                detGroupByParentId.put(parentId,sysDepts);
+                List<SysDeptDO> sysDeptDOS = new ArrayList<>();
+                sysDeptDOS.add(sysDept);
+                detGroupByParentId.put(parentId, sysDeptDOS);
             //如果已经存在，往里面添加数据即可
             }else{
                 detGroupByParentId.get(parentId).add(sysDept);
@@ -56,22 +56,22 @@ public class SysDeptServiceImpl implements SysDeptService {
 
         //组装tree
         //获取根节点数据
-        List<SysDept> sysDeptsTree = detGroupByParentId.get(-1);
-        findChildren(sysDeptsTree,detGroupByParentId);
-        return sysDeptsTree;
+        List<SysDeptDO> sysDeptsTreeDO = detGroupByParentId.get(-1);
+        findChildren(sysDeptsTreeDO,detGroupByParentId);
+        return sysDeptsTreeDO;
     }
 
     /**
      * @Author yls
      * @Description 组装部门tree
      * @Date 2020/4/6 13:29
-     * @param sysDeptsTree 部门对应的tree
+     * @param sysDeptsTreeDO 部门对应的tree
      * @param detGroupByParentId  部门对应的根据父级id分组的map
      * @return void
      **/
-    private void findChildren(List<SysDept> sysDeptsTree, Map<Integer,List<SysDept>> detGroupByParentId){
-        sysDeptsTree.forEach(sysDept -> {
-            List<SysDept> childerns= detGroupByParentId.get(sysDept.getId());
+    private void findChildren(List<SysDeptDO> sysDeptsTreeDO, Map<Integer,List<SysDeptDO>> detGroupByParentId){
+        sysDeptsTreeDO.forEach(sysDept -> {
+            List<SysDeptDO> childerns= detGroupByParentId.get(sysDept.getId());
             //判断是否有子部门
             if(childerns!=null){
                 childerns.forEach(childern -> {

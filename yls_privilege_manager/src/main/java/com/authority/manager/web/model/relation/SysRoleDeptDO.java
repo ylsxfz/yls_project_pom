@@ -7,26 +7,18 @@ import io.swagger.annotations.ApiModelProperty;
 import javax.persistence.*;
 
 @Entity
-@ApiModel(description = "用户和角色关联表")
-@Table(name="sys_user_role")
-@org.hibernate.annotations.Table(appliesTo = "sys_user_role",comment = "用户和角色关联表")
-public class SysUserRole extends BaseModel {
-
-	@ApiModelProperty("用户id")
-	@Column(name = "user_id",columnDefinition = "int comment '用户id'")
-    private int userId;
+@ApiModel(description = "角色和部门的关联表")
+@Table(name="sys_role_dept")
+@org.hibernate.annotations.Table(appliesTo = "sys_role_dept",comment = "角色和部门的关联表")
+public class SysRoleDeptDO extends BaseModel {
 
 	@ApiModelProperty("角色id")
 	@Column(name = "role_id",columnDefinition = "int comment '角色id'")
     private int roleId;
 
-	public int getUserId() {
-		return userId;
-	}
-
-	public void setUserId(int userId) {
-		this.userId = userId;
-	}
+	@ApiModelProperty("部门id")
+	@Column(name = "dept_id",columnDefinition = "int comment '部门id'")
+    private int deptId;
 
 	public int getRoleId() {
 		return roleId;
@@ -36,11 +28,20 @@ public class SysUserRole extends BaseModel {
 		this.roleId = roleId;
 	}
 
+	public int getDeptId() {
+		return deptId;
+	}
+
+	public void setDeptId(int deptId) {
+		this.deptId = deptId;
+	}
+
+
 	@Override
 	public String toString() {
-		return "SysUserRole{" +
-				", userId='" + userId + '\'' +
+		return "SysRoleDept{" +
 				", roleId='" + roleId + '\'' +
+				", deptId='" + deptId + '\'' +
 				'}';
 	}
 }

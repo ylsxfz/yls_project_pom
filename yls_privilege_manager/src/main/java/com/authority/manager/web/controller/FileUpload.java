@@ -2,7 +2,7 @@ package com.authority.manager.web.controller;
 
 import com.authority.manager.component.error.BusinessException;
 import com.yls.common.utils.StringFormatUtils;
-import com.yls.core.http.HttpResult;
+import com.yls.core.http.HttpResultVO;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiOperation;
@@ -33,7 +33,7 @@ public class FileUpload {
     @ApiOperation(value = "单个文件上传")
     @ApiImplicitParam(name = "uploadFile",value = "上常的单个文件",required = true)
     @PostMapping("/uploadOneFile")
-    public HttpResult uploadOneFile(MultipartFile uploadFile, HttpServletRequest request) {
+    public HttpResultVO uploadOneFile(MultipartFile uploadFile, HttpServletRequest request) {
         try{
             List<MultipartFile> multipartFiles = new ArrayList<>();
             multipartFiles.add(uploadFile);
@@ -46,7 +46,7 @@ public class FileUpload {
     @ApiOperation(value = "多个文件上传")
     @ApiImplicitParam(name = "uploadFiles",value = "上传的文件数组",required = true)
     @PostMapping("/uploadFiles")
-    public HttpResult uploadSomeFiles(MultipartFile[] uploadFiles, HttpServletRequest request){
+    public HttpResultVO uploadSomeFiles(MultipartFile[] uploadFiles, HttpServletRequest request){
         return uploadFiles(Arrays.asList(uploadFiles), request);
     }
 
@@ -56,7 +56,7 @@ public class FileUpload {
      * @param request request请求
      * @return
      */
-    private HttpResult uploadFiles(List<MultipartFile> uploadFiles, HttpServletRequest request) {
+    private HttpResultVO uploadFiles(List<MultipartFile> uploadFiles, HttpServletRequest request) {
         //String realPath = request.getSession().getServletContext().getRealPath("/uploadFile/");
         String realPath = "E:\\uploaFileTemp\\uploadFile\\";
         String format = sdf.format(new Date());
@@ -79,9 +79,9 @@ public class FileUpload {
             }
         } catch (Exception e) {
             e.printStackTrace();
-            return HttpResult.error("上传文件失败");
+            return HttpResultVO.error("上传文件失败");
         }
-        return HttpResult.ok(result);
+        return HttpResultVO.ok(result);
     }
 
 }

@@ -1,6 +1,6 @@
 package com.authority.manager.web.dao;
 
-import com.authority.manager.web.model.SysUser;
+import com.authority.manager.web.model.SysUserDO;
 import com.yls.core.repository.BaseDao;
 import org.springframework.data.rest.core.annotation.RepositoryRestResource;
 import org.springframework.data.rest.core.annotation.RestResource;
@@ -14,9 +14,9 @@ import org.springframework.stereotype.Repository;
  **/
 @Repository
 @RepositoryRestResource(exported = false)
-public interface SysUserDao extends BaseDao<SysUser,Integer> {
+public interface SysUserDAO extends BaseDao<SysUserDO,Integer> {
     //根据姓名查询
-    SysUser findByName(String name);
+    SysUserDO findByName(String name);
 
     @RestResource(exported = false)
     @Override

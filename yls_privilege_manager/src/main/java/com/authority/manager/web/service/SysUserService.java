@@ -1,7 +1,7 @@
 package com.authority.manager.web.service;
 
-import com.authority.manager.web.model.SysUser;
-import com.authority.manager.web.model.relation.SysUserRole;
+import com.authority.manager.web.model.SysUserDO;
+import com.authority.manager.web.model.relation.SysUserRoleDO;
 import com.yls.core.repository.BaseService;
 
 import java.util.List;
@@ -13,12 +13,12 @@ import java.util.Set;
  * @Description
  * @Version 1.0
  **/
-public interface SysUserService extends BaseService<SysUser,String> {
+public interface SysUserService extends BaseService<SysUserDO,String> {
 
-    SysUser findByName(String name);
+    SysUserDO findByName(String name);
 
     Set<String> findPermissions(String userName);
 
-    List<SysUserRole> findUserRoles(Integer userId);
+    List<SysUserRoleDO> findUserRoles(Integer userId);
 
 }

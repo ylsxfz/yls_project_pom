@@ -1,6 +1,6 @@
 package com.authority.manager.cluster.es.utills;
 
-import com.authority.manager.vo.LoginBean;
+import com.authority.manager.vo.LoginBeanBO;
 
 import java.lang.reflect.Field;
 import java.util.Date;
@@ -26,8 +26,8 @@ public class MailFieldTypeUtils {
     private static  Map<String,String> filedMap = new HashMap<>();
 
     static {
-        LoginBean loginBean = new LoginBean();
-        Class<? extends LoginBean> aClass = loginBean.getClass();
+        LoginBeanBO loginBeanBO = new LoginBeanBO();
+        Class<? extends LoginBeanBO> aClass = loginBeanBO.getClass();
         Field[] declaredFields = aClass.getDeclaredFields();
         for (Field field: declaredFields) {
             String name = field.getName();

@@ -1,6 +1,6 @@
 package com.authority.manager.web.service;
 
-import com.authority.manager.web.model.SysDept;
+import com.authority.manager.web.model.SysDeptDO;
 import com.yls.core.repository.BaseService;
 
 import java.util.List;
@@ -11,6 +11,6 @@ import java.util.List;
  * @Description
  * @Version 1.0
  **/
-public interface SysDeptService extends BaseService<SysDept,String> {
-    List<SysDept> findDeptTree();
+public interface SysDeptService extends BaseService<SysDeptDO,String> {
+    List<SysDeptDO> findDeptTree();
 }

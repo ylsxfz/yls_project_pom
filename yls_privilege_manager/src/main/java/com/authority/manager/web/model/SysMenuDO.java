@@ -13,7 +13,7 @@ import java.util.List;
 @ApiModel(description = "菜单管理")
 @Table(name="sys_menu")
 @org.hibernate.annotations.Table(appliesTo = "sys_menu",comment = "菜单管理表")
-public class SysMenu extends BaseModel {
+public class SysMenuDO extends BaseModel {
 
 	@ApiModelProperty("父级id")
 	@Column(name = "parent_id",columnDefinition = "int comment '父级id'")
@@ -54,7 +54,7 @@ public class SysMenu extends BaseModel {
     // 非数据库字段
 	@Transient
 	@ApiModelProperty("下级菜单")
-	private List<SysMenu> children;
+	private List<SysMenuDO> children;
 
 	public int getParentId() {
 		return parentId;
@@ -113,11 +113,11 @@ public class SysMenu extends BaseModel {
 	}
 
 
-	public List<SysMenu> getChildren() {
+	public List<SysMenuDO> getChildren() {
 		return children;
 	}
 
-	public void setChildren(List<SysMenu> children) {
+	public void setChildren(List<SysMenuDO> children) {
 		this.children = children;
 	}
 

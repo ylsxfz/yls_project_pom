@@ -1,6 +1,6 @@
 package com.authority.manager.web.model;
 
-import com.authority.manager.web.model.relation.SysUserRole;
+import com.authority.manager.web.model.relation.SysUserRoleDO;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 
@@ -15,7 +15,7 @@ import java.util.List;
 @ApiModel(description = "用户")
 @Table(name="sys_user")
 @org.hibernate.annotations.Table(appliesTo = "sys_user",comment = "用户表")
-public class SysUser extends BaseModel {
+public class SysUserDO extends BaseModel {
 
 	@ApiModelProperty("名称")
 	@Column(name = "name",columnDefinition = "varchar(32) comment '名称'")
@@ -66,7 +66,7 @@ public class SysUser extends BaseModel {
     // 非数据库字段
 	@Transient
 	@ApiModelProperty("用户权限集合")
-	private List<SysUserRole> userRoles = new ArrayList<>();
+	private List<SysUserRoleDO> userRoles = new ArrayList<>();
 
 	public String getName() {
 		return name;
@@ -137,10 +137,10 @@ public class SysUser extends BaseModel {
 	public void setRoleNames(String roleNames) {
 		this.roleNames = roleNames;
 	}
-	public List<SysUserRole> getUserRoles() {
+	public List<SysUserRoleDO> getUserRoles() {
 		return userRoles;
 	}
-	public void setUserRoles(List<SysUserRole> userRoles) {
+	public void setUserRoles(List<SysUserRoleDO> userRoles) {
 		this.userRoles = userRoles;
 	}
 
