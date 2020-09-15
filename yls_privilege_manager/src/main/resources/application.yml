@@ -18,8 +18,15 @@ server:
 
 ###分开设置配置文件
 spring:
+  devtools:
+    restart:
+      enabled: true #设置开启热部署
+      additional-paths: src/main/java #重启目录
+      exclude: WEB-INF/**
+  freemarker:
+    cache: false #页面不加载缓存，修改即时生效
   profiles:
-    active: datasource,thymeleaf,actuator,fileupload,elasticsearch
+    active: datasource,thymeleaf,actuator,fileupload,elasticsearch #激活的配置文件
     #定义项目的静态资源 ：
     #默认位置： classpath:/META-INF/resources/
   #resources:

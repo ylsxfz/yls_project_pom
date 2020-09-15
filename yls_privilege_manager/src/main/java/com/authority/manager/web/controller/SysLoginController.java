@@ -18,10 +18,7 @@ import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AuthenticationManager;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.imageio.ImageIO;
 import javax.servlet.ServletOutputStream;
@@ -38,6 +35,7 @@ import java.io.IOException;
  **/
 @RestController
 @Api(tags = "登录接口")
+@RequestMapping("sys/login")
 public class SysLoginController {
 
     @Autowired
@@ -87,7 +85,7 @@ public class SysLoginController {
      * @return com.authority.manager.base.http.HttpResult
      **/
     @ApiOperation(value = "登录接口")
-    @PostMapping(value = "/login")
+    @PostMapping
     public HttpResultVO login(@ApiParam(value = "登录对象", required = true)@RequestBody LoginBeanBO loginBeanBO, HttpServletRequest request) throws IOException {
         String username = loginBeanBO.getAccount();
         String password = loginBeanBO.getPassword();
