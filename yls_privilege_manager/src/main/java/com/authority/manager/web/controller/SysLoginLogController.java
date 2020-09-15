@@ -12,10 +12,7 @@ import io.swagger.annotations.ApiParam;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -26,22 +23,22 @@ import java.util.List;
  * @Version 1.0
  **/
 @RestController
-@RequestMapping("sys_login_log")
+@RequestMapping("sys")
 @Api(tags = "登录日志接口")
 public class SysLoginLogController {
     @Autowired
     private SysLoginLogService sysLoginLogService;
 
     @ApiOperation(value = "删除登录日志")
-    @PostMapping("/delete")
+    @DeleteMapping("loginLog")
     public HttpResultVO delete(@ApiParam(value = "登录日志集合", required = true)@RequestBody List<SysLoginLogDO> records){
         sysLoginLogService.deleteAll(records);
         return HttpResultVO.ok(HttpConstants.DELETE_OK);
     }
 
     @ApiOperation(value = "分页查询登录日志")
-    @PostMapping("/findByPage")
-    public HttpResultVO findPage(@ApiParam(value = "封装的分页请求对象", required = true)@RequestBody MyPageQuery myPageQuery){
+    @PostMapping("loginLog/lists")
+    public HttpResultVO lists(@ApiParam(value = "封装的分页请求对象", required = true)@RequestBody MyPageQuery myPageQuery){
         PageRequest pageRequest = PageRequest.of(myPageQuery.getPageNum(), myPageQuery.getPageSize());
         Page page = sysLoginLogService.findByPage(pageRequest);
         return HttpResultVO.ok(page);

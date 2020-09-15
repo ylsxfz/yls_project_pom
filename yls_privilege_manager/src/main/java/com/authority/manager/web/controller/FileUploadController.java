@@ -25,7 +25,7 @@ import java.util.*;
  **/
 @RestController
 @Api(tags = "文件上传接口")
-@RequestMapping("/test")
+@RequestMapping("/file")
 public class FileUploadController {
 
     SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd/");

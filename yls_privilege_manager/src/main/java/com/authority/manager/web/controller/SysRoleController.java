@@ -26,7 +26,7 @@ import java.util.Optional;
  * @Version 1.0
  **/
 @RestController
-@RequestMapping("sys_role")
+@RequestMapping("sys")
 @Api(tags = "角色权限管理接口")
 public class SysRoleController {
 
@@ -34,7 +34,7 @@ public class SysRoleController {
     private SysRoleServiceImpl sysRoleSerivce;
 
     @ApiOperation(value = "保存角色")
-    @PostMapping("/save")
+    @PostMapping("role")
     public HttpResultVO save(@ApiParam(value = "角色对象", required = true)@RequestBody SysRoleDO record){
 
         SysRoleDO sysRoleDO = sysRoleSerivce.findByName(record.getName());
@@ -54,14 +54,14 @@ public class SysRoleController {
     }
 
     @ApiOperation(value = "删除权限")
-    @PostMapping("/delete")
+    @DeleteMapping("role")
     public HttpResultVO delete(@ApiParam(value = "角色对象集合", required = true)@RequestBody List<SysRoleDO> records){
         sysRoleSerivce.deleteAll(records);
         return HttpResultVO.ok(HttpConstants.DELETE_OK);
     }
 
     @ApiOperation(value = "分页查询权限")
-    @PostMapping("/findByPage")
+    @PostMapping("role/lists")
     public HttpResultVO findPage(@ApiParam(value = "封装的分页请求对象", required = true)@RequestBody MyPageQuery myPageQuery){
         PageRequest pageRequest = PageRequest.of(myPageQuery.getPageNum(), myPageQuery.getPageSize());
         Page page = sysRoleSerivce.findByPage(pageRequest);
@@ -69,7 +69,7 @@ public class SysRoleController {
     }
 
     @ApiOperation(value = "查询所有权限")
-    @GetMapping(value="/findAll")
+    @GetMapping(value="roles")
     public HttpResultVO findAll()  {
         try {
             return HttpResultVO.ok(sysRoleSerivce.findAll());
@@ -80,13 +80,13 @@ public class SysRoleController {
 
     @ApiOperation(value = "查询菜单")
     @ApiImplicitParam(name = "roleId",value = "角色id",dataType = "int",required = true)
-    @GetMapping(value="/findRoleMenus")
-    public HttpResultVO findRoleMenus(@RequestParam Integer roleId) {
+    @GetMapping(value="role/{roleId}}")
+    public HttpResultVO findRoleMenus(@PathVariable("roleId") Integer roleId) {
         return HttpResultVO.ok(sysRoleSerivce.findRoleMenus(roleId));
     }
 
     @ApiOperation(value = "修改菜单权限")
-    @PostMapping(value = "/saveRoleMenus")
+    @PutMapping(value = "role")
     public HttpResultVO saveRoleMenus(@ApiParam(value = "角色对象集合", required = true)@RequestBody List<SysRoleMenuDO> records){
         if (records!=null && !records.isEmpty()){
             SysRoleMenuDO sysRoleMenuDO = records.get(0);

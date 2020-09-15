@@ -13,10 +13,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.security.access.prepost.PreAuthorize;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -27,7 +24,7 @@ import java.util.List;
  * @Version 1.0
  **/
 @RestController
-@RequestMapping("sys_log")
+@RequestMapping("sys")
 @Api(tags = "系统日志接口")
 public class SysLogController {
 
@@ -37,15 +34,15 @@ public class SysLogController {
     //权限管理
     @PreAuthorize("hasAuthority('sys:dict:delete')")
     @ApiOperation(value = "删除日志记录")
-    @PostMapping("/delete")
+    @DeleteMapping("log")
     public HttpResultVO delete(@ApiParam(value = "日志对象集合", required = true)@RequestBody List<SysLogDO> records){
         sysLogService.deleteAll(records);
         return HttpResultVO.ok(HttpConstants.DELETE_OK);
     }
 
     @ApiOperation(value = "分页查询日志")
-    @PostMapping("/findByPage")
-    public HttpResultVO findPage(@ApiParam(value = "日志对象集合", required = true)@RequestBody MyPageQuery myPageQuery){
+    @PostMapping("log/lists")
+    public HttpResultVO lists(@ApiParam(value = "日志对象集合", required = true)@RequestBody MyPageQuery myPageQuery){
         PageRequest pageRequest = PageRequest.of(myPageQuery.getPageNum(), myPageQuery.getPageSize());
         Page page = sysLogService.findByPage(pageRequest);
         return HttpResultVO.ok(page);

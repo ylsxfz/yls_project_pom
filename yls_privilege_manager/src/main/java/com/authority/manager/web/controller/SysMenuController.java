@@ -20,14 +20,14 @@ import java.util.List;
  * @Version 1.0
  **/
 @RestController
-@RequestMapping("sys_menu")
+@RequestMapping("sys")
 @Api(tags = "菜单管理接口")
 public class SysMenuController {
     @Autowired
     private SysMenuService sysMenuService;
 
     @ApiOperation(value = "保存菜单记录")
-    @PostMapping("/save")
+    @PostMapping("menu")
     public HttpResultVO save(@ApiParam(value = "菜单对象", required = true)@RequestBody SysMenuDO record){
         sysMenuService.save(record);
         return HttpResultVO.ok(HttpConstants.SAVE_OK);
@@ -35,7 +35,7 @@ public class SysMenuController {
 
 
     @ApiOperation(value = "删除菜单记录")
-    @PostMapping("/delete")
+    @DeleteMapping("menu")
     public HttpResultVO delete(@ApiParam(value = "菜单对象集合", required = true)@RequestBody List<SysMenuDO> records){
         sysMenuService.deleteAll(records);
         return HttpResultVO.ok(HttpConstants.DELETE_OK);
@@ -44,13 +44,13 @@ public class SysMenuController {
 
     @ApiOperation(value = "查询左侧导航")
     @ApiImplicitParam(name = "userName",value = "用户名",required = true)
-    @GetMapping(value="/findNavTree")
-    public HttpResultVO findNavTree(@RequestParam String userName) {
+    @GetMapping(value="menu/{username}")
+    public HttpResultVO getNavTree(@PathVariable("username") String userName) {
         return HttpResultVO.ok(sysMenuService.findTree(userName, 1));
     }
 
     @ApiOperation(value = "查询菜单数据")
-    @GetMapping("/findMenuTree")
+    @GetMapping("menu")
     public HttpResultVO findMenuTree(){
         return HttpResultVO.ok(sysMenuService.findTree(null,0));
     }

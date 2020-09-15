@@ -31,14 +31,14 @@ public class SysUserController {
     @Autowired
     private SysUserService sysUserService;
 
-    @ApiOperation(value = "根据姓名查询用户权限")
+    @ApiOperation(value = "查询用户权限",notes = "根据姓名查询用户权限")
     @ApiImplicitParam(name = "name",value = "姓名",required = true)
     @GetMapping(value="user/permissions/{name}")
     public HttpResultVO listSysUserPermissions(@PathVariable("name") String name) {
         return HttpResultVO.ok(sysUserService.findPermissions(name));
     }
 
-    @ApiOperation(value = "根据姓名查询用户")
+    @ApiOperation(value = "查询用户",notes = "根据姓名查询用户")
     @ApiImplicitParam(name = "name",value = "姓名",required = true)
     @GetMapping(value="user/{name}")
     public HttpResultVO getSysUserByUserName(@PathVariable("name")  String name) {
@@ -68,7 +68,7 @@ public class SysUserController {
     }
 
 
-    @ApiOperation(value = "保存用户")
+    @ApiOperation(value = "修改用户")
     @PutMapping("user")
     public HttpResultVO updateSysUser(@ApiParam(value = "用户对象", required = true)@RequestBody SysUserDO record){
         Optional optional  = sysUserService.findById(record.getId());
@@ -105,8 +105,8 @@ public class SysUserController {
 
 
     @ApiOperation(value = "分页查询用户")
-    @GetMapping("user")
-    public HttpResultVO listSysUserPages(@ApiParam(value = "封装的分页请求对象", required = true)@RequestBody MyPageQuery myPageQuery){
+    @PostMapping("user/lists")
+    public HttpResultVO lists(@ApiParam(value = "封装的分页请求对象", required = true)@RequestBody MyPageQuery myPageQuery){
         PageRequest pageRequest = PageRequest.of(myPageQuery.getPageNum(), myPageQuery.getPageSize());
         Page page = sysUserService.findByPage(pageRequest);
         return HttpResultVO.ok(page);
