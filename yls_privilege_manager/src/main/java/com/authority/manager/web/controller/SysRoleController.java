@@ -69,7 +69,7 @@ public class SysRoleController {
     }
 
     @ApiOperation(value = "查询所有权限")
-    @GetMapping(value="roles")
+    @GetMapping(value="role/all")
     public HttpResultVO findAll()  {
         try {
             return HttpResultVO.ok(sysRoleSerivce.findAll());
@@ -80,7 +80,7 @@ public class SysRoleController {
 
     @ApiOperation(value = "查询菜单")
     @ApiImplicitParam(name = "roleId",value = "角色id",dataType = "int",required = true)
-    @GetMapping(value="role/{roleId}}")
+    @GetMapping(value="role/{roleId}")
     public HttpResultVO findRoleMenus(@PathVariable("roleId") Integer roleId) {
         return HttpResultVO.ok(sysRoleSerivce.findRoleMenus(roleId));
     }
