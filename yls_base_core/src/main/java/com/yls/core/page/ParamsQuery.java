@@ -6,7 +6,7 @@ package com.yls.core.page;
  * @Description:
  * @Version 1.0
  */
-public class Params {
+public class ParamsQuery {
 
     private String field;
     private Object value;

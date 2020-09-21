@@ -7,5 +7,19 @@ package com.authority.manager.contant;
  * @Version 1.0
  */
 public class BusinessConstant {
+    /**
+     * 数据修复
+     */
+    public static String DATA_REPAIR = "数据修复";
 
+    /**
+     * 号码检查
+     */
+    public static String NUMBER_CHECK = "号码检查";
+
+
+    /**
+     * 号码拓展
+     */
+    public static String NUMBER_EXPANSION = "号码拓展";
 }

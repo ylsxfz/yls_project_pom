@@ -27,7 +27,7 @@ public class MyPageQuery {
 	 * 查询参数
 	 */
 	@ApiModelProperty("查询参数")
-	private List<Params> params;
+	private List<ParamsQuery> params;
 
 	
 	public int getPageNum() {
@@ -43,11 +43,11 @@ public class MyPageQuery {
 		this.pageSize = pageSize;
 	}
 
-	public List<Params> getParams() {
+	public List<ParamsQuery> getParams() {
 		return params;
 	}
 
-	public void setParams(List<Params> params) {
+	public void setParams(List<ParamsQuery> params) {
 		this.params = params;
 	}
 
