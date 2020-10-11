@@ -118,7 +118,7 @@ public class JwtTokenUtils implements Serializable {
      * @param token 令牌
      * @return 数据声明
      */
-    private static Claims getClaimsFromToken(String token) {
+    public static Claims getClaimsFromToken(String token) {
         Claims claims;
         try {
             claims = Jwts.parser().setSigningKey(SECRET).parseClaimsJws(token).getBody();
@@ -164,6 +164,7 @@ public class JwtTokenUtils implements Serializable {
     public static Boolean isTokenExpired(String token) {
         try {
             Claims claims = getClaimsFromToken(token);
+            System.err.println("test:"+claims.get("test"));
             Date expiration = claims.getExpiration();
             return expiration.before(new Date());
         } catch (Exception e) {
