@@ -1,17 +1,22 @@
 package com.authority.manager.web.service.impl;
 
+import com.authority.manager.contant.SysContants;
 import com.authority.manager.web.dao.SysMenuDAO;
+import com.authority.manager.web.dao.SysRoleMenuDAO;
+import com.authority.manager.web.dao.SysUserDAO;
+import com.authority.manager.web.dao.SysUserRoleDAO;
 import com.authority.manager.web.model.SysMenuDO;
+import com.authority.manager.web.model.SysUserDO;
+import com.authority.manager.web.model.relation.SysRoleMenuDO;
+import com.authority.manager.web.model.relation.SysUserRoleDO;
 import com.authority.manager.web.service.SysMenuService;
+import com.authority.manager.web.service.SysRoleSerivce;
 import com.yls.core.repository.BaseDAO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 /**
  * @Author yls
@@ -24,6 +29,19 @@ import java.util.Map;
 public class SysMenuServiceImpl implements SysMenuService {
     @Autowired
     private SysMenuDAO sysMenuDao;
+
+    @Autowired
+    private SysUserDAO sysUserDao;
+
+    @Autowired
+    private SysRoleMenuDAO sysRoleMenuDao;
+
+    @Autowired
+    private SysUserRoleDAO sysUserRoleDao;
+
+    @Autowired
+    private SysRoleSerivce sysRoleSerivce;
+
     @Override
     public BaseDAO getDao() {
         return sysMenuDao;
@@ -32,12 +50,39 @@ public class SysMenuServiceImpl implements SysMenuService {
     @Override
     public List<SysMenuDO> findTree(String userName, int menuType) {
         List<SysMenuDO> sysMenuDOList = new ArrayList<>();
-
-        if (menuType==1){
-            sysMenuDOList = sysMenuDao.findByTypeNot(2);
+        List<Integer> ids = new ArrayList<>();
+        /**
+         * 只查询菜单列表，不查询按钮
+         */
+        if (menuType== SysContants.SEARCH_MENU){
+            SysUserDO sysUserDO = sysUserDao.findByName(userName);
+            int userDOId = sysUserDO.getId();
+            Set<String> perms = new HashSet<>();
+            List<SysMenuDO> sysMenuDOS = new ArrayList<>();
+            // 超级管理员
+            if (SysContants.ADMIN.equals(sysUserDO.getName())){
+                sysMenuDOList  = sysMenuDao.findByTypeNot(SysContants.MENU_BUTTON);
+            }else{
+                /**
+                 * 查询角色
+                 */
+                List<SysUserRoleDO> userRoleDOS = sysUserRoleDao.findByUserId(userDOId);
+                userRoleDOS.forEach(sysUserRoleDO -> {
+                    ids.add(sysUserRoleDO.getRoleId());
+                });
+                /**
+                 * 查询菜单
+                 */
+                List<SysRoleMenuDO> sysRoleMenuDOS = sysRoleMenuDao.findByRoleIdIn(ids);
+                List<Integer> menuids = new ArrayList<>();
+                sysRoleMenuDOS.forEach(sysRoleMenu -> {
+                    menuids.add(sysRoleMenu.getMenuId());
+                });
+                sysMenuDOList = sysMenuDao.findByTypeNotAndIdIn(SysContants.MENU_BUTTON,menuids);
+            }
         }
 
-        if (menuType==0){
+        if (menuType==SysContants.SEARCH_MENU_AND_BUTTON){
             sysMenuDOList = sysMenuDao.findAll();
         }
         //根据父级id查询
@@ -77,6 +122,9 @@ public class SysMenuServiceImpl implements SysMenuService {
      * @return void
      **/
     private void findChildren(List<SysMenuDO> sysMenusTreeDO, Map<Integer,List<SysMenuDO>> detGroupByParentId){
+        if (sysMenusTreeDO == null || sysMenusTreeDO.isEmpty()){
+            return;
+        }
         sysMenusTreeDO.forEach(sysMenu -> {
             List<SysMenuDO> childerns= detGroupByParentId.get(sysMenu.getId());
             //判断是否有子部门

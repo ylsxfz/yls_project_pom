@@ -94,12 +94,12 @@ public class SysLoginController {
         // 从session中获取之前保存的验证码跟前台传来的验证码进行匹配
         Object kaptcha = request.getSession().getAttribute(Constants.KAPTCHA_SESSION_KEY);
         System.err.println("前台验证码："+kaptcha);
-        if(kaptcha == null){
-            return HttpResultVO.error("验证码已失效");
-        }
-        if(!captcha.equals(kaptcha)){
-            return HttpResultVO.error("验证码不正确");
-        }
+//        if(kaptcha == null){
+//            return HttpResultVO.error("验证码已失效");
+//        }
+//        if(!captcha.equals(kaptcha)){
+//            return HttpResultVO.error("验证码不正确");
+//        }
         // 用户信息
         SysUserDO user = sysUserService.findByName(username);
         // 账号不存在、密码错误

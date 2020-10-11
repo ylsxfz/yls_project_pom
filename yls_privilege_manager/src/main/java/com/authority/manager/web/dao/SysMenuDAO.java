@@ -16,4 +16,6 @@ import java.util.List;
 public interface SysMenuDAO extends BaseDAO<SysMenuDO,Integer> {
 
     List<SysMenuDO> findByTypeNot(int menuType);
+
+    List<SysMenuDO> findByTypeNotAndIdIn(int menuType,List<Integer> ids);
 }

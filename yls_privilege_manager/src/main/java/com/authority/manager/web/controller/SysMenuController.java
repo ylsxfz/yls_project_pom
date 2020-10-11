@@ -1,5 +1,6 @@
 package com.authority.manager.web.controller;
 
+import com.authority.manager.contant.SysContants;
 import com.authority.manager.web.model.SysMenuDO;
 import com.authority.manager.web.service.SysMenuService;
 import com.yls.core.http.HttpConstants;
@@ -46,12 +47,12 @@ public class SysMenuController {
     @ApiImplicitParam(name = "userName",value = "用户名",required = true)
     @GetMapping(value="menu/{username}")
     public HttpResultVO getNavTree(@PathVariable("username") String userName) {
-        return HttpResultVO.ok(sysMenuService.findTree(userName, 1));
+        return HttpResultVO.ok(sysMenuService.findTree(userName, SysContants.SEARCH_MENU));
     }
 
     @ApiOperation(value = "查询菜单数据")
     @GetMapping("menu")
     public HttpResultVO findMenuTree(){
-        return HttpResultVO.ok(sysMenuService.findTree(null,0));
+        return HttpResultVO.ok(sysMenuService.findTree(null,SysContants.SEARCH_MENU_AND_BUTTON));
     }
 }

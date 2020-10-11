@@ -21,4 +21,31 @@ public class SysContants {
      * 登出
      */
     public final static String LOGOUT = "logout";
+
+    /**
+     * 查询菜单（不包括按钮）
+     */
+    public final static Integer SEARCH_MENU = 0;
+
+    /**
+     * 查询菜单（包括按钮）
+     */
+    public final static Integer SEARCH_MENU_AND_BUTTON = 1;
+    /**
+     * 目录
+     */
+    public final static Integer MENU_FOLDER = 0;
+
+    /**
+     * 菜单
+     */
+    public final static Integer MENU_MENU= 1;
+
+
+    /**
+     * 按钮
+     */
+    public final static Integer MENU_BUTTON = 2;
+
+
 }

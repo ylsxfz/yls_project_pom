@@ -21,4 +21,6 @@ public interface SysUserService extends BaseService<SysUserDO,String> {
 
     List<SysUserRoleDO> findUserRoles(Integer userId);
 
+    void saveUser(SysUserDO sysUserDO);
+
 }

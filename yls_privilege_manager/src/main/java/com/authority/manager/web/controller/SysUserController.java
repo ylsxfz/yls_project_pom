@@ -33,9 +33,9 @@ public class SysUserController {
 
     @ApiOperation(value = "查询用户权限",notes = "根据姓名查询用户权限")
     @ApiImplicitParam(name = "name",value = "姓名",required = true)
-    @GetMapping(value="user/permissions/{name}")
-    public HttpResultVO listSysUserPermissions(@PathVariable("name") String name) {
-        return HttpResultVO.ok(sysUserService.findPermissions(name));
+    @GetMapping(value="user/permissions/{userName}")
+    public HttpResultVO listSysUserPermissions(@PathVariable("userName") String userName) {
+        return HttpResultVO.ok(sysUserService.findPermissions(userName));
     }
 
     @ApiOperation(value = "查询用户",notes = "根据姓名查询用户")
@@ -63,7 +63,7 @@ public class SysUserController {
                 record.setPassword(password);
             }
         }
-        sysUserService.save(record);
+        sysUserService.saveUser(record);
         return HttpResultVO.ok(HttpConstants.SAVE_OK);
     }
 
@@ -74,7 +74,7 @@ public class SysUserController {
         Optional optional  = sysUserService.findById(record.getId());
         if (record.getPassword()!=null){
             String salt = PasswordUtils.getSalt();
-            System.err.println("判断用户为空："+optional.isPresent());
+            //System.err.println("判断用户为空："+optional.isPresent());
             if (optional.isPresent()){
                 //修改用户
                 if(!record.getPassword().equals("")){

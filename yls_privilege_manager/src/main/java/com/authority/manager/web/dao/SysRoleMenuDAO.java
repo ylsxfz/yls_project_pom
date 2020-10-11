@@ -14,5 +14,8 @@ import java.util.List;
  **/
 @Repository
 public interface SysRoleMenuDAO extends BaseDAO<SysRoleMenuDO,Integer> {
+
     List<SysRoleMenuDO> findByRoleId(Integer roleId);
+
+    List<SysRoleMenuDO> findByRoleIdIn(List<Integer> roleIds);
 }
