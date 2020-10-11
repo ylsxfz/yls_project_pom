@@ -1,5 +1,6 @@
 package com.authority.manager.web.model;
 
+import com.authority.manager.web.model.base.BaseSysBO;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 
@@ -13,7 +14,7 @@ import java.util.List;
 @ApiModel(description = "菜单管理")
 @Table(name="sys_menu")
 @org.hibernate.annotations.Table(appliesTo = "sys_menu",comment = "菜单管理表")
-public class SysMenuDO extends BaseModel {
+public class SysMenuDO extends BaseSysBO {
 
 	@ApiModelProperty("父级id")
 	@Column(name = "parent_id",columnDefinition = "int comment '父级id'")

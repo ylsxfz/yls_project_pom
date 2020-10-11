@@ -1,5 +1,6 @@
 package com.authority.manager.web.model;
 
+import com.authority.manager.web.model.base.BaseSysBO;
 import com.authority.manager.web.model.relation.SysUserRoleDO;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
@@ -15,7 +16,7 @@ import java.util.List;
 @ApiModel(description = "用户")
 @Table(name="sys_user")
 @org.hibernate.annotations.Table(appliesTo = "sys_user",comment = "用户表")
-public class SysUserDO extends BaseModel {
+public class SysUserDO extends BaseSysBO {
 
 	@ApiModelProperty("名称")
 	@Column(name = "name",columnDefinition = "varchar(32) comment '名称'")

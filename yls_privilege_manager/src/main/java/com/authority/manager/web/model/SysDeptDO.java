@@ -1,5 +1,6 @@
 package com.authority.manager.web.model;
 
+import com.authority.manager.web.model.base.BaseSysBO;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 
@@ -13,7 +14,7 @@ import java.util.List;
 @Entity
 @Table(name="sys_dept")
 @org.hibernate.annotations.Table(appliesTo = "sys_dept",comment = "部门表")
-public class SysDeptDO extends BaseModel {
+public class SysDeptDO extends BaseSysBO {
 
 	@ApiModelProperty("名称")
 	@Column(name = "name",columnDefinition = "varchar(32) comment '名称'")

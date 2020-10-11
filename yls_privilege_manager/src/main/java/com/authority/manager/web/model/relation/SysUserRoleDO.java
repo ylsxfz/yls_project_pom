@@ -1,6 +1,6 @@
 package com.authority.manager.web.model.relation;
 
-import com.authority.manager.web.model.BaseModel;
+import com.authority.manager.web.model.base.BaseSysBO;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 
@@ -10,7 +10,7 @@ import javax.persistence.*;
 @ApiModel(description = "用户和角色关联表")
 @Table(name="sys_user_role")
 @org.hibernate.annotations.Table(appliesTo = "sys_user_role",comment = "用户和角色关联表")
-public class SysUserRoleDO extends BaseModel {
+public class SysUserRoleDO extends BaseSysBO {
 
 	@ApiModelProperty("用户id")
 	@Column(name = "user_id",columnDefinition = "int comment '用户id'")

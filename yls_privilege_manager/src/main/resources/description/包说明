@@ -22,3 +22,41 @@
     webservice：服务接口
     websocket：是 HTML5 开始提供的一种在单个 TCP 连接上进行全双工通讯的协议
 
+
+mappers：src/main/resources/mappers ==》*mapper.xml文件统一存放
+com.authority.manager：项目的核心包根目录
+    -aop：面向切面编程
+    -base：
+        -http：http相关的封装
+        -init：项目初始化
+        -jpql：jpql复杂条件查询封装
+        -page：分页相关请求和分页结果集封装
+        -repository：基础jpa封装
+        -sql：原生sql的封装
+
+    -cluster：集群信息封装
+        -es：es高级客户端封装
+        -redis：redis（lettuce）客户端封装
+
+    -component：一些基础组件封装
+        -error：异常信息
+        -filter：过滤器
+        -interceptor：拦截器
+        -listener：监听器
+        -quartz：定时器
+        -security：安全管理，登录验证，token管理
+        -webservice：webserive管理
+        -websocket：websocket管理
+
+    -config：常用配置（swagger2、数据库监控、验证码、跨域、sql拦截、Tomcat安全配置、web安全配置）
+
+    -contant：系统的常量管理
+
+    -function：测试代码包，相关的测试代码可以写在该包下
+
+    -mybatis：mybatis管理器
+
+    -utils：工具类
+
+    -vo：登录对象封装
+

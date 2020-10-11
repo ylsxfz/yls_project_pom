@@ -1,5 +1,6 @@
 package com.authority.manager.web.model;
 
+import com.authority.manager.web.model.base.BaseSysBO;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 
@@ -11,7 +12,7 @@ import javax.persistence.Table;
 @Entity
 @Table(name="sys_config")
 @org.hibernate.annotations.Table(appliesTo = "sys_config",comment = "系统设置表")
-public class SysConfigDO extends BaseModel {
+public class SysConfigDO extends BaseSysBO {
 
 	@ApiModelProperty("值")
 	@Column(name = "value",columnDefinition = "varchar(32) comment '值'")

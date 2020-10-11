@@ -1,4 +1,4 @@
-package com.authority.manager.web.model;
+package com.authority.manager.web.model.base;
 
 
 import com.fasterxml.jackson.annotation.JsonFormat;
@@ -20,7 +20,7 @@ import java.util.Date;
  **/
 @ApiModel(description = "基础模型，公共的字段属性")
 @MappedSuperclass
-public class BaseModel implements Serializable {
+public class BaseSysBO implements Serializable {
 
 	@ApiModelProperty("主键id")
 	@Id

@@ -1,5 +1,6 @@
 package com.authority.manager.web.model;
 
+import com.authority.manager.web.model.base.BaseSysBO;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 
@@ -11,7 +12,7 @@ import javax.persistence.Table;
 @Table(name="sys_dict")
 @ApiModel(description = "字典管理")
 @org.hibernate.annotations.Table(appliesTo = "sys_dict",comment = "字典管理表")
-public class SysDictDO extends BaseModel {
+public class SysDictDO extends BaseSysBO {
 
 	@ApiModelProperty("值")
 	@Column(name = "value",columnDefinition = "varchar(32) comment '值'")

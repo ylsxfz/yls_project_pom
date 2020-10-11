@@ -1,5 +1,6 @@
 package com.authority.manager.web.model;
 
+import com.authority.manager.web.model.base.BaseSysBO;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 
@@ -11,7 +12,7 @@ import javax.persistence.Table;
 @ApiModel(description = "系统权限")
 @Table(name="sys_role")
 @org.hibernate.annotations.Table(appliesTo = "sys_role",comment = "系统权限表")
-public class SysRoleDO extends BaseModel {
+public class SysRoleDO extends BaseSysBO {
 
 	@ApiModelProperty("名称")
 	@Column(name = "name",columnDefinition = "varchar(32) comment '名称'")
