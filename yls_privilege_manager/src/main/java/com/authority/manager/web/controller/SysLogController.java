@@ -5,7 +5,7 @@ import com.authority.manager.web.model.log.SysLogDO;
 import com.authority.manager.web.service.SysLogService;
 import com.yls.core.http.HttpConstants;
 import com.yls.core.http.HttpResultVO;
-import com.yls.core.page.MyPageQuery;
+import com.yls.core.page.PageQuery;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
@@ -42,8 +42,8 @@ public class SysLogController {
 
     @ApiOperation(value = "分页查询日志")
     @PostMapping("log/lists")
-    public HttpResultVO lists(@ApiParam(value = "日志对象集合", required = true)@RequestBody MyPageQuery myPageQuery){
-        PageRequest pageRequest = PageRequest.of(myPageQuery.getPageNum(), myPageQuery.getPageSize());
+    public HttpResultVO lists(@ApiParam(value = "日志对象集合", required = true)@RequestBody PageQuery pageQuery){
+        PageRequest pageRequest = PageRequest.of(pageQuery.getPageNum(), pageQuery.getPageSize());
         Page page = sysLogService.findByPage(pageRequest);
         return HttpResultVO.ok(page);
     }

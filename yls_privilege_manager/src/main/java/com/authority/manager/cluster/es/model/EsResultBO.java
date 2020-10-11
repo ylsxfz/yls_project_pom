@@ -1,7 +1,7 @@
 package com.authority.manager.cluster.es.model;
 
 
-import com.yls.core.page.MyPageResultVO;
+import com.yls.core.page.PageResultVO;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import org.elasticsearch.common.unit.TimeValue;
@@ -80,7 +80,7 @@ public class EsResultBO<T> implements Serializable {
     private List<T> content;
 
     @ApiModelProperty("分页信息")
-    private MyPageResultVO pageResult = new MyPageResultVO();
+    private PageResultVO pageResult = new PageResultVO();
 
 
     public RestStatus getStatus() {
@@ -163,11 +163,11 @@ public class EsResultBO<T> implements Serializable {
         this.content = content;
     }
 
-    public MyPageResultVO getPageResult() {
+    public PageResultVO getPageResult() {
         return pageResult;
     }
 
-    public void setPageResult(MyPageResultVO pageResult) {
+    public void setPageResult(PageResultVO pageResult) {
         this.pageResult = pageResult;
     }
 

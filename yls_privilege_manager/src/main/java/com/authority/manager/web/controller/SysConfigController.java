@@ -5,7 +5,7 @@ import com.authority.manager.web.model.SysConfigDO;
 import com.authority.manager.web.service.SysConfigService;
 import com.yls.core.http.HttpConstants;
 import com.yls.core.http.HttpResultVO;
-import com.yls.core.page.MyPageQuery;
+import com.yls.core.page.PageQuery;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiOperation;
@@ -50,8 +50,8 @@ public class SysConfigController {
 
     @ApiOperation(value = "分页查询系统配置")
     @PostMapping("config/lists")
-    public HttpResultVO lists(@ApiParam(value = "分页请求封装",required = true)@RequestBody MyPageQuery myPageQuery){
-        PageRequest pageRequest = PageRequest.of(myPageQuery.getPageNum(), myPageQuery.getPageSize());
+    public HttpResultVO lists(@ApiParam(value = "分页请求封装",required = true)@RequestBody PageQuery pageQuery){
+        PageRequest pageRequest = PageRequest.of(pageQuery.getPageNum(), pageQuery.getPageSize());
         Page page = sysConfigService.findByPage(pageRequest);
         return HttpResultVO.ok(page);
     }

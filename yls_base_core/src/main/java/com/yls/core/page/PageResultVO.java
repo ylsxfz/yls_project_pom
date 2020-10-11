@@ -11,7 +11,7 @@ import java.util.List;
  * @date Jan 12, 2019
  */
 @ApiModel(description = "分页请求结果封装")
-public class MyPageResultVO {
+public class PageResultVO {
 	/**
 	 * 当前页码
 	 */

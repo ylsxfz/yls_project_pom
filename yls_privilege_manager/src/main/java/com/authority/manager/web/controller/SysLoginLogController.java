@@ -5,7 +5,7 @@ import com.authority.manager.web.model.log.SysLoginLogDO;
 import com.authority.manager.web.service.SysLoginLogService;
 import com.yls.core.http.HttpConstants;
 import com.yls.core.http.HttpResultVO;
-import com.yls.core.page.MyPageQuery;
+import com.yls.core.page.PageQuery;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
@@ -38,8 +38,8 @@ public class SysLoginLogController {
 
     @ApiOperation(value = "分页查询登录日志")
     @PostMapping("loginLog/lists")
-    public HttpResultVO lists(@ApiParam(value = "封装的分页请求对象", required = true)@RequestBody MyPageQuery myPageQuery){
-        PageRequest pageRequest = PageRequest.of(myPageQuery.getPageNum(), myPageQuery.getPageSize());
+    public HttpResultVO lists(@ApiParam(value = "封装的分页请求对象", required = true)@RequestBody PageQuery pageQuery){
+        PageRequest pageRequest = PageRequest.of(pageQuery.getPageNum(), pageQuery.getPageSize());
         Page page = sysLoginLogService.findByPage(pageRequest);
         return HttpResultVO.ok(page);
     }

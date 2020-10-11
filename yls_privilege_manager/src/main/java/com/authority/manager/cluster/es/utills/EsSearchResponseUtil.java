@@ -3,7 +3,7 @@ package com.authority.manager.cluster.es.utills;
 import com.alibaba.fastjson.JSON;
 import com.authority.manager.cluster.es.model.EsPageRequest;
 import com.authority.manager.cluster.es.model.EsResultBO;
-import com.yls.core.page.MyPageResultVO;
+import com.yls.core.page.PageResultVO;
 import org.apache.poi.ss.formula.functions.T;
 import org.elasticsearch.action.search.SearchResponse;
 import org.elasticsearch.action.search.ShardSearchFailure;
@@ -61,7 +61,7 @@ public class EsSearchResponseUtil {
         esResultBO.setMaxScore(maxScore);
 
         if (esPageRequest!=null){
-            MyPageResultVO pageResult = new MyPageResultVO();
+            PageResultVO pageResult = new PageResultVO();
             int pageSize = esPageRequest.getPageSize();
             pageResult.setPageNum(esPageRequest.getPageNum());
             pageResult.setPageSize(pageSize);

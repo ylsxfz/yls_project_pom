@@ -1,6 +1,6 @@
 package com.yls.core.http;
 
-import com.yls.core.page.MyPageResultVO;
+import com.yls.core.page.PageResultVO;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import org.springframework.data.domain.Page;
@@ -46,7 +46,7 @@ public class HttpResultVO {
 		//判断是否为分页对象
 		if(data instanceof Page){
 			Page page = (Page) data;
-			MyPageResultVO pageResult = new MyPageResultVO();
+			PageResultVO pageResult = new PageResultVO();
 			pageResult.setContent(page.getContent());
 			pageResult.setPageNum(page.getNumber()+1);
 			pageResult.setPageSize(page.getSize());
