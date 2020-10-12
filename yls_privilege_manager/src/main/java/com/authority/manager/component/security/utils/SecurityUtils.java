@@ -42,7 +42,6 @@ public class SecurityUtils {
 			// 生成令牌并返回给客户端
 			token.setToken(JwtTokenUtils.generateToken(authentication));
 		}
-		TokenStore.addJwtAuthenticatioToken(username,token);
 		return token;
 	}
 

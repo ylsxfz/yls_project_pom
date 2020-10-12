@@ -24,20 +24,6 @@ public class TokenStore {
 
 
     /**
-     * 存储用户的登录过期时间
-     */
-    private static final ConcurrentHashMap<String, JwtAuthenticatioToken> authMap = new ConcurrentHashMap<>();
-
-
-    protected static void addJwtAuthenticatioToken(String name,JwtAuthenticatioToken jwtAuthenticatioToken){
-        authMap.put(name,jwtAuthenticatioToken);
-    }
-
-    protected static JwtAuthenticatioToken getJwtAuthenticatioToken(String name){
-       return authMap.get(name);
-    }
-
-    /**
      * 功能描述:
      * 〈添加token信息〉
      *
