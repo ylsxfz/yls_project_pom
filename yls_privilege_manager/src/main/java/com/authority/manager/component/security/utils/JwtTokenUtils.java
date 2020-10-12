@@ -52,8 +52,10 @@ public class JwtTokenUtils implements Serializable {
      */
     private static String generateToken(Map<String, Object> claims) {
         Date expirationDate = new Date(System.currentTimeMillis() + EXPIRE_TIME);
-        return Jwts.builder().setClaims(claims).setExpiration(expirationDate).signWith(SignatureAlgorithm.HS512, SECRET).compact();
-    }
+		String token = Jwts.builder().setClaims(claims).setExpiration(expirationDate).signWith(SignatureAlgorithm.HS512, SECRET).compact();
+		TokenStore.addToken(String.valueOf(claims.get(USERNAME)), token, expirationDate.getTime());
+		return token;
+	}
 
     /**
 	 * @Description 从令牌中获取用户名
@@ -69,6 +71,23 @@ public class JwtTokenUtils implements Serializable {
 	        username = null;
 	    }
 	    return username;
+	}
+
+
+	/**
+	 * 功能描述:
+	 * 〈删除token〉
+	 *
+	 * @author : yls
+	 * @date : 2020/10/12 13:01
+	 * @param token
+	 * @return : void
+	 */
+	public static void removeToken(String token){
+		if (!isTokenExpired(token)){
+			String username = getUsernameFromToken(token);
+			TokenStore.removeToken(username);
+		}
 	}
 	
 	/**
@@ -163,11 +182,15 @@ public class JwtTokenUtils implements Serializable {
      */
     public static Boolean isTokenExpired(String token) {
         try {
-            Claims claims = getClaimsFromToken(token);
-            System.err.println("test:"+claims.get("test"));
-            Date expiration = claims.getExpiration();
-            return expiration.before(new Date());
-        } catch (Exception e) {
+//            Claims claims = getClaimsFromToken(token);
+//            System.err.println("test:"+claims.get("test"));
+//            Date expiration = claims.getExpiration();
+//            return expiration.before(new Date());
+			String username = getUsernameFromToken(token);
+			boolean tokenExp = TokenStore.checkTokenExp(username);
+			System.err.println("tokenExp:"+tokenExp);
+			return tokenExp;
+		} catch (Exception e) {
             return false;
         }
     }

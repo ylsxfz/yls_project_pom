@@ -2,6 +2,7 @@ package com.authority.manager.config;
 
 import com.authority.manager.component.security.JwtAuthenticationFilter;
 import com.authority.manager.component.security.JwtAuthenticationProvider;
+import com.authority.manager.component.security.utils.JwtTokenUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Bean;
@@ -105,6 +106,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .logoutSuccessHandler(new HttpStatusReturningLogoutSuccessHandler() {
                     @Override
                     public void onLogoutSuccess(HttpServletRequest request, HttpServletResponse response, Authentication authentication) throws IOException, ServletException {
+                        JwtTokenUtils.removeToken(JwtTokenUtils.getToken(request));
                         super.onLogoutSuccess(request, response, authentication);
                     }
                 })
