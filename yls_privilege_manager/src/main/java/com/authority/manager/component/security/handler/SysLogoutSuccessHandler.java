@@ -18,7 +18,7 @@ import java.io.PrintWriter;
  * @Description: 登出注销用户处理器
  * @Version 1.0
  */
-public class LogoutSuccessHandler extends HttpStatusReturningLogoutSuccessHandler {
+public class SysLogoutSuccessHandler extends HttpStatusReturningLogoutSuccessHandler {
     @Override
     public void onLogoutSuccess(HttpServletRequest request, HttpServletResponse response, Authentication authentication) throws IOException, ServletException {
         response.setHeader("Content-type", "application/json; charset=UTF-8");

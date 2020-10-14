@@ -2,8 +2,8 @@ package com.authority.manager.config;
 
 import com.authority.manager.component.security.JwtAuthenticationFilter;
 import com.authority.manager.component.security.JwtAuthenticationProvider;
+import com.authority.manager.component.security.handler.SysLogoutSuccessHandler;
 import com.authority.manager.component.security.handler.NoPermissionHandler;
-import com.authority.manager.component.security.utils.JwtTokenUtils;
 import com.authority.manager.component.security.utils.SecurityUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -19,13 +19,10 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
-import org.springframework.security.web.authentication.logout.HttpStatusReturningLogoutSuccessHandler;
 import org.springframework.security.web.authentication.logout.LogoutHandler;
 
-import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import java.io.IOException;
 
 
 /**
@@ -117,7 +114,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 SecurityUtils.logout(httpServletRequest, httpServletResponse, authentication);
             }
         })
-                .logoutSuccessHandler(new HttpStatusReturningLogoutSuccessHandler())
+                .logoutSuccessHandler(new SysLogoutSuccessHandler())
                 .invalidateHttpSession(true)
                 .deleteCookies("token")
                 .clearAuthentication(true);
