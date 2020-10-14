@@ -4,8 +4,8 @@ package com.authority.manager.web.controller;
 import com.authority.manager.web.model.SysDictDO;
 import com.authority.manager.web.service.SysDictService;
 import com.yls.core.http.HttpConstants;
-import com.yls.core.http.HttpResultVO;
-import com.yls.core.page.PageQuery;
+import com.yls.core.http.HttpResponseVO;
+import com.yls.core.page.PageRequstQuery;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
@@ -32,24 +32,24 @@ public class SysDictController {
 
     @ApiOperation(value = "保存字典管理")
     @PostMapping("dict")
-    public HttpResultVO save(@ApiParam(value = "字典对象", required = true)@RequestBody SysDictDO record){
+    public HttpResponseVO save(@ApiParam(value = "字典对象", required = true)@RequestBody SysDictDO record){
         sysDictService.save(record);
-        return HttpResultVO.ok(HttpConstants.SAVE_OK);
+        return HttpResponseVO.ok(HttpConstants.SAVE_OK);
     }
 
 
     @ApiOperation(value = "删除字典记录")
     @DeleteMapping("dict")
-    public HttpResultVO delete(@ApiParam(value = "字典对象集合", required = true)@RequestBody List<SysDictDO> records){
+    public HttpResponseVO delete(@ApiParam(value = "字典对象集合", required = true)@RequestBody List<SysDictDO> records){
         sysDictService.deleteAll(records);
-        return HttpResultVO.ok(HttpConstants.DELETE_OK);
+        return HttpResponseVO.ok(HttpConstants.DELETE_OK);
     }
 
     @ApiOperation(value = "分页查询字典记录")
     @PostMapping("dict/lists")
-    public HttpResultVO lists(@ApiParam(value = "封装的分页请求对象", required = true)@RequestBody PageQuery pageQuery){
-        PageRequest pageRequest = PageRequest.of(pageQuery.getPageNum(), pageQuery.getPageSize());
+    public HttpResponseVO lists(@ApiParam(value = "封装的分页请求对象", required = true)@RequestBody PageRequstQuery pageRequstQuery){
+        PageRequest pageRequest = PageRequest.of(pageRequstQuery.getPageNum(), pageRequstQuery.getPageSize());
         Page page = sysDictService.findByPage(pageRequest);
-        return HttpResultVO.ok(page);
+        return HttpResponseVO.ok(page);
     }
 }

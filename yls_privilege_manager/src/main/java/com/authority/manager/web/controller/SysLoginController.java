@@ -12,7 +12,7 @@ import com.authority.manager.web.service.SysUserService;
 import com.google.code.kaptcha.Constants;
 import com.google.code.kaptcha.Producer;
 import com.yls.common.utils.IOUtils;
-import com.yls.core.http.HttpResultVO;
+import com.yls.core.http.HttpResponseVO;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
@@ -86,7 +86,7 @@ public class SysLoginController {
      **/
     @ApiOperation(value = "登录接口")
     @PostMapping
-    public HttpResultVO login(@ApiParam(value = "登录对象", required = true)@RequestBody LoginBeanBO loginBeanBO, HttpServletRequest request) throws IOException {
+    public HttpResponseVO login(@ApiParam(value = "登录对象", required = true)@RequestBody LoginBeanBO loginBeanBO, HttpServletRequest request) throws IOException {
         String username = loginBeanBO.getAccount();
         String password = loginBeanBO.getPassword();
         String captcha = loginBeanBO.getCaptcha();
@@ -104,19 +104,19 @@ public class SysLoginController {
         SysUserDO user = sysUserService.findByName(username);
         // 账号不存在、密码错误
         if (user == null) {
-            return HttpResultVO.error("账号不存在");
+            return HttpResponseVO.error("账号不存在");
         }
         if (!PasswordUtils.matches(user.getSalt(), password, user.getPassword())) {
-            return HttpResultVO.error("密码不正确");
+            return HttpResponseVO.error("密码不正确");
         }
         // 账号锁定
         if (user.getStatus() == 0) {
-            return HttpResultVO.error("账号已被锁定,请联系管理员");
+            return HttpResponseVO.error("账号已被锁定,请联系管理员");
         }
         // 系统登录认证
         JwtAuthenticatioToken token = SecurityUtils.login(request, username, password, authenticationManager);
         SysLoginLogDO sysLoginLog = new SysLoginLogDO(SysContants.LOGIN);
         sysLoginLogService.save(sysLoginLog);
-        return HttpResultVO.ok(token);
+        return HttpResponseVO.ok(token);
     }
 }

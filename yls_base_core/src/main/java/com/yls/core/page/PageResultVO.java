@@ -41,7 +41,7 @@ public class PageResultVO {
 		return pageNum;
 	}
 	public void setPageNum(int pageNum) {
-		this.pageNum = pageNum;
+		this.pageNum = Math.max(pageNum + 1, 1);
 	}
 	public int getPageSize() {
 		return pageSize;

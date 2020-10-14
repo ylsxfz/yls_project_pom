@@ -4,7 +4,7 @@ import com.authority.manager.contant.SysContants;
 import com.authority.manager.web.model.SysMenuDO;
 import com.authority.manager.web.service.SysMenuService;
 import com.yls.core.http.HttpConstants;
-import com.yls.core.http.HttpResultVO;
+import com.yls.core.http.HttpResponseVO;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiOperation;
@@ -29,30 +29,30 @@ public class SysMenuController {
 
     @ApiOperation(value = "保存菜单记录")
     @PostMapping("menu")
-    public HttpResultVO save(@ApiParam(value = "菜单对象", required = true)@RequestBody SysMenuDO record){
+    public HttpResponseVO save(@ApiParam(value = "菜单对象", required = true)@RequestBody SysMenuDO record){
         sysMenuService.save(record);
-        return HttpResultVO.ok(HttpConstants.SAVE_OK);
+        return HttpResponseVO.ok(HttpConstants.SAVE_OK);
     }
 
 
     @ApiOperation(value = "删除菜单记录")
     @DeleteMapping("menu")
-    public HttpResultVO delete(@ApiParam(value = "菜单对象集合", required = true)@RequestBody List<SysMenuDO> records){
+    public HttpResponseVO delete(@ApiParam(value = "菜单对象集合", required = true)@RequestBody List<SysMenuDO> records){
         sysMenuService.deleteAll(records);
-        return HttpResultVO.ok(HttpConstants.DELETE_OK);
+        return HttpResponseVO.ok(HttpConstants.DELETE_OK);
     }
 
 
     @ApiOperation(value = "查询左侧导航")
     @ApiImplicitParam(name = "userName",value = "用户名",required = true)
     @GetMapping(value="menu/{username}")
-    public HttpResultVO getNavTree(@PathVariable("username") String userName) {
-        return HttpResultVO.ok(sysMenuService.findTree(userName, SysContants.SEARCH_MENU));
+    public HttpResponseVO getNavTree(@PathVariable("username") String userName) {
+        return HttpResponseVO.ok(sysMenuService.findTree(userName, SysContants.SEARCH_MENU));
     }
 
     @ApiOperation(value = "查询菜单数据")
     @GetMapping("menu")
-    public HttpResultVO findMenuTree(){
-        return HttpResultVO.ok(sysMenuService.findTree(null,SysContants.SEARCH_MENU_AND_BUTTON));
+    public HttpResponseVO findMenuTree(){
+        return HttpResponseVO.ok(sysMenuService.findTree(null,SysContants.SEARCH_MENU_AND_BUTTON));
     }
 }

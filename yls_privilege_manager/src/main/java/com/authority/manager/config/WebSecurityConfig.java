@@ -2,6 +2,7 @@ package com.authority.manager.config;
 
 import com.authority.manager.component.security.JwtAuthenticationFilter;
 import com.authority.manager.component.security.JwtAuthenticationProvider;
+import com.authority.manager.component.security.handler.NoPermissionHandler;
 import com.authority.manager.component.security.utils.JwtTokenUtils;
 import com.authority.manager.component.security.utils.SecurityUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -102,20 +103,24 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 //.anyRequest().permitAll();
                 // 其他所有请求需要身份认证
                 .anyRequest().authenticated();
+
+        //权限过滤器
+        http.exceptionHandling().accessDeniedHandler(new NoPermissionHandler());
+
+        // token验证过滤器
+        http.addFilterBefore(new JwtAuthenticationFilter(authenticationManager()), UsernamePasswordAuthenticationFilter.class);
+
         // 退出登录处理器
         http.logout().addLogoutHandler(new LogoutHandler() {
-                    @Override
-                    public void logout(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse, Authentication authentication) {
-                        SecurityUtils.logout(httpServletRequest,httpServletResponse,authentication);
-                    }
-                })
+            @Override
+            public void logout(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse, Authentication authentication) {
+                SecurityUtils.logout(httpServletRequest, httpServletResponse, authentication);
+            }
+        })
                 .logoutSuccessHandler(new HttpStatusReturningLogoutSuccessHandler())
                 .invalidateHttpSession(true)
                 .deleteCookies("token")
                 .clearAuthentication(true);
-        // token验证过滤器
-        http.addFilterBefore(new JwtAuthenticationFilter(authenticationManager()), UsernamePasswordAuthenticationFilter.class);
-
         //允许页面被嵌套加载
         http.headers().frameOptions().disable();
 

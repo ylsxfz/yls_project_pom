@@ -10,6 +10,7 @@ import org.springframework.security.web.authentication.WebAuthenticationDetailsS
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.util.Objects;
 
 /**
  * @Author yls
@@ -59,9 +60,20 @@ public class SecurityUtils {
 	 * @return : void 不返回信息
 	 */
 	public static void logout(HttpServletRequest request, HttpServletResponse response, Authentication authentication){
+		String username = getUsername(authentication);
+		Objects.requireNonNull(username);
 		// 清理后台的token数据
-		JwtTokenUtils.removeToken(JwtTokenUtils.getToken(request));
+		TokenStore.removeToken(username);
 		// 清除上下文认证信息
+		removeContext();
+	}
+
+
+
+	/**
+	 * 清除当前用户上下文
+	 */
+	public static void removeContext() {
 		SecurityContextHolder.clearContext();
 	}
 

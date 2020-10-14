@@ -4,8 +4,8 @@ import com.authority.manager.component.security.utils.PasswordUtils;
 import com.authority.manager.web.model.SysUserDO;
 import com.authority.manager.web.service.SysUserService;
 import com.yls.core.http.HttpConstants;
-import com.yls.core.http.HttpResultVO;
-import com.yls.core.page.PageQuery;
+import com.yls.core.http.HttpResponseVO;
+import com.yls.core.page.PageRequstQuery;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiOperation;
@@ -34,21 +34,21 @@ public class SysUserController {
     @ApiOperation(value = "查询用户权限",notes = "根据姓名查询用户权限")
     @ApiImplicitParam(name = "name",value = "姓名",required = true)
     @GetMapping(value="user/permissions/{userName}")
-    public HttpResultVO listSysUserPermissions(@PathVariable("userName") String userName) {
-        return HttpResultVO.ok(sysUserService.findPermissions(userName));
+    public HttpResponseVO listSysUserPermissions(@PathVariable("userName") String userName) {
+        return HttpResponseVO.ok(sysUserService.findPermissions(userName));
     }
 
     @ApiOperation(value = "查询用户",notes = "根据姓名查询用户")
     @ApiImplicitParam(name = "name",value = "姓名",required = true)
     @GetMapping(value="user/{name}")
-    public HttpResultVO getSysUserByUserName(@PathVariable("name")  String name) {
-        return HttpResultVO.ok(sysUserService.findByName(name));
+    public HttpResponseVO getSysUserByUserName(@PathVariable("name")  String name) {
+        return HttpResponseVO.ok(sysUserService.findByName(name));
     }
 
 
     @ApiOperation(value = "保存用户")
     @PostMapping("user")
-    public HttpResultVO saveSysUser(@ApiParam(value = "用户对象", required = true)@RequestBody SysUserDO record){
+    public HttpResponseVO saveSysUser(@ApiParam(value = "用户对象", required = true)@RequestBody SysUserDO record){
         Optional optional  = sysUserService.findById(record.getId());
         if (record.getPassword()!=null){
             String salt = PasswordUtils.getSalt();
@@ -56,7 +56,7 @@ public class SysUserController {
             if (!optional.isPresent()){
                 //新增用户
                 if(sysUserService.findByName(record.getName()) != null){
-                    return HttpResultVO.error("用户名已存在！");
+                    return HttpResponseVO.error("用户名已存在！");
                 }
                 String password = PasswordUtils.encode(record.getPassword(), salt);
                 record.setSalt(salt);
@@ -64,13 +64,13 @@ public class SysUserController {
             }
         }
         sysUserService.saveUser(record);
-        return HttpResultVO.ok(HttpConstants.SAVE_OK);
+        return HttpResponseVO.ok(HttpConstants.SAVE_OK);
     }
 
 
     @ApiOperation(value = "修改用户")
     @PutMapping("user")
-    public HttpResultVO updateSysUser(@ApiParam(value = "用户对象", required = true)@RequestBody SysUserDO record){
+    public HttpResponseVO updateSysUser(@ApiParam(value = "用户对象", required = true)@RequestBody SysUserDO record){
         Optional optional  = sysUserService.findById(record.getId());
         if (record.getPassword()!=null){
             String salt = PasswordUtils.getSalt();
@@ -85,31 +85,31 @@ public class SysUserController {
             }
         }
         sysUserService.save(record);
-        return HttpResultVO.ok(HttpConstants.SAVE_OK);
+        return HttpResponseVO.ok(HttpConstants.SAVE_OK);
     }
 
     @ApiOperation(value = "删除用户")
     @DeleteMapping("user/{id}")
-    public HttpResultVO deleteSysUserById(@ApiParam(value = "用户id", required = true)@PathVariable("id") String id){
+    public HttpResponseVO deleteSysUserById(@ApiParam(value = "用户id", required = true)@PathVariable("id") String id){
         sysUserService.deleteById(id);
-        return HttpResultVO.ok(HttpConstants.DELETE_OK);
+        return HttpResponseVO.ok(HttpConstants.DELETE_OK);
     }
 
 
     @ApiOperation(value = "批量删除用户")
     @DeleteMapping("user")
-    public HttpResultVO deleteSysUserByIdS(@ApiParam(value = "用户对象集合", required = true)@RequestBody List<SysUserDO> records){
+    public HttpResponseVO deleteSysUserByIdS(@ApiParam(value = "用户对象集合", required = true)@RequestBody List<SysUserDO> records){
         sysUserService.deleteAll(records);
-        return HttpResultVO.ok(HttpConstants.DELETE_OK);
+        return HttpResponseVO.ok(HttpConstants.DELETE_OK);
     }
 
 
     @ApiOperation(value = "分页查询用户")
     @PostMapping("user/lists")
-    public HttpResultVO lists(@ApiParam(value = "封装的分页请求对象", required = true)@RequestBody PageQuery pageQuery){
-        PageRequest pageRequest = PageRequest.of(pageQuery.getPageNum(), pageQuery.getPageSize());
+    public HttpResponseVO lists(@ApiParam(value = "封装的分页请求对象", required = true)@RequestBody PageRequstQuery pageRequstQuery){
+        PageRequest pageRequest = PageRequest.of(pageRequstQuery.getPageNum(), pageRequstQuery.getPageSize());
         Page page = sysUserService.findByPage(pageRequest);
-        return HttpResultVO.ok(page);
+        return HttpResponseVO.ok(page);
     }
 
 

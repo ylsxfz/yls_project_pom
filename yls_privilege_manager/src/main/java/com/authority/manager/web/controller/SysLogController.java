@@ -4,8 +4,8 @@ package com.authority.manager.web.controller;
 import com.authority.manager.web.model.log.SysLogDO;
 import com.authority.manager.web.service.SysLogService;
 import com.yls.core.http.HttpConstants;
-import com.yls.core.http.HttpResultVO;
-import com.yls.core.page.PageQuery;
+import com.yls.core.http.HttpResponseVO;
+import com.yls.core.page.PageRequstQuery;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
@@ -35,17 +35,17 @@ public class SysLogController {
     @PreAuthorize("hasAuthority('sys:dict:delete')")
     @ApiOperation(value = "删除日志记录")
     @DeleteMapping("log")
-    public HttpResultVO delete(@ApiParam(value = "日志对象集合", required = true)@RequestBody List<SysLogDO> records){
+    public HttpResponseVO delete(@ApiParam(value = "日志对象集合", required = true)@RequestBody List<SysLogDO> records){
         sysLogService.deleteAll(records);
-        return HttpResultVO.ok(HttpConstants.DELETE_OK);
+        return HttpResponseVO.ok(HttpConstants.DELETE_OK);
     }
 
     @ApiOperation(value = "分页查询日志")
     @PostMapping("log/lists")
-    public HttpResultVO lists(@ApiParam(value = "日志对象集合", required = true)@RequestBody PageQuery pageQuery){
-        PageRequest pageRequest = PageRequest.of(pageQuery.getPageNum(), pageQuery.getPageSize());
+    public HttpResponseVO lists(@ApiParam(value = "日志对象集合", required = true)@RequestBody PageRequstQuery pageRequstQuery){
+        PageRequest pageRequest = PageRequest.of(pageRequstQuery.getPageNum(), pageRequstQuery.getPageSize());
         Page page = sysLogService.findByPage(pageRequest);
-        return HttpResultVO.ok(page);
+        return HttpResponseVO.ok(page);
     }
 
 }

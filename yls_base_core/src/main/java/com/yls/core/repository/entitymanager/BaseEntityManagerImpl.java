@@ -1,7 +1,6 @@
 package com.yls.core.repository.entitymanager;
 
-
-import org.apache.commons.lang.StringUtils;
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.stereotype.Repository;
 
 import javax.persistence.EntityManager;

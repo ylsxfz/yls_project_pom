@@ -2,7 +2,7 @@ package com.yls.core.sql;
 
 import com.yls.core.jpql.BaseFilter;
 import com.yls.core.jpql.QueryParams;
-import org.apache.commons.lang.StringUtils;
+import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -41,7 +41,7 @@ public class NativeSQL {
         if (columns==null || columns.isEmpty()){
             return null;
         }
-        return "select "+StringUtils.join(columns,",")+" from "+tableName+" where 1=1 ";
+        return "select "+ StringUtils.join(columns,",")+" from "+tableName+" where 1=1 ";
     }
 
     /**

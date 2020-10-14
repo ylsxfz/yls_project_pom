@@ -3,7 +3,7 @@ package com.authority.manager.web.controller;
 import com.authority.manager.web.model.SysDeptDO;
 import com.authority.manager.web.service.SysDeptService;
 import com.yls.core.http.HttpConstants;
-import com.yls.core.http.HttpResultVO;
+import com.yls.core.http.HttpResponseVO;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
@@ -28,22 +28,22 @@ public class SysDeptController {
 
     @ApiOperation(value = "保存部门")
     @PostMapping("dept")
-    public HttpResultVO save(@ApiParam(value = "部门对象", required = true)@RequestBody SysDeptDO record){
+    public HttpResponseVO save(@ApiParam(value = "部门对象", required = true)@RequestBody SysDeptDO record){
         sysDeptService.save(record);
-        return HttpResultVO.ok(HttpConstants.SAVE_OK);
+        return HttpResponseVO.ok(HttpConstants.SAVE_OK);
     }
 
     @ApiOperation(value = "删除部门")
     @DeleteMapping("dept")
-    public HttpResultVO delete(@ApiParam(value = "部门对象集合", required = true)@RequestBody List<SysDeptDO> records){
+    public HttpResponseVO delete(@ApiParam(value = "部门对象集合", required = true)@RequestBody List<SysDeptDO> records){
         sysDeptService.deleteAll(records);
-        return HttpResultVO.ok(HttpConstants.DELETE_OK);
+        return HttpResponseVO.ok(HttpConstants.DELETE_OK);
     }
 
     @ApiOperation(value = "查询部门树形数据")
     @GetMapping("dept/lists")
-    public HttpResultVO lists(){
-        return HttpResultVO.ok(sysDeptService.findDeptTree());
+    public HttpResponseVO lists(){
+        return HttpResponseVO.ok(sysDeptService.findDeptTree());
     }
 
 

@@ -5,8 +5,8 @@ import com.authority.manager.web.model.SysRoleDO;
 import com.authority.manager.web.model.relation.SysRoleMenuDO;
 import com.authority.manager.web.service.impl.SysRoleServiceImpl;
 import com.yls.core.http.HttpConstants;
-import com.yls.core.http.HttpResultVO;
-import com.yls.core.page.PageQuery;
+import com.yls.core.http.HttpResponseVO;
+import com.yls.core.page.PageRequstQuery;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiOperation;
@@ -35,71 +35,71 @@ public class SysRoleController {
 
     @ApiOperation(value = "保存角色")
     @PostMapping("role")
-    public HttpResultVO save(@ApiParam(value = "角色对象", required = true)@RequestBody SysRoleDO record){
+    public HttpResponseVO save(@ApiParam(value = "角色对象", required = true)@RequestBody SysRoleDO record){
 
         SysRoleDO sysRoleDO = sysRoleSerivce.findByName(record.getName());
         if (sysRoleDO !=null){
             //新增用户
             if (record.getId()==0){
-                return  HttpResultVO.error("角色名已存在！");
+                return  HttpResponseVO.error("角色名已存在！");
             }
 
             //如果是修改用户角色名
             else if (sysRoleDO.getId()!=record.getId()){
-                return  HttpResultVO.error("角色名已存在！");
+                return  HttpResponseVO.error("角色名已存在！");
             }
         }
         sysRoleSerivce.save(record);
-        return HttpResultVO.ok(HttpConstants.SAVE_OK);
+        return HttpResponseVO.ok(HttpConstants.SAVE_OK);
     }
 
     @ApiOperation(value = "删除权限")
     @DeleteMapping("role")
-    public HttpResultVO delete(@ApiParam(value = "角色对象集合", required = true)@RequestBody List<SysRoleDO> records){
+    public HttpResponseVO delete(@ApiParam(value = "角色对象集合", required = true)@RequestBody List<SysRoleDO> records){
         sysRoleSerivce.deleteAll(records);
-        return HttpResultVO.ok(HttpConstants.DELETE_OK);
+        return HttpResponseVO.ok(HttpConstants.DELETE_OK);
     }
 
     @ApiOperation(value = "分页查询权限")
     @PostMapping("role/lists")
-    public HttpResultVO findPage(@ApiParam(value = "封装的分页请求对象", required = true)@RequestBody PageQuery pageQuery){
-        PageRequest pageRequest = PageRequest.of(pageQuery.getPageNum(), pageQuery.getPageSize());
+    public HttpResponseVO findPage(@ApiParam(value = "封装的分页请求对象", required = true)@RequestBody PageRequstQuery pageRequstQuery){
+        PageRequest pageRequest = PageRequest.of(pageRequstQuery.getPageNum(), pageRequstQuery.getPageSize());
         Page page = sysRoleSerivce.findByPage(pageRequest);
-        return HttpResultVO.ok(page);
+        return HttpResponseVO.ok(page);
     }
 
     @ApiOperation(value = "查询所有权限")
     @GetMapping(value="role/all")
-    public HttpResultVO findAll()  {
+    public HttpResponseVO findAll()  {
         try {
-            return HttpResultVO.ok(sysRoleSerivce.findAll());
+            return HttpResponseVO.ok(sysRoleSerivce.findAll());
         }catch (Exception e){
-            return HttpResultVO.error("查询失败！"+e.getMessage());
+            return HttpResponseVO.error("查询失败！"+e.getMessage());
         }
     }
 
     @ApiOperation(value = "查询菜单")
     @ApiImplicitParam(name = "roleId",value = "角色id",dataType = "int",required = true)
     @GetMapping(value="role/{roleId}")
-    public HttpResultVO findRoleMenus(@PathVariable("roleId") Integer roleId) {
-        return HttpResultVO.ok(sysRoleSerivce.findRoleMenus(roleId));
+    public HttpResponseVO findRoleMenus(@PathVariable("roleId") Integer roleId) {
+        return HttpResponseVO.ok(sysRoleSerivce.findRoleMenus(roleId));
     }
 
     @ApiOperation(value = "修改菜单权限")
     @PutMapping(value = "role")
-    public HttpResultVO saveRoleMenus(@ApiParam(value = "角色对象集合", required = true)@RequestBody List<SysRoleMenuDO> records){
+    public HttpResponseVO saveRoleMenus(@ApiParam(value = "角色对象集合", required = true)@RequestBody List<SysRoleMenuDO> records){
         if (records!=null && !records.isEmpty()){
             SysRoleMenuDO sysRoleMenuDO = records.get(0);
             Optional optional = sysRoleSerivce.findById(sysRoleMenuDO.getRoleId());
             if (optional.isPresent()){
                 SysRoleDO sysRoleDO = (SysRoleDO) optional.get();
                 if (SysContants.ADMIN.equals(sysRoleDO.getName())){
-                    return HttpResultVO.error("超级管理员拥有所有菜单权限，不允许修改！");
+                    return HttpResponseVO.error("超级管理员拥有所有菜单权限，不允许修改！");
                 }else {
                     sysRoleSerivce.saveRoleMenus(records);
                 }
             }
         }
-        return  HttpResultVO.ok("保存成功!");
+        return  HttpResponseVO.ok("保存成功!");
     }
 }

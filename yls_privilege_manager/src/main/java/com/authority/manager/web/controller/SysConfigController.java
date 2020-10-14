@@ -4,8 +4,8 @@ package com.authority.manager.web.controller;
 import com.authority.manager.web.model.SysConfigDO;
 import com.authority.manager.web.service.SysConfigService;
 import com.yls.core.http.HttpConstants;
-import com.yls.core.http.HttpResultVO;
-import com.yls.core.page.PageQuery;
+import com.yls.core.http.HttpResponseVO;
+import com.yls.core.page.PageRequstQuery;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiOperation;
@@ -33,27 +33,27 @@ public class SysConfigController {
 
     @ApiOperation(value = "保存系统配置")
     @PostMapping("config")
-    public HttpResultVO save(@ApiParam(value = "系统对象", required = true) @RequestBody SysConfigDO record){
+    public HttpResponseVO save(@ApiParam(value = "系统对象", required = true) @RequestBody SysConfigDO record){
         sysConfigService.save(record);
-        return HttpResultVO.ok(HttpConstants.SAVE_OK);
+        return HttpResponseVO.ok(HttpConstants.SAVE_OK);
     }
 
 
     @ApiOperation(value = "删除系统配置")
     @ApiImplicitParam(required = true)
     @DeleteMapping("/config")
-    public HttpResultVO delete(@ApiParam(value = "系统对象集合", required = true)@RequestBody List<SysConfigDO> records){
+    public HttpResponseVO delete(@ApiParam(value = "系统对象集合", required = true)@RequestBody List<SysConfigDO> records){
         sysConfigService.deleteAll(records);
-        return HttpResultVO.ok(HttpConstants.DELETE_OK);
+        return HttpResponseVO.ok(HttpConstants.DELETE_OK);
     }
 
 
     @ApiOperation(value = "分页查询系统配置")
     @PostMapping("config/lists")
-    public HttpResultVO lists(@ApiParam(value = "分页请求封装",required = true)@RequestBody PageQuery pageQuery){
-        PageRequest pageRequest = PageRequest.of(pageQuery.getPageNum(), pageQuery.getPageSize());
+    public HttpResponseVO lists(@ApiParam(value = "分页请求封装",required = true)@RequestBody PageRequstQuery pageRequstQuery){
+        PageRequest pageRequest = PageRequest.of(pageRequstQuery.getPageNum(), pageRequstQuery.getPageSize());
         Page page = sysConfigService.findByPage(pageRequest);
-        return HttpResultVO.ok(page);
+        return HttpResponseVO.ok(page);
     }
 
 }
