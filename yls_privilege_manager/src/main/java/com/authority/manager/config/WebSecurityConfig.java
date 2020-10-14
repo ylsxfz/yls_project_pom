@@ -3,6 +3,7 @@ package com.authority.manager.config;
 import com.authority.manager.component.security.JwtAuthenticationFilter;
 import com.authority.manager.component.security.JwtAuthenticationProvider;
 import com.authority.manager.component.security.utils.JwtTokenUtils;
+import com.authority.manager.component.security.utils.SecurityUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Bean;
@@ -18,6 +19,7 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 import org.springframework.security.web.authentication.logout.HttpStatusReturningLogoutSuccessHandler;
+import org.springframework.security.web.authentication.logout.LogoutHandler;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -101,15 +103,13 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 // 其他所有请求需要身份认证
                 .anyRequest().authenticated();
         // 退出登录处理器
-        http.logout()
-                //.logoutSuccessHandler(new HttpStatusReturningLogoutSuccessHandler())
-                .logoutSuccessHandler(new HttpStatusReturningLogoutSuccessHandler() {
+        http.logout().addLogoutHandler(new LogoutHandler() {
                     @Override
-                    public void onLogoutSuccess(HttpServletRequest request, HttpServletResponse response, Authentication authentication) throws IOException, ServletException {
-                        JwtTokenUtils.removeToken(JwtTokenUtils.getToken(request));
-                        super.onLogoutSuccess(request, response, authentication);
+                    public void logout(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse, Authentication authentication) {
+                        SecurityUtils.logout(httpServletRequest,httpServletResponse,authentication);
                     }
                 })
+                .logoutSuccessHandler(new HttpStatusReturningLogoutSuccessHandler())
                 .invalidateHttpSession(true)
                 .deleteCookies("token")
                 .clearAuthentication(true);

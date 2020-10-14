@@ -9,6 +9,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.web.authentication.WebAuthenticationDetailsSource;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 /**
  * @Author yls
@@ -19,10 +20,10 @@ public class SecurityUtils {
 
 	/**
 	 * @Description 系统登录认证
-	 * @param request
-	 * @param username
-	 * @param password
-	 * @param authenticationManager
+	 * @param request 请求
+	 * @param username 用户名
+	 * @param password 密码
+	 * @param authenticationManager 认证管理器
 	 * @return
 	 */
 	public static JwtAuthenticatioToken login(HttpServletRequest request, String username, String password, AuthenticationManager authenticationManager) {
@@ -44,6 +45,26 @@ public class SecurityUtils {
 		}
 		return token;
 	}
+
+
+	/**
+	 * 功能描述:
+	 * 〈登出操作：手动退出的时候将清理token，下次登录要重新认证，同时删除token信息〉
+	 *
+	 * @author : yls
+	 * @date : 2020/10/14 9:07
+	 * @param request 请求
+	 * @param response 响应
+	 * @param authentication 认证信息
+	 * @return : void 不返回信息
+	 */
+	public static void logout(HttpServletRequest request, HttpServletResponse response, Authentication authentication){
+		// 清理后台的token数据
+		JwtTokenUtils.removeToken(JwtTokenUtils.getToken(request));
+		// 清除上下文认证信息
+		SecurityContextHolder.clearContext();
+	}
+
 
 	/**
 	 * @Description 获取令牌进行认证
