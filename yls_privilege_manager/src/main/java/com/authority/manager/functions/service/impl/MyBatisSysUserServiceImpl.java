@@ -1,5 +1,6 @@
 package com.authority.manager.functions.service.impl;
 
+import com.authority.manager.functions.model.User;
 import com.authority.manager.web.model.SysUserDO;
 import com.authority.manager.functions.dao.SysUserMapper;
 import com.authority.manager.functions.dao.SysUserMapperByAno;
@@ -20,6 +21,8 @@ public class MyBatisSysUserServiceImpl implements MyBatisSysUserService {
 
     @Override
     public List<SysUserDO> findAllByMyBatisXml() {
+        List<User> sysUserDOS = sysUserMapper.selectList(null);
+        System.err.println(sysUserDOS);
         return sysUserMapper.findAllByMyBatisXml();
     }
 

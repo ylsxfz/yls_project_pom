@@ -97,9 +97,9 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers("/sys/login/captcha.jpg**").permitAll()
                 // 服务监控
                 .antMatchers("/actuator/**").permitAll()
-                //.anyRequest().permitAll();
+                .anyRequest().permitAll();
                 // 其他所有请求需要身份认证
-                .anyRequest().authenticated();
+//                .anyRequest().authenticated();
 
         //权限过滤器
         http.exceptionHandling().accessDeniedHandler(new NoPermissionHandler());

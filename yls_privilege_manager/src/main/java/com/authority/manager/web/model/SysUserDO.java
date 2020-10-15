@@ -2,6 +2,7 @@ package com.authority.manager.web.model;
 
 import com.authority.manager.web.model.base.BaseSysBO;
 import com.authority.manager.web.model.relation.SysUserRoleDO;
+import com.baomidou.mybatisplus.annotation.TableName;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 
@@ -15,6 +16,7 @@ import java.util.List;
 @Entity
 @ApiModel(description = "用户")
 @Table(name="sys_user")
+@TableName(value = "sys_user")
 @org.hibernate.annotations.Table(appliesTo = "sys_user",comment = "用户表")
 public class SysUserDO extends BaseSysBO {
 

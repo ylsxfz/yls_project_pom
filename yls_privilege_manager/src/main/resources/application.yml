@@ -65,15 +65,29 @@ spring:
 logging:
   config: classpath:logback-spring.xml
 
-## mybatis
-mybatis:
+## mybatis-plus
+#my:
+#  mapper-locations: classpath*:mappers/*.xml
+##  type-aliases-package: com.authority.manager.web.model
+#  configuration:
+#    # 当没有为参数提供特定的 JDBC 类型时，为空值指定 JDBC 类型。
+#    # oracle 数据库建议配置为 JdbcType.NULL, 默认是 Other
+#    jdbc-type-for-null: 'null'
+#    # 是否打印 sql 语句 调试的时候可以开启
+#    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+
+
+mybatis-plus:
   mapper-locations: classpath*:mappers/*.xml
-#  type-aliases-package: com.authority.manager.web.model
+  global-config:
+    db-config:
+      id-type: auto
+      field-strategy: not_empty
+      table-underline: true
+      db-type: mysql
+      logic-delete-value: 1 # 逻辑已删除值(默认为 1)
+      logic-not-delete-value: 0 # 逻辑未删除值(默认为 0)
+mybatis:
   configuration:
-    # 当没有为参数提供特定的 JDBC 类型时，为空值指定 JDBC 类型。
-    # oracle 数据库建议配置为 JdbcType.NULL, 默认是 Other
-    jdbc-type-for-null: 'null'
     # 是否打印 sql 语句 调试的时候可以开启
     log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
-
-
