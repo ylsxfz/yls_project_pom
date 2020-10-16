@@ -14,7 +14,7 @@ import java.util.Optional;
  * @Versionm 1.0
  */
 @Component
-public class UserIDAuditorConfig implements AuditorAware<String> {
+public class JpaUserIDAuditorConfig implements AuditorAware<String> {
 
     @Override
     public Optional<String> getCurrentAuditor() {

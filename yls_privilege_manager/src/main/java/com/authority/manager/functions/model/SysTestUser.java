@@ -1,5 +1,8 @@
 package com.authority.manager.functions.model;
 
+import com.authority.manager.functions.model.mybatis.BaseMybatisTaskBO;
+import io.swagger.annotations.ApiModelProperty;
+
 import javax.persistence.*;
 import javax.validation.constraints.*;
 
@@ -10,42 +13,33 @@ import javax.validation.constraints.*;
  * @Version 1.0
  */
 @Entity
-@Table(name = "user")
-public class User {
+@Table(name = "sys_test_user")
+public class SysTestUser extends BaseMybatisTaskBO {
 
-    @Id
-    @Column(name = "id")
-    @GeneratedValue(strategy = javax.persistence.GenerationType.IDENTITY)
-    private Integer id;
-
+    @ApiModelProperty("用户名")
     @Size(min = 2,max = 5,message = "{user.name.size}")
-    @Column(name = "username")
+    @NotNull(message = "{user.address.notnull}")
+    @Column(name = "username",columnDefinition = "varchar(32) comment '名称'")
     private String username;
 
-    @NotNull(message = "{user.address.notnull}")
-    @Column(name = "address")
+    @ApiModelProperty("地址")
+    @Column(name = "address",columnDefinition = "varchar(255) comment '地址'")
     private String address;
 
-    @Column(name = "gender")
+    @ApiModelProperty("性别")
+    @Column(name = "gender",columnDefinition = "varchar(66) comment '性别'")
     private String gender;
 
+    @ApiModelProperty("年龄")
     @DecimalMin(value = "1",message = "{user.age.size}")
     @DecimalMax(value = "200",message = "{user.age.size}")
-    @Column(name = "age")
+    @Column(name = "age",columnDefinition = "varchar(32) comment '年龄'")
     private Integer age;
 
+    @ApiModelProperty("邮箱")
     @Email(message = "{user.email.pattern}")
-    @NotNull(message = "{user.email.notnull}")
-    @Column(name = "email")
+    @Column(name = "email",columnDefinition = "varchar(64) comment '邮箱'")
     private String email;
-
-    public Integer getId() {
-        return id;
-    }
-
-    public void setId(Integer id) {
-        this.id = id;
-    }
 
     public String getUsername() {
         return username;
@@ -90,8 +84,7 @@ public class User {
     @Override
     public String toString() {
         return "User{" +
-                "id=" + id +
-                ", username='" + username + '\'' +
+                "username='" + username + '\'' +
                 ", address='" + address + '\'' +
                 ", gender='" + gender + '\'' +
                 ", age=" + age +

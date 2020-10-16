@@ -166,11 +166,11 @@ CREATE TABLE `sys_menu`  (
 -- Records of sys_menu
 -- ----------------------------
 INSERT INTO `sys_menu` VALUES (1, NULL, NULL, 0, NULL, NULL, 'el-icon-setting', '系统管理', 0, 0, NULL, 0, NULL);
-INSERT INTO `sys_menu` VALUES (2, NULL, NULL, 0, NULL, NULL, 'el-icon-service', '用户管理', 1, 1, NULL, 1, '/sys/user');
-INSERT INTO `sys_menu` VALUES (3, NULL, NULL, 0, NULL, NULL, NULL, '查看', 0, 2, 'sys:user:view', 2, NULL);
-INSERT INTO `sys_menu` VALUES (4, NULL, NULL, 0, NULL, NULL, NULL, '新增', 0, 2, 'sys:user:add', 2, NULL);
-INSERT INTO `sys_menu` VALUES (5, NULL, NULL, 0, NULL, NULL, NULL, '修改', 0, 2, 'sys:user:edit', 2, NULL);
-INSERT INTO `sys_menu` VALUES (6, NULL, NULL, 0, NULL, NULL, NULL, '删除', 0, 2, 'sys:user:delete', 2, NULL);
+INSERT INTO `sys_menu` VALUES (2, NULL, NULL, 0, NULL, NULL, 'el-icon-service', '用户管理', 1, 1, NULL, 1, '/sys/sysTestUser');
+INSERT INTO `sys_menu` VALUES (3, NULL, NULL, 0, NULL, NULL, NULL, '查看', 0, 2, 'sys:sysTestUser:view', 2, NULL);
+INSERT INTO `sys_menu` VALUES (4, NULL, NULL, 0, NULL, NULL, NULL, '新增', 0, 2, 'sys:sysTestUser:add', 2, NULL);
+INSERT INTO `sys_menu` VALUES (5, NULL, NULL, 0, NULL, NULL, NULL, '修改', 0, 2, 'sys:sysTestUser:edit', 2, NULL);
+INSERT INTO `sys_menu` VALUES (6, NULL, NULL, 0, NULL, NULL, NULL, '删除', 0, 2, 'sys:sysTestUser:delete', 2, NULL);
 INSERT INTO `sys_menu` VALUES (7, NULL, NULL, 0, NULL, NULL, 'el-icon-news', '机构管理', 2, 1, NULL, 1, '/sys/dept');
 INSERT INTO `sys_menu` VALUES (8, NULL, NULL, 0, NULL, NULL, NULL, '查看', 0, 7, 'sys:dept:view', 2, NULL);
 INSERT INTO `sys_menu` VALUES (9, NULL, NULL, 0, NULL, NULL, NULL, '新增', 0, 7, 'sys:dept:add', 2, NULL);

@@ -1,6 +1,6 @@
-package com.authority.manager.functions.config;
+package com.authority.manager.config;
 
-import com.authority.manager.functions.model.User;
+import com.authority.manager.functions.model.SysTestUser;
 import org.springframework.batch.core.Job;
 import org.springframework.batch.core.Step;
 import org.springframework.batch.core.configuration.annotation.JobBuilderFactory;
@@ -59,13 +59,13 @@ public class CsvBatchJobConfig {
      */
     @Bean
     @StepScope
-    FlatFileItemReader<User> itemReader(){
-        FlatFileItemReader<User> reader = new FlatFileItemReader<>();
+    FlatFileItemReader<SysTestUser> itemReader(){
+        FlatFileItemReader<SysTestUser> reader = new FlatFileItemReader<>();
         //设置从第几行开始
         reader.setLinesToSkip(0);
         //设置文件的路径：classPath对应项目的 /src/main/resources
         reader.setResource(new ClassPathResource("data.csv"));
-        reader.setLineMapper(new DefaultLineMapper<User>(){{
+        reader.setLineMapper(new DefaultLineMapper<SysTestUser>(){{
             /**
              * 设置文件的表头，分隔符
              */
@@ -76,8 +76,8 @@ public class CsvBatchJobConfig {
             /**
              * 设置对应的实体类
              */
-            setFieldSetMapper(new BeanWrapperFieldSetMapper<User>(){{
-                setTargetType(User.class);
+            setFieldSetMapper(new BeanWrapperFieldSetMapper<SysTestUser>(){{
+                setTargetType(SysTestUser.class);
             }});
         }});
         return reader;
@@ -124,7 +124,7 @@ public class CsvBatchJobConfig {
                 //名称
                 .get("csvStep")
                 //每读到2条数据执行一次write操作
-                .<User,User>chunk(2)
+                .<SysTestUser, SysTestUser>chunk(2)
                 //配置reader
                 .reader(itemReader())
                 //配置writer

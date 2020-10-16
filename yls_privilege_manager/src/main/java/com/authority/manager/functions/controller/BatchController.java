@@ -1,7 +1,7 @@
 package com.authority.manager.functions.controller;
 
 
-import com.authority.manager.functions.model.User;
+import com.authority.manager.functions.model.SysTestUser;
 import io.swagger.annotations.Api;
 import org.springframework.batch.core.Job;
 import org.springframework.batch.core.JobParameters;
@@ -50,12 +50,12 @@ public class BatchController {
     /**
      * Validated: 表示需要对该参数做检验，紧接着BindingResult参数表示在校验出错时保存的出错信息
      * 如果BindingResult中的hasErrors方法返回true，表示有错误信息，此时遍历错误信息，将返回给前端
-     * @param user 用户
+     * @param sysTestUser 用户
      * @param result 校验结果
      * @return
      */
     @PostMapping("/user")
-    public List<String> addUser(@Validated User user, BindingResult result){
+    public List<String> addUser(@Validated SysTestUser sysTestUser, BindingResult result){
         List<String> errors = new ArrayList<>();
         if(result.hasErrors()){
             List<ObjectError> allErrors = result.getAllErrors();

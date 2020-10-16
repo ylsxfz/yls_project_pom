@@ -52,7 +52,7 @@ public class BaseSysBO implements Serializable {
     private Date lastUpdateTime;
 
 	@ApiModelProperty("删除标记，1：未删除，0：已删除")
-	@Column(name = "del_flag",columnDefinition = "tinyint comment '删除标记，1：未删除，0：已删除'")
+	@Column(name = "del_flag",columnDefinition = "tinyint comment '删除标记，1：逻辑已删除，0：逻辑未删除'")
 	private Byte delFlag;
 
 	public int getId() {
