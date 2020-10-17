@@ -1,6 +1,6 @@
 package com.authority.manager.functions.dao;
 
-import com.authority.manager.functions.model.SysTestUser;
+import com.authority.manager.functions.model.SysTestMybatisUser;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Select;
 import org.springframework.stereotype.Repository;
@@ -14,6 +14,6 @@ public interface SysUserMapperByAno{
      * 查询全部
      * @return
      */
-    @Select("select * from sys_user")
-    List<SysTestUser> findAllByMyBatisAno();
+    @Select("select * from sys_test_mybatis_user")
+    List<SysTestMybatisUser> findAllByMyBatisAno();
 }

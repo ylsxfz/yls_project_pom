@@ -8,7 +8,7 @@
 2、实例
 a、csv批量导入测试：
   package com.authority.manager.functions.config;
-  import com.authority.manager.functions.model.SysTestUser;
+  import com.authority.manager.functions.model.SysTestMybatisUser;
   import org.springframework.batch.core.Job;
   import org.springframework.batch.core.Step;
   import org.springframework.batch.core.configuration.annotation.JobBuilderFactory;
@@ -63,7 +63,7 @@ a、csv批量导入测试：
        *  〉
        * @author : yls
        * @date : 2020/09/13 14:55
-       * @return : org.springframework.batch.item.file.FlatFileItemReader<com.authority.manager.functions.model.SysTestUser>
+       * @return : org.springframework.batch.item.file.FlatFileItemReader<com.authority.manager.functions.model.SysTestMybatisUser>
        */
       @Bean
       @StepScope
@@ -112,7 +112,7 @@ a、csv批量导入测试：
       JdbcBatchItemWriter jdbcBatchItemWriter(){
           JdbcBatchItemWriter writer = new JdbcBatchItemWriter();
           writer.setDataSource(dataSource);
-          writer.setSql("insert into sysTestUser(username,address,gender) "+
+          writer.setSql("insert into sysTestMybatisUser(username,address,gender) "+
                   "value(:username,:address,:gender)");
           writer.setItemSqlParameterSourceProvider(new BeanPropertyItemSqlParameterSourceProvider());
           return writer;

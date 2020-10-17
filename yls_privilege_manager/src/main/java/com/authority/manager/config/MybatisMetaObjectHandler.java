@@ -32,6 +32,8 @@ public class MybatisMetaObjectHandler implements MetaObjectHandler {
         this.setFieldValByName("createBy", username, metaObject);
         this.setFieldValByName("updateTime", new Date(), metaObject);
         this.setFieldValByName("updateBy", username, metaObject);
+        // 删除值
+        this.setFieldValByName("deleted", 0, metaObject);
     }
 
     /**

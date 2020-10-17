@@ -13,8 +13,8 @@ import javax.validation.constraints.*;
  * @Version 1.0
  */
 @Entity
-@Table(name = "sys_test_user")
-public class SysTestUser extends BaseMybatisTaskBO {
+@Table(name = "sys_test_mybatis_user")
+public class SysTestMybatisUser extends BaseMybatisTaskBO {
 
     @ApiModelProperty("用户名")
     @Size(min = 2,max = 5,message = "{user.name.size}")

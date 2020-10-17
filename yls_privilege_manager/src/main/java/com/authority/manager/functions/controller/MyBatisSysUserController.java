@@ -1,6 +1,8 @@
 package com.authority.manager.functions.controller;
 
+import com.authority.manager.functions.model.SysTestMybatisUser;
 import com.authority.manager.functions.service.MyBatisSysUserService;
+import com.yls.common.utils.StringFormatUtils;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,6 +29,45 @@ public class MyBatisSysUserController {
     @PostMapping(value="/findAllByMyBatisXml")
     public Object findAllByMyBatisXml() {
         return myBatisSysUserService.findAllByMyBatisXml();
+    }
+
+    @ApiOperation(value = "添加用户")
+    @PostMapping(value="/queryUser")
+    public Object queryUser() {
+        SysTestMybatisUser sysTestMybatisUser = new SysTestMybatisUser();
+        sysTestMybatisUser.setUsername(StringFormatUtils.uuidUpperCase());
+        return myBatisSysUserService.addUser(sysTestMybatisUser);
+    }
+
+
+    @ApiOperation(value = "添加用户")
+    @PostMapping(value="/addUser")
+    public Object addUser() {
+        SysTestMybatisUser sysTestMybatisUser = new SysTestMybatisUser();
+        sysTestMybatisUser.setUsername(StringFormatUtils.uuidUpperCase());
+        return myBatisSysUserService.addUser(sysTestMybatisUser);
+    }
+
+    @ApiOperation(value = "更新用户")
+    @PostMapping(value="/updateUser")
+    public Object updateUser() {
+        SysTestMybatisUser sysTestMybatisUser = new SysTestMybatisUser();
+        sysTestMybatisUser.setUsername(StringFormatUtils.uuidUpperCase());
+        sysTestMybatisUser.setEmail("2689623000@qq.com");
+        return myBatisSysUserService.updateUser(sysTestMybatisUser);
+    }
+
+
+    @ApiOperation(value = "删除用户")
+    @PostMapping(value="/deleteUser")
+    public Object deleteUser() {
+        return myBatisSysUserService.deleteUser(1);
+    }
+
+    @ApiOperation(value = "查询用户")
+    @PostMapping(value="/listUsers")
+    public Object listUsers() {
+        return myBatisSysUserService.findAll();
     }
 
     @ApiOperation(value = "根据注解查询用户")

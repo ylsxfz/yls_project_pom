@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.authority.manager.functions.dao.SysUserMapper">
-  <resultMap id="BaseResultMap" type="com.authority.manager.functions.model.SysTestUser">
+  <resultMap id="BaseResultMap" type="com.authority.manager.functions.model.SysTestMybatisUser">
     <id column="id" jdbcType="BIGINT" property="id" />
     <result column="username" jdbcType="VARCHAR" property="username" />
     <result column="email" jdbcType="VARCHAR" property="email" />
@@ -21,6 +21,6 @@
   <select id="findAllByMyBatisXml" resultMap="BaseResultMap">
     select 
     <include refid="Base_Column_List" />
-    from sys_test_user
+    from sys_test_mybatis_user
   </select>
 </mapper>

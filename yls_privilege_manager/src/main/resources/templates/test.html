@@ -10,9 +10,9 @@
             <td>用户名</td>
             <td>年龄</td>
         </tr>
-        <tr th:each="sysTestUser:${sysTestUsers}">
-            <td th:text="${sysTestUser.name}"></td>
-            <td th:text="${sysTestUser.age}"></td>
+        <tr th:each="sysTestMybatisUser:${sysTestMybatisUsers}">
+            <td th:text="${sysTestMybatisUser.name}"></td>
+            <td th:text="${sysTestMybatisUser.age}"></td>
         </tr>
     </table>
 </body>

@@ -1,9 +1,10 @@
 package com.authority.manager.functions.service.impl;
 
-import com.authority.manager.functions.model.SysTestUser;
+import com.authority.manager.functions.model.SysTestMybatisUser;
 import com.authority.manager.functions.dao.SysUserMapper;
 import com.authority.manager.functions.dao.SysUserMapperByAno;
 import com.authority.manager.functions.service.MyBatisSysUserService;
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -19,16 +20,40 @@ public class MyBatisSysUserServiceImpl implements MyBatisSysUserService {
     private SysUserMapperByAno sysUserMapperByAno;
 
     @Override
-    public List<SysTestUser> findAllByMyBatisXml() {
-        List<SysTestUser> sysTestUsers = sysUserMapper.selectList(null);
-        System.err.println(sysTestUsers);
-        List<SysTestUser> sysTestUserList = sysUserMapper.findAllByMyBatisXml();
-        return sysTestUserList;
+    public List<SysTestMybatisUser> findAllByMyBatisXml() {
+        List<SysTestMybatisUser> sysTestMybatisUsers = sysUserMapper.selectList(null);
+        System.err.println(sysTestMybatisUsers);
+        List<SysTestMybatisUser> sysTestMybatisUserList = sysUserMapper.findAllByMyBatisXml();
+        return sysTestMybatisUserList;
     }
 
     @Override
-    public List<SysTestUser> findAllByMyBatisAno() {
+    public List<SysTestMybatisUser> findAllByMyBatisAno() {
         return sysUserMapperByAno.findAllByMyBatisAno();
+    }
+
+    @Override
+    public Integer addUser(SysTestMybatisUser sysTestMybatisUser) {
+        int insert = sysUserMapper.insert(sysTestMybatisUser);
+        return insert;
+    }
+
+    @Override
+    public Integer updateUser(SysTestMybatisUser sysTestMybatisUser) {
+        QueryWrapper<SysTestMybatisUser> queryWrapper = new QueryWrapper<SysTestMybatisUser>();
+        queryWrapper.eq("id",1);
+        int update = sysUserMapper.update(sysTestMybatisUser,queryWrapper);
+        return update;
+    }
+
+    @Override
+    public Integer deleteUser(Integer id) {
+        return sysUserMapper.deleteById(id);
+    }
+
+    @Override
+    public List<SysTestMybatisUser> findAll() {
+        return sysUserMapper.selectList(null);
     }
 
 
