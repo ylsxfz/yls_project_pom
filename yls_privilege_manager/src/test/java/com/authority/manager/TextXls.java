@@ -69,9 +69,22 @@ public class TextXls {
             Collection<Integer> values = value.values();
             int sum = values.stream().mapToInt(Integer::intValue).sum();
             System.err.println(key+":"+value.size()+":"+sum);
-            //value.forEach((tempKey,tempValue)->{
-                //System.out.println(key+"=>"+tempKey+"=>"+tempValue);
-           // });
+        });
+
+        System.out.println();
+        /**
+         * 重复次数大于指定的数
+         */
+        int compareNum = 2;
+        resultContentMap.forEach((key,value)->{
+            Collection<Integer> values = value.values();
+            int sum = values.stream().mapToInt(Integer::intValue).sum();
+            // 重复数据量大于4
+            value.forEach((tempKey,tempValue)->{
+                if (tempValue>compareNum){
+                    System.out.println("重复次数大于"+compareNum+"："+key+"=>"+tempKey+"=>"+tempValue);
+                }
+            });
         });
     }
 
