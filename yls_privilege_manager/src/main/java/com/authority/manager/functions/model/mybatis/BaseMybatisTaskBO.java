@@ -1,14 +1,13 @@
-package com.authority.manager.functions.model.jpa;
+package com.authority.manager.functions.model.mybatis;
 
+import com.baomidou.mybatisplus.annotation.*;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
-import org.springframework.data.annotation.CreatedBy;
-import org.springframework.data.annotation.CreatedDate;
-import org.springframework.data.annotation.LastModifiedBy;
-import org.springframework.data.annotation.LastModifiedDate;
-import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
-import javax.persistence.*;
+import javax.persistence.Column;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.MappedSuperclass;
 import java.io.Serializable;
 import java.util.Date;
 
@@ -20,8 +19,7 @@ import java.util.Date;
  */
 @ApiModel(description = "任务父类")
 @MappedSuperclass
-@EntityListeners(AuditingEntityListener.class)
-public class BaseJpaTaskBO implements Serializable {
+public class BaseMybatisTaskBO implements Serializable {
 
     /**
      * 任务编号
@@ -31,6 +29,7 @@ public class BaseJpaTaskBO implements Serializable {
     //自动递增
     @GeneratedValue(strategy = javax.persistence.GenerationType.IDENTITY)
     @Column(name = "id", columnDefinition = "int comment 'id主键:任务编号'")
+    @TableId(type = IdType.AUTO)
     private Integer id;
 
 
@@ -38,16 +37,16 @@ public class BaseJpaTaskBO implements Serializable {
      * 创建时间
      */
     @ApiModelProperty("创建时间")
-    @CreatedDate
     @Column(name = "create_time", columnDefinition = "timestamp comment '创建时间'")
+    @TableField(value = "create_time",fill = FieldFill.INSERT)
     private Date createTime;
 
     /**
      * 创建人
      */
     @ApiModelProperty("创建人")
-    @CreatedBy
     @Column(name = "create_by", columnDefinition = "varchar(32) comment '创建人'")
+    @TableField(value = "create_by",fill = FieldFill.INSERT)
     private String createBy;
 
 
@@ -55,8 +54,8 @@ public class BaseJpaTaskBO implements Serializable {
      * 更新时间
      */
     @ApiModelProperty("更新时间")
-    @LastModifiedDate
     @Column(name = "update_time", columnDefinition = "timestamp comment '更新时间'")
+    @TableField(value = "update_time",fill = FieldFill.INSERT_UPDATE)
     private Date updateTime;
 
 
@@ -64,8 +63,8 @@ public class BaseJpaTaskBO implements Serializable {
      * 修改人
      */
     @ApiModelProperty("修改人")
-    @LastModifiedBy
     @Column(name = "update_by", columnDefinition = "varchar(32) comment '修改人'")
+    @TableField(value = "update_by",fill = FieldFill.INSERT_UPDATE)
     private String updateBy;
 
     /**
@@ -73,7 +72,10 @@ public class BaseJpaTaskBO implements Serializable {
      */
     @ApiModelProperty("逻辑删除")
     @Column(name = "is_deleted",columnDefinition = "tinyint comment '删除标记=> 1：未删除，0：已删除'")
-    private Integer deleted = 0;
+    // 逻辑删除
+    @TableLogic
+    @TableField(value = "is_deleted",fill = FieldFill.INSERT)
+    private Integer deleted;
 
     public Integer getId() {
         return id;

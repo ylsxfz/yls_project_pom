@@ -3,7 +3,7 @@ package com.authority.manager.web.service;
 import com.authority.manager.web.model.SysMenuDO;
 import com.authority.manager.web.model.SysRoleDO;
 import com.authority.manager.web.model.relation.SysRoleMenuDO;
-import com.yls.core.repository.BaseService;
+import com.yls.core.repository.BaseJpaService;
 
 import java.util.List;
 
@@ -13,7 +13,7 @@ import java.util.List;
  * @Description
  * @Version 1.0
  **/
-public interface SysRoleSerivce extends BaseService<SysRoleDO,String> {
+public interface SysRoleSerivce extends BaseJpaService<SysRoleDO,String> {
 
     SysRoleDO findByName(String name);
 

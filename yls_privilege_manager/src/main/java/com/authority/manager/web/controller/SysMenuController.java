@@ -2,7 +2,7 @@ package com.authority.manager.web.controller;
 
 import com.authority.manager.contant.SysContants;
 import com.authority.manager.web.model.SysMenuDO;
-import com.authority.manager.web.service.SysMenuService;
+import com.authority.manager.web.service.SysMenuJpaService;
 import com.yls.core.http.HttpConstants;
 import com.yls.core.http.HttpResponseVO;
 import io.swagger.annotations.Api;
@@ -25,7 +25,7 @@ import java.util.List;
 @Api(tags = "菜单管理接口")
 public class SysMenuController {
     @Autowired
-    private SysMenuService sysMenuService;
+    private SysMenuJpaService sysMenuService;
 
     @ApiOperation(value = "保存菜单记录")
     @PostMapping("menu")

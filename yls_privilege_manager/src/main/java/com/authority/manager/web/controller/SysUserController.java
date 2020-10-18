@@ -2,7 +2,7 @@ package com.authority.manager.web.controller;
 
 import com.authority.manager.component.security.utils.PasswordUtils;
 import com.authority.manager.web.model.SysUserDO;
-import com.authority.manager.web.service.SysUserService;
+import com.authority.manager.web.service.SysUserJpaService;
 import com.yls.core.http.HttpConstants;
 import com.yls.core.http.HttpResponseVO;
 import com.yls.core.page.PageRequstQuery;
@@ -29,7 +29,7 @@ import java.util.Optional;
 @Api(tags = "用户管理接口")
 public class SysUserController {
     @Autowired
-    private SysUserService sysUserService;
+    private SysUserJpaService sysUserService;
 
     @ApiOperation(value = "查询用户权限",notes = "根据姓名查询用户权限")
     @ApiImplicitParam(name = "name",value = "姓名",required = true)

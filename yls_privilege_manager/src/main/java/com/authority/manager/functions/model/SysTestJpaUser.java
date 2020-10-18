@@ -1,10 +1,17 @@
 package com.authority.manager.functions.model;
 
-import com.authority.manager.functions.model.mybatis.BaseMybatisTaskBO;
+import com.authority.manager.functions.model.jpa.BaseJpaTaskBO;
 import io.swagger.annotations.ApiModelProperty;
+import org.hibernate.annotations.SQLDelete;
+import org.hibernate.annotations.SQLDeleteAll;
+import org.hibernate.annotations.Where;
 
-import javax.persistence.*;
-import javax.validation.constraints.*;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Table;
+import javax.validation.constraints.DecimalMax;
+import javax.validation.constraints.DecimalMin;
+import javax.validation.constraints.Size;
 import java.io.Serializable;
 
 /**
@@ -14,16 +21,19 @@ import java.io.Serializable;
  * @Version 1.0
  */
 @Entity
-@Table(name = "sys_test_mybatis_user")
-public class SysTestMybatisUser extends BaseMybatisTaskBO implements Serializable {
+@Table(name = "sys_test_jpa_user")
+@SQLDelete(sql = "update sys_test_jpa_user set is_deleted = 1 where id = ?")
+@SQLDeleteAll(sql = "update sys_test_jpa_user set is_deleted = 1 where id in (?)")
+@Where(clause = "is_deleted = 0")
+public class SysTestJpaUser extends BaseJpaTaskBO implements Serializable {
 
     @ApiModelProperty("用户名")
-    @Size(min = 2,max = 5,message = "{user.name.size}")
-    @NotNull(message = "{user.address.notnull}")
+    @Size(min = 2,max = 100,message = "{user.name.size}")
     @Column(name = "username",columnDefinition = "varchar(32) comment '名称'")
     private String username;
 
     @ApiModelProperty("地址")
+    // @NotNull(message = "{user.address.notnull}")
     @Column(name = "address",columnDefinition = "varchar(255) comment '地址'")
     private String address;
 
@@ -38,7 +48,7 @@ public class SysTestMybatisUser extends BaseMybatisTaskBO implements Serializabl
     private Integer age;
 
     @ApiModelProperty("邮箱")
-    @Email(message = "{user.email.pattern}")
+    // @Email(message = "{user.email.pattern}")
     @Column(name = "email",columnDefinition = "varchar(64) comment '邮箱'")
     private String email;
 

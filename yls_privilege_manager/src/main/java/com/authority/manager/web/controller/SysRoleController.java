@@ -3,7 +3,7 @@ package com.authority.manager.web.controller;
 import com.authority.manager.contant.SysContants;
 import com.authority.manager.web.model.SysRoleDO;
 import com.authority.manager.web.model.relation.SysRoleMenuDO;
-import com.authority.manager.web.service.impl.SysRoleServiceImpl;
+import com.authority.manager.web.service.impl.SysRoleJpaServiceImpl;
 import com.yls.core.http.HttpConstants;
 import com.yls.core.http.HttpResponseVO;
 import com.yls.core.page.PageRequstQuery;
@@ -31,7 +31,7 @@ import java.util.Optional;
 public class SysRoleController {
 
     @Autowired
-    private SysRoleServiceImpl sysRoleSerivce;
+    private SysRoleJpaServiceImpl sysRoleSerivce;
 
     @ApiOperation(value = "保存角色")
     @PostMapping("role")

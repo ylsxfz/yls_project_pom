@@ -15,7 +15,7 @@ import javax.servlet.http.HttpSession;
 
 
 @RestController
-@RequestMapping("user")
+@RequestMapping("mybatis")
 @Api(tags = "mybatis测试")
 public class MyBatisSysUserController {
 
@@ -30,15 +30,6 @@ public class MyBatisSysUserController {
     public Object findAllByMyBatisXml() {
         return myBatisSysUserService.findAllByMyBatisXml();
     }
-
-    @ApiOperation(value = "添加用户")
-    @PostMapping(value="/queryUser")
-    public Object queryUser() {
-        SysTestMybatisUser sysTestMybatisUser = new SysTestMybatisUser();
-        sysTestMybatisUser.setUsername(StringFormatUtils.uuidUpperCase());
-        return myBatisSysUserService.addUser(sysTestMybatisUser);
-    }
-
 
     @ApiOperation(value = "添加用户")
     @PostMapping(value="/addUser")

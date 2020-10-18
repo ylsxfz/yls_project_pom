@@ -1,7 +1,7 @@
 package com.authority.manager.web.controller;
 
 import com.authority.manager.web.model.SysDeptDO;
-import com.authority.manager.web.service.SysDeptService;
+import com.authority.manager.web.service.SysDeptJpaService;
 import com.yls.core.http.HttpConstants;
 import com.yls.core.http.HttpResponseVO;
 import io.swagger.annotations.Api;
@@ -24,7 +24,7 @@ import java.util.List;
 public class SysDeptController {
 
     @Autowired
-    private SysDeptService sysDeptService;
+    private SysDeptJpaService sysDeptService;
 
     @ApiOperation(value = "保存部门")
     @PostMapping("dept")

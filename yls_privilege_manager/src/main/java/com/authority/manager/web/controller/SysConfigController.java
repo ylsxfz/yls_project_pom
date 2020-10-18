@@ -2,7 +2,7 @@ package com.authority.manager.web.controller;
 
 
 import com.authority.manager.web.model.SysConfigDO;
-import com.authority.manager.web.service.SysConfigService;
+import com.authority.manager.web.service.SysConfigJpaService;
 import com.yls.core.http.HttpConstants;
 import com.yls.core.http.HttpResponseVO;
 import com.yls.core.page.PageRequstQuery;
@@ -29,7 +29,7 @@ import java.util.List;
 public class SysConfigController {
 
     @Autowired
-    private SysConfigService sysConfigService;
+    private SysConfigJpaService sysConfigService;
 
     @ApiOperation(value = "保存系统配置")
     @PostMapping("config")

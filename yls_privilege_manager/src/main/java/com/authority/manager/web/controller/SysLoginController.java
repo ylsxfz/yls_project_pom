@@ -7,8 +7,8 @@ import com.authority.manager.contant.SysContants;
 import com.authority.manager.vo.LoginBeanBO;
 import com.authority.manager.web.model.SysUserDO;
 import com.authority.manager.web.model.log.SysLoginLogDO;
-import com.authority.manager.web.service.SysLoginLogService;
-import com.authority.manager.web.service.SysUserService;
+import com.authority.manager.web.service.SysLoginLogJpaService;
+import com.authority.manager.web.service.SysUserJpaService;
 import com.google.code.kaptcha.Constants;
 import com.google.code.kaptcha.Producer;
 import com.yls.common.utils.IOUtils;
@@ -39,7 +39,7 @@ import java.io.IOException;
 public class SysLoginController {
 
     @Autowired
-    private SysUserService sysUserService;
+    private SysUserJpaService sysUserService;
 
     @Autowired
     private Producer producer;
@@ -48,7 +48,7 @@ public class SysLoginController {
     private AuthenticationManager authenticationManager;
 
     @Autowired
-    private SysLoginLogService sysLoginLogService;
+    private SysLoginLogJpaService sysLoginLogService;
 
 
 

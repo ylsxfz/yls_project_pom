@@ -2,7 +2,7 @@ package com.authority.manager.web.controller;
 
 
 import com.authority.manager.web.model.SysDictDO;
-import com.authority.manager.web.service.SysDictService;
+import com.authority.manager.web.service.SysDictJpaService;
 import com.yls.core.http.HttpConstants;
 import com.yls.core.http.HttpResponseVO;
 import com.yls.core.page.PageRequstQuery;
@@ -28,7 +28,7 @@ import java.util.List;
 public class SysDictController {
 
     @Autowired
-    private SysDictService sysDictService;
+    private SysDictJpaService sysDictService;
 
     @ApiOperation(value = "保存字典管理")
     @PostMapping("dict")

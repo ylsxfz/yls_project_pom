@@ -2,7 +2,7 @@ package com.authority.manager.web.controller;
 
 
 import com.authority.manager.web.model.log.SysLogDO;
-import com.authority.manager.web.service.SysLogService;
+import com.authority.manager.web.service.SysLogJpaService;
 import com.yls.core.http.HttpConstants;
 import com.yls.core.http.HttpResponseVO;
 import com.yls.core.page.PageRequstQuery;
@@ -29,7 +29,7 @@ import java.util.List;
 public class SysLogController {
 
     @Autowired
-    private SysLogService sysLogService;
+    private SysLogJpaService sysLogService;
 
     //权限管理
     @PreAuthorize("hasAuthority('sys:dict:delete')")

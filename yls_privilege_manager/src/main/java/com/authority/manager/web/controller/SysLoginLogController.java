@@ -2,7 +2,7 @@ package com.authority.manager.web.controller;
 
 
 import com.authority.manager.web.model.log.SysLoginLogDO;
-import com.authority.manager.web.service.SysLoginLogService;
+import com.authority.manager.web.service.SysLoginLogJpaService;
 import com.yls.core.http.HttpConstants;
 import com.yls.core.http.HttpResponseVO;
 import com.yls.core.page.PageRequstQuery;
@@ -27,7 +27,7 @@ import java.util.List;
 @Api(tags = "登录日志接口")
 public class SysLoginLogController {
     @Autowired
-    private SysLoginLogService sysLoginLogService;
+    private SysLoginLogJpaService sysLoginLogService;
 
     @ApiOperation(value = "删除登录日志")
     @DeleteMapping("loginLog")

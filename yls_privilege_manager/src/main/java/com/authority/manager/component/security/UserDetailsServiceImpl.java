@@ -1,7 +1,7 @@
 package com.authority.manager.component.security;
 
 import com.authority.manager.web.model.SysUserDO;
-import com.authority.manager.web.service.SysUserService;
+import com.authority.manager.web.service.SysUserJpaService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -23,7 +23,7 @@ import java.util.stream.Collectors;
 public class UserDetailsServiceImpl implements UserDetailsService {
 
     @Autowired
-    private SysUserService sysUserService;
+    private SysUserJpaService sysUserService;
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
