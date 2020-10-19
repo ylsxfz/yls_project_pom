@@ -1,11 +1,16 @@
-package com.authority.manager.config;
+package com.authority.manager.config.datasource;
 
+import com.alibaba.druid.spring.boot.autoconfigure.DruidDataSourceBuilder;
 import com.alibaba.druid.support.http.StatViewServlet;
 import com.alibaba.druid.support.http.WebStatFilter;
+import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.boot.web.servlet.FilterRegistrationBean;
 import org.springframework.boot.web.servlet.ServletRegistrationBean;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Primary;
+
+import javax.sql.DataSource;
 
 /**
  * @Author yls
@@ -64,5 +69,19 @@ public class DruidConfiguration {
         filterRegistrationBean.addInitParameter("exclusions",
                 "*.js,*.gif,*.jpg,*.png,*.css,*.ico,/druid/*");
         return filterRegistrationBean;
+    }
+
+
+    @Bean
+    @ConfigurationProperties("spring.datasource.primary")
+    @Primary
+    DataSource primaryDruidDataSource(){
+        return DruidDataSourceBuilder.create().build();
+    }
+
+    @Bean
+    @ConfigurationProperties("spring.datasource.secondary")
+    DataSource logDruidDataSource(){
+        return DruidDataSourceBuilder.create().build();
     }
 }
