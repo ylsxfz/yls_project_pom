@@ -1,6 +1,7 @@
 package com.authority.manager.log.controller;
 
 
+import com.authority.manager.log.annotation.SystemControllerLog;
 import com.authority.manager.log.dao.SystemLogJpaDAO;
 import com.authority.manager.log.model.SystemLogDO;
 import com.yls.core.http.HttpResponseVO;
@@ -30,6 +31,7 @@ public class SystemLogController {
     @Autowired
     private SystemLogJpaDAO systemLogJpaDAO;
 
+    @SystemControllerLog(operation = "分页查询日志")
     @ApiOperation(value = "分页查询日志")
     @PostMapping("log/lists")
     public HttpResponseVO lists(@ApiParam(value = "日志对象集合", required = true)@RequestBody PageRequstQuery pageRequstQuery){

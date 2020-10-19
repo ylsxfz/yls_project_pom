@@ -1,19 +1,19 @@
-package com.authority.manager.functions.dao;
+package com.authority.manager.functions.mapper;
 
 import com.authority.manager.functions.model.SysTestMybatisUser;
+import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import org.apache.ibatis.annotations.Mapper;
-import org.apache.ibatis.annotations.Select;
 import org.springframework.stereotype.Repository;
+
 
 import java.util.List;
 
 @Mapper
 @Repository
-public interface SysUserByAnoMapper {
+public interface SysUserMapper extends BaseMapper<SysTestMybatisUser> {
     /**
      * 查询全部
      * @return
      */
-    @Select("select * from sys_test_mybatis_user")
-    List<SysTestMybatisUser> findAllByMyBatisAno();
+    List<SysTestMybatisUser> findAllByMyBatisXml();
 }

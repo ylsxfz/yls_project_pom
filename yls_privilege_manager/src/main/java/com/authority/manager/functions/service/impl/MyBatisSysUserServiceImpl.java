@@ -1,8 +1,8 @@
 package com.authority.manager.functions.service.impl;
 
 import com.authority.manager.functions.model.SysTestMybatisUser;
-import com.authority.manager.functions.dao.SysUserMapper;
-import com.authority.manager.functions.dao.SysUserByAnoMapper;
+import com.authority.manager.functions.mapper.SysUserMapper;
+import com.authority.manager.functions.mapper.SysUserByAnoMapper;
 import com.authority.manager.functions.service.MyBatisSysUserService;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import org.springframework.beans.factory.annotation.Autowired;

@@ -1,5 +1,6 @@
 package com.authority.manager.log.model;
 
+import com.authority.manager.functions.model.jpa.BaseJpaTaskBO;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 
@@ -9,14 +10,7 @@ import javax.persistence.*;
 @ApiModel(description = "系统日志")
 @Table(name="system_log")
 @org.hibernate.annotations.Table(appliesTo = "system_log",comment = "系统日志表")
-public class SystemLogDO {
-
-	@ApiModelProperty(value = "主键id")
-	@Id
-	//自动递增
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "id",columnDefinition = "int comment '唯一主键id'")
-	private int id;
+public class SystemLogDO extends BaseJpaTaskBO {
 
 	@ApiModelProperty(value = "用户名")
 	@Column(name = "user_name",columnDefinition = "varchar(32) comment '用户名'")
@@ -34,13 +28,26 @@ public class SystemLogDO {
 	@Column(name = "params",columnDefinition = "varchar(255) comment '参数'")
     private String params;
 
-	@ApiModelProperty("时间")
-	@Column(name = "time",columnDefinition = "bigint comment '时间'")
-    private Long time;
-
 	@ApiModelProperty("ip地址")
 	@Column(name = "ip",columnDefinition = "varchar(32) comment 'ip地址'")
     private String ip;
+
+	@ApiModelProperty("请求URI")
+	@Column(name = "request_uri",columnDefinition = "varchar(255) comment '请求URI'")
+	private String requestUri;
+
+	@ApiModelProperty("请求类型")
+	@Column(name = "request_method",columnDefinition = "varchar(255) comment '请求类型'")
+	private String requestMethod;
+
+	@ApiModelProperty("异常描述")
+	@Column(name = "exception_log",columnDefinition = "varchar(255) comment '异常描述'")
+	private String exceptionLog;           // 异常描述
+
+	@ApiModelProperty("日志类型")
+	@Column(name = "type",columnDefinition = "varchar(255) comment '日志类型'")
+	private String type;
+
 
 	public String getUserName() {
 		return userName;
@@ -74,14 +81,6 @@ public class SystemLogDO {
 		this.params = params;
 	}
 
-	public Long getTime() {
-		return time;
-	}
-
-	public void setTime(Long time) {
-		this.time = time;
-	}
-
 	public String getIp() {
 		return ip;
 	}
@@ -90,24 +89,50 @@ public class SystemLogDO {
 		this.ip = ip;
 	}
 
-	public int getId() {
-		return id;
+	public String getRequestUri() {
+		return requestUri;
 	}
 
-	public void setId(int id) {
-		this.id = id;
+	public void setRequestUri(String requestUri) {
+		this.requestUri = requestUri;
+	}
+
+	public String getRequestMethod() {
+		return requestMethod;
+	}
+
+	public void setRequestMethod(String requestMethod) {
+		this.requestMethod = requestMethod;
+	}
+
+	public String getExceptionLog() {
+		return exceptionLog;
+	}
+
+	public void setExceptionLog(String exceptionLog) {
+		this.exceptionLog = exceptionLog;
+	}
+
+	public String getType() {
+		return type;
+	}
+
+	public void setType(String type) {
+		this.type = type;
 	}
 
 	@Override
 	public String toString() {
-		return "SysLog{" +
-				"id=" + id +
-				", userName='" + userName + '\'' +
+		return "SystemLogDO{" +
+				"userName='" + userName + '\'' +
 				", operation='" + operation + '\'' +
 				", method='" + method + '\'' +
 				", params='" + params + '\'' +
-				", time=" + time +
 				", ip='" + ip + '\'' +
+				", requestUri='" + requestUri + '\'' +
+				", requestMethod='" + requestMethod + '\'' +
+				", exceptionLog='" + exceptionLog + '\'' +
+				", type='" + type + '\'' +
 				'}';
 	}
 }

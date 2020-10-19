@@ -19,7 +19,7 @@ import org.springframework.context.annotation.Profile;
  * @Version 1.0
  */
 @Configuration
-@MapperScan("com.authority.manager.functions.dao")
+@MapperScan("com.authority.manager.functions.mapper")
 public class MybatisConfig {
     private final static Logger logger = LoggerFactory.getLogger(MybatisConfig.class);
 
