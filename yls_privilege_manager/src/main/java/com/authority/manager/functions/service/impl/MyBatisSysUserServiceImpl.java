@@ -2,7 +2,7 @@ package com.authority.manager.functions.service.impl;
 
 import com.authority.manager.functions.model.SysTestMybatisUser;
 import com.authority.manager.functions.dao.SysUserMapper;
-import com.authority.manager.functions.dao.SysUserMapperByAno;
+import com.authority.manager.functions.dao.SysUserByAnoMapper;
 import com.authority.manager.functions.service.MyBatisSysUserService;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,7 +17,7 @@ public class MyBatisSysUserServiceImpl implements MyBatisSysUserService {
     private SysUserMapper sysUserMapper;
 
     @Autowired
-    private SysUserMapperByAno sysUserMapperByAno;
+    private SysUserByAnoMapper sysUserByAnoMapper;
 
     @Override
     public List<SysTestMybatisUser> findAllByMyBatisXml() {
@@ -29,7 +29,7 @@ public class MyBatisSysUserServiceImpl implements MyBatisSysUserService {
 
     @Override
     public List<SysTestMybatisUser> findAllByMyBatisAno() {
-        return sysUserMapperByAno.findAllByMyBatisAno();
+        return sysUserByAnoMapper.findAllByMyBatisAno();
     }
 
     @Override

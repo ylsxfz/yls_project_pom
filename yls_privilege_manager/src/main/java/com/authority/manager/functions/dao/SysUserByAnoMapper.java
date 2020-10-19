@@ -9,7 +9,7 @@ import java.util.List;
 
 @Mapper
 @Repository
-public interface SysUserMapperByAno{
+public interface SysUserByAnoMapper {
     /**
      * 查询全部
      * @return

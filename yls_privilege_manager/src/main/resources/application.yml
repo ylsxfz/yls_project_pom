@@ -26,7 +26,7 @@ spring:
   freemarker:
     cache: false #页面不加载缓存，修改即时生效
   profiles:
-    active: datasource,thymeleaf,actuator,fileupload,elasticsearch #激活的配置文件
+    active: datasources,thymeleaf,actuator,fileupload,elasticsearch #激活的配置文件
     #定义项目的静态资源 ：
     #默认位置： classpath:/META-INF/resources/
   #resources:
