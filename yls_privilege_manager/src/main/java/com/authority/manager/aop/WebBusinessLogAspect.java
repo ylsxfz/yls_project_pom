@@ -35,7 +35,7 @@ public class WebBusinessLogAspect {
      * @param
      * @return : void
      */
-    @Pointcut("execution(public * com.authority.manager.web.service.*.*(..))")
+    @Pointcut("execution(public * com.authority.manager.web.controller.*.*(..))")
     public void serviceAspect(){
 
     }
