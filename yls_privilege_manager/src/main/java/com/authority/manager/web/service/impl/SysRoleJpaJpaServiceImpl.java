@@ -7,7 +7,7 @@ import com.authority.manager.web.dao.SysRoleMenuJpaDAO;
 import com.authority.manager.web.model.SysMenuDO;
 import com.authority.manager.web.model.SysRoleDO;
 import com.authority.manager.web.model.relation.SysRoleMenuDO;
-import com.authority.manager.web.service.SysRoleSerivce;
+import com.authority.manager.web.service.SysRoleJpaSerivce;
 import com.yls.core.repository.BaseJpaDAO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -23,7 +23,7 @@ import java.util.*;
  **/
 @Transactional
 @Service
-public class SysRoleJpaServiceImpl implements SysRoleSerivce {
+public class SysRoleJpaJpaServiceImpl implements SysRoleJpaSerivce {
     @Autowired
     private SysRoleJpaDAO sysRoleDao;
 

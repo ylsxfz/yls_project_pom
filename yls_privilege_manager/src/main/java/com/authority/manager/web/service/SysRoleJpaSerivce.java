@@ -13,7 +13,7 @@ import java.util.List;
  * @Description
  * @Version 1.0
  **/
-public interface SysRoleSerivce extends BaseJpaService<SysRoleDO,String> {
+public interface SysRoleJpaSerivce extends BaseJpaService<SysRoleDO,String> {
 
     SysRoleDO findByName(String name);
 
