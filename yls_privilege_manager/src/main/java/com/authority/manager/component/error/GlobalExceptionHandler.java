@@ -30,15 +30,39 @@ public class GlobalExceptionHandler {
         return errorInfo;
     }
 
+    /**
+     * 空指针异常
+     */
+    @ExceptionHandler(NullPointerException.class)
+    public ErrorInfo nullPointerExceptionHandler(NullPointerException e) {
+        return null;
+    }
 
-//    @ExceptionHandler(MaxUploadSizeExceededException.class)
-//    public void uploadException(MaxUploadSizeExceededException e, HttpServletResponse response)throws Exception{
-//        response.setContentType("text/html;charset=utf-8");
-//        PrintWriter out = response.getWriter();
-//        out.write(HttpResult.error("上传文件大小超过限制！").toString());
-//        out.flush();
-//        out.close();
-//    }
+    /**
+     * 类型转换异常
+     */
+    @ExceptionHandler(ClassCastException.class)
+    public ErrorInfo classCastExceptionHandler(ClassCastException e) {
+        return null;
+    }
+
+
+    /**
+     * 数组越界异常
+     */
+    @ExceptionHandler(ArrayIndexOutOfBoundsException.class)
+    public ErrorInfo ArrayIndexOutOfBoundsException(ArrayIndexOutOfBoundsException e) {
+        return null;
+    }
+
+    /**
+     * 其他错误
+     */
+    @ExceptionHandler({Exception.class})
+    public ErrorInfo exception(Exception e) {
+        return null;
+    }
+
 
     @ExceptionHandler(MaxUploadSizeExceededException.class)
     public ModelAndView uploadException(HttpServletRequest request,MaxUploadSizeExceededException e)throws Exception{
@@ -53,4 +77,13 @@ public class GlobalExceptionHandler {
        mv.setViewName("error");
        return mv;
     }
+
+    //    @ExceptionHandler(MaxUploadSizeExceededException.class)
+//    public void uploadException(MaxUploadSizeExceededException e, HttpServletResponse response)throws Exception{
+//        response.setContentType("text/html;charset=utf-8");
+//        PrintWriter out = response.getWriter();
+//        out.write(HttpResult.error("上传文件大小超过限制！").toString());
+//        out.flush();
+//        out.close();
+//    }
 }
