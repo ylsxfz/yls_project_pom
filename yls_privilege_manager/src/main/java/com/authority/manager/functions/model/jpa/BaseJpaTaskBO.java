@@ -72,7 +72,7 @@ public class BaseJpaTaskBO implements Serializable {
      * 是否删除
      */
     @ApiModelProperty("逻辑删除")
-    @Column(name = "is_deleted",columnDefinition = "tinyint comment '删除标记=> 1：未删除，0：已删除'")
+    @Column(name = "is_deleted",columnDefinition = "tinyint comment '删除标记=> 1：已删除，0：未删除'")
     private Integer deleted = 0;
 
     public Integer getId() {

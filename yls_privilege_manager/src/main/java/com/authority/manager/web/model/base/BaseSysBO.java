@@ -29,7 +29,7 @@ public class BaseSysBO implements Serializable {
 	//自动递增
 	@GeneratedValue(strategy = javax.persistence.GenerationType.IDENTITY)
 	@Column(name = "id",columnDefinition = "int comment 'id主键'")
-	private int id;
+	private Integer id;
 
 	@ApiModelProperty("创建人")
 	@Column(name = "create_by",columnDefinition = "varchar(32) comment '创建人'")
