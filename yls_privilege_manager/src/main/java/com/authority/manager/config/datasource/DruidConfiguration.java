@@ -72,6 +72,14 @@ public class DruidConfiguration {
     }
 
 
+    /**
+     * 功能描述:
+     * 〈项目的主数据源〉
+     *
+     * @author : yls
+     * @date : 2020/10/20 9:04
+     * @return : javax.sql.DataSource
+     */
     @Bean
     @ConfigurationProperties("spring.datasource.primary")
     @Primary
@@ -79,6 +87,14 @@ public class DruidConfiguration {
         return DruidDataSourceBuilder.create().build();
     }
 
+    /**
+     * 功能描述:
+     * 〈项目的日志管理数据源〉
+     *
+     * @author : yls
+     * @date : 2020/10/20 9:04
+     * @return : javax.sql.DataSource
+     */
     @Bean
     @ConfigurationProperties("spring.datasource.secondary")
     DataSource logDruidDataSource(){

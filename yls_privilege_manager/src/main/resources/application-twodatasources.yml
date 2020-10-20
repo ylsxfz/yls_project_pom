@@ -19,19 +19,15 @@ spring:
       url: jdbc:mysql://127.0.0.1:3306/yls_privilege_management?userUnicode=true&characterEncoding=UTF-8&serverTimezone=UTC
       username: root
       password: root
-      #高版本采用com.mysql.cj.jdbc.Driver
-      #driver-class-name: com.mysql.cj.jdbc.Driver
-      driver-class-name: com.mysql.jdbc.Driver
     secondary:
       #数据连接类型、数据库连接信息：用户名、密码
       db-type: com.alibaba.druid.pool.DruidDataSource
       url: jdbc:mysql://127.0.0.1:3306/yls_privilege_log?userUnicode=true&characterEncoding=UTF-8&serverTimezone=UTC
       username: root
       password: root
+    druid:
       #高版本采用com.mysql.cj.jdbc.Driver
       #driver-class-name: com.mysql.cj.jdbc.Driver
-      driver-class-name: com.mysql.jdbc.Driver
-    druid:
       driver-class-name: com.mysql.jdbc.Driver
       #初始化大小、最小、最大
       initial-size: 1
