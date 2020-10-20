@@ -43,9 +43,14 @@ public class SystemLogAspect {
     }
 
     /**
-     * 切面 配置通知
+     * 功能描述:
+     * 〈环绕通知：可以监控方法从开始到结束的执行情况〉
+     *
+     * @author : yls
+     * @date : 2020/10/20 10:16
+     * @param joinPoint 切入流程
+     * @return : void
      */
-    // @AfterReturning("systemLogPointcut()")
     @Around("systemLogPointcut()")
     public void saveSysLog(ProceedingJoinPoint joinPoint) {
         // 日志
