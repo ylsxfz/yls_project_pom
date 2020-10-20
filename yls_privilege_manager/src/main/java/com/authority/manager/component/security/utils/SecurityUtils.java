@@ -82,11 +82,15 @@ public class SecurityUtils {
 	 * @Description 获取令牌进行认证
 	 * @param request
 	 */
-	public static void checkAuthentication(HttpServletRequest request) {
+	public static Boolean checkAuthentication(HttpServletRequest request) {
 		// 获取令牌并根据令牌获取登录认证信息
 		Authentication authentication = JwtTokenUtils.getAuthenticationeFromToken(request);
+		if (authentication == null){
+			return false;
+		}
 		// 设置登录认证信息到上下文
 		SecurityContextHolder.getContext().setAuthentication(authentication);
+		return true;
 	}
 
 	/**
