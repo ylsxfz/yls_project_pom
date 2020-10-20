@@ -1,10 +1,9 @@
 package com.authority.manager.component.security;
 
 import com.authority.manager.component.security.utils.SecurityUtils;
-import com.yls.core.http.HttpResponseVO;
+import com.authority.manager.component.http.HttpResponseVO;
 import com.yls.core.http.HttpStatus;
 import com.yls.core.utils.JsonUtils;
-import io.jsonwebtoken.ExpiredJwtException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.web.authentication.www.BasicAuthenticationFilter;

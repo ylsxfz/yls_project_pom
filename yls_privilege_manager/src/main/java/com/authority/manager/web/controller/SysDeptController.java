@@ -3,7 +3,7 @@ package com.authority.manager.web.controller;
 import com.authority.manager.web.model.SysDeptDO;
 import com.authority.manager.web.service.SysDeptJpaService;
 import com.yls.core.http.HttpConstants;
-import com.yls.core.http.HttpResponseVO;
+import com.authority.manager.component.http.HttpResponseVO;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;

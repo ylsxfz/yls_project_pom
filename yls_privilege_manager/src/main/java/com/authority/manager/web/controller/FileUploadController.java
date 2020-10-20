@@ -2,7 +2,7 @@ package com.authority.manager.web.controller;
 
 import com.authority.manager.component.error.BusinessException;
 import com.yls.common.utils.StringFormatUtils;
-import com.yls.core.http.HttpResponseVO;
+import com.authority.manager.component.http.HttpResponseVO;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiOperation;

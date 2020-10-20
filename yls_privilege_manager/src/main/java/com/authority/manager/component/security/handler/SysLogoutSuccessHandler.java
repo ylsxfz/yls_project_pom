@@ -1,6 +1,6 @@
 package com.authority.manager.component.security.handler;
 
-import com.yls.core.http.HttpResponseVO;
+import com.authority.manager.component.http.HttpResponseVO;
 import com.yls.core.http.HttpStatus;
 import com.yls.core.utils.JsonUtils;
 import org.springframework.security.core.Authentication;

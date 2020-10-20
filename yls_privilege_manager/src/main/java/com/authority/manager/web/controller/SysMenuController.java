@@ -4,7 +4,7 @@ import com.authority.manager.contant.SysContants;
 import com.authority.manager.web.model.SysMenuDO;
 import com.authority.manager.web.service.SysMenuJpaService;
 import com.yls.core.http.HttpConstants;
-import com.yls.core.http.HttpResponseVO;
+import com.authority.manager.component.http.HttpResponseVO;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiOperation;

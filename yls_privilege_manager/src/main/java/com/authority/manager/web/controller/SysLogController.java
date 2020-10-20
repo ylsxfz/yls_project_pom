@@ -4,7 +4,7 @@ package com.authority.manager.web.controller;
 import com.authority.manager.web.model.log.SysLogDO;
 import com.authority.manager.web.service.SysLogJpaService;
 import com.yls.core.http.HttpConstants;
-import com.yls.core.http.HttpResponseVO;
+import com.authority.manager.component.http.HttpResponseVO;
 import com.yls.core.page.PageRequstQuery;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;

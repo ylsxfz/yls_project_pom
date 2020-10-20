@@ -1,5 +1,7 @@
-package com.yls.core.http;
+package com.authority.manager.component.http;
 
+import com.authority.manager.component.error.BaseErrorInfoInterface;
+import com.yls.core.http.HttpStatus;
 import com.yls.core.page.PageResultVO;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
@@ -21,6 +23,29 @@ public class HttpResponseVO {
 
 	@ApiModelProperty("返回数据")
 	private Object data;
+
+	public HttpResponseVO(){
+
+	}
+
+	public HttpResponseVO(BaseErrorInfoInterface baseErrorInfoInterface){
+		this.code = baseErrorInfoInterface.getErrorCode();
+		this.msg = baseErrorInfoInterface.getErrorMsg();
+	}
+
+	/**
+	 * 功能描述:
+	 * 〈全局异常捕获并返回〉
+	 *
+	 * @author : yls
+	 * @date : 2020/10/20 10:50
+	 * @param baseErrorInfoInterface 基础错误类
+	 * @return : com.authority.manager.component.http.HttpResponseVO
+	 */
+	public static HttpResponseVO error(BaseErrorInfoInterface baseErrorInfoInterface) {
+		return error(baseErrorInfoInterface.getErrorCode(),baseErrorInfoInterface.getErrorMsg());
+	}
+
 
 	/**
 	 * 功能描述:
