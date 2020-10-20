@@ -11,7 +11,7 @@ import java.util.Map;
 /**
  * @Author yls
  * @Date 2020/3/30 14:28
- * @Description
+ * @Description 后台全局异常管理
  * @Version 1.0
  **/
 @Configuration
