@@ -18,6 +18,8 @@ server:
 
 ###分开设置配置文件
 spring:
+  jackson:
+    date-format: yyyy-MM-dd HH:mm:ss #统一时间格式化
   devtools:
     restart:
       enabled: true #设置开启热部署
