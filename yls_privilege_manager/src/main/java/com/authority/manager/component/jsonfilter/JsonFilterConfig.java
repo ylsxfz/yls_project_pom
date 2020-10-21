@@ -16,7 +16,7 @@ import java.util.List;
 //三个注解貌似不加也可以
 @Configuration
 //@ComponentScan(basePackages = {"com.authority.manager.log.controller"}, useDefaultFilters = true)
-public class ApplicationConfig implements WebMvcConfigurer {// 生效
+public class JsonFilterConfig implements WebMvcConfigurer {// 生效
     @Bean
     public JsonReturnHandler jsonReturnHandler() {
         return new JsonReturnHandler();// 初始化json过滤器
@@ -25,7 +25,6 @@ public class ApplicationConfig implements WebMvcConfigurer {// 生效
     @Override
     public void addReturnValueHandlers(List<HandlerMethodReturnValueHandler> returnValueHandlers) {
         returnValueHandlers.add(jsonReturnHandler());
-
     }
 
 }
