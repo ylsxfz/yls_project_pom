@@ -1,7 +1,6 @@
-package com.authority.manager.component.http;
+package com.authority.manager.base.http;
 
 import com.authority.manager.component.error.BaseErrorInfoInterface;
-import com.authority.manager.base.http.HttpStatus;
 import com.authority.manager.base.page.PageResultVO;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
@@ -40,7 +39,7 @@ public class HttpResponseVO {
 	 * @author : yls
 	 * @date : 2020/10/20 10:50
 	 * @param baseErrorInfoInterface 基础错误类
-	 * @return : com.authority.manager.component.http.HttpResponseVO
+	 * @return : com.authority.manager.base.http.HttpResponseVO
 	 */
 	public static HttpResponseVO error(BaseErrorInfoInterface baseErrorInfoInterface) {
 		return error(baseErrorInfoInterface.getErrorCode(),baseErrorInfoInterface.getErrorMsg());

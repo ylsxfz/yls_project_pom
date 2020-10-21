@@ -4,7 +4,7 @@ import com.authority.manager.component.security.utils.PasswordUtils;
 import com.authority.manager.web.model.SysUserDO;
 import com.authority.manager.web.service.SysUserJpaService;
 import com.authority.manager.base.http.HttpConstants;
-import com.authority.manager.component.http.HttpResponseVO;
+import com.authority.manager.base.http.HttpResponseVO;
 import com.authority.manager.base.page.PageRequstQuery;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiImplicitParam;

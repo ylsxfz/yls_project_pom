@@ -1,6 +1,6 @@
 package com.authority.manager.component.security.handler;
 
-import com.authority.manager.component.http.HttpResponseVO;
+import com.authority.manager.base.http.HttpResponseVO;
 import com.authority.manager.base.http.HttpStatus;
 import com.authority.manager.base.utils.JsonUtils;
 import org.springframework.security.core.Authentication;

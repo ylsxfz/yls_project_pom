@@ -1,6 +1,6 @@
 package com.authority.manager.component.error;
 
-import com.authority.manager.component.http.HttpResponseVO;
+import com.authority.manager.base.http.HttpResponseVO;
 import org.springframework.beans.ConversionNotSupportedException;
 import org.springframework.beans.TypeMismatchException;
 import org.springframework.http.converter.HttpMessageNotReadableException;

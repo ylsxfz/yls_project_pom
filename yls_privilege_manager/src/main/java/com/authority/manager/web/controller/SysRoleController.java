@@ -5,7 +5,7 @@ import com.authority.manager.web.model.SysRoleDO;
 import com.authority.manager.web.model.relation.SysRoleMenuDO;
 import com.authority.manager.web.service.impl.SysRoleJpaJpaServiceImpl;
 import com.authority.manager.base.http.HttpConstants;
-import com.authority.manager.component.http.HttpResponseVO;
+import com.authority.manager.base.http.HttpResponseVO;
 import com.authority.manager.base.page.PageRequstQuery;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiImplicitParam;

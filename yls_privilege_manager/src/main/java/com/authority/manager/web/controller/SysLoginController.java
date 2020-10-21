@@ -12,7 +12,7 @@ import com.authority.manager.web.service.SysUserJpaService;
 import com.google.code.kaptcha.Constants;
 import com.google.code.kaptcha.Producer;
 import com.yls.common.utils.IOUtils;
-import com.authority.manager.component.http.HttpResponseVO;
+import com.authority.manager.base.http.HttpResponseVO;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;

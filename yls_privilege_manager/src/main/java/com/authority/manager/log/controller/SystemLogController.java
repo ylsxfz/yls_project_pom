@@ -1,7 +1,7 @@
 package com.authority.manager.log.controller;
 
 
-import com.authority.manager.component.http.HttpResponseVO;
+import com.authority.manager.base.http.HttpResponseVO;
 import com.authority.manager.log.annotation.SystemControllerLog;
 import com.authority.manager.log.dao.SystemLogJpaDAO;
 import com.authority.manager.log.model.SystemLogDO;
