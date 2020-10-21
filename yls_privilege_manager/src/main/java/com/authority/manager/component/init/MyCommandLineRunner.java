@@ -1,4 +1,4 @@
-package com.authority.manager.base.init;
+package com.authority.manager.component.init;
 
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.core.annotation.Order;
