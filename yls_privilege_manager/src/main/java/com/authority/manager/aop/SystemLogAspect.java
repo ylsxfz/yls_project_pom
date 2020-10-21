@@ -21,7 +21,7 @@ import java.lang.reflect.Method;
 /**
  * @Auther: yls
  * @Date: 2020/10/19 23:50
- * @Description:
+ * @Description: 系统日志记录
  * @Version 1.0
  */
 @Aspect
