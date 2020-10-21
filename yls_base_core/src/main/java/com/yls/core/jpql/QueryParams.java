@@ -8,6 +8,7 @@ import org.springframework.util.CollectionUtils;
 import javax.persistence.criteria.*;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -212,10 +213,18 @@ public class QueryParams<T> implements Specification<T> {
                     restrictions = criteriaBuilder.and(restrictions,criteriaBuilder.between((Path<String>) path,(String)minValue,(String) maxValue));
                     break;
                 case lessThanOrEqualTo:
-                    restrictions = criteriaBuilder.and(restrictions,criteriaBuilder.lessThanOrEqualTo((Path<String>)path,(String)value));
+                    if (value instanceof Date){
+                        restrictions = criteriaBuilder.and(restrictions,criteriaBuilder.lessThanOrEqualTo((Path<Date>)path,(Date) value));
+                    }else if (value instanceof String){
+                        restrictions = criteriaBuilder.and(restrictions,criteriaBuilder.lessThanOrEqualTo((Path<String>)path,(String)value));
+                    }
                     break;
                 case greaterThanOrEqualTo:
-                    restrictions = criteriaBuilder.and(restrictions,criteriaBuilder.greaterThanOrEqualTo((Path<String>)path,(String)value));
+                    if (value instanceof Date){
+                        restrictions = criteriaBuilder.and(restrictions,criteriaBuilder.greaterThanOrEqualTo((Path<Date>)path,(Date)value));
+                    }else if (value instanceof String){
+                        restrictions = criteriaBuilder.and(restrictions,criteriaBuilder.greaterThanOrEqualTo((Path<String>)path,(String)value));
+                    }
                     break;
             }
         }
@@ -314,10 +323,18 @@ public class QueryParams<T> implements Specification<T> {
                     restrictions = criteriaBuilder.or(restrictions,criteriaBuilder.between((Path<String>) path,(String) minValue,(String) maxValue));
                     break;
                 case lessThanOrEqualTo:
-                    restrictions = criteriaBuilder.or(restrictions,criteriaBuilder.lessThanOrEqualTo((Path<String>)path,(String)value));
+                    if (value instanceof Date){
+                        restrictions = criteriaBuilder.or(restrictions,criteriaBuilder.lessThanOrEqualTo((Path<Date>)path,(Date)value));
+                    }else if (value instanceof String){
+                        restrictions = criteriaBuilder.or(restrictions,criteriaBuilder.lessThanOrEqualTo((Path<String>)path,(String)value));
+                    }
                     break;
                 case greaterThanOrEqualTo:
-                    restrictions = criteriaBuilder.or(restrictions,criteriaBuilder.greaterThanOrEqualTo((Path<String>)path,(String)value));
+                    if (value instanceof Date){
+                        restrictions = criteriaBuilder.or(restrictions,criteriaBuilder.greaterThanOrEqualTo((Path<Date>)path,(Date) value));
+                    }else if (value instanceof String){
+                        restrictions = criteriaBuilder.or(restrictions,criteriaBuilder.greaterThanOrEqualTo((Path<String>)path,(String)value));
+                    }
                     break;
             }
         }

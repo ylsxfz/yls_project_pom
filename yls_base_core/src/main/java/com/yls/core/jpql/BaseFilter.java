@@ -53,11 +53,11 @@ public class BaseFilter implements Serializable {
         //范围性查询
         between(" >= and <= "),
 
-        //字段串小于等于
-        lessThanOrEqualTo(" str <= "),
+        //字段或者Date类型 小于等于
+        lessThanOrEqualTo(" str or time <= "),
 
-        //字段串大于等于
-        greaterThanOrEqualTo(" str >= "),
+        //字段串或者Date类型 大于等于
+        greaterThanOrEqualTo(" str or time >= "),
 
         // 不为Null
         isNotNull(" is not NULL ");
@@ -198,7 +198,7 @@ public class BaseFilter implements Serializable {
      * @param value 值
      * @return : com.jw.mailserver.base.jpql.BaseFilter
      */
-    public static BaseFilter greaterThanOrEqualTo(String property,String value){
+    public static BaseFilter greaterThanOrEqualTo(String property,Object value){
         return new BaseFilter(property, Operator.greaterThanOrEqualTo,value);
     }
 
