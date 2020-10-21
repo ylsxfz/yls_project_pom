@@ -1,5 +1,7 @@
 package com.yls.common.utils;
 
+
+import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.util.regex.Matcher;
@@ -12,7 +14,7 @@ import java.util.regex.Pattern;
  * @Version 1.0
  */
 public class IllegalStrFilterUtil {
-    private static final org.slf4j.Logger Logger = LoggerFactory.getLogger(IllegalStrFilterUtil.class);
+    private static final Logger LOGGER = LoggerFactory.getLogger(IllegalStrFilterUtil.class);
 
     private static final String REGX = "!|！|@|◎|#|＃|(\\$)|￥|%|％|(\\^)|……|(\\&)|※|(\\*)|×|(\\()|（|(\\))|）|_|——|(\\+)|＋|(\\|)|§ ";
 
@@ -32,10 +34,10 @@ public class IllegalStrFilterUtil {
                 || sInput.indexOf("'") >= 0 || sInput.indexOf("SUBSTR(") >= 0 || sInput.indexOf("COUNT(") >= 0 || sInput.indexOf(" OR ") >= 0
                 || sInput.indexOf(" AND ") >= 0 || sInput.indexOf("DROP") >= 0 || sInput.indexOf("EXECUTE") >= 0 || sInput.indexOf("EXEC") >= 0
                 || sInput.indexOf("TRUNCATE") >= 0 || sInput.indexOf("INTO") >= 0 || sInput.indexOf("DECLARE") >= 0 || sInput.indexOf("MASTER") >= 0) {
-            Logger.error("该参数怎么SQL注入风险：sInput=" + sInput);
+            LOGGER.error("该参数怎么SQL注入风险：sInput=" + sInput);
             return false;
         }
-        Logger.info("通过sql检测");
+        LOGGER.info("通过sql检测");
         return true;
     }
 
@@ -53,7 +55,7 @@ public class IllegalStrFilterUtil {
         sInput = sInput.trim();
         Pattern compile = Pattern.compile(REGX, Pattern.CASE_INSENSITIVE);
         Matcher matcher = compile.matcher(sInput);
-        Logger.info("通过字符串检测");
+        LOGGER.info("通过字符串检测");
         return matcher.find();
     }
 
