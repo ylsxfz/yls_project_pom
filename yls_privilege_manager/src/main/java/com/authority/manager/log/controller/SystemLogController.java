@@ -2,21 +2,22 @@ package com.authority.manager.log.controller;
 
 
 import com.authority.manager.base.http.HttpResponseVO;
+import com.authority.manager.base.page.PageRequstQuery;
+import com.authority.manager.base.repository.sql.BaseSQLServiceImpl;
+import com.authority.manager.component.jsonfilter.JsonFieldFilter;
 import com.authority.manager.log.annotation.SystemControllerLog;
 import com.authority.manager.log.dao.SystemLogJpaDAO;
 import com.authority.manager.log.model.SystemLogDO;
 import com.authority.manager.log.service.SystemLogService;
 import com.yls.common.utils.DateUtils;
-import com.authority.manager.base.page.PageRequstQuery;
-import com.authority.manager.base.repository.sql.BaseSQLServiceImpl;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
 
 import java.util.Date;
 import java.util.List;
@@ -27,7 +28,7 @@ import java.util.List;
  * @Description 系统日志控制器
  * @Version 1.0
  **/
-@RestController
+@Controller // 由于该类中的方法需要在返回前台json时屏蔽某些字段
 @RequestMapping("log")
 @Api(tags = "日志接口")
 public class SystemLogController {
@@ -43,6 +44,7 @@ public class SystemLogController {
 
     @SystemControllerLog(operation = "分页查询日志")
     @ApiOperation(value = "分页查询日志")
+    @JsonFieldFilter(type = SystemLogDO.class,exclude = "id")
     @PostMapping("log/lists")
     public HttpResponseVO lists(@ApiParam(value = "日志对象集合", required = true) @RequestBody PageRequstQuery pageRequstQuery) {
         List<SystemLogDO> systemLogDOS = systemLogJpaDAO.findAll();

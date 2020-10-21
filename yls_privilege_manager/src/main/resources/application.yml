@@ -20,6 +20,7 @@ server:
 spring:
   jackson:
     date-format: yyyy-MM-dd HH:mm:ss #统一时间格式化
+    default-property-inclusion: non_null #过滤值为空的字段
   devtools:
     restart:
       enabled: true #设置开启热部署

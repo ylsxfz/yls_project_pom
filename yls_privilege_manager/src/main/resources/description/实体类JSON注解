@@ -1,0 +1,11 @@
+1.JsonIgnoreProperties属性
+示例用法：@JsonIgnoreProperties(ignoreUnknown = true)
+该注解是放在类名上面，作用是：忽略类中不存在的字段当接收的时候
+
+2.JsonInclude属性
+示例用法：@JsonInclude(JsonInclude.Include.NON_NULL)
+该注解也是放在类名上面，作用是：忽略类中字段值为null的当接收的时候
+
+3.JsonProperty属性
+示例用法：@JsonProperty("element_type")
+该注解是放在字段上面，作用是：当返回前端时字段为element_type（注解里定义的属性
