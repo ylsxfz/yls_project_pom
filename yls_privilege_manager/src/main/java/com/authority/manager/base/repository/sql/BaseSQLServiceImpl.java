@@ -1,16 +1,17 @@
-package com.yls.core.repository.sql;
+package com.authority.manager.base.repository.sql;
 
 
-import com.yls.core.jpql.QueryParams;
-import com.yls.core.sql.NativeSQL;
+import com.authority.manager.base.jpql.QueryParams;
+import com.authority.manager.base.sql.NativeSQL;
 import org.hibernate.query.NativeQuery;
 import org.hibernate.query.internal.NativeQueryImpl;
 import org.hibernate.transform.Transformers;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 import java.util.List;
 
@@ -20,10 +21,11 @@ import java.util.List;
  * @Description
  * @Version 1.0
  **/
+@Transactional
 @Service
 public class BaseSQLServiceImpl<T> extends NativeSQL implements BaseSQLService<T> {
 
-    @Autowired
+    @PersistenceContext
     private EntityManager entityManager;
 
     /**
@@ -93,6 +95,12 @@ public class BaseSQLServiceImpl<T> extends NativeSQL implements BaseSQLService<T
             query.setMaxResults(pageable.getPageSize());
         }
         return query;
+    }
+
+    @Override
+    public void insertLogByDay(String sql){
+        Query nativeQuery = entityManager.createNativeQuery(sql);
+        nativeQuery.executeUpdate();
     }
 }
 

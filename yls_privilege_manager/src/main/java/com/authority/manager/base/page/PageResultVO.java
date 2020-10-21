@@ -1,4 +1,4 @@
-package com.yls.core.page;
+package com.authority.manager.base.page;
 
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;

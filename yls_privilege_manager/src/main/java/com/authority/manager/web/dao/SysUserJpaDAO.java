@@ -1,7 +1,7 @@
 package com.authority.manager.web.dao;
 
 import com.authority.manager.web.model.SysUserDO;
-import com.yls.core.repository.BaseJpaDAO;
+import com.authority.manager.base.repository.BaseJpaDAO;
 import org.springframework.data.rest.core.annotation.RepositoryRestResource;
 import org.springframework.data.rest.core.annotation.RestResource;
 import org.springframework.stereotype.Repository;

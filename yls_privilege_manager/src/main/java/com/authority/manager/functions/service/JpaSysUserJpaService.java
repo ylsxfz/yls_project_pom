@@ -2,7 +2,7 @@ package com.authority.manager.functions.service;
 
 import com.authority.manager.functions.model.SysTestJpaUser;
 import com.authority.manager.web.model.SysDeptDO;
-import com.yls.core.repository.BaseJpaService;
+import com.authority.manager.base.repository.BaseJpaService;
 
 import java.util.List;
 

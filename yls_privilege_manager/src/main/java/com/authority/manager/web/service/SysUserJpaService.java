@@ -2,7 +2,7 @@ package com.authority.manager.web.service;
 
 import com.authority.manager.web.model.SysUserDO;
 import com.authority.manager.web.model.relation.SysUserRoleDO;
-import com.yls.core.repository.BaseJpaService;
+import com.authority.manager.base.repository.BaseJpaService;
 
 import java.util.List;
 import java.util.Set;

@@ -8,7 +8,7 @@ import com.authority.manager.web.model.SysMenuDO;
 import com.authority.manager.web.model.SysRoleDO;
 import com.authority.manager.web.model.relation.SysRoleMenuDO;
 import com.authority.manager.web.service.SysRoleJpaSerivce;
-import com.yls.core.repository.BaseJpaDAO;
+import com.authority.manager.base.repository.BaseJpaDAO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;

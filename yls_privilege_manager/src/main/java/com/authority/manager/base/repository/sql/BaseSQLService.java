@@ -1,7 +1,7 @@
-package com.yls.core.repository.sql;
+package com.authority.manager.base.repository.sql;
 
 
-import com.yls.core.jpql.QueryParams;
+import com.authority.manager.base.jpql.QueryParams;
 import org.springframework.data.domain.Pageable;
 
 import java.util.List;
@@ -23,7 +23,7 @@ public interface BaseSQLService<T>{
      * @param clazz 泛型的类型
      * @return java.util.List<T>
      **/
-    List<T> getResultByAllCols(String sql, QueryParams queryParams, Pageable pageable, Class<?> clazz);
+    List<T> getResultByAllCols(String sql, QueryParams queryParams, Pageable pageable, Class<?> clazz) throws Exception;
 
     /**
      * @Author yls
@@ -34,5 +34,15 @@ public interface BaseSQLService<T>{
      * @param pageable 分页工具
      * @return java.util.List
      **/
-    List getResultBySomeCols(String sql, QueryParams queryParams, Pageable pageable);
+    List getResultBySomeCols(String sql, QueryParams queryParams, Pageable pageable) throws Exception;
+
+    /**
+     * 功能描述:
+     * 〈插入日志〉
+     * @author : yls
+     * @date : 2020/10/21 22:18
+     * @param sql
+     * @return : void
+     */
+    void insertLogByDay(String sql) throws Exception;
 }

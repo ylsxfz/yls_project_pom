@@ -1,6 +1,6 @@
-package com.yls.core.repository;
+package com.authority.manager.base.repository;
 
-import com.yls.core.jpql.QueryParams;
+import com.authority.manager.base.jpql.QueryParams;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 

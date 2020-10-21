@@ -2,7 +2,7 @@ package com.authority.manager.web.service.impl;
 
 import com.authority.manager.web.dao.SysRoleDeptJpaDAO;
 import com.authority.manager.web.service.SysRoleDeptJpaService;
-import com.yls.core.repository.BaseJpaDAO;
+import com.authority.manager.base.repository.BaseJpaDAO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;

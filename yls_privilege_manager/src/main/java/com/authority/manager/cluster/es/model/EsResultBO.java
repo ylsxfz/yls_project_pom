@@ -1,7 +1,7 @@
 package com.authority.manager.cluster.es.model;
 
 
-import com.yls.core.page.PageResultVO;
+import com.authority.manager.base.page.PageResultVO;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import org.elasticsearch.common.unit.TimeValue;

@@ -20,7 +20,7 @@ import java.util.Date;
  */
 @ApiModel(description = "任务父类")
 @MappedSuperclass
-@EntityListeners(AuditingEntityListener.class)
+@EntityListeners(AuditingEntityListener.class) // 自动注入需要该注解
 public class BaseJpaTaskBO implements Serializable {
 
     /**

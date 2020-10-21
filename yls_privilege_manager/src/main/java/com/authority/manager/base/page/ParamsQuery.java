@@ -1,4 +1,4 @@
-package com.yls.core.page;
+package com.authority.manager.base.page;
 
 /**
  * @Auther: yls

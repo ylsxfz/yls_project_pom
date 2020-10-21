@@ -1,7 +1,7 @@
 package com.authority.manager.log.dao;
 
 import com.authority.manager.log.model.SystemLogDO;
-import com.yls.core.repository.BaseJpaDAO;
+import com.authority.manager.base.repository.BaseJpaDAO;
 import org.springframework.stereotype.Repository;
 
 /**

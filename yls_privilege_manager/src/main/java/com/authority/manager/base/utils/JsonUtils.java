@@ -1,4 +1,4 @@
-package com.yls.core.utils;
+package com.authority.manager.base.utils;
 
 import com.fasterxml.jackson.databind.JavaType;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -9,7 +9,7 @@ import java.util.List;
 /**
  * @Auther: yls
  * @Date: 2020/10/14 9:51
- * @Description:
+ * @Description: json工具类
  * @Version 1.0
  */
 public class JsonUtils {

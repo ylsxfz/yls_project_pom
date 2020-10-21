@@ -1,4 +1,4 @@
-package com.yls.core.repository;
+package com.authority.manager.base.repository;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Example;

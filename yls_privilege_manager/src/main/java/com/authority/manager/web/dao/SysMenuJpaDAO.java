@@ -1,7 +1,7 @@
 package com.authority.manager.web.dao;
 
 import com.authority.manager.web.model.SysMenuDO;
-import com.yls.core.repository.BaseJpaDAO;
+import com.authority.manager.base.repository.BaseJpaDAO;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;

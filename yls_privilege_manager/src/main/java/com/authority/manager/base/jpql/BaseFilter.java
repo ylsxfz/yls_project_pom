@@ -1,4 +1,4 @@
-package com.yls.core.jpql;
+package com.authority.manager.base.jpql;
 
 
 import org.apache.commons.lang3.builder.EqualsBuilder;

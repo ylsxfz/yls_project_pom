@@ -3,7 +3,7 @@ package com.authority.manager.cluster.es.utills;
 import com.alibaba.fastjson.JSON;
 import com.authority.manager.cluster.es.model.EsPageRequest;
 import com.authority.manager.cluster.es.model.EsResultBO;
-import com.yls.core.page.PageResultVO;
+import com.authority.manager.base.page.PageResultVO;
 import org.apache.poi.ss.formula.functions.T;
 import org.elasticsearch.action.search.SearchResponse;
 import org.elasticsearch.action.search.ShardSearchFailure;

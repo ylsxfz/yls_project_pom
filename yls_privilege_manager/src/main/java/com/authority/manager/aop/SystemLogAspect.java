@@ -52,7 +52,7 @@ public class SystemLogAspect {
      * @return : void
      */
     @Around("systemLogPointcut()")
-    public void saveSysLog(ProceedingJoinPoint joinPoint) {
+    public Object saveSysLog(ProceedingJoinPoint joinPoint) {
         // 日志
         SystemLogDO systemLogDO = new SystemLogDO();
 
@@ -102,7 +102,7 @@ public class SystemLogAspect {
         Object proceed = null;
         try {
             // 执行增强后的方法
-            //proceed = joinPoint.proceed();
+            proceed = joinPoint.proceed();
             if (method.isAnnotationPresent(SystemControllerLog.class)) {
                 systemLogDO.setExceptionLog("无异常");
                 systemLogDO.setType("info");
@@ -115,6 +115,6 @@ public class SystemLogAspect {
             //调用service保存SysLog实体类到数据库
             systemLogService.save(systemLogDO);
         }
-
+        return proceed;
     }
 }

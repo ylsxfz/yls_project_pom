@@ -3,9 +3,9 @@ package com.authority.manager.web.controller;
 
 import com.authority.manager.web.model.SysDictDO;
 import com.authority.manager.web.service.SysDictJpaService;
-import com.yls.core.http.HttpConstants;
+import com.authority.manager.base.http.HttpConstants;
 import com.authority.manager.component.http.HttpResponseVO;
-import com.yls.core.page.PageRequstQuery;
+import com.authority.manager.base.page.PageRequstQuery;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;

@@ -1,4 +1,4 @@
-package com.yls.core.repository.entitymanager;
+package com.authority.manager.base.repository.entitymanager;
 
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.stereotype.Repository;

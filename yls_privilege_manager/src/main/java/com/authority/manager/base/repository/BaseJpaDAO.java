@@ -1,4 +1,4 @@
-package com.yls.core.repository;
+package com.authority.manager.base.repository;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.JpaSpecificationExecutor;

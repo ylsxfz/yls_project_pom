@@ -1,6 +1,6 @@
-package com.yls.core.page;
+package com.authority.manager.base.page;
 
-import com.yls.core.utils.JsonUtils;
+import com.authority.manager.base.utils.JsonUtils;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 
@@ -60,6 +60,9 @@ public class PageRequstQuery {
      * @date : 2020/10/14 10:14
      */
     public int getPageSize() {
+        if (pageSize==0){
+            pageSize=1;
+        }
         return Math.min(pageSize, 1000);
     }
 
@@ -75,7 +78,7 @@ public class PageRequstQuery {
      * 〉
      *
      * @param
-     * @return : java.util.List<com.yls.core.page.ParamsQuery>
+     * @return : java.util.List<com.authority.manager.base.page.ParamsQuery>
      * @author : yls
      * @date : 2020/10/14 10:11
      */

@@ -3,7 +3,7 @@ package com.authority.manager.functions.service.impl;
 import com.authority.manager.functions.dao.SysTestUserJpaDAO;
 import com.authority.manager.functions.model.SysTestJpaUser;
 import com.authority.manager.functions.service.JpaSysUserJpaService;
-import com.yls.core.repository.BaseJpaDAO;
+import com.authority.manager.base.repository.BaseJpaDAO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;

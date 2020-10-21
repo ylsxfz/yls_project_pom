@@ -3,7 +3,7 @@ package com.authority.manager.web.service;
 import com.authority.manager.web.model.SysMenuDO;
 import com.authority.manager.web.model.SysRoleDO;
 import com.authority.manager.web.model.relation.SysRoleMenuDO;
-import com.yls.core.repository.BaseJpaService;
+import com.authority.manager.base.repository.BaseJpaService;
 
 import java.util.List;
 

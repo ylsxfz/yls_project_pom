@@ -16,12 +16,12 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
  * 系统程序的主函数：主入口
  */
 @SpringBootApplication
-//@EnableDiscoveryClient //注册服务
+//@EnableDiscoveryClient // 注册服务
 @EnableAsync
-@EnableSwagger2 //swagger2文档接口
-@ServletComponentScan //自动扫描
-@EnableBatchProcessing //开启批处理的支持
-@EnableJpaAuditing //自动更新创建时间和上一次更新时间,创建人等
+@EnableSwagger2 // swagger2文档接口
+@ServletComponentScan // 自动扫描
+@EnableBatchProcessing // 开启批处理的支持
+@EnableJpaAuditing // 自动更新创建时间和上一次更新时间,创建人等
 @ImportResource(locations = {"classpath:spring-mvc.xml"})//引入自定义的配置文件
 public class ManagerApplication {
 

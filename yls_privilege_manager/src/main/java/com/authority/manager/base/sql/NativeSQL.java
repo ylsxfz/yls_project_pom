@@ -1,7 +1,7 @@
-package com.yls.core.sql;
+package com.authority.manager.base.sql;
 
-import com.yls.core.jpql.BaseFilter;
-import com.yls.core.jpql.QueryParams;
+import com.authority.manager.base.jpql.BaseFilter;
+import com.authority.manager.base.jpql.QueryParams;
 import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

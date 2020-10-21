@@ -1,4 +1,4 @@
-package com.yls.core.http;
+package com.authority.manager.base.http;
 
 /**
  * Constants enumerating the HTTP status codes.

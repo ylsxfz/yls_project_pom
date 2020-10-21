@@ -1,8 +1,8 @@
 package com.authority.manager.component.http;
 
 import com.authority.manager.component.error.BaseErrorInfoInterface;
-import com.yls.core.http.HttpStatus;
-import com.yls.core.page.PageResultVO;
+import com.authority.manager.base.http.HttpStatus;
+import com.authority.manager.base.page.PageResultVO;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import org.springframework.data.domain.Page;
@@ -53,7 +53,7 @@ public class HttpResponseVO {
 	 *
 	 * @author : yls
 	 * @date : 2020/10/14 9:38
-	 * @return : com.yls.core.http.HttpResultVO
+	 * @return : com.authority.manager.base.http.HttpResultVO
 	 */
 	public static HttpResponseVO error() {
 		return error(HttpStatus.SC_INTERNAL_SERVER_ERROR, "未知异常，请联系管理员");
@@ -66,7 +66,7 @@ public class HttpResponseVO {
 	 * @author : yls
 	 * @date : 2020/10/14 9:39
 	 * @param msg 异常信息
-	 * @return : com.yls.core.http.HttpResultVO
+	 * @return : com.authority.manager.base.http.HttpResultVO
 	 */
 	public static HttpResponseVO error(String msg) {
 		return error(HttpStatus.SC_INTERNAL_SERVER_ERROR, msg);
@@ -80,7 +80,7 @@ public class HttpResponseVO {
 	 * @date : 2020/10/14 9:39
 	 * @param code 错误代码
 	 * @param msg 异常信息
-	 * @return : com.yls.core.http.HttpResultVO
+	 * @return : com.authority.manager.base.http.HttpResultVO
 	 */
 	public static HttpResponseVO error(int code, String msg) {
 		HttpResponseVO r = new HttpResponseVO();
@@ -96,7 +96,7 @@ public class HttpResponseVO {
 	 * @author : yls
 	 * @date : 2020/10/14 9:40
 	 * @param msg 响应消息
-	 * @return : com.yls.core.http.HttpResultVO
+	 * @return : com.authority.manager.base.http.HttpResultVO
 	 */
 	public static HttpResponseVO ok(String msg) {
 		HttpResponseVO r = new HttpResponseVO();
@@ -111,7 +111,7 @@ public class HttpResponseVO {
 	 * @author : yls
 	 * @date : 2020/10/14 9:40
 	 * @param data 响应实体
-	 * @return : com.yls.core.http.HttpResultVO
+	 * @return : com.authority.manager.base.http.HttpResultVO
 	 */
 	public static HttpResponseVO ok(Object data) {
 		HttpResponseVO resultVO = new HttpResponseVO();
@@ -139,7 +139,7 @@ public class HttpResponseVO {
 	 * @date : 2020/10/14 9:43
 	 * @param msg 响应信息
 	 * @param data 响应数据集合
-	 * @return : com.yls.core.http.HttpResultVO
+	 * @return : com.authority.manager.base.http.HttpResultVO
 	 */
 	public static HttpResponseVO ok(String msg, Object data) {
 		HttpResponseVO httpResponseVO = ok(data);
@@ -153,7 +153,7 @@ public class HttpResponseVO {
 	 *
 	 * @author : yls
 	 * @date : 2020/10/14 9:41
-	 * @return : com.yls.core.http.HttpResultVO
+	 * @return : com.authority.manager.base.http.HttpResultVO
 	 */
 	public static HttpResponseVO ok() {
 		return new HttpResponseVO();

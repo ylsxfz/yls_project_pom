@@ -1,4 +1,4 @@
-package com.yls.core.repository.entitymanager;
+package com.authority.manager.base.repository.entitymanager;
 
 import java.util.List;
 

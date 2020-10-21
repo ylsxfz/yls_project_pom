@@ -1,7 +1,7 @@
 package com.authority.manager.functions.dao;
 
 import com.authority.manager.functions.model.SysTestJpaUser;
-import com.yls.core.repository.BaseJpaDAO;
+import com.authority.manager.base.repository.BaseJpaDAO;
 import org.springframework.stereotype.Repository;
 
 /**

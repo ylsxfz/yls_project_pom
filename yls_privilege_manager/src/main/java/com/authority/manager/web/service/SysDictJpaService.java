@@ -1,7 +1,7 @@
 package com.authority.manager.web.service;
 
 import com.authority.manager.web.model.SysDictDO;
-import com.yls.core.repository.BaseJpaService;
+import com.authority.manager.base.repository.BaseJpaService;
 
 /**
  * @Author yls

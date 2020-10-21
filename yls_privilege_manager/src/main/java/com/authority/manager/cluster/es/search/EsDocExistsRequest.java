@@ -2,7 +2,7 @@ package com.authority.manager.cluster.es.search;
 
 import com.authority.manager.cluster.es.config.EsHighLevelConfig;
 import com.authority.manager.cluster.es.model.EsRequestBO;
-import com.yls.core.http.HttpConstants;
+import com.authority.manager.base.http.HttpConstants;
 import org.elasticsearch.action.get.GetRequest;
 import org.elasticsearch.client.RequestOptions;
 import org.elasticsearch.client.RestHighLevelClient;
