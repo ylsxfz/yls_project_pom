@@ -10,6 +10,7 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Table;
 import javax.persistence.Transient;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -18,7 +19,7 @@ import java.util.List;
 @Table(name="sys_user")
 @TableName(value = "sys_user")
 @org.hibernate.annotations.Table(appliesTo = "sys_user",comment = "用户表")
-public class SysUserDO extends BaseSysBO {
+public class SysUserDO extends BaseSysBO implements Serializable {
 
 	@ApiModelProperty("名称")
 	@Column(name = "name",columnDefinition = "varchar(32) comment '名称'")

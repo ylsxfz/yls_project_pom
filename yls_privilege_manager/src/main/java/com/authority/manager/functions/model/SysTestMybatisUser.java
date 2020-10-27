@@ -18,8 +18,8 @@ import java.io.Serializable;
 public class SysTestMybatisUser extends BaseMybatisTaskBO implements Serializable {
 
     @ApiModelProperty("用户名")
-    @Size(min = 2,max = 5,message = "{user.name.size}")
-    @NotNull(message = "{user.address.notnull}")
+    @Size(min = 2,max = 5,message = "{sysTestMybatisUser.name.size}")
+    @NotBlank(message = "{sysTestMybatisUser.name.null}")
     @Column(name = "username",columnDefinition = "varchar(32) comment '名称'")
     private String username;
 
@@ -32,13 +32,14 @@ public class SysTestMybatisUser extends BaseMybatisTaskBO implements Serializabl
     private String gender;
 
     @ApiModelProperty("年龄")
-    @DecimalMin(value = "1",message = "{user.age.size}")
-    @DecimalMax(value = "200",message = "{user.age.size}")
+    @Min(value = 1,message = "{sysTestMybatisUser.age.min}")
+    @Max(value = 200,message = "{sysTestMybatisUser.age.max}")
+    @NotNull(message = "{sysTestMybatisUser.age.null}")
     @Column(name = "age",columnDefinition = "varchar(32) comment '年龄'")
     private Integer age;
 
     @ApiModelProperty("邮箱")
-    @Email(message = "{user.email.pattern}")
+    @Email(message = "{sysTestMybatisUser.email.pattern}")
     @Column(name = "email",columnDefinition = "varchar(64) comment '邮箱'")
     private String email;
 

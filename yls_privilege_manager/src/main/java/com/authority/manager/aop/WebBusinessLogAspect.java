@@ -5,6 +5,7 @@ import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import java.util.Arrays;
@@ -27,6 +28,9 @@ public class WebBusinessLogAspect {
     //日志
     private static final Logger LOGGER = LoggerFactory.getLogger(WebBusinessLogAspect.class);
 
+    @Autowired
+    private SystemLogAopUtil systemLogAopUtil;
+
     /**
      * 功能描述:
      * 〈设置切面的切入点，主要是设置哪些类和方法需要使用切面编程〉
@@ -35,7 +39,8 @@ public class WebBusinessLogAspect {
      * @param
      * @return : void
      */
-    @Pointcut("execution(public * com.authority.manager.web.controller.*.*(..))")
+    @Pointcut("execution(public * com.authority.manager.web.controller.*.*(..))"+
+            "|| execution(* com.authority.manager.functions.controller.*.*(..)) ")
     public void serviceAspect(){
 
     }
@@ -103,11 +108,11 @@ public class WebBusinessLogAspect {
      * 〈环绕通知：可以监控方法从开始到结束的执行情况〉
      * @Author yls
      * @Date 2020/3/30 17:17
-     * @param pjq
+     * @param joinPoint
      * @return java.lang.Object
      **/
     @Around("serviceAspect()")
-    public Object around(ProceedingJoinPoint pjq)throws Throwable{
-        return pjq.proceed();
+    public Object around(ProceedingJoinPoint joinPoint)throws Throwable{
+        return systemLogAopUtil.getSystemLog(joinPoint);
     }
 }

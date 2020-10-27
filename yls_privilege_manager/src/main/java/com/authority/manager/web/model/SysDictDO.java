@@ -7,12 +7,13 @@ import io.swagger.annotations.ApiModelProperty;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Table;
+import java.io.Serializable;
 
 @Entity
 @Table(name="sys_dict")
 @ApiModel(description = "字典管理")
 @org.hibernate.annotations.Table(appliesTo = "sys_dict",comment = "字典管理表")
-public class SysDictDO extends BaseSysBO {
+public class SysDictDO extends BaseSysBO implements Serializable {
 
 	@ApiModelProperty("值")
 	@Column(name = "value",columnDefinition = "varchar(32) comment '值'")

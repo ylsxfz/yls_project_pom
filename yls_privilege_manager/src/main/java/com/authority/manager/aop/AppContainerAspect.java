@@ -7,8 +7,6 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;
 
-import java.util.Arrays;
-
 /**
  * @Author yls
  * @Date 2020/4/14 10:41
@@ -49,7 +47,7 @@ public class AppContainerAspect {
     @Before(value = "appContainerAspect()")
     public void before(JoinPoint joinPoint){
         String name = joinPoint.getSignature().getName();
-        LOGGER.info(name+"方法开始执行....");
+//        LOGGER.info(name+"方法开始执行....");
     }
 
     /**
@@ -65,7 +63,7 @@ public class AppContainerAspect {
         String name = joinPoint.getSignature().getName();
         Object[] args = joinPoint.getArgs();
         System.out.println(joinPoint.toString());
-        LOGGER.info(name+"方法执行结束...."+ Arrays.toString(args));
+//        LOGGER.info(name+"方法执行结束...."+ Arrays.toString(args));
     }
 
     /**
@@ -78,7 +76,7 @@ public class AppContainerAspect {
     @AfterReturning(value = "appContainerAspect()",returning = "result")
     public void afterReturning(JoinPoint joinPoint,Object result){
         String name = joinPoint.getSignature().getName();
-        LOGGER.info(name+"方法返回值...."+result);
+//        LOGGER.info(name+"方法返回值...."+result);
     }
 
     /**

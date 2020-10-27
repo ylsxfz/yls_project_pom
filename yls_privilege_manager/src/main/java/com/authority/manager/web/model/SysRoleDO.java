@@ -7,12 +7,13 @@ import io.swagger.annotations.ApiModelProperty;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Table;
+import java.io.Serializable;
 
 @Entity
 @ApiModel(description = "系统权限")
 @Table(name="sys_role")
 @org.hibernate.annotations.Table(appliesTo = "sys_role",comment = "系统权限表")
-public class SysRoleDO extends BaseSysBO {
+public class SysRoleDO extends BaseSysBO implements Serializable {
 
 	@ApiModelProperty("名称")
 	@Column(name = "name",columnDefinition = "varchar(32) comment '名称'")

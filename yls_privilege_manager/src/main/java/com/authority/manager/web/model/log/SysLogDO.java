@@ -4,12 +4,13 @@ import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 
 import javax.persistence.*;
+import java.io.Serializable;
 
 @Entity
 @ApiModel(description = "系统日志")
 @Table(name="sys_log")
 @org.hibernate.annotations.Table(appliesTo = "sys_log",comment = "系统日志表")
-public class SysLogDO {
+public class SysLogDO implements Serializable {
 
 	@ApiModelProperty(value = "主键id")
 	@Id

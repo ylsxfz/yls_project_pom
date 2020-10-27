@@ -8,13 +8,14 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Table;
 import javax.persistence.Transient;
+import java.io.Serializable;
 import java.util.List;
 
 @ApiModel(description = "部门")
 @Entity
 @Table(name="sys_dept")
 @org.hibernate.annotations.Table(appliesTo = "sys_dept",comment = "部门表")
-public class SysDeptDO extends BaseSysBO {
+public class SysDeptDO extends BaseSysBO implements Serializable {
 
 	@ApiModelProperty("名称")
 	@Column(name = "name",columnDefinition = "varchar(32) comment '名称'")

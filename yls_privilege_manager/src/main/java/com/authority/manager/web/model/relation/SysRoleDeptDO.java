@@ -5,12 +5,13 @@ import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 
 import javax.persistence.*;
+import java.io.Serializable;
 
 @Entity
 @ApiModel(description = "角色和部门的关联表")
 @Table(name="sys_role_dept")
 @org.hibernate.annotations.Table(appliesTo = "sys_role_dept",comment = "角色和部门的关联表")
-public class SysRoleDeptDO extends BaseSysBO {
+public class SysRoleDeptDO extends BaseSysBO implements Serializable {
 
 	@ApiModelProperty("角色id")
 	@Column(name = "role_id",columnDefinition = "int comment '角色id'")

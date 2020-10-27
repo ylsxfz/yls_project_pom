@@ -3,13 +3,15 @@ package com.authority.manager.vo;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 
+import java.io.Serializable;
+
 /**
  * @Author yls
  * @Description 登录接口封装对象
  * @Date 2020/4/12 12:03
  **/
 @ApiModel(description = "登录对象")
-public class LoginBeanBO {
+public class LoginBeanBO implements Serializable {
 
 	/**
 	 * 账号

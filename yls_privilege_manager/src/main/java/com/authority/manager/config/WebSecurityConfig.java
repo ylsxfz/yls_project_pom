@@ -81,7 +81,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers("/druid/**").permitAll()
                 // 首页和登录页面
                 .antMatchers("/").permitAll()
-                .antMatchers("/sys/login").permitAll()
+                .antMatchers("/sys/login/login").permitAll()
                 //错误界面
                 .antMatchers("/404/**").permitAll()
                 .antMatchers("/500/**").permitAll()

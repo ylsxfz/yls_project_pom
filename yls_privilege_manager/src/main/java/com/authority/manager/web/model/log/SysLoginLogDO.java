@@ -7,12 +7,13 @@ import io.swagger.annotations.ApiModelProperty;
 import org.springframework.security.web.authentication.WebAuthenticationDetails;
 
 import javax.persistence.*;
+import java.io.Serializable;
 
 @Entity
 @ApiModel(description = "系统登录日志")
 @Table(name="sys_login_log")
 @org.hibernate.annotations.Table(appliesTo = "sys_login_log",comment = "系统登录日志表")
-public class SysLoginLogDO {
+public class SysLoginLogDO implements Serializable {
 
 	@ApiModelProperty("主键id")
 	@Id

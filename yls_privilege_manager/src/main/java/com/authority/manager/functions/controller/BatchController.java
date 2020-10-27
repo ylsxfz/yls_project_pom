@@ -10,12 +10,9 @@ import org.springframework.batch.core.launch.JobLauncher;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.ObjectError;
-import org.springframework.validation.annotation.Validated;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -55,7 +52,7 @@ public class BatchController {
      * @return
      */
     @PostMapping("/user")
-    public List<String> addUser(@Validated SysTestMybatisUser sysTestMybatisUser, BindingResult result){
+    public List<String> addUser(@RequestBody @Valid SysTestMybatisUser sysTestMybatisUser, BindingResult result){
         List<String> errors = new ArrayList<>();
         if(result.hasErrors()){
             List<ObjectError> allErrors = result.getAllErrors();

@@ -85,7 +85,7 @@ public class SysLoginController {
      * @return com.authority.manager.base.http.HttpResult
      **/
     @ApiOperation(value = "登录接口")
-    @PostMapping
+    @PostMapping("/login")
     public HttpResponseVO login(@ApiParam(value = "登录对象", required = true)@RequestBody LoginBeanBO loginBeanBO, HttpServletRequest request) throws IOException {
         String username = loginBeanBO.getAccount();
         String password = loginBeanBO.getPassword();

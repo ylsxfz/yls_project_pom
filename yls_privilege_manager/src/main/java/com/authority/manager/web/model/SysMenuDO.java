@@ -8,13 +8,14 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Table;
 import javax.persistence.Transient;
+import java.io.Serializable;
 import java.util.List;
 
 @Entity
 @ApiModel(description = "菜单管理")
 @Table(name="sys_menu")
 @org.hibernate.annotations.Table(appliesTo = "sys_menu",comment = "菜单管理表")
-public class SysMenuDO extends BaseSysBO {
+public class SysMenuDO extends BaseSysBO implements Serializable {
 
 	@ApiModelProperty("父级id")
 	@Column(name = "parent_id",columnDefinition = "int comment '父级id'")

@@ -5,6 +5,7 @@ import org.springframework.beans.ConversionNotSupportedException;
 import org.springframework.beans.TypeMismatchException;
 import org.springframework.http.converter.HttpMessageNotReadableException;
 import org.springframework.http.converter.HttpMessageNotWritableException;
+import org.springframework.security.access.AccessDeniedException;
 import org.springframework.web.HttpMediaTypeNotAcceptableException;
 import org.springframework.web.HttpRequestMethodNotSupportedException;
 import org.springframework.web.bind.MissingServletRequestParameterException;
@@ -129,9 +130,18 @@ public class GlobalExceptionHandler {
     /**
      * 其他错误
      */
-    @ExceptionHandler({Exception.class})
-    public HttpResponseVO exception(Exception e) {
-        return HttpResponseVO.error(BaseErrorCommonEnum.INTERNAL_SERVER_ERROR);
+    @ResponseBody
+    @ExceptionHandler(value = Exception.class)
+    public HttpResponseVO errorHandler(Exception ex) {
+        ex.printStackTrace();
+        return HttpResponseVO.error(BaseErrorCommonEnum.BODY_NOT_MATCH);
+    }
+
+    @ResponseBody
+    @ExceptionHandler(value = AccessDeniedException.class)
+    public HttpResponseVO errorHandler(AccessDeniedException ex) {
+        ex.printStackTrace();
+        return HttpResponseVO.error(BaseErrorCommonEnum.BODY_NOT_MATCH);
     }
 
 

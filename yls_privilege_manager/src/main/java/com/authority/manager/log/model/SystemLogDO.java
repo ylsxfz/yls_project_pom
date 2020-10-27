@@ -5,12 +5,13 @@ import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 
 import javax.persistence.*;
+import java.io.Serializable;
 
 @Entity
 @ApiModel(description = "系统日志")
 @Table(name="system_log")
 @org.hibernate.annotations.Table(appliesTo = "system_log",comment = "系统日志表")
-public class SystemLogDO extends BaseJpaTaskBO {
+public class SystemLogDO extends BaseJpaTaskBO implements Serializable {
 
 	@ApiModelProperty(value = "用户名")
 	@Column(name = "user_name",columnDefinition = "varchar(32) comment '用户名'")
@@ -21,11 +22,11 @@ public class SystemLogDO extends BaseJpaTaskBO {
     private String operation;
 
 	@ApiModelProperty("方法名")
-	@Column(name = "method",columnDefinition = "varchar(64) comment '方法名'")
+	@Column(name = "method",columnDefinition = "text comment '方法名'")
     private String method;
 
 	@ApiModelProperty("参数")
-	@Column(name = "params",columnDefinition = "varchar(255) comment '参数'")
+	@Column(name = "params",columnDefinition = "text comment '参数'")
     private String params;
 
 	@ApiModelProperty("ip地址")
@@ -41,7 +42,7 @@ public class SystemLogDO extends BaseJpaTaskBO {
 	private String requestMethod;
 
 	@ApiModelProperty("异常描述")
-	@Column(name = "exception_log",columnDefinition = "varchar(255) comment '异常描述'")
+	@Column(name = "exception_log",columnDefinition = "text comment '异常描述'")
 	private String exceptionLog;           // 异常描述
 
 	@ApiModelProperty("日志类型")

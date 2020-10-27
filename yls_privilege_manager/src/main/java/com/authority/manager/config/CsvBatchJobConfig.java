@@ -104,7 +104,7 @@ public class CsvBatchJobConfig {
     JdbcBatchItemWriter jdbcBatchItemWriter(){
         JdbcBatchItemWriter writer = new JdbcBatchItemWriter();
         writer.setDataSource(dataSource);
-        writer.setSql("insert into user(username,address,gender,age,email) "+
+        writer.setSql("insert into sys_test_mybatis_user(username,address,gender,age,email) "+
                 "value(:username,:address,:gender,:age,:email)");
         writer.setItemSqlParameterSourceProvider(new BeanPropertyItemSqlParameterSourceProvider());
         return writer;

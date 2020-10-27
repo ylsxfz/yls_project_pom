@@ -7,12 +7,13 @@ import io.swagger.annotations.ApiModelProperty;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Table;
+import java.io.Serializable;
 
 @ApiModel(description = "系统设置")
 @Entity
 @Table(name="sys_config")
 @org.hibernate.annotations.Table(appliesTo = "sys_config",comment = "系统设置表")
-public class SysConfigDO extends BaseSysBO {
+public class SysConfigDO extends BaseSysBO implements Serializable {
 
 	@ApiModelProperty("值")
 	@Column(name = "value",columnDefinition = "varchar(32) comment '值'")
