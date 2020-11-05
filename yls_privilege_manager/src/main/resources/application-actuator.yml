@@ -31,3 +31,12 @@ info:
   author:
     name: yls
     email: 268962@qq.com
+
+## Knife4j 接口文档
+knife4j:
+  basic:
+    username: admin
+    password: admin
+    enable: true #开启认证
+  production: false #默认是false ,屏蔽所有Swagger的相关资源
+  enable: true  #是否开启swagger
