@@ -25,7 +25,7 @@ public class SysDeptDO extends BaseSysBO implements Serializable {
 	@Column(name = "parent_id",columnDefinition = "int comment '父级id'")
     private int parentId;
 
-	@ApiModelProperty("排序值")
+	@ApiModelProperty(value = "排序值",example = "1")
 	@Column(name = "order_num",columnDefinition = "int comment '排序值'")
     private Integer orderNum;
 
@@ -39,7 +39,7 @@ public class SysDeptDO extends BaseSysBO implements Serializable {
 	private String parentName;
     // 非数据库字段
 	@Transient
-	@ApiModelProperty("等级")
+	@ApiModelProperty(value = "等级",example = "1")
 	private Integer level;
 
 	public String getName() {

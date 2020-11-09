@@ -67,6 +67,13 @@ spring:
 ## 日志服务器
 logging:
   config: classpath:logback-spring.xml
+  # 屏蔽swagger的报错：AbstractSerializableParameter : Illegal DefaultValue null for parameter type integer解决方案
+#  level:
+#    io:
+#      swagger:
+#        models:
+#          parameters:
+#            AbstractSerializableParameter: error
 
 ## mybatis-plus的配置
 mybatis-plus:

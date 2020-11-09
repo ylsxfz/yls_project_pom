@@ -13,30 +13,29 @@ import java.io.Serializable;
 @org.hibernate.annotations.Table(appliesTo = "sys_role_dept",comment = "角色和部门的关联表")
 public class SysRoleDeptDO extends BaseSysBO implements Serializable {
 
-	@ApiModelProperty("角色id")
+	@ApiModelProperty(value = "角色id",example = "1")
 	@Column(name = "role_id",columnDefinition = "int comment '角色id'")
-    private int roleId;
+    private Integer roleId;
 
-	@ApiModelProperty("部门id")
+	@ApiModelProperty(value = "部门id",example = "1")
 	@Column(name = "dept_id",columnDefinition = "int comment '部门id'")
-    private int deptId;
+    private Integer deptId;
 
-	public int getRoleId() {
+	public Integer getRoleId() {
 		return roleId;
 	}
 
-	public void setRoleId(int roleId) {
+	public void setRoleId(Integer roleId) {
 		this.roleId = roleId;
 	}
 
-	public int getDeptId() {
+	public Integer getDeptId() {
 		return deptId;
 	}
 
-	public void setDeptId(int deptId) {
+	public void setDeptId(Integer deptId) {
 		this.deptId = deptId;
 	}
-
 
 	@Override
 	public String toString() {

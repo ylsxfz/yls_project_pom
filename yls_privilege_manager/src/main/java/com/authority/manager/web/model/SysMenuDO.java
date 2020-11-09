@@ -33,7 +33,7 @@ public class SysMenuDO extends BaseSysBO implements Serializable {
 	@Column(name = "perms",columnDefinition = "varchar(64) comment '排列'")
     private String perms;
 
-	@ApiModelProperty("类型")
+	@ApiModelProperty(value = "类型",example = "1")
 	@Column(name = "type",columnDefinition = "int comment '类型'")
     private Integer type;
 
@@ -51,7 +51,7 @@ public class SysMenuDO extends BaseSysBO implements Serializable {
 	private String parentName;
     // 非数据库字段
 	@Transient
-	@ApiModelProperty("等级")
+	@ApiModelProperty(value = "等级",example = "1")
 	private Integer level;
     // 非数据库字段
 	@Transient

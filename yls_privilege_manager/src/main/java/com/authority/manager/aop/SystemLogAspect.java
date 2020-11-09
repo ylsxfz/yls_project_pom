@@ -42,7 +42,7 @@ public class SystemLogAspect {
      * @return : void
      */
     @Around("systemLogPointcut()")
-    public Object saveSysLog(ProceedingJoinPoint joinPoint) throws Exception {
+    public Object saveSysLog(ProceedingJoinPoint joinPoint) throws Throwable {
         return systemLogAopUtil.getSystemLog(joinPoint);
     }
 

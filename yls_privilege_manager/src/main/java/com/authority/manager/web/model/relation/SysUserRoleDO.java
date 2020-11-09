@@ -3,6 +3,7 @@ package com.authority.manager.web.model.relation;
 import com.authority.manager.web.model.base.BaseSysBO;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
+import io.swagger.models.auth.In;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -13,27 +14,27 @@ import java.io.Serializable;
 @org.hibernate.annotations.Table(appliesTo = "sys_user_role",comment = "用户和角色关联表")
 public class SysUserRoleDO extends BaseSysBO implements Serializable {
 
-	@ApiModelProperty("用户id")
+	@ApiModelProperty(value = "用户id",example = "1")
 	@Column(name = "user_id",columnDefinition = "int comment '用户id'")
-    private int userId;
+    private Integer userId;
 
-	@ApiModelProperty("角色id")
+	@ApiModelProperty(value = "角色id",example = "1")
 	@Column(name = "role_id",columnDefinition = "int comment '角色id'")
-    private int roleId;
+    private Integer roleId;
 
-	public int getUserId() {
+	public Integer getUserId() {
 		return userId;
 	}
 
-	public void setUserId(int userId) {
+	public void setUserId(Integer userId) {
 		this.userId = userId;
 	}
 
-	public int getRoleId() {
+	public Integer getRoleId() {
 		return roleId;
 	}
 
-	public void setRoleId(int roleId) {
+	public void setRoleId(Integer roleId) {
 		this.roleId = roleId;
 	}
 

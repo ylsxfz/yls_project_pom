@@ -31,7 +31,7 @@ public class SysTestMybatisUser extends BaseMybatisTaskBO implements Serializabl
     @Column(name = "gender",columnDefinition = "varchar(66) comment '性别'")
     private String gender;
 
-    @ApiModelProperty("年龄")
+    @ApiModelProperty(value = "年龄",example = "1")
     @Min(value = 1,message = "{sysTestMybatisUser.age.min}")
     @Max(value = 200,message = "{sysTestMybatisUser.age.max}")
     @NotNull(message = "{sysTestMybatisUser.age.null}")

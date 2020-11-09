@@ -35,7 +35,7 @@ public class SystemLogAopUtil {
     @Autowired
     private SystemLogService systemLogService;
 
-    public Object getSystemLog(ProceedingJoinPoint joinPoint) throws Exception {
+    public Object getSystemLog(ProceedingJoinPoint joinPoint) throws Throwable {
         // 日志
         SystemLogDO systemLogDO = new SystemLogDO();
 
@@ -112,11 +112,7 @@ public class SystemLogAopUtil {
             /**
              * 过滤无权限操作
              */
-            if (throwable instanceof AccessDeniedException) {
-                throw new AccessDeniedException(throwable.getMessage());
-            } else {
-                throw new Exception(throwable.getMessage());
-            }
+            throw throwable;
 
         } finally {
             this.saveLog(systemLogDO);

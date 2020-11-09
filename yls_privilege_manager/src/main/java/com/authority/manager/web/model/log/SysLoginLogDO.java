@@ -15,7 +15,7 @@ import java.io.Serializable;
 @org.hibernate.annotations.Table(appliesTo = "sys_login_log",comment = "系统登录日志表")
 public class SysLoginLogDO implements Serializable {
 
-	@ApiModelProperty("主键id")
+	@ApiModelProperty(value = "主键id",example = "1")
 	@Id
 	//自动递增
 	@GeneratedValue(strategy = GenerationType.IDENTITY)

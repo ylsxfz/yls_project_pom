@@ -22,7 +22,7 @@ import java.util.Date;
 @MappedSuperclass
 public class BaseSysBO implements Serializable {
 
-	@ApiModelProperty("主键id")
+	@ApiModelProperty(value = "主键id",example = "1")
 	@Id
 	//@GenericGenerator(name = "uId", strategy = "uuid.hex")
 	//@GeneratedValue(generator = "uId")

@@ -13,30 +13,29 @@ import java.io.Serializable;
 @org.hibernate.annotations.Table(appliesTo = "sys_role_menu",comment = "角色和菜单的关联表")
 public class SysRoleMenuDO extends BaseSysBO implements Serializable {
 
-    @ApiModelProperty("角色id")
+    @ApiModelProperty(value = "角色id",example = "1")
     @Column(name = "role_id",columnDefinition = "int comment '角色id'")
-    private int roleId;
+    private Integer roleId;
 
-    @ApiModelProperty("菜单id")
+    @ApiModelProperty(value = "菜单id",example = "1")
     @Column(name = "menu_id",columnDefinition = "int comment '菜单id'")
-    private int menuId;
+    private Integer menuId;
 
-    public int getRoleId() {
+    public Integer getRoleId() {
         return roleId;
     }
 
-    public void setRoleId(int roleId) {
+    public void setRoleId(Integer roleId) {
         this.roleId = roleId;
     }
 
-    public int getMenuId() {
+    public Integer getMenuId() {
         return menuId;
     }
 
-    public void setMenuId(int menuId) {
+    public void setMenuId(Integer menuId) {
         this.menuId = menuId;
     }
-
 
     @Override
     public String toString() {

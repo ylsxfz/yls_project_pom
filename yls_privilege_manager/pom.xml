@@ -113,11 +113,11 @@
             <artifactId>mybatis-plus-extension</artifactId>
             <version>${mybatis-plus.version}</version>
         </dependency>
-<!--        <dependency>-->
-<!--            <groupId>tk.mybatis</groupId>-->
-<!--            <artifactId>mapper-spring-boot-starter</artifactId>-->
-<!--            <version>${tk.mybatis.version}</version>-->
-<!--        </dependency>-->
+        <!--        <dependency>-->
+        <!--            <groupId>tk.mybatis</groupId>-->
+        <!--            <artifactId>mapper-spring-boot-starter</artifactId>-->
+        <!--            <version>${tk.mybatis.version}</version>-->
+        <!--        </dependency>-->
         <!-- thymeleaf -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -289,11 +289,11 @@
         </dependency>
 
         <!--集成swagger文档-->
-<!--        <dependency>-->
-<!--            <groupId>io.springfox</groupId>-->
-<!--            <artifactId>springfox-swagger2</artifactId>-->
-<!--            <version>${swagger2.version}</version>-->
-<!--        </dependency>-->
+        <!--        <dependency>-->
+        <!--            <groupId>io.springfox</groupId>-->
+        <!--            <artifactId>springfox-swagger2</artifactId>-->
+        <!--            <version>${swagger2.version}</version>-->
+        <!--        </dependency>-->
         <!--集成swagger文档-->
         <dependency>
             <groupId>io.springfox</groupId>
@@ -305,6 +305,18 @@
             <groupId>com.github.xiaoymin</groupId>
             <artifactId>knife4j-spring-boot-starter</artifactId>
             <version>2.0.5</version>
+        </dependency>
+        <!--AbstractSerializableParameter : Illegal DefaultValue null for parameter type integer解决方案-->
+        <dependency>
+            <groupId>io.swagger</groupId>
+            <artifactId>swagger-annotations</artifactId>
+            <version>1.5.22</version>
+        </dependency>
+        <!--AbstractSerializableParameter : Illegal DefaultValue null for parameter type integer解决方案-->
+        <dependency>
+            <groupId>io.swagger</groupId>
+            <artifactId>swagger-models</artifactId>
+            <version>1.5.22</version>
         </dependency>
 
         <!-- poi -->
@@ -335,17 +347,17 @@
         </dependency>
 
         <!-- jxl 操作excel -->
-<!--        <dependency>-->
-<!--            <groupId>org.jxls</groupId>-->
-<!--            <artifactId>jxls-jexcel</artifactId>-->
-<!--            <version>1.0.6</version>-->
-<!--        </dependency>-->
+        <!--        <dependency>-->
+        <!--            <groupId>org.jxls</groupId>-->
+        <!--            <artifactId>jxls-jexcel</artifactId>-->
+        <!--            <version>1.0.6</version>-->
+        <!--        </dependency>-->
 
         <!--consul-->
-       <!--<dependency>
-            <groupId>org.springframework.cloud</groupId>
-            <artifactId>spring-cloud-starter-consul-discovery</artifactId>
-        </dependency>-->
+        <!--<dependency>
+             <groupId>org.springframework.cloud</groupId>
+             <artifactId>spring-cloud-starter-consul-discovery</artifactId>
+         </dependency>-->
 
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -361,17 +373,17 @@
     </dependencies>
 
     <!--srping cloud-->
-   <!--<dependencyManagement>
-        <dependencies>
-            <dependency>
-                <groupId>org.springframework.cloud</groupId>
-                <artifactId>spring-cloud-dependencies</artifactId>
-                <version>Finchley.RELEASE</version>
-                <type>pom</type>
-                <scope>import</scope>
-            </dependency>
-        </dependencies>
-    </dependencyManagement>-->
+    <!--<dependencyManagement>
+         <dependencies>
+             <dependency>
+                 <groupId>org.springframework.cloud</groupId>
+                 <artifactId>spring-cloud-dependencies</artifactId>
+                 <version>Finchley.RELEASE</version>
+                 <type>pom</type>
+                 <scope>import</scope>
+             </dependency>
+         </dependencies>
+     </dependencyManagement>-->
 
     <build>
         <plugins>

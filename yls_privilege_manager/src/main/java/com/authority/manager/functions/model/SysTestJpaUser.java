@@ -41,7 +41,7 @@ public class SysTestJpaUser extends BaseJpaTaskBO implements Serializable {
     @Column(name = "gender",columnDefinition = "varchar(66) comment '性别'")
     private String gender;
 
-    @ApiModelProperty("年龄")
+    @ApiModelProperty(value = "年龄",example = "1")
     @DecimalMin(value = "1",message = "{user.age.size}")
     @DecimalMax(value = "200",message = "{user.age.size}")
     @Column(name = "age",columnDefinition = "varchar(32) comment '年龄'")

@@ -31,9 +31,9 @@ public class SysDictDO extends BaseSysBO implements Serializable {
 	@Column(name = "description",columnDefinition = "varchar(255) comment '描述'")
     private String description;
 
-	@ApiModelProperty("排序")
+	@ApiModelProperty(value = "排序",example = "1")
 	@Column(name = "sort",columnDefinition = "int comment '排序'")
-    private int sort;
+    private Integer sort;
 
 	@ApiModelProperty("备注")
 	@Column(name = "remarks",columnDefinition = "varchar(255) comment '备注'")
@@ -73,11 +73,11 @@ public class SysDictDO extends BaseSysBO implements Serializable {
 		this.description = description;
 	}
 
-	public int getSort() {
+	public Integer getSort() {
 		return sort;
 	}
 
-	public void setSort(int sort) {
+	public void setSort(Integer sort) {
 		this.sort = sort;
 	}
 

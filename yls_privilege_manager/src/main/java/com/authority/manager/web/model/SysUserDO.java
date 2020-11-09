@@ -49,13 +49,13 @@ public class SysUserDO extends BaseSysBO implements Serializable {
 	@Column(name = "mobile",columnDefinition = "varchar(32) comment '电话'")
     private String mobile;
 
-	@ApiModelProperty("状态")
+	@ApiModelProperty(value = "状态",example = "1")
 	@Column(name = "status",columnDefinition = "tinyint comment '状态'")
     private Byte status;
 
-	@ApiModelProperty("部门id")
+	@ApiModelProperty(value = "部门id",example = "1")
 	@Column(name = "dept_id",columnDefinition = "int comment '部门id'")
-    private int deptId;
+    private Integer deptId;
 
     // 非数据库字段
 	@Transient
@@ -121,11 +121,11 @@ public class SysUserDO extends BaseSysBO implements Serializable {
 		this.status = status;
 	}
 
-	public int getDeptId() {
+	public Integer getDeptId() {
 		return deptId;
 	}
 
-	public void setDeptId(int deptId) {
+	public void setDeptId(Integer deptId) {
 		this.deptId = deptId;
 	}
 

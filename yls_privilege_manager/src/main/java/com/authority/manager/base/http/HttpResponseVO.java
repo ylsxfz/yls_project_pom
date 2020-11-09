@@ -6,13 +6,15 @@ import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import org.springframework.data.domain.Page;
 
+import java.io.Serializable;
+
 /**
  * @Author yls
  * @Description HTTP结果封装
  * @Date 2020/4/5 9:41
  **/
 @ApiModel(description = "HTTP结果封装")
-public class HttpResponseVO {
+public class HttpResponseVO implements Serializable {
 
 	@ApiModelProperty("状态")
 	private int code = HttpStatus.SC_OK;

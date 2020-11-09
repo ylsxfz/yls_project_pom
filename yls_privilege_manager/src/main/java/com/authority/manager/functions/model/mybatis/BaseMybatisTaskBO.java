@@ -24,7 +24,7 @@ public class BaseMybatisTaskBO implements Serializable {
     /**
      * 任务编号
      */
-    @ApiModelProperty("主键id:任务编号")
+    @ApiModelProperty(value = "主键id:任务编号",example = "1")
     @Id
     //自动递增
     @GeneratedValue(strategy = javax.persistence.GenerationType.IDENTITY)
@@ -70,7 +70,7 @@ public class BaseMybatisTaskBO implements Serializable {
     /**
      * 是否删除
      */
-    @ApiModelProperty("逻辑删除")
+    @ApiModelProperty(value = "逻辑删除",example = "1")
     @Column(name = "is_deleted",columnDefinition = "tinyint comment '删除标记=> 1：已删除，0：未删除'")
     // 逻辑删除
     @TableLogic
