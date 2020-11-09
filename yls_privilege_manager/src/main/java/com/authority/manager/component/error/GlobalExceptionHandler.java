@@ -7,7 +7,6 @@ import org.springframework.beans.TypeMismatchException;
 import org.springframework.http.converter.HttpMessageNotReadableException;
 import org.springframework.http.converter.HttpMessageNotWritableException;
 import org.springframework.security.access.AccessDeniedException;
-import org.springframework.stereotype.Component;
 import org.springframework.web.HttpMediaTypeNotAcceptableException;
 import org.springframework.web.HttpRequestMethodNotSupportedException;
 import org.springframework.web.bind.MissingServletRequestParameterException;
@@ -32,13 +31,13 @@ import java.io.IOException;
 @ControllerAdvice
 @Priority(1)
 public class GlobalExceptionHandler {
-//    //ExceptionHandler 用来定义函数针对的异常类型，可以传入多个需要捕获的异常。
-//    @ExceptionHandler(BusinessException.class)
-//    //如果返回的json数据或者其他对象，添加该注解
-//    @ResponseBody
-//    public HttpResponseVO defaultErrorHandler(HttpServletRequest request, BusinessException e)throws Exception{
-//        return HttpResponseVO.error(e.getErrorCode(),e.getErrorMsg());
-//    }
+    //ExceptionHandler 用来定义函数针对的异常类型，可以传入多个需要捕获的异常。
+    @ExceptionHandler(BusinessException.class)
+    //如果返回的json数据或者其他对象，添加该注解
+    @ResponseBody
+    public HttpResponseVO defaultErrorHandler(HttpServletRequest request, BusinessException e) throws Exception {
+        return HttpResponseVO.error(e.getErrorCode(), e.getErrorMsg());
+    }
 
     /**
      * 空指针异常
@@ -162,15 +161,15 @@ public class GlobalExceptionHandler {
     }
 
 
-//    /**
-//     * 其他错误
-//     */
-//    @ResponseBody
-//    @ExceptionHandler(value = Exception.class)
-//    public HttpResponseVO errorHandler(Exception ex) {
-//        ex.printStackTrace();
-//        return HttpResponseVO.error(BaseErrorCommonEnum.DEFAULT_ERROR);
-//    }
+    /**
+     * 其他错误
+     */
+    @ResponseBody
+    @ExceptionHandler(value = Exception.class)
+    public HttpResponseVO errorHandler(Exception ex) {
+        ex.printStackTrace();
+        return HttpResponseVO.error(BaseErrorCommonEnum.DEFAULT_ERROR);
+    }
 
 
     /**

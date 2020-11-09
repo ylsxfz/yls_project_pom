@@ -1,6 +1,7 @@
 package com.authority.manager.functions.model;
 
 import com.authority.manager.functions.model.mybatis.BaseMybatisTaskBO;
+import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 
 import javax.persistence.*;
@@ -15,6 +16,7 @@ import java.io.Serializable;
  */
 @Entity
 @Table(name = "sys_test_mybatis_user")
+@ApiModel(description = "测试mybatis用户实体类")
 public class SysTestMybatisUser extends BaseMybatisTaskBO implements Serializable {
 
     @ApiModelProperty("用户名")

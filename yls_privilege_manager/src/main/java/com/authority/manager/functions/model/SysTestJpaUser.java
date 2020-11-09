@@ -1,6 +1,7 @@
 package com.authority.manager.functions.model;
 
 import com.authority.manager.functions.model.jpa.BaseJpaTaskBO;
+import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import org.hibernate.annotations.SQLDelete;
 import org.hibernate.annotations.SQLDeleteAll;
@@ -25,6 +26,7 @@ import java.io.Serializable;
 @SQLDelete(sql = "update sys_test_jpa_user set is_deleted = 1 where id = ?")
 @SQLDeleteAll(sql = "update sys_test_jpa_user set is_deleted = 1 where id in (?)")
 @Where(clause = "is_deleted = 0")
+@ApiModel(description = "测试jpa用户实体类")
 public class SysTestJpaUser extends BaseJpaTaskBO implements Serializable {
 
     @ApiModelProperty("用户名")
