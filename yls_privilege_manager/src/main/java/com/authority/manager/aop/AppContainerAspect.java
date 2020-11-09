@@ -30,7 +30,7 @@ public class AppContainerAspect {
     @Pointcut("execution(* com.authority.manager.component.filter.*.*(..)) " +
             "|| execution(* com.authority.manager.component.init.*.*(..)) " +
             "|| execution(* com.authority.manager.component.interceptor.*.*(..))" +
-            "|| execution(* com.authority.manager.component.listener.*.*(..))" +
+//            "|| execution(* com.authority.manager.component.listener.*.*(..))" +
             "|| execution(* com.authority.manager.component.quartz.*.*(..))")
     public void appContainerAspect(){
 
