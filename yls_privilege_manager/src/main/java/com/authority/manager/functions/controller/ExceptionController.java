@@ -1,4 +1,4 @@
-package com.authority.manager.web.controller;
+package com.authority.manager.functions.controller;
 
 import com.authority.manager.base.http.HttpResponseVO;
 import io.swagger.annotations.Api;
@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.RestController;
  * @Version 1.0
  */
 @RestController
-@RequestMapping("sys")
+@RequestMapping("component/except")
 @Api(tags = "测试全局异常")
 public class ExceptionController {
 

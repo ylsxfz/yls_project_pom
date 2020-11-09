@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 
 @RestController
-@RequestMapping("jpa")
+@RequestMapping("component/jpa")
 @Api(tags = "jpa测试")
 public class JpaSysUserController {
 

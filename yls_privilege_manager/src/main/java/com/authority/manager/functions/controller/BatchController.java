@@ -24,7 +24,7 @@ import java.util.List;
  * @Version 1.0
  */
 @RestController
-@RequestMapping("/batch")
+@RequestMapping("component/batch")
 @Api(tags = "批处理测试和数据校验")
 public class BatchController {
     @Autowired

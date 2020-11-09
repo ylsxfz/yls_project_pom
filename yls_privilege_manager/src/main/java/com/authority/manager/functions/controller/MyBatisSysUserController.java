@@ -15,7 +15,7 @@ import javax.servlet.http.HttpSession;
 
 
 @RestController
-@RequestMapping("mybatis")
+@RequestMapping("component/mybatis")
 @Api(tags = "mybatis测试")
 public class MyBatisSysUserController {
 
