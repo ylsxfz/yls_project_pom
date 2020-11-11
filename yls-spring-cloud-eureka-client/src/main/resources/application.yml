@@ -1,0 +1,17 @@
+server:
+  port: 8762
+
+---
+
+spring:
+  application:
+    name: yls_spring_cloud_eureka_client
+
+---
+
+eureka:
+  client:
+    service-url:
+      default-zone: http://localhost:8761/eureka/
+  instance:
+    prefer-ip-address: true # 将自己的 IP 注册到 Eureka Server 上，如果不配置，默认为 false，表示注册微服务的 hostname 到 Eureka Server
