@@ -37,7 +37,8 @@ spring:
   #定义项目的静态资源
   #mvc:
    # static-path-pattern: /static/**
-  #spring-boot-admin-starter-client 监控客户端的相关配置
+
+  ## spring-boot-admin-starter-client 监控客户端的相关配置
   boot:
     admin:
       client:
@@ -48,6 +49,7 @@ spring:
         instance:
           service-base-url: http://localhost:8443
 
+  ## 项目名称
   application:
     name: yls_privilege_manager
 
@@ -55,25 +57,19 @@ spring:
 
 
   ## 注冊服務
-  cloud:
-    consul:
-      discovery:
-        service-name: ${spring.application.name}
-        instance-id: ${spring.application.name}:${server.port}
-      host: localhost
-      port: 8500
+#  cloud:
+#    consul:
+#      discovery:
+#        service-name: ${spring.application.name}
+#        instance-id: ${spring.application.name}:${server.port}
+#      host: localhost
+#      port: 8500
 
 
 ## 日志服务器
 logging:
   config: classpath:logback-spring.xml
-  # 屏蔽swagger的报错：AbstractSerializableParameter : Illegal DefaultValue null for parameter type integer解决方案
-#  level:
-#    io:
-#      swagger:
-#        models:
-#          parameters:
-#            AbstractSerializableParameter: error
+
 
 ## mybatis-plus的配置
 mybatis-plus:
