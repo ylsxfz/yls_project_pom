@@ -9,9 +9,9 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>com.yls</groupId>
-    <artifactId>eureka</artifactId>
+    <artifactId>yls-spring-cloud-eureka-client</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>yls_spring_cloud_eureka</name>
+    <name>yls-spring-cloud-eureka-client</name>
     <description>Demo project for Spring Boot</description>
 
     <properties>
