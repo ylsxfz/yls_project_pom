@@ -25,10 +25,17 @@
             <artifactId>spring-boot-starter</artifactId>
         </dependency>
 
+        <!-- eureka 注册中心-服务端-->
         <dependency>
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-starter-netflix-eureka-server</artifactId>
             <version>2.0.0.RELEASE</version>
+        </dependency>
+
+        <!-- 开启安全认证 -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-security</artifactId>
         </dependency>
 
         <dependency>
