@@ -15,7 +15,6 @@ management:
       enabled: true
     health:
       show-details: always
-
   ## 配置显示git的提交信息
   info:
     git:

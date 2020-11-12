@@ -9,14 +9,16 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>com.yls</groupId>
-    <artifactId>yls-spring-cloud-eureka-server</artifactId>
+    <artifactId>yls-cloud-eureka-client-producer</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>yls-spring-cloud-eureka-server</name>
+    <name>yls-cloud-eureka-client-producer</name>
     <description>Demo project for Spring Boot</description>
 
     <properties>
         <java.version>1.8</java.version>
-        <spring-cloud.version>Finchley.RELEASE</spring-cloud.version>
+        <!--json工具包-->
+        <fastjson.version>1.2.70</fastjson.version>
+        <jackson.version>2.9.6</jackson.version>
     </properties>
 
     <dependencies>
@@ -24,19 +26,34 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter</artifactId>
         </dependency>
-
+        <!-- web -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+        </dependency>
         <!-- eureka 注册中心-服务端-->
         <dependency>
             <groupId>org.springframework.cloud</groupId>
-            <artifactId>spring-cloud-starter-netflix-eureka-server</artifactId>
+            <artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
             <version>2.0.0.RELEASE</version>
         </dependency>
-
-        <!-- 开启安全认证 -->
-<!--        <dependency>-->
-<!--            <groupId>org.springframework.boot</groupId>-->
-<!--            <artifactId>spring-boot-starter-security</artifactId>-->
-<!--        </dependency>-->
+        <!-- 项目健康信息 -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-actuator</artifactId>
+        </dependency>
+        <!-- jackson json 优化缓存对象序列化 -->
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-databind</artifactId>
+            <version>${jackson.version}</version>
+        </dependency>
+        <!--json工具包-->
+        <dependency>
+            <groupId>com.alibaba</groupId>
+            <artifactId>fastjson</artifactId>
+            <version>${fastjson.version}</version>
+        </dependency>
 
         <dependency>
             <groupId>org.springframework.boot</groupId>

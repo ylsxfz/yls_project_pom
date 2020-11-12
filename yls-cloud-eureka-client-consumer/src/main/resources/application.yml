@@ -1,0 +1,29 @@
+server:
+  port: 8772
+
+---
+
+spring:
+  application:
+    name: yls-cloud-eureka-client-consumer
+
+---
+
+eureka:
+  client:
+    service-url:
+      default-zone: http://localhost:8761/eureka/ # 普遍注册
+  #      default-zone: http://admin:123456@localhost:8761/eureka/ # 带用户名密码认证登录
+  instance:
+    prefer-ip-address: true # 将自己的 IP 注册到 Eureka Server 上，如果不配置，默认为 false，表示注册微服务的 hostname 到 Eureka Server、
+    status-page-url-path: ${management.endpoints.web.base-path}/info #定义健康检查的页面地址
+    health-check-url-path:  ${management.endpoints.web.base-path}/health #定义健康检查的页面地址
+
+---
+
+management:
+  server:
+    port: 9002
+  endpoints:
+    web:
+      base-path: /status #变更默认的actuator页面目录

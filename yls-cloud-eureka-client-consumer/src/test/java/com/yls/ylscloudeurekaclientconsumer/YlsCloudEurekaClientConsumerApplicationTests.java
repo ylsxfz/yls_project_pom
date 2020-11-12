@@ -1,10 +1,11 @@
-package com.yls.springcloudeurekaclient;
+package com.yls.ylscloudeurekaclientconsumer;
+
 
 import org.junit.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class SpringCloudEurekaClientApplicationTests {
+class YlsCloudEurekaClientConsumerApplicationTests {
 
     @Test
     void contextLoads() {

@@ -1,17 +1,21 @@
 server:
   port: 8761
-  servlet:
-    context-path: /eureka
 
 ---
 
 spring:
+#  security:  # 安全认证
+#    user:
+#      name: admin
+#      password: 123456
   application:
-    name: yls_spring_cloud_eureka_server
+    name: yls_spring_cloud_eureka_server #项目名称
 
 ---
 
 eureka:
+  server:
+    enable-self-preservation: false # 关闭安全模式
   client:
     ## 是否把自己注册到 Eureka Server，默认为 true。由于当前为Eureka Server,故设为 false
     register-with-eureka: false
@@ -19,6 +23,7 @@ eureka:
     fetch-registry: false
     service-url:
       ## 设置与 Eureka Server的交互地址，多个地址可以用 逗号（,）分割
+#      default-zone: http://admin:123456@localhost:8761/eureka/
       default-zone: http://localhost:8761/eureka/
 
 
