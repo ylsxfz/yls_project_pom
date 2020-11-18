@@ -9,6 +9,8 @@ import com.authority.manager.log.utils.HttpContextUtils;
 import com.authority.manager.log.utils.IPUtils;
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.reflect.MethodSignature;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.LocalVariableTableParameterNameDiscoverer;
 import org.springframework.scheduling.annotation.Async;
@@ -31,6 +33,9 @@ import java.util.Map;
  */
 @Component
 public class SystemLogAopUtil {
+
+    // 日志
+    private static final Logger LOGGER = LoggerFactory.getLogger(SystemLogAopUtil.class);
 
     @Autowired
     private SystemLogService systemLogService;
@@ -115,6 +120,7 @@ public class SystemLogAopUtil {
             throw throwable;
 
         } finally {
+            LOGGER.info(systemLogDO.toString());
             this.saveLog(systemLogDO);
         }
         return proceed;
