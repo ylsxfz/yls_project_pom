@@ -2,8 +2,12 @@ package com.authority.manager;
 
 import org.springframework.batch.core.configuration.annotation.EnableBatchProcessing;
 import org.springframework.boot.SpringApplication;
+import org.springframework.boot.SpringBootConfiguration;
+import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.web.servlet.ServletComponentScan;
+import org.springframework.context.annotation.ComponentScan;
+import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.ImportResource;
 import org.springframework.data.jpa.repository.config.EnableJpaAuditing;
 import org.springframework.scheduling.annotation.EnableAsync;
@@ -15,7 +19,7 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
 /**
  * 系统程序的主函数：主入口
  */
-@SpringBootApplication
+@SpringBootApplication // 等同于 @EnableAutoConfiguration @SpringBootConfiguration @ComponentScan
 //@EnableDiscoveryClient // 注册服务
 @EnableAsync
 @EnableSwagger2 // swagger2文档接口
