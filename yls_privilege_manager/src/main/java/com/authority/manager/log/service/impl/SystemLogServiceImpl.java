@@ -1,5 +1,6 @@
 package com.authority.manager.log.service.impl;
 
+import com.authority.manager.component.annotation.TransactionalService;
 import com.authority.manager.log.dao.SystemLogJpaDAO;
 import com.authority.manager.log.service.SystemLogService;
 import com.authority.manager.base.repository.BaseJpaDAO;
@@ -13,8 +14,9 @@ import org.springframework.transaction.annotation.Transactional;
  * @Description:
  * @Version 1.0
  */
-@Transactional
-@Service
+//@Transactional
+//@Service
+@TransactionalService //自定义组合注解
 public class SystemLogServiceImpl implements SystemLogService {
     @Autowired
     private SystemLogJpaDAO systemLogJpaDAO;
