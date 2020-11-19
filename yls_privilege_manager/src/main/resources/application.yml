@@ -68,7 +68,7 @@ spring:
 
 ## 日志服务器
 logging:
-  config: classpath:logback-es.xml
+  config: classpath:logback-spring.xml
 
 
 ## mybatis-plus的配置
