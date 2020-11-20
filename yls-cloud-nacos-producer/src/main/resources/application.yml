@@ -1,0 +1,11 @@
+server:
+  port: 8882
+
+spring:
+  application:
+    name: yls-cloud-nacos-producer
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 127.0.0.1:8848
+        register-enabled: true

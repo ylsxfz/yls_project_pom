@@ -1,0 +1,14 @@
+server:
+  port: 8883
+
+
+spring:
+  application:
+    name: ys-cloud-nacos-consumer
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 127.0.0.1:8848
+        register-enabled: true
+
+
