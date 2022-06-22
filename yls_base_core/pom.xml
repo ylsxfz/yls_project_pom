@@ -20,7 +20,7 @@
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <!-- ES -->
-        <elasticsearch.version>6.4.0</elasticsearch.version>
+        <elasticsearch.version>6.8.15</elasticsearch.version>
         <!--swagger2接口文档-->
         <swagger2.version>2.9.2</swagger2.version>
 
